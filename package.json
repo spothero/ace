@@ -1,0 +1,107 @@
+{
+  "name": "@spothero/ace",
+  "version": "3.0.0",
+  "description": "Application Configuration Extractor (ACE) helps remove boilerplate build code from your application and manages it externally.",
+  "main": "config/gulp/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spothero/ace.git"
+  },
+  "author": "SpotHero",
+  "license": "MIT",
+  "bin": {
+    "ace": "./cli.js"
+  },
+  "scripts": {
+    "commitmsg": "commitlint -E GIT_PARAMS",
+    "release": "npm-release"
+  },
+  "engines": {
+    "node": ">=10.3.0",
+    "npm": ">=6.1.0"
+  },
+  "contributionDependencies": [
+    "babel-preset-env",
+    "babel-preset-react",
+    "babel-preset-stage-1",
+    "react-hot-loader",
+    "webpack",
+    "webpack-cli"
+  ],
+  "devDependencies": {
+    "@spothero/commitlint-config": "1.1.0",
+    "@spothero/npm-publisher": "0.1.0"
+  },
+  "dependencies": {
+    "@cypress/webpack-preprocessor": "2.0.1",
+    "@spothero/eslint-config": "1.3.2",
+    "@spothero/stylelint-config": "1.0.3",
+    "ansi-colors": "2.0.5",
+    "autoprefixer": "9.1.0",
+    "aws-sdk": "2.289.0",
+    "babel-core": "6.26.3",
+    "babel-loader": "7.1.5",
+    "babel-preset-env": "1.7.0",
+    "babel-preset-react": "6.24.1",
+    "babel-preset-stage-1": "6.24.1",
+    "browser-sync": "2.24.6",
+    "browser-sync-webpack-plugin": "2.2.2",
+    "concurrently": "3.6.1",
+    "connect-history-api-fallback": "1.5.0",
+    "cssnano": "4.0.5",
+    "cypress": "3.0.3",
+    "del": "3.0.0",
+    "diff": "3.5.0",
+    "eslint-friendly-formatter": "4.0.1",
+    "fancy-log": "1.3.2",
+    "gulp": "3.9.1",
+    "gulp-eslint": "5.0.0",
+    "gulp-html-replace": "1.6.2",
+    "gulp-if": "2.0.2",
+    "gulp-image-resize": "0.13.0",
+    "gulp-imagemin": "4.1.0",
+    "gulp-notify": "3.2.0",
+    "gulp-postcss": "8.0.0",
+    "gulp-prompt": "1.1.0",
+    "gulp-rename": "1.4.0",
+    "gulp-rev": "8.1.1",
+    "gulp-s3-upload": "1.7.0",
+    "gulp-sass": "4.0.1",
+    "gulp-sentry-release": "1.0.4",
+    "gulp-shell": "0.6.5",
+    "gulp-sourcemaps": "2.6.4",
+    "gulp-stylelint": "7.0.0",
+    "gulp.spritesmith": "6.9.0",
+    "http-proxy-middleware": "0.18.0",
+    "koa-connect": "2.0.1",
+    "lodash": "4.17.10",
+    "merge-stream": "1.0.1",
+    "minimist": "1.2.0",
+    "plugin-error": "1.0.1",
+    "prop-types": "15.6.2",
+    "rc": "1.2.8",
+    "react": "16.2.0",
+    "react-dom": "16.2.0",
+    "react-hot-loader": "4.3.4",
+    "require-dir": "1.0.0",
+    "run-sequence": "2.2.1",
+    "stylelint-checkstyle-formatter": "0.1.1",
+    "uglifyjs-webpack-plugin": "1.2.7",
+    "uuid": "3.3.2",
+    "webpack": "4.16.5",
+    "webpack-cli": "3.1.0",
+    "webpack-merge": "4.1.4",
+    "webpack-serve": "2.0.2"
+  },
+  "peerDependencies": {
+    "babel-polyfill": "6.26.0",
+    "core-js": "2.5.7",
+    "prop-types": "15.6.2",
+    "react": "16.2.0",
+    "react-dom": "16.2.0"
+  },
+  "bugs": {
+    "url": "https://github.com/spothero/ace/issues"
+  },
+  "homepage": "https://github.com/spothero/ace#readme"
+}

@@ -1,0 +1,7 @@
+{
+    "extends": "@spothero",
+    "globals": {
+        "SETTINGS_CONFIG": true,
+        "TASK_CONFIG": true
+    }
+}

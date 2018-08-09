@@ -1,0 +1,113 @@
+// stylelint-disable
+
+/**
+ * **WARNING**
+ * Make sure to edit the commented out items below.
+ * Search this file for *EDIT ME* to see all occurences where you will need to update.
+ *
+ * To create a new sprite:
+ *     2. Add the appropriate import statement(s).
+ *     3. Add the new type to the $sprite-types map.
+ *     4. Edit the sprite() mixin at the end of this file with your new type added in the retina portion.
+ */
+
+// *EDIT ME*
+// @import "path/to/sprites/sprites-[name1]-map";
+// @import "path/to/sprites/sprites-[name1]-map-2x";
+// @import "path/to/sprites/sprites-[name2]-map";
+// @import "path/to/sprites/sprites-[name2]-map-2x";
+// @import "path/to/sprites/sprites-[name3]-map";
+// @import "path/to/sprites/sprites-[name3]-map-2x";
+// ...etc
+
+$sprite-types: (
+    // *EDIT ME*
+    // name1: $sprite-name1,
+    // name2: $sprite-name2,
+    // name3: $sprite-name3,
+    // ..etc
+);
+
+@mixin sprite-size($image, $map) {
+    $width: map-get(map-get($map, $image), "total-width");
+    $height: map-get(map-get($map, $image), "total-height");
+
+    background-size: ceil($width / 2) ceil($height / 2);
+}
+
+@mixin sprite-width($image, $map, $retina: false) {
+    @if $retina == true {
+        width: ceil(map-get(map-get($map, $image), "width") / 2) + 1;
+    } @else {
+        width: map-get(map-get($map, $image), "width");
+    }
+}
+
+@mixin sprite-height($image, $map, $retina: false) {
+    @if $retina == true {
+        height: ceil(map-get(map-get($map, $image), "height") / 2) + 1;
+    } @else {
+        height: map-get(map-get($map, $image), "height");
+    }
+}
+
+@mixin sprite-position($image, $map, $retina: false) {
+    @if $retina == true {
+        background-position: ceil(map-get(map-get($map, $image), "offset-x") / 2) ceil(map-get(map-get($map, $image), "offset-y") / 2);
+    } @else {
+        background-position: map-get(map-get($map, $image), "offset-x") map-get(map-get($map, $image), "offset-y");
+    }
+}
+
+@mixin sprite-image($image, $map) {
+    background-image: url(map-get(map-get($map, $image), "image"));
+}
+
+/**
+ * @section Mixins
+ * @subsection sprite
+ * @description Creates a retina-ready sprite from the given source image.
+ *
+ * @mixin sprite($image, $type, $size: true)
+ */
+@mixin sprite($image, $type, $size: true) {
+    $sprite-map: map-get($sprite-types, $type);
+
+    @include sprite-image($image, $sprite-map);
+    @include sprite-position($image, $sprite-map);
+    background-repeat: no-repeat;
+    overflow: hidden;
+    display: inline-block;
+
+    @if $size {
+        @include sprite-width($image, $sprite-map);
+        @include sprite-height($image, $sprite-map);
+    }
+
+    @media
+        only screen and (-webkit-min-device-pixel-ratio: 2),
+        only screen and (   min--moz-device-pixel-ratio: 2),
+        only screen and (     -o-min-device-pixel-ratio: 2/1),
+        only screen and (        min-device-pixel-ratio: 2),
+        only screen and (                min-resolution: 2dppx) {
+
+        // *EDIT ME*
+        // @if $type == "name1" {
+        //     $sprite-map: $sprite-name1-2x;
+        // } @else if $type == "name2" {
+        //     $sprite-map: $sprite-name2-2x;
+        // } @else {
+        //     $sprite-map: $sprite-name3-2x;
+        // }
+
+        @include sprite-image($image, $sprite-map);
+        @include sprite-size($image, $sprite-map);
+        @include sprite-position($image, $sprite-map, true);
+
+        @if $size {
+            @include sprite-width($image, $sprite-map, true);
+            @include sprite-height($image, $sprite-map, true);
+        }
+    }
+}
+
