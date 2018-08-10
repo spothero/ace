@@ -2,8 +2,8 @@
 Follow the steps below to contribute to this project. It is best to use `npm link` to work on the project locally so you don't have to publish every change.
 
 ## Local Development - Usage
-1. Clone this repository.
-1. Run the following inside of the cloned directory.
+1. Fork this repository.
+1. Run the following inside of the root directory.
     ```
     npm install
     npm link
@@ -28,3 +28,6 @@ When finished with development, be sure to clean up after yourself:
 
 ## Committing Changes
 ACE uses [@spothero/config-commitlint](https://github.com/spothero/commitlint-config). Please see the [commit conventions](https://github.com/spothero/commitlint-config#commit-conventions) for information regarding proper commit messages.
+
+## Pull Requests
+When you're done with your changes, please open a pull request against the master repository for review.
