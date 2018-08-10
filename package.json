@@ -73,6 +73,7 @@
     "gulp-stylelint": "7.0.0",
     "gulp.spritesmith": "6.9.0",
     "http-proxy-middleware": "0.18.0",
+    "inquirer": "6.1.0",
     "koa-connect": "2.0.1",
     "lodash": "4.17.10",
     "merge-stream": "1.0.1",
