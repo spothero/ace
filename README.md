@@ -5,3 +5,6 @@ By using ACE in all their projects, developers ensure that no matter what projec
 
 ## Documentation
 You can see all the details and view the full documentation on the [Wiki](https://github.com/spothero/ace/wiki).
+
+## Credits
+ACE is heavily inspired by [Blendid](https://github.com/vigetlabs/blendid).
