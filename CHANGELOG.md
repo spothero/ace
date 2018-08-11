@@ -1,3 +1,8 @@
+# 3.0.2 - 08/11/2018
+
+## Miscellaneous Updates
+* [[2bde36c](https://github.com/spothero/ace/commit/2bde36c)] - `fix:` Accidentally ignored all .eslintrc and .nvmrc files but we want the scaffolded ones to still be published (Matt Przybylski)
+
 # 3.0.1 - 08/11/2018
 
 ## Miscellaneous Updates
