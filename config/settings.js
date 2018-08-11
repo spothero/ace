@@ -87,7 +87,6 @@ module.exports = {
         names: [ // the directory names (without the -1x or -2x) where singular sprite images originate, will determine output sprite image name, output sprite Sass file name, and output CSS sprite map names
             // 'common',
             // 'desktop',
-            // 'markers',
             // 'mobile'
         ]
     },
