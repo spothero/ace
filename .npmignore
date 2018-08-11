@@ -1,4 +1,4 @@
 node_modules
-.eslintrc
-.nvmrc
+./.eslintrc
+./.nvmrc
 commitlint.config.js
