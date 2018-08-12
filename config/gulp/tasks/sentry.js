@@ -29,10 +29,6 @@ const sentryTask = () => {
         throw new PluginError('sentry', 'You must fill in all the applicable settings for the "sentry" object in the tasks file.');
     }
 
-    if (isEmpty(deploySettings.staticUrl) || isEmpty(deploySettings.path)) {
-        throw new PluginError('sentry', 'You must fill in all the applicable settings for the "deploy" object in the settings file.');
-    }
-
     const manifest = JSON.parse(fs.readFileSync(`${projectPath(global.SETTINGS_CONFIG.dist.path)}/manifest.json`, 'utf8'));
     const sources = [];
 
@@ -45,7 +41,9 @@ const sentryTask = () => {
 
     return gulp.src(sources)
         .pipe(sentryRelease(`${projectPath(global.SETTINGS_CONFIG.root.path)}/package.json`, {
-            DOMAIN: `${deploySettings.staticUrl}/${deploySettings.path}/js`,
+            DOMAIN: (!isEmpty(deploySettings.staticUrl) && !isEmpty(deploySettings.path))
+                ? `${deploySettings.staticUrl}/${deploySettings.path}/js`
+                : '',
             API_URL: `https://app.getsentry.com/api/0/projects/${sentryData.organizationSlug}/${sentryData.projectSlug}/`,
             API_KEY: sentryData.authToken,
             debug: true
