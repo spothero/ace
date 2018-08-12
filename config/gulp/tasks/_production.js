@@ -6,23 +6,26 @@ const productionTask = cb => {
         taskSequence: {
             production: {
                 preBuild,
-                postBuild
+                postBuild,
+                custom
             }
         }
     } = global.TASK_CONFIG;
+    const seq = (custom.length)
+        ? custom
+        : [
+            'clean',
+            'lintJS',
+            'lintSass',
+            ...preBuild,
+            'sass',
+            'webpack',
+            'cssMin',
+            'revision',
+            ...postBuild
+        ];
 
-    sequence(
-        'clean',
-        'lintJS',
-        'lintSass',
-        ...preBuild,
-        'sass',
-        'webpack',
-        'cssMin',
-        'revision',
-        ...postBuild,
-        cb
-    );
+    sequence(...seq, cb);
 };
 
 gulp.task('production', productionTask);

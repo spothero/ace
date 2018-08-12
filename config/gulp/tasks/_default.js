@@ -6,21 +6,24 @@ const developmentTask = cb => {
         taskSequence: {
             development: {
                 preBuild,
-                postBuild
+                postBuild,
+                custom
             }
         }
     } = global.TASK_CONFIG;
+    const seq = (custom.length)
+        ? custom
+        : [
+            'clean',
+            ...preBuild,
+            'sass',
+            'lintSass',
+            ...postBuild,
+            'watch',
+            'server'
+        ];
 
-    sequence(
-        'clean',
-        ...preBuild,
-        'sass',
-        'lintSass',
-        ...postBuild,
-        'watch',
-        'server',
-        cb
-    );
+    sequence(...seq, cb);
 };
 
 gulp.task('default', developmentTask);

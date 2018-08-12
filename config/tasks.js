@@ -39,15 +39,18 @@ module.exports = {
     taskSequence: {
         development: {
             preBuild: [],
-            postBuild: []
+            postBuild: [],
+            custom: []
         },
         test: {
             preBuild: [],
-            postBuild: []
+            postBuild: [],
+            custom: []
         },
         production: {
             preBuild: [],
-            postBuild: []
+            postBuild: [],
+            custom: []
         }
     }
 };
