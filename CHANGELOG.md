@@ -1,3 +1,8 @@
+# 3.1.1 - 08/12/2018
+
+## Miscellaneous Updates
+* [[ddcba7d](https://github.com/spothero/ace/commit/ddcba7d)] - `fix:` Incorrect path to authToken in sentry task (Matt Przybylski)
+
 # 3.1.0 - 08/12/2018
 ## New Features
 * [[02562f6](https://github.com/spothero/ace/commit/02562f6)] - Add ability to pass custom task array to taskSequence (Matt Przybylski)
