@@ -25,7 +25,7 @@ const sentryTask = () => {
         deploySettings.staticUrl = (getRCValues().deploy) ? getRCValues().deploy.staticUrl : null;
     }
 
-    if (isEmpty(sentryData.organizationSlug) || isEmpty(deploySettings.authToken) || isEmpty(sentryData.projectSlug)) {
+    if (isEmpty(sentryData.organizationSlug) || isEmpty(sentryData.authToken) || isEmpty(sentryData.projectSlug)) {
         throw new PluginError('sentry', 'You must fill in all the applicable settings for the "sentry" object in the tasks file.');
     }
 
