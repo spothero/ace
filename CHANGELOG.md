@@ -1,3 +1,11 @@
+# 3.1.0 - 08/12/2018
+## New Features
+* [[02562f6](https://github.com/spothero/ace/commit/02562f6)] - Add ability to pass custom task array to taskSequence (Matt Przybylski)
+
+## Miscellaneous Updates
+* [[399123c](https://github.com/spothero/ace/commit/399123c)] - `fix:` Remove requirement for staticUrl and path to be set in deploy settings for Sentry task deploys (Matt Przybylski)
+* [[05ea545](https://github.com/spothero/ace/commit/05ea545)] - `docs:` Update sprite documentation (Matt Przybylski)
+
 # 3.0.2 - 08/11/2018
 
 ## Miscellaneous Updates
