@@ -1,3 +1,7 @@
+# 3.2.0 - 08/13/2018
+## New Features
+* [[8c3e6fa](https://github.com/spothero/ace/commit/8c3e6fa)] - Implement SpotHero employee only features back into ACE for internal SpotHero use (Matt Przybylski)
+
 # 3.1.2 - 08/13/2018
 
 ## Miscellaneous Updates
