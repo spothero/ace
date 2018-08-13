@@ -54,12 +54,10 @@
     "gulp": "3.9.1",
     "gulp-eslint": "5.0.0",
     "gulp-html-replace": "1.6.2",
-    "gulp-if": "2.0.2",
     "gulp-image-resize": "0.13.0",
     "gulp-imagemin": "4.1.0",
     "gulp-notify": "3.2.0",
     "gulp-postcss": "8.0.0",
-    "gulp-prompt": "1.1.0",
     "gulp-rename": "1.4.0",
     "gulp-rev": "8.1.1",
     "gulp-s3-upload": "1.7.0",
@@ -92,6 +90,8 @@
     "webpack-serve": "2.0.2"
   },
   "peerDependencies": {
+    "@spothero/core": "1.1.1",
+    "@spothero/ui": "5.5.1",
     "babel-polyfill": "6.26.0",
     "core-js": "2.5.7",
     "prop-types": "15.6.2",

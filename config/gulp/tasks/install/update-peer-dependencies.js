@@ -1,7 +1,7 @@
-const isNil = require('lodash/isNil');
+const includes = require('lodash/includes');
 const gulp = require('gulp');
-const gulpif = require('gulp-if');
-const prompt = require('gulp-prompt');
+const inquirer = require('inquirer');
+const sequence = require('run-sequence');
 const shell = require('gulp-shell');
 const keys = require('lodash/keys');
 const mapKeys = require('lodash/mapKeys');
@@ -10,38 +10,55 @@ const colors = require('ansi-colors');
 const projectPath = require('../../lib/project-path');
 const packageJSON = require('../../../../package.json');
 
-let peersToInstall = null;
+const shLabel = ' - SpotHero employees only';
+const peers = keys(mapKeys(packageJSON.peerDependencies, (value, key) => {
+    const suffix = (includes(key, '@spothero'))
+        ? shLabel
+        : '';
 
-const askWhichPeerDeps = () => {
-    const peers = keys(mapKeys(packageJSON.peerDependencies, (value, key) => {
-        return `${key}@${value}`;
-    }));
+    return `${key}@${value}${suffix}`;
+}));
+let peersToInstall;
 
+const updatePeerDepsTask = () => {
     return gulp.src(`${projectPath(global.SETTINGS_CONFIG.root.path)}/package.json`, {read: false})
-        .pipe(prompt.prompt({
-            type: 'checkbox',
-            name: 'deps',
-            message: 'Which peerDependencies do you want to update? (use arrow keys and spacebar to make selections)',
-            choices: peers
-        }, ({deps}) => {
-            if (deps.length) {
-                peersToInstall = deps.join(' ');
-            } else {
-                log(colors.red(`You've chosen not to update any peerDependencies. Make sure you have them all installed in your project or ACE may not function correctly.`));
-            }
+        .pipe(shell([
+            `npm install -S ${peersToInstall.join(' ')}`
+        ], {
+            cwd: process.env.INIT_CWD
         }));
 };
 
-const updatePeerDependenciesTask = () => {
-    return gulp.src(`${projectPath(global.SETTINGS_CONFIG.root.path)}/package.json`, {read: false})
-        .pipe(gulpif(!isNil(peersToInstall), shell([
-            `npm install -S ${peersToInstall}`
-        ], {
-            cwd: process.env.INIT_CWD
-        })));
+const updatePeerDependenciesTask = cb => {
+    inquirer
+        .prompt([
+            {
+                name: 'updatePeerDeps',
+                type: 'checkbox',
+                message: `Which peerDependencies do you want to update? (Checking SpotHero employee only dependencies will fail your install if you aren't a SpotHero employee)`,
+                choices: peers,
+                default: 0
+            }
+        ])
+        .then(answers => {
+            peersToInstall = answers.updatePeerDeps.map(peer => {
+                return peer.replace(shLabel, '');
+            });
+
+            if (peersToInstall.length) {
+                sequence(
+                    'confirmUpdatePeerDeps',
+                    cb
+                );
+            } else {
+                log(colors.red(`You've chosen not to update any peerDependencies. Make sure you have them all installed in your project or ACE may not function correctly.`));
+
+                cb();
+            }
+        });
 };
 
-gulp.task('askWhichPeerDeps', askWhichPeerDeps);
-gulp.task('updatePeerDeps', ['askWhichPeerDeps'], updatePeerDependenciesTask);
+gulp.task('confirmUpdatePeerDeps', updatePeerDepsTask);
+gulp.task('updatePeerDeps', updatePeerDependenciesTask);
 
 module.exports = updatePeerDependenciesTask;
