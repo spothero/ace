@@ -1,3 +1,8 @@
+# 3.1.2 - 08/13/2018
+
+## Miscellaneous Updates
+* [[67b87bd](https://github.com/spothero/ace/commit/67b87bd)] - `fix:` Upgrading to latest ACE caused issues with old versions due to custom task checker (Matt Przybylski)
+
 # 3.1.1 - 08/12/2018
 
 ## Miscellaneous Updates
