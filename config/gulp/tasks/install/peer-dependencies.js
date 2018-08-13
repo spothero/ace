@@ -1,3 +1,5 @@
+const filter = require('lodash/filter');
+const includes = require('lodash/includes');
 const gulp = require('gulp');
 const inquirer = require('inquirer');
 const sequence = require('run-sequence');
@@ -7,33 +9,46 @@ const mapKeys = require('lodash/mapKeys');
 const projectPath = require('../../lib/project-path');
 const packageJSON = require('../../../../package.json');
 
-let peers;
+let peers = keys(mapKeys(packageJSON.peerDependencies, (value, key) => {
+    return `${key}@${value}`;
+}));
 
 const installPeerDepsTask = () => {
     return gulp.src(`${projectPath(global.SETTINGS_CONFIG.root.path)}/package.json`, {read: false})
         .pipe(shell([
-            `npm install -S ${peers}`
+            `npm install -S ${peers.join(' ')}`
         ], {
             cwd: process.env.INIT_CWD
         }));
 };
 
-const peerDependenciesTask = cb => {
-    peers = keys(mapKeys(packageJSON.peerDependencies, (value, key) => {
-        return `${key}@${value}`;
-    })).join(' ');
-
+const installPeerDependenciesTask = cb => {
     inquirer
         .prompt([
             {
                 name: 'peerDeps',
-                type: 'confirm',
+                type: 'list',
                 message: 'Also install peerDependencies? (Required when starting a new project with ACE)',
-                default: true
+                choices: [
+                    'Yes',
+                    'Yes + SpotHero (only useful for SpotHero employees, will fail install if used by non-employees)',
+                    'No'
+                ],
+                default: 0
             }
         ])
         .then(answers => {
-            if (answers.peerDeps) {
+            const type = (includes(answers.peerDeps, 'SpotHero'))
+                ? 'SpotHero'
+                : answers.peerDeps;
+
+            if (type === 'Yes' || type === 'SpotHero') {
+                if (type !== 'SpotHero') {
+                    peers = filter(peers, peer => {
+                        return !includes(peer, '@spothero');
+                    });
+                }
+
                 sequence(
                     'confirmInstallPeerDeps',
                     cb
@@ -45,6 +60,6 @@ const peerDependenciesTask = cb => {
 };
 
 gulp.task('confirmInstallPeerDeps', installPeerDepsTask);
-gulp.task('installPeerDeps', peerDependenciesTask);
+gulp.task('installPeerDeps', installPeerDependenciesTask);
 
-module.exports = peerDependenciesTask;
+module.exports = installPeerDependenciesTask;

@@ -1,3 +1,4 @@
+const includes = require('lodash/includes');
 const gulp = require('gulp');
 const inquirer = require('inquirer');
 const sequence = require('run-sequence');
@@ -6,8 +7,10 @@ const log = require('fancy-log');
 const colors = require('ansi-colors');
 const projectPath = require('../../lib/project-path');
 
-const execScaffoldProjectTask = () => {
-    return gulp.src(['../src/**/*'], {dot: true})
+const sources = ['../src/common/**/*'];
+
+const confirmScaffoldProjectTask = () => {
+    return gulp.src(sources, {dot: true})
         .pipe(rename(path => {
             // `.gitignore` gets ignored in the copy so we have to name the file `gitignore` and rename it in the stream
             if (path.basename === 'gitignore') {
@@ -26,13 +29,24 @@ const scaffoldProjectTask = cb => {
         .prompt([
             {
                 name: 'scaffoldProject',
-                type: 'confirm',
+                type: 'list',
                 message: 'Scaffold default ACE project files? (you can do this later by calling `npm start -- scaffoldProject`)',
-                default: true
+                choices: [
+                    'Standard',
+                    'SpotHero (only useful for SpotHero employees, will break builds if used by non-employees)',
+                    'None'
+                ],
+                default: 0
             }
         ])
         .then(answers => {
-            if (answers.scaffoldProject) {
+            const type = (includes(answers.scaffoldProject, 'SpotHero'))
+                ? 'SpotHero'
+                : answers.scaffoldProject;
+
+            if (type === 'Standard' || type === 'SpotHero') {
+                sources.push(`../src/${type.toLowerCase()}/**/*`);
+
                 sequence(
                     'confirmScaffoldProject',
                     cb
@@ -43,7 +57,7 @@ const scaffoldProjectTask = cb => {
         });
 };
 
-gulp.task('confirmScaffoldProject', execScaffoldProjectTask);
+gulp.task('confirmScaffoldProject', confirmScaffoldProjectTask);
 gulp.task('scaffoldProject', scaffoldProjectTask);
 
 module.exports = scaffoldProjectTask;
