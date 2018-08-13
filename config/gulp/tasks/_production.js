@@ -11,7 +11,7 @@ const productionTask = cb => {
             }
         }
     } = global.TASK_CONFIG;
-    const seq = (custom.length)
+    const seq = (custom && custom.length)
         ? custom
         : [
             'clean',
