@@ -1,3 +1,8 @@
+# 3.3.1 - 08/23/2018
+
+## Miscellaneous Updates
+* [[a6e65d2](https://github.com/spothero/ace/commit/a6e65d2)] - `chore:` Updated a few dependencies, most notably Cypress, to fix internal bugs (Matt Przybylski)
+
 # 3.3.0 - 08/23/2018
 ## New Features
 * [[f92945f](https://github.com/spothero/ace/commit/f92945f)] - Added ability to pass moduleRules to webpack common config (Matt Przybylski)
