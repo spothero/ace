@@ -1,3 +1,11 @@
+# 3.3.0 - 08/23/2018
+## New Features
+* [[f92945f](https://github.com/spothero/ace/commit/f92945f)] - Added ability to pass moduleRules to webpack common config (Matt Przybylski)
+
+## Miscellaneous Updates
+* [[e2995c9](https://github.com/spothero/ace/commit/e2995c9)] - `docs:` Fix typo in settings.js documentation (Brett Kellgren)
+* [[a7a0475](https://github.com/spothero/ace/commit/a7a0475)] - `chore:` Added a pull request template to SpotHero scaffolding setup (Matt Przybylski)
+
 # 3.2.0 - 08/13/2018
 ## New Features
 * [[8c3e6fa](https://github.com/spothero/ace/commit/8c3e6fa)] - Implement SpotHero employee only features back into ACE for internal SpotHero use (Matt Przybylski)
