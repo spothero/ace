@@ -14,14 +14,15 @@ const entry = (!isNil(settingsConfig.webpack.entry))
         })
         : `${projectPath(settingsConfig.root.path)}/${settingsConfig.js.path}/${settingsConfig.webpack.entry}`
     : `${projectPath(settingsConfig.root.path)}/${settingsConfig.js.path}/${settingsConfig.js.input}`;
-const settingsModules = settingsConfig.webpack.resolveModules;
+const settingsResolveModules = settingsConfig.webpack.resolveModules;
+const settingsModulueRules = settingsConfig.webpack.moduleRules || [];
 let modules = [
     'node_modules',
     path.resolve(`${projectPath(settingsConfig.root.path)}/${settingsConfig.js.path}`)
 ];
 
-if (settingsModules && settingsModules.length) {
-    const extraModules = settingsModules.map(modulePath => {
+if (settingsResolveModules && settingsResolveModules.length) {
+    const extraModules = settingsResolveModules.map(modulePath => {
         return path.resolve(`${projectPath(settingsConfig.root.path)}/${modulePath}`);
     });
 
@@ -47,7 +48,8 @@ const config = {
                     loader: 'babel-loader',
                     options: babelOptions
                 }
-            }
+            },
+            ...settingsModulueRules
         ]
     },
     plugins: [

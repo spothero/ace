@@ -40,6 +40,7 @@ module.exports = {
         entry: null, // string or object, optionally modifies the entry point JS file(s) passed to webpack (path(s) start after the `js.path`)
         alias: {}, // an object to create aliases to `import` certain modules more easily (see: https://webpack.js.org/configuration/resolve/#resolve-alias)
         resolveModules: [], // additional paths to resolve modules from (path(s) start after the `root.path`)
+        moduleRules: [], // additional rules to pass to webpack (see: https://webpack.js.org/configuration/module/#module-rules)
         externals: null, // exclude dependencies from output bundle (see: https://webpack.js.org/configuration/externals/)
         development: { // options to add during a development build
             historyApiFallback: true, // adds support falling back to index.html in case the requested resource at a given URL can't be found
