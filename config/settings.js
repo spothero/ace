@@ -53,7 +53,7 @@ module.exports = {
         },
         test: {
             useBrowserSync: true, // use Browsersync during tests for CSS injection
-            browserSyncOpen: false, // open the brwoser window when Browsersync starts during tests, same possible settings as `browserSync.open`
+            browserSyncOpen: false, // open the browser window when Browsersync starts during tests, same possible settings as `browserSync.open`
             sourceMap: 'cheap-module-source-map' // the source map type to use during testing
         },
         production: {
