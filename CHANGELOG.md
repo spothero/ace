@@ -1,3 +1,8 @@
+# 3.3.2 - 08/28/2018
+
+## Miscellaneous Updates
+* [[2601b47](https://github.com/spothero/ace/commit/2601b47)] - `build:` Update to using newest npm-publisher for publishing to proper npm registry (Matt Przybylski)
+
 # 3.3.1 - 08/23/2018
 
 ## Miscellaneous Updates
