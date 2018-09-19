@@ -1,3 +1,9 @@
+# 4.0.0 - 09/19/2018
+## Breaking Changes
+* [[033621d](https://github.com/spothero/ace/commit/033621d)] - Babel 7 and React 16.4.2 ([#7](https://github.com/spothero/ace/pull/7)) (Matt Przybylski)
+	* `upgrade:` Dependency upgrades in preparation for Babel 7, React upgraded to 16.4.2
+	* `breaking:` Upgrade to Babel 7. Update `babel-polyfill` import statement path to `@babel/polyfill`.
+
 # 3.3.2 - 08/28/2018
 
 ## Miscellaneous Updates
