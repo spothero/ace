@@ -1,3 +1,7 @@
+# 4.1.0 - 09/25/2018
+## Dependency Updates
+* [[a2c73af](https://github.com/spothero/ace/commit/a2c73af)] - Updated @spothero dependencies to latest, bump a few other minor, non-React, versions (Matt Przybylski)
+
 # 4.0.0 - 09/19/2018
 ## Breaking Changes
 * [[033621d](https://github.com/spothero/ace/commit/033621d)] - Babel 7 and React 16.4.2 ([#7](https://github.com/spothero/ace/pull/7)) (Matt Przybylski)
