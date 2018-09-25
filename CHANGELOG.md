@@ -1,3 +1,8 @@
+# 4.1.1 - 09/25/2018
+
+## Miscellaneous Updates
+* [[72ed4c8](https://github.com/spothero/ace/commit/72ed4c8)] - `chore:` Push @spothero/fe-ui dependency to latest (Matt Przybylski)
+
 # 4.1.0 - 09/25/2018
 ## Dependency Updates
 * [[a2c73af](https://github.com/spothero/ace/commit/a2c73af)] - Updated @spothero dependencies to latest, bump a few other minor, non-React, versions (Matt Przybylski)
