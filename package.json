@@ -124,7 +124,7 @@
   "peerDependencies": {
     "@babel/polyfill": "7.0.0",
     "@spothero/core": "1.2.0",
-    "@spothero/ui": "6.2.2",
+    "@spothero/ui": "7.0.0",
     "core-js": "2.5.7",
     "prop-types": "15.6.2",
     "react": "16.4.2",
