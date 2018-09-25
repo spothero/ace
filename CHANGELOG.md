@@ -1,3 +1,8 @@
+# 4.1.2 - 09/25/2018
+
+## Miscellaneous Updates
+* [[20c2290](https://github.com/spothero/ace/commit/20c2290)] - `fix:` Update @spothero/eslint-config to fix underlying errors from eslint upgrade (Matt Przybylski)
+
 # 4.1.1 - 09/25/2018
 
 ## Miscellaneous Updates
