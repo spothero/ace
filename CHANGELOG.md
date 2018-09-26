@@ -1,3 +1,8 @@
+# 4.1.3 - 09/26/2018
+
+## Miscellaneous Updates
+* [[bd6c324](https://github.com/spothero/ace/commit/bd6c324)] - `chore:` Update @spothero/eslint-config to latest to avoid false positives (Matt Przybylski)
+
 # 4.1.2 - 09/25/2018
 
 ## Miscellaneous Updates
