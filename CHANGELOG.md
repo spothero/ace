@@ -1,3 +1,9 @@
+# 4.2.1 - 10/03/2018
+
+## Miscellaneous Updates
+* [[d60ded9](https://github.com/spothero/ace/commit/d60ded9)] - `fix:` Temporary solution to Terser bug during Webpack production builds (Matt Przybylski)
+* [[de133db](https://github.com/spothero/ace/commit/de133db)] - `fix:` Allow empty deploy paths to not break builds (Matt Przybylski)
+
 # 4.2.0 - 10/03/2018
 ## New Features
 * [[f9518f4](https://github.com/spothero/ace/commit/f9518f4)] - Added ability to invalidate multiple Cloudfront distributions during a deploy (Matt Przybylski)
