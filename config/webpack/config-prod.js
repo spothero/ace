@@ -28,7 +28,9 @@ module.exports = {
                 sourceMap: true,
                 uglifyOptions: {
                     compress: {
-                        warnings: false
+                        warnings: false,
+                        // Disabled because of an issue with Terser breaking valid code: https://github.com/terser-js/terser/issues/120
+                        inline: 2
                     },
                     output: {
                         comments: false
