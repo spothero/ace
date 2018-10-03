@@ -1,3 +1,11 @@
+# 4.2.0 - 10/03/2018
+## New Features
+* [[f9518f4](https://github.com/spothero/ace/commit/f9518f4)] - Added ability to invalidate multiple Cloudfront distributions during a deploy (Matt Przybylski)
+
+## Miscellaneous Updates
+* [[1faff25](https://github.com/spothero/ace/commit/1faff25)] - `docs:` Updated SpotHero README in scaffolded files (Matt Przybylski)
+* [[466271c](https://github.com/spothero/ace/commit/466271c)] - `fix:` Updated SpotHero Sass import path (Matt Przybylski)
+
 # 4.1.3 - 09/26/2018
 
 ## Miscellaneous Updates
