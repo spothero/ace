@@ -18,7 +18,7 @@ module.exports = {
         invalidatePaths: [], // additional paths to invalidate in Cloudfront during deployments
         sandbox: {
             bucket: '', // AWS bucket to put files in
-            cloudFrontDistributionId: '' // cloudfront distribution ID
+            cloudFrontDistributionId: '' // cloudfront distribution ID or array of IDs to invalidate
         },
         staging: {
             bucket: '',
