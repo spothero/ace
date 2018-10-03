@@ -1,3 +1,4 @@
+const isArray = require('lodash/isArray');
 const isEmpty = require('lodash/isEmpty');
 const isNil = require('lodash/isNil');
 const AWS = require('aws-sdk');
@@ -35,8 +36,8 @@ const invalidateCloudFront = () => {
         manifestPath,
         ...global.SETTINGS_CONFIG.deploy.invalidatePaths
     ];
+    const distroIds = global.SETTINGS_CONFIG.deploy[npmEnvironment].cloudFrontDistributionId;
     const params = {
-        DistributionId: `${global.SETTINGS_CONFIG.deploy[npmEnvironment].cloudFrontDistributionId}`,
         InvalidationBatch: {
             CallerReference: uuidV4(),
             Paths: {
@@ -45,16 +46,38 @@ const invalidateCloudFront = () => {
             }
         }
     };
+    const distroParams = [];
+    const promises = [];
 
-    return new Promise(() => {
-        cloudfront.createInvalidation(params, (err, data) => {
-            if (err) {
-                throw new PluginError('invalidate', err, {showStack: true});
-            } else {
-                console.log(data); // eslint-disable-line no-console
-            }
+    if (isArray(distroIds)) {
+        distroIds.forEach(id => {
+            distroParams.push({
+                ...params,
+                DistributionId: id,
+            });
         });
+    } else {
+        distroParams.push({
+            ...params,
+            DistributionId: distroIds
+        });
+    }
+
+    distroParams.forEach(distro => {
+        promises.push(
+            new Promise(() => {
+                cloudfront.createInvalidation(distro, (err, data) => {
+                    if (err) {
+                        throw new PluginError('invalidate', err, {showStack: true});
+                    } else {
+                        console.log(data); // eslint-disable-line no-console
+                    }
+                });
+            })
+        );
     });
+
+    return Promise.all(promises);
 };
 
 const uploadToS3 = () => {
