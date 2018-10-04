@@ -22,8 +22,7 @@ const getEnvironment = () => {
 const invalidateCloudFront = () => {
     const npmEnvironment = getEnvironment();
     const cloudfront = new AWS.CloudFront();
-    const settingsPath = global.SETTINGS_CONFIG.deploy.path;
-    const basePath = (!isEmpty(settingsPath)) ? `/${global.SETTINGS_CONFIG.deploy.path}` : '';
+    const basePath = `/${global.SETTINGS_CONFIG.deploy.path}`;
     const indexFileName = 'index.html';
     const manifestFileName = 'manifest.json';
     const indexPath = (npmEnvironment === 'sandbox')
@@ -111,7 +110,7 @@ const deployTask = cb => {
     const settings = global.SETTINGS_CONFIG.deploy;
     const npmEnvironment = getEnvironment();
 
-    if (isEmpty(settings[npmEnvironment].bucket) || isEmpty(settings[npmEnvironment].cloudFrontDistributionId)) {
+    if (isEmpty(settings.path) || isEmpty(settings[npmEnvironment].bucket) || isEmpty(settings[npmEnvironment].cloudFrontDistributionId)) {
         throw new PluginError('deploy', 'You must fill in all the applicable settings for the "deploy" object in the settings file. See https://github.com/spothero/ace/wiki/Deploying for details.');
     }
 
