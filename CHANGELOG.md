@@ -1,3 +1,8 @@
+# 4.2.2 - 10/04/2018
+
+## Miscellaneous Updates
+* [[158136c](https://github.com/spothero/ace/commit/158136c)] - `fix:` Revert allowing empty deploy path as Cloudfront does not like that (Matt Przybylski)
+
 # 4.2.1 - 10/03/2018
 
 ## Miscellaneous Updates
