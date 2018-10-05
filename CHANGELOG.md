@@ -1,3 +1,8 @@
+# 4.2.3 - 10/05/2018
+
+## Miscellaneous Updates
+* [[128f139](https://github.com/spothero/ace/commit/128f139)] - `chore:` Updated npmignore file (Matt Przybylski)
+
 # 4.2.2 - 10/04/2018
 
 ## Miscellaneous Updates
