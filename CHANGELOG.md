@@ -1,3 +1,7 @@
+# 4.3.0 - 10/15/2018
+## Dependency Updates
+* [[ca0e83f](https://github.com/spothero/ace/commit/ca0e83f)] - Updated most dependencies to latest versions (Matt Przybylski)
+
 # 4.2.3 - 10/05/2018
 
 ## Miscellaneous Updates
