@@ -1,3 +1,9 @@
+# 4.3.1 - 11/05/2018
+
+## Miscellaneous Updates
+* [[6e31b72](https://github.com/spothero/ace/commit/6e31b72)] - `chore:` Upgrade to latest dependencies for everything (Matt Przybylski)
+* [[ff9dcf5](https://github.com/spothero/ace/commit/ff9dcf5)] - `chore:` Upgrade to latest dependencies for everything except React (Matt Przybylski)
+
 # 4.3.0 - 10/15/2018
 ## Dependency Updates
 * [[ca0e83f](https://github.com/spothero/ace/commit/ca0e83f)] - Updated most dependencies to latest versions (Matt Przybylski)
