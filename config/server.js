@@ -1,5 +1,4 @@
 const isNil = require('lodash/isNil');
-const express = require('express');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const webpackConfig = require('./webpack/config');
@@ -16,6 +15,7 @@ if (!isNil(proxies) && proxies.length) {
 }
 
 new WebpackDevServer(webpack(webpackConfig), {
+    contentBase: projectPath(settingsConfig.root.path),
     publicPath: webpackConfig.output.publicPath,
     hot: true,
     historyApiFallback: settingsConfig.webpack.development.historyApiFallback,
@@ -27,9 +27,6 @@ new WebpackDevServer(webpack(webpackConfig), {
         chunks: false,
         chunkModules: false,
         modules: false
-    },
-    before: app => {
-        app.use(express.static(projectPath(settingsConfig.root.path)));
     }
 }).listen(settingsConfig.webpack.port, settingsConfig.env.hostname, err => {
     /* eslint-disable no-console */
