@@ -1,3 +1,8 @@
+# 4.3.3 - 11/06/2018
+
+## Miscellaneous Updates
+* [[d7b8443](https://github.com/spothero/ace/commit/d7b8443)] - `fix:` Bug with webpack-dev-server not serving routes properly in SPAs (Matt Przybylski)
+
 # 4.3.2 - 11/06/2018
 
 ## Miscellaneous Updates
