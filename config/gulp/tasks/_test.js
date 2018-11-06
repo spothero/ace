@@ -10,6 +10,8 @@ const configTest = require('../../webpack/config-test');
 
 RegExp.prototype.toJSON = RegExp.prototype.toString; // eslint-disable-line no-extend-native
 
+process.title = 'ace-test';
+
 const generateWebpackSettingsTask = cb => {
     const config = pick(merge(configTest, configCommon), ['resolve', 'module']);
     const writePath = `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.cypress.path}`;

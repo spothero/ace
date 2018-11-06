@@ -14,6 +14,8 @@ if (!isNil(proxies) && proxies.length) {
     });
 }
 
+process.title = 'ace-server';
+
 new WebpackDevServer(webpack(webpackConfig), {
     contentBase: projectPath(settingsConfig.root.path),
     publicPath: webpackConfig.output.publicPath,
