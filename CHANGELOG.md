@@ -1,3 +1,8 @@
+# 4.3.2 - 11/06/2018
+
+## Miscellaneous Updates
+* [[481320e](https://github.com/spothero/ace/commit/481320e)] - `refactor:` Remove deprecated webpack-serve in favor of using webpack-dev-server (Matt Przybylski)
+
 # 4.3.1 - 11/05/2018
 
 ## Miscellaneous Updates
