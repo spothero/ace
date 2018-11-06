@@ -1,3 +1,8 @@
+# 4.3.4 - 11/06/2018
+
+## Miscellaneous Updates
+* [[a1acc39](https://github.com/spothero/ace/commit/a1acc39)] - `ci:` Add process titles to test and server tasks (Matt Przybylski)
+
 # 4.3.3 - 11/06/2018
 
 ## Miscellaneous Updates
