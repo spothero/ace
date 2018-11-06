@@ -7,19 +7,34 @@ const settingsConfig = require('../gulp/lib/get-settings-config');
 const projectPath = require('../gulp/lib/project-path');
 const babelOptions = require('../babel');
 
-const entry = (!isNil(settingsConfig.webpack.entry))
+const npmEvent = process.env.npm_lifecycle_event.split(':')[0];
+const entryPoints = (!isNil(settingsConfig.webpack.entry))
     ? isObject(settingsConfig.webpack.entry)
         ? mapValues(settingsConfig.webpack.entry, item => {
             return `${projectPath(settingsConfig.root.path)}/${settingsConfig.js.path}/${item}`;
         })
         : `${projectPath(settingsConfig.root.path)}/${settingsConfig.js.path}/${settingsConfig.webpack.entry}`
     : `${projectPath(settingsConfig.root.path)}/${settingsConfig.js.path}/${settingsConfig.js.input}`;
+const entryAddons = [
+    `webpack-dev-server/client?http://${settingsConfig.env.hostname}:${settingsConfig.webpack.port}`,
+    'webpack/hot/dev-server',
+];
 const settingsResolveModules = settingsConfig.webpack.resolveModules;
 const settingsModulueRules = settingsConfig.webpack.moduleRules || [];
+let entry = entryPoints;
 let modules = [
     'node_modules',
     path.resolve(`${projectPath(settingsConfig.root.path)}/${settingsConfig.js.path}`)
 ];
+
+if (npmEvent === 'start') {
+    // add hot reloading to entry points for local development
+    entry = (isObject(entryPoints))
+        ? mapValues(entryPoints, entryItem => {
+            return entryAddons.concat([entryItem]);
+        })
+        : entryAddons.concat([entry]);
+}
 
 if (settingsResolveModules && settingsResolveModules.length) {
     const extraModules = settingsResolveModules.map(modulePath => {

@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const WriteFilePlugin = require('write-file-webpack-plugin');
 const settingsConfig = require('../gulp/lib/get-settings-config');
 const projectPath = require('../gulp/lib/project-path');
 
@@ -19,6 +20,10 @@ module.exports = {
                 NODE_ENV: JSON.stringify('development'),
                 ...settingsConfig.env.vars.development
             }
+        }),
+        new webpack.HotModuleReplacementPlugin(),
+        new WriteFilePlugin({
+            log: false
         }),
         new BrowserSyncPlugin(
             {

@@ -94,7 +94,7 @@ module.exports = {
     js: {
         path: 'js', // path to JS directory where JS files will be watched for transpilation during development
         input: 'main.js', // name of entry JS file (modify webpack.entry to pass multiple files)
-        output: 'bundle.js', // name of generated output JS file during development builds
-        min: 'bundle.min.js' // name of uglified generated output JS file during production builds
+        output: 'bundle.js', // name of generated output JS file during development builds, set to [name].js if multiple entries are passed
+        min: 'bundle.min.js' // name of uglified generated output JS file during production builds, set to [name].min.js if multiple entries are passed
     }
 };
