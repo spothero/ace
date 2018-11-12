@@ -1,7 +1,6 @@
 const pick = require('lodash/pick');
 const fs = require('fs');
 const gulp = require('gulp');
-const shell = require('gulp-shell');
 const sequence = require('run-sequence');
 const merge = require('webpack-merge');
 const projectPath = require('../lib/project-path');
@@ -24,22 +23,6 @@ const generateWebpackSettingsTask = cb => {
         if (writeError) { return console.log(writeError); } // eslint-disable-line no-console
 
         cb();
-    });
-};
-
-const cypressOpenTask = () => {
-    return shell.task([
-        'cypress open'
-    ], {
-        cwd: process.env.INIT_CWD
-    });
-};
-
-const cypressRunTask = () => {
-    return shell.task([
-        'cypress run'
-    ], {
-        cwd: process.env.INIT_CWD
     });
 };
 
@@ -69,8 +52,6 @@ const testTask = cb => {
 };
 
 gulp.task('generateWebpackSettings', generateWebpackSettingsTask);
-gulp.task('cypressOpen', ['generateWebpackSettings'], cypressOpenTask());
-gulp.task('cypressRun', ['generateWebpackSettings'], cypressRunTask());
 gulp.task('test', testTask);
 
 module.exports = testTask;

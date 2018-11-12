@@ -5,7 +5,7 @@ This document lists noteworthy new features and breaking changes to help ease th
 # <5.0.0 to 5.0.0
 
 ## Breaking Changes
-### Required Environment Variables
+### New Required Environment Variables
 ACE previously parsed the `npm_lifecycle_event` to try and figure out what a user was running for them. This proved to be brittle as more and more scripts were added on and was no longer a reliable way of managing what the true intention of a script was.
 
 *package.json*
@@ -25,3 +25,14 @@ ACE previously parsed the `npm_lifecycle_event` to try and figure out what a use
 ```
 
 These changes provide an easier way to identify intentions and give developers additional environment variables to check for in their own processes.
+
+### Removed Internal Cypress Commands
+The `cypressOpen` and `cypressRun` commands that package scripts previously used have been removed in favor of calling Cypress directly. Not calling the scripts directly through `package.json` was causing improper exit codes to be reported to tasks that depended on failing tests to stop further execution.
+
+*package.json*
+```diff
+- "cypress:open": "ace -- cypressOpen",
+- "cypress:run": "ace -- cypressRun",
++ "cypress:open": "ace -- generateWebpackSettings && cypress open",
++ "cypress:run": "ace -- generateWebpackSettings && cypress run",
+```
