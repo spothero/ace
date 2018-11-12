@@ -63,6 +63,7 @@ const config = {
         port: settingsConfig.webpack.port,
         host: settingsConfig.env.hostname,
         hot: true,
+        clientLogLevel: settingsConfig.webpack.clientLogLevel,
         historyApiFallback: settingsConfig.webpack.development.historyApiFallback,
         proxy: settingsConfig.webpack.development.proxy,
         stats: {

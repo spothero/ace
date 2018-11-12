@@ -4,6 +4,10 @@ This document lists noteworthy new features and breaking changes to help ease th
 
 # <5.0.0 to 5.0.0
 
+## New Features
+### Adjust Webpack Client Log Levels
+Added the ability to set the [clientLogLevel](https://webpack.js.org/configuration/dev-server/#devserver-clientloglevel) for a webpack dev server to control messages in DevTools on the client. This setting is in the *settings.js* file under `webpack.clientLogLevel` and is set to `'none'` by default.
+
 ## Breaking Changes
 ### Removed `concurrently` Package Usage
 In prior versions when running Cypress through `npm test`, the Cypress UI would show a warning that the server `baseUrl` could not be verified. The `concurrently` package has been replaced with `wait-on` so that Cypress is not run until the webpack server has spun up to avoid that warning.

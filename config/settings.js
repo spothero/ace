@@ -42,9 +42,10 @@ module.exports = {
         resolveModules: [], // additional paths to resolve modules from (path(s) start after the `root.path`)
         moduleRules: [], // additional rules to pass to webpack (see: https://webpack.js.org/configuration/module/#module-rules)
         externals: null, // exclude dependencies from output bundle (see: https://webpack.js.org/configuration/externals/)
+        clientLogLevel: 'none', // how to show messages in DevTools when using inline mode in dev server (see https://webpack.js.org/configuration/dev-server/#devserver-clientloglevel)
         development: { // options to add during a development build
             historyApiFallback: true, // adds support falling back to index.html in case the requested resource at a given URL can't be found (see: https://webpack.js.org/configuration/dev-server/#devserver-historyapifallback)
-            proxy: null, // passes proxy information through to webpack server (see: https://webpack.js.org/configuration/dev-server/#devserver-proxy)
+            proxy: {}, // passes proxy information through to webpack server (see: https://webpack.js.org/configuration/dev-server/#devserver-proxy)
             // For example...
             // {
             //     '/api/v1': `http://${hostname}:8000`
