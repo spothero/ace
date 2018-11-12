@@ -4,17 +4,13 @@ const configDev = require('./config-dev');
 const configTest = require('./config-test');
 const configProd = require('./config-prod');
 
-const lifecycleEvent = process.env.npm_lifecycle_event.split(':');
-const npmEvent = lifecycleEvent[0];
-
-switch (npmEvent) {
+switch (process.env.ACE_NPM_EVENT) {
     case 'start':
     default:
         module.exports = webpackMerge(configDev, configCommon);
         break;
 
     case 'test':
-    case 'cypress':
         module.exports = webpackMerge(configTest, configCommon);
         break;
 

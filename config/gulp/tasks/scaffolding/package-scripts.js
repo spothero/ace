@@ -12,12 +12,14 @@ const packageScriptsTask = cb => {
         if (readError) { console.log(readError); } // eslint-disable-line no-console
 
         const jsonData = JSON.parse(data);
-        const startScript = 'ace';
-        const testScript = 'concurrently --kill-others \"ace -- test\" \"npm run cypress:open\"'; // eslint-disable-line no-useless-escape
+        const startScript = 'ACE_NPM_EVENT=start ace';
+        const testScript = 'ACE_NPM_EVENT=test concurrently --kill-others \"ace -- test\" \"npm run cypress:open\"'; // eslint-disable-line no-useless-escape
         const cypressOpenScript = 'ace -- cypressOpen';
         const cypressRunScript = 'ace -- cypressRun';
-        const buildScript = 'ace -- production';
-        const deployScript = 'npm run build && ace -- deploy';
+        const buildScript = 'ACE_NPM_EVENT=build ace -- production';
+        const deploySandboxScript = 'ACE_DEPLOY_TYPE=sandbox npm run build && ace -- deploy';
+        const deployStagingScript = 'ACE_DEPLOY_TYPE=staging npm run build && ace -- deploy';
+        const deployProductionScript = 'ACE_DEPLOY_TYPE=production npm run build && ace -- deploy';
         let msg = 'You have existing scripts that ACE will overwrite.';
         let willOverride = false;
 
@@ -61,29 +63,29 @@ const packageScriptsTask = cb => {
 
         jsonData.scripts.build = buildScript;
 
-        if (!isNil(jsonData.scripts['deploy:sandbox']) && jsonData.scripts['deploy:sandbox'] !== deployScript) {
+        if (!isNil(jsonData.scripts['deploy:sandbox']) && jsonData.scripts['deploy:sandbox'] !== deploySandboxScript) {
             msg += `\nCurrent "deploy:sandbox" script will be saved as "deploy:sandbox-backup".`;
             jsonData.scripts['deploy:sandbox-backup'] = jsonData.scripts['deploy:sandbox'];
             willOverride = true;
         }
 
-        jsonData.scripts['deploy:sandbox'] = deployScript;
+        jsonData.scripts['deploy:sandbox'] = deploySandboxScript;
 
-        if (!isNil(jsonData.scripts['deploy:staging']) && jsonData.scripts['deploy:staging'] !== deployScript) {
+        if (!isNil(jsonData.scripts['deploy:staging']) && jsonData.scripts['deploy:staging'] !== deployStagingScript) {
             msg += `\nCurrent "deploy:staging" script will be saved as "deploy:staging-backup".`;
             jsonData.scripts['deploy:staging-backup'] = jsonData.scripts['deploy:staging'];
             willOverride = true;
         }
 
-        jsonData.scripts['deploy:staging'] = deployScript;
+        jsonData.scripts['deploy:staging'] = deployStagingScript;
 
-        if (!isNil(jsonData.scripts['deploy:production']) && jsonData.scripts['deploy:production'] !== deployScript) {
+        if (!isNil(jsonData.scripts['deploy:production']) && jsonData.scripts['deploy:production'] !== deployProductionScript) {
             msg += `\nCurrent "deploy:production" script will be saved as "deploy:production-backup".`;
             jsonData.scripts['deploy:production-backup'] = jsonData.scripts['deploy:production'];
             willOverride = true;
         }
 
-        jsonData.scripts['deploy:production'] = deployScript;
+        jsonData.scripts['deploy:production'] = deployProductionScript;
 
         if (willOverride) {
             log(colors.red(msg));

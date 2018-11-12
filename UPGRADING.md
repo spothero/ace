@@ -1,0 +1,27 @@
+As ACE evolves, there is and will be changes to the way that project setup is structured and options are passed. New features are added in a regular cadence and the underlying technologies behind ACE are updated frequently.
+
+This document lists noteworthy new features and breaking changes to help ease the transition when upgrading from older versions of ACE.
+
+# <5.0.0 to 5.0.0
+
+## Breaking Changes
+### Required Environment Variables
+ACE previously parsed the `npm_lifecycle_event` to try and figure out what a user was running for them. This proved to be brittle as more and more scripts were added on and was no longer a reliable way of managing what the true intention of a script was.
+
+*package.json*
+```diff
+- "start": "ace",
+- "test": "concurrently --kill-others \"ace -- test\" \"npm run cypress:open\"",
+- "build": "ace -- production",
+- "deploy:sandbox": "npm run build && ace -- deploy",
+- "deploy:staging": "npm run build && ace -- deploy",
+- "deploy:production": "npm run build && ace -- deploy",
++ "start": "ACE_NPM_EVENT=start ace",
++ "test": "ACE_NPM_EVENT=test concurrently --kill-others \"ace -- test\" \"npm run cypress:open\"",
++ "build": "ACE_NPM_EVENT=build ace -- production",
++ "deploy:sandbox": "ACE_DEPLOY_TYPE=sandbox npm run build && ace -- deploy",
++ "deploy:staging": "ACE_DEPLOY_TYPE=staging npm run build && ace -- deploy",
++ "deploy:production": "ACE_DEPLOY_TYPE=production npm run build && ace -- deploy",
+```
+
+These changes provide an easier way to identify intentions and give developers additional environment variables to check for in their own processes.

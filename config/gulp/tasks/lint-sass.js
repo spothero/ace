@@ -6,10 +6,7 @@ const handleErrors = require('../utils/handle-errors');
 const projectPath = require('../lib/project-path');
 
 const lintSassTask = src => {
-    const npmEvent = (process.env.npm_lifecycle_event)
-        ? process.env.npm_lifecycle_event.split(':')[0]
-        : 'start';
-    const reporters = (npmEvent === 'start' || npmEvent === 'test' || npmEvent === 'cypress')
+    const reporters = (process.env.ACE_NPM_EVENT !== 'build')
         ? [{formatter: 'string', console: true}]
         : [{formatter: checkstyleFormatter, save: 'checkstyle-stylelint.xml'}];
 

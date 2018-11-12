@@ -7,10 +7,7 @@ const handleErrors = require('../utils/handle-errors');
 const projectPath = require('../lib/project-path');
 
 const lintJSTask = src => {
-    const npmEvent = (process.env.npm_lifecycle_event)
-        ? process.env.npm_lifecycle_event.split(':')[0]
-        : 'start';
-    const eslintStream = (npmEvent === 'start' || npmEvent === 'test' || npmEvent === 'cypress')
+    const eslintStream = (process.env.ACE_NPM_EVENT !== 'build')
         ? eslint.format(friendlyFormatter)
         : eslint.format('checkstyle', fs.createWriteStream(`${projectPath(global.SETTINGS_CONFIG.root.path)}/checkstyle-eslint.xml`));
 
