@@ -13,7 +13,7 @@ const packageScriptsTask = cb => {
 
         const jsonData = JSON.parse(data);
         const startScript = 'ACE_NPM_EVENT=start ace';
-        const testScript = 'ACE_NPM_EVENT=test concurrently --kill-others \"ace -- test\" \"npm run cypress:open\"'; // eslint-disable-line no-useless-escape
+        const testScript = 'ACE_NPM_EVENT=test ace -- test & wait-on http://localhost:3000 && npm run cypress:open';
         const cypressOpenScript = 'ace -- generateWebpackSettings && cypress open';
         const cypressRunScript = 'ace -- generateWebpackSettings && cypress run';
         const buildScript = 'ACE_NPM_EVENT=build ace -- production';

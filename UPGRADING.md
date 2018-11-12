@@ -17,7 +17,7 @@ ACE previously parsed the `npm_lifecycle_event` to try and figure out what a use
 - "deploy:staging": "npm run build && ace -- deploy",
 - "deploy:production": "npm run build && ace -- deploy",
 + "start": "ACE_NPM_EVENT=start ace",
-+ "test": "ACE_NPM_EVENT=test concurrently --kill-others \"ace -- test\" \"npm run cypress:open\"",
++ "test": "ACE_NPM_EVENT=test ace -- test & wait-on http://localhost:3000 && npm run cypress:open",
 + "build": "ACE_NPM_EVENT=build ace -- production",
 + "deploy:sandbox": "ACE_DEPLOY_TYPE=sandbox npm run build && ace -- deploy",
 + "deploy:staging": "ACE_DEPLOY_TYPE=staging npm run build && ace -- deploy",
@@ -36,3 +36,8 @@ The `cypressOpen` and `cypressRun` commands that package scripts previously used
 + "cypress:open": "ace -- generateWebpackSettings && cypress open",
 + "cypress:run": "ace -- generateWebpackSettings && cypress run",
 ```
+
+### Removed `concurrently` Package Usage
+In prior versions when running Cypress through `npm test`, the Cypress UI would show a warning that the server `baseUrl` could not be verified. The `concurrently` package has been replaced with `wait-on` so that Cypress is not run until the webpack server has spun up to avoid that warning.
+
+This renders the use of the `concurrently` package obsolete and it is no longer installed as part of ACE's dependencies. If your project depended on it being installed, you must now install it yourself directly as a `devDependency`.
