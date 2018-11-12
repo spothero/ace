@@ -1,6 +1,8 @@
 const gulp = require('gulp');
 const sequence = require('run-sequence');
 
+process.title = 'ace-server';
+
 const developmentTask = cb => {
     const {
         taskSequence: {

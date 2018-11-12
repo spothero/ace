@@ -21,7 +21,6 @@ module.exports = {
                 ...settingsConfig.env.vars.development
             }
         }),
-        new webpack.HotModuleReplacementPlugin(),
         new WriteFilePlugin({
             log: false
         }),

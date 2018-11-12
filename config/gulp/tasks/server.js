@@ -3,7 +3,7 @@ const shell = require('gulp-shell');
 
 const serverTask = () => {
     return shell.task([
-        'node server.js'
+        'webpack-dev-server --inline --hot --config webpack/config.js'
     ]);
 };
 

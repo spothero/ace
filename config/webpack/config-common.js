@@ -7,34 +7,21 @@ const settingsConfig = require('../gulp/lib/get-settings-config');
 const projectPath = require('../gulp/lib/project-path');
 const babelOptions = require('../babel');
 
-const npmEvent = process.env.npm_lifecycle_event.split(':')[0];
-const entryPoints = (!isNil(settingsConfig.webpack.entry))
+const entry = (!isNil(settingsConfig.webpack.entry))
     ? isObject(settingsConfig.webpack.entry)
         ? mapValues(settingsConfig.webpack.entry, item => {
             return `${projectPath(settingsConfig.root.path)}/${settingsConfig.js.path}/${item}`;
         })
         : `${projectPath(settingsConfig.root.path)}/${settingsConfig.js.path}/${settingsConfig.webpack.entry}`
     : `${projectPath(settingsConfig.root.path)}/${settingsConfig.js.path}/${settingsConfig.js.input}`;
-const entryAddons = [
-    `webpack-dev-server/client?http://${settingsConfig.env.hostname}:${settingsConfig.webpack.port}`,
-    'webpack/hot/dev-server',
-];
+const proxies = settingsConfig.webpack.development.proxies;
+const proxyConfig = {};
 const settingsResolveModules = settingsConfig.webpack.resolveModules;
 const settingsModulueRules = settingsConfig.webpack.moduleRules || [];
-let entry = entryPoints;
 let modules = [
     'node_modules',
     path.resolve(`${projectPath(settingsConfig.root.path)}/${settingsConfig.js.path}`)
 ];
-
-if (npmEvent === 'start') {
-    // add hot reloading to entry points for local development
-    entry = (isObject(entryPoints))
-        ? mapValues(entryPoints, entryItem => {
-            return entryAddons.concat([entryItem]);
-        })
-        : entryAddons.concat([entry]);
-}
 
 if (settingsResolveModules && settingsResolveModules.length) {
     const extraModules = settingsResolveModules.map(modulePath => {
@@ -45,6 +32,12 @@ if (settingsResolveModules && settingsResolveModules.length) {
         ...modules,
         ...extraModules
     ];
+}
+
+if (!isNil(proxies) && proxies.length) {
+    proxies.forEach(item => {
+        proxyConfig[item.path] = item.target;
+    });
 }
 
 const config = {
@@ -71,7 +64,24 @@ const config = {
         new webpack.DefinePlugin({
             'process.env': settingsConfig.env.vars.common
         })
-    ]
+    ],
+    devServer: {
+        contentBase: projectPath(settingsConfig.root.path),
+        publicPath: path.resolve(`${projectPath(settingsConfig.root.path)}/${settingsConfig.js.path}`),
+        port: settingsConfig.webpack.port,
+        host: settingsConfig.env.hostname,
+        hot: true,
+        historyApiFallback: settingsConfig.webpack.development.historyApiFallback,
+        proxy: proxyConfig,
+        stats: {
+            colors: true,
+            hash: false,
+            timings: true,
+            chunks: false,
+            chunkModules: false,
+            modules: false
+        }
+    }
 };
 
 if (settingsConfig.webpack.externals) {

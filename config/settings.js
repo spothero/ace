@@ -43,7 +43,7 @@ module.exports = {
         moduleRules: [], // additional rules to pass to webpack (see: https://webpack.js.org/configuration/module/#module-rules)
         externals: null, // exclude dependencies from output bundle (see: https://webpack.js.org/configuration/externals/)
         development: { // options to add during a development build
-            historyApiFallback: true, // adds support falling back to index.html in case the requested resource at a given URL can't be found
+            historyApiFallback: true, // adds support falling back to index.html in case the requested resource at a given URL can't be found (see: https://webpack.js.org/configuration/dev-server/#devserver-historyapifallback)
             proxies: [ // passes proxy information through to webpack server
                 // {
                 //     path: '/api/v1',
