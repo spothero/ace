@@ -39,9 +39,9 @@ module.exports = {
         port: 9000, // port for webpack to run on
         entry: null, // string or object, optionally modifies the entry point JS file(s) passed to webpack (path(s) start after the `js.path`)
         alias: {}, // an object to create aliases to `import` certain modules more easily (see: https://webpack.js.org/configuration/resolve/#resolve-alias)
-        resolveModules: [], // additional paths to resolve modules from (path(s) start after the `root.path`)
+        resolveModules: [], // additional paths to resolve modules from (path(s) start after the `root.path` setting)
         moduleRules: [], // additional rules to pass to webpack (see: https://webpack.js.org/configuration/module/#module-rules)
-        externals: null, // exclude dependencies from output bundle (see: https://webpack.js.org/configuration/externals/)
+        externals: {}, // exclude dependencies from output bundle (see: https://webpack.js.org/configuration/externals/)
         clientLogLevel: 'none', // how to show messages in DevTools when using inline mode in dev server (see https://webpack.js.org/configuration/dev-server/#devserver-clientloglevel)
         development: { // options to add during a development build
             historyApiFallback: true, // adds support falling back to index.html in case the requested resource at a given URL can't be found (see: https://webpack.js.org/configuration/dev-server/#devserver-historyapifallback)

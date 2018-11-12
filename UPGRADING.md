@@ -72,3 +72,11 @@ module.exports = {
 };
 
 ```
+
+### Required Settings
+A number of settings that were previously added over the course of multiple version updates as new features were being checked for existence in the configs. This clogged up the configs with unnecessary code checks to not break backward compatibility. These settings are now required to be present in the configs or the builds will error. Creating new projects will already contain these settings with sensible defaults, but projects being upgraded should make sure to add them at the necessary paths.
+
+The settings that are now required in *settings.js* are as follows:
+* `settingsConfig.webpack.moduleRules`
+* `settingsConfig.webpack.externals`
+* `settingsConfig.webpack.resolveModules`

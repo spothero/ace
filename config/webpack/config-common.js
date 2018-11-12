@@ -14,29 +14,19 @@ const entry = (!isNil(settingsConfig.webpack.entry))
         })
         : `${projectPath(settingsConfig.root.path)}/${settingsConfig.js.path}/${settingsConfig.webpack.entry}`
     : `${projectPath(settingsConfig.root.path)}/${settingsConfig.js.path}/${settingsConfig.js.input}`;
-const settingsResolveModules = settingsConfig.webpack.resolveModules;
-const settingsModulueRules = settingsConfig.webpack.moduleRules || [];
-let modules = [
-    'node_modules',
-    path.resolve(`${projectPath(settingsConfig.root.path)}/${settingsConfig.js.path}`)
-];
-
-if (settingsResolveModules && settingsResolveModules.length) {
-    const extraModules = settingsResolveModules.map(modulePath => {
-        return path.resolve(`${projectPath(settingsConfig.root.path)}/${modulePath}`);
-    });
-
-    modules = [
-        ...modules,
-        ...extraModules
-    ];
-}
+const extraModules = settingsConfig.webpack.resolveModules.map(modulePath => {
+    return path.resolve(`${projectPath(settingsConfig.root.path)}/${modulePath}`);
+});
 
 const config = {
     entry,
     resolve: {
         alias: settingsConfig.webpack.alias,
-        modules,
+        modules: [
+            'node_modules',
+            path.resolve(`${projectPath(settingsConfig.root.path)}/${settingsConfig.js.path}`),
+            ...extraModules,
+        ],
         extensions: ['.js', '.jsx', '.json']
     },
     module: {
@@ -49,7 +39,7 @@ const config = {
                     options: babelOptions
                 }
             },
-            ...settingsModulueRules
+            ...settingsConfig.webpack.moduleRules
         ]
     },
     plugins: [
@@ -57,6 +47,7 @@ const config = {
             'process.env': settingsConfig.env.vars.common
         })
     ],
+    externals: settingsConfig.webpack.externals,
     devServer: {
         contentBase: projectPath(settingsConfig.root.path),
         publicPath: path.resolve(`${projectPath(settingsConfig.root.path)}/${settingsConfig.js.path}`),
@@ -76,9 +67,5 @@ const config = {
         }
     }
 };
-
-if (settingsConfig.webpack.externals) {
-    config.externals = settingsConfig.webpack.externals;
-}
 
 module.exports = config;
