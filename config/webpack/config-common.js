@@ -14,8 +14,6 @@ const entry = (!isNil(settingsConfig.webpack.entry))
         })
         : `${projectPath(settingsConfig.root.path)}/${settingsConfig.js.path}/${settingsConfig.webpack.entry}`
     : `${projectPath(settingsConfig.root.path)}/${settingsConfig.js.path}/${settingsConfig.js.input}`;
-const proxies = settingsConfig.webpack.development.proxies;
-const proxyConfig = {};
 const settingsResolveModules = settingsConfig.webpack.resolveModules;
 const settingsModulueRules = settingsConfig.webpack.moduleRules || [];
 let modules = [
@@ -32,12 +30,6 @@ if (settingsResolveModules && settingsResolveModules.length) {
         ...modules,
         ...extraModules
     ];
-}
-
-if (!isNil(proxies) && proxies.length) {
-    proxies.forEach(item => {
-        proxyConfig[item.path] = item.target;
-    });
 }
 
 const config = {
@@ -72,7 +64,7 @@ const config = {
         host: settingsConfig.env.hostname,
         hot: true,
         historyApiFallback: settingsConfig.webpack.development.historyApiFallback,
-        proxy: proxyConfig,
+        proxy: settingsConfig.webpack.development.proxy,
         stats: {
             colors: true,
             hash: false,

@@ -44,12 +44,11 @@ module.exports = {
         externals: null, // exclude dependencies from output bundle (see: https://webpack.js.org/configuration/externals/)
         development: { // options to add during a development build
             historyApiFallback: true, // adds support falling back to index.html in case the requested resource at a given URL can't be found (see: https://webpack.js.org/configuration/dev-server/#devserver-historyapifallback)
-            proxies: [ // passes proxy information through to webpack server
-                // {
-                //     path: '/api/v1',
-                //     target: `http://${hostname}:8000`
-                // }
-            ],
+            proxy: null, // passes proxy information through to webpack server (see: https://webpack.js.org/configuration/dev-server/#devserver-proxy)
+            // For example...
+            // {
+            //     '/api/v1': `http://${hostname}:8000`
+            // },
             sourceMap: 'cheap-module-source-map' // the source map type to use during development
         },
         test: {
