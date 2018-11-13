@@ -7,8 +7,8 @@ const revisionTask = () => {
     const dest = projectPath(global.SETTINGS_CONFIG.dist.path);
 
     return gulp.src([
-        `${projectPath(global.SETTINGS_CONFIG.dist.path)}/${global.SETTINGS_CONFIG.css.path}/*.css`,
-        `${projectPath(global.SETTINGS_CONFIG.dist.path)}/${global.SETTINGS_CONFIG.js.path}/*.js`
+        `${dest}/${global.SETTINGS_CONFIG.dist.css.path}/*.css`,
+        `${dest}/${global.SETTINGS_CONFIG.src.js.path}/*.js`
     ], {base: dest})
         .pipe(sourcemaps.init({
             loadMaps: true

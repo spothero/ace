@@ -1,5 +1,5 @@
 // task `patterns` will start from the root project directory
-// example: ['sass/utils/**/*', '!sass/vendor/**/*']
+// example: ['src/sass/utils/**/*', '!src/sass/vendor/**/*']
 
 module.exports = {
     clean: {

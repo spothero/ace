@@ -32,11 +32,7 @@ gulp.task('lintJS', () => {
         : [];
 
     return lintJSTask([
-        `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.js.path}/**/*.{js,jsx}`,
-        `!${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.js.path}/${global.SETTINGS_CONFIG.js.output}`,
-        `!${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.js.path}/vendor/**/*`,
-        `!${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.js.path}/*.hot-update.*`,
-        `!${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.js.path}/**/*.min.{js,jsx}`,
+        `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.src.path}/${global.SETTINGS_CONFIG.src.js.path}/**/*.{js,jsx}`,
         ...patterns
     ]);
 });
