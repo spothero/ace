@@ -6,10 +6,10 @@ const projectPath = require('../gulp/lib/project-path');
 
 module.exports = {
     mode: 'production',
-    devtool: settingsConfig.webpack.production.sourceMap,
+    devtool: settingsConfig.webpack.client.production.sourceMap,
     output: {
-        path: path.resolve(`${projectPath(settingsConfig.root.path)}/${settingsConfig.dist.path}/${settingsConfig.js.path}`),
-        filename: settingsConfig.js.min
+        path: path.resolve(`${projectPath(settingsConfig.root.path)}/${settingsConfig.dist.path}/${settingsConfig.src.js.path}`),
+        filename: settingsConfig.webpack.client.min
     },
     plugins: [
         new webpack.DefinePlugin({

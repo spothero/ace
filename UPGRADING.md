@@ -6,9 +6,14 @@ This document lists noteworthy new features and breaking changes to help ease th
 
 ## New Features
 ### Adjust Webpack Client Log Levels
-Added the ability to set the [clientLogLevel](https://webpack.js.org/configuration/dev-server/#devserver-clientloglevel) for a webpack dev server to control messages in DevTools on the client. This setting is in the *settings.js* file under `webpack.clientLogLevel` and is set to `'none'` by default.
+Added the ability to set the [clientLogLevel](https://webpack.js.org/configuration/dev-server/#devserver-clientloglevel) for a webpack dev server to control messages in DevTools on the client. This setting is in the *settings.js* file under `webpack.client.clientLogLevel` and is set to `'none'` by default.
 
 ## Breaking Changes
+### Refactored Settings & Code File Structure
+In preparation for new features, the file structure needed to be changed to allow easier long term maintenance. Along with it, the *settings.js* file was also updated so that the settings make sense to the new setup. We understand this is not a small change and we did not make this lightheadrtedly. Unfortunately, the prior structure did not allow for easy expansion and additions and we're confident the new structure will bring an easier way to deal with enhancements.
+
+In the short term, its best to either run the update process or scaffold a new ACE project and update the files/configuration from the old format as necessary.
+
 ### Removed `concurrently` Package Usage
 In prior versions when running Cypress through `npm test`, the Cypress UI would show a warning that the server `baseUrl` could not be verified. The `concurrently` package has been replaced with `wait-on` so that Cypress is not run until the webpack server has spun up to avoid that warning.
 
@@ -53,30 +58,24 @@ Prior versions used an array of proxy name/value pairs under the `proxies` key t
 ```diff
 module.exports = {
     webpack: {
-        ...,
-        development: {
-            historyApiFallback: true,
--           proxies: [
--               {
--                   path: '/api/v1',
--                   target: `http://${hostname}:8000`
--               }
--           ],
-+           proxy: {
-+               '/api/v1': `http://${hostname}:8000`
-+           },
-            sourceMap: 'cheap-module-source-map'
++       client: {
+            ...,
+            development: {
+                historyApiFallback: true,
+-               proxies: [
+-                   {
+-                       path: '/api/v1',
+-                       target: `http://${hostname}:8000`
+-                   }
+-               ],
++               proxy: {
++                   '/api/v1': `http://${hostname}:8000`
++               },
+                sourceMap: 'cheap-module-source-map'
+            },
         },
-        ,,,
+        ...,
     },
 };
 
 ```
-
-### Required Settings
-A number of settings that were previously added over the course of multiple version updates as new features were being checked for existence in the configs. This clogged up the configs with unnecessary code checks to not break backward compatibility. These settings are now required to be present in the configs or the builds will error. Creating new projects will already contain these settings with sensible defaults, but projects being upgraded should make sure to add them at the necessary paths.
-
-The settings that are now required in *settings.js* are as follows:
-* `settingsConfig.webpack.moduleRules`
-* `settingsConfig.webpack.externals`
-* `settingsConfig.webpack.resolveModules`

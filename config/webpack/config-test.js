@@ -4,6 +4,7 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const settingsConfig = require('../gulp/lib/get-settings-config');
 const projectPath = require('../gulp/lib/project-path');
 
+const dist = `${projectPath(settingsConfig.root.path)}/${settingsConfig.dist.path}`;
 const plugins = [
     new webpack.DefinePlugin({
         'process.env': {
@@ -13,19 +14,19 @@ const plugins = [
     })
 ];
 
-if (settingsConfig.webpack.test.useBrowserSync) {
+if (settingsConfig.webpack.client.test.useBrowserSync) {
     plugins.push(new BrowserSyncPlugin(
         {
             logPrefix: settingsConfig.browserSync.prefix,
-            proxy: `http://${settingsConfig.env.hostname}:${settingsConfig.webpack.port}`,
+            proxy: `http://${settingsConfig.env.hostname}:${settingsConfig.webpack.client.port}`,
             notify: false,
-            open: settingsConfig.webpack.test.browserSyncOpen,
+            open: settingsConfig.webpack.client.test.browserSyncOpen,
             host: settingsConfig.env.hostname,
             port: settingsConfig.browserSync.port,
             startPath: settingsConfig.browserSync.startPath,
             files: [
-                `${projectPath(settingsConfig.root.path)}/${settingsConfig.css.path}/*.css`,
-                `${projectPath(settingsConfig.root.path)}/${settingsConfig.root.index}`
+                `${dist}/${settingsConfig.dist.css.path}/*.css`,
+                `${projectPath(settingsConfig.root.path)}/${settingsConfig.src.index}`
             ]
         },
         {
@@ -36,12 +37,12 @@ if (settingsConfig.webpack.test.useBrowserSync) {
 
 module.exports = {
     mode: 'development',
-    devtool: settingsConfig.webpack.test.sourceMap,
+    devtool: settingsConfig.webpack.client.test.sourceMap,
     cache: true,
     output: {
-        path: path.resolve(`${projectPath(settingsConfig.root.path)}/${settingsConfig.js.path}`),
-        filename: settingsConfig.js.output,
-        publicPath: `/${settingsConfig.js.path}/`
+        path: path.resolve(`${dist}/${settingsConfig.src.js.path}`),
+        filename: settingsConfig.webpack.client.output,
+        publicPath: `/${settingsConfig.src.js.path}/`
     },
     plugins,
     optimization: {

@@ -41,7 +41,7 @@ const packageScriptsTask = cb => {
 
         if (!isNil(jsonData.scripts['cypress:open']) && jsonData.scripts['cypress:open'] !== cypressOpenScript) {
             msg += `\nCurrent "cypress:open" script will be saved as "cypress:open-backup".`;
-            jsonData.scripts['cypress:open'] = jsonData.scripts.cypressOpenScript;
+            jsonData.scripts['cypress:open-backup'] = jsonData.scripts.cypressOpenScript;
             willOverride = true;
         }
 
@@ -49,7 +49,7 @@ const packageScriptsTask = cb => {
 
         if (!isNil(jsonData.scripts['cypress:run']) && jsonData.scripts['cypress:run'] !== cypressRunScript) {
             msg += `\nCurrent "cypress:run" script will be saved as "cypress:run-backup".`;
-            jsonData.scripts['cypress:run'] = jsonData.scripts.cypressRunScript;
+            jsonData.scripts['cypress:run-backup'] = jsonData.scripts.cypressRunScript;
             willOverride = true;
         }
 

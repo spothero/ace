@@ -11,10 +11,6 @@ const patterns = (global.TASK_CONFIG.clean.patterns.length)
     : [];
 const cleanTask = () => {
     return del([
-        `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.css.path}/*.css`,
-        `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.js.path}/${global.SETTINGS_CONFIG.js.output}`,
-        `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.js.path}/${global.SETTINGS_CONFIG.js.output}.map`,
-        `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.js.path}/*.hot-update.*`,
         `${projectPath(global.SETTINGS_CONFIG.root.path)}/checkstyle-*.xml`,
         `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.dist.path}`,
         ...patterns

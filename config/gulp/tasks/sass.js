@@ -25,11 +25,11 @@ const sassTask = src => {
             })
         ]))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(`${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.css.path}`));
+        .pipe(gulp.dest(`${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.dist.path}/${global.SETTINGS_CONFIG.dist.css.path}`));
 };
 
 gulp.task('sass', () => {
-    return sassTask(`${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.sass.path}/**/*.scss`);
+    return sassTask(`${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.src.path}/${global.SETTINGS_CONFIG.src.sass.path}/**/*.scss`);
 });
 
 module.exports = sassTask;

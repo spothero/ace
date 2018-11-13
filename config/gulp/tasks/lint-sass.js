@@ -20,6 +20,7 @@ const lintSassTask = src => {
 };
 
 gulp.task('lintSass', () => {
+    const src = `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.src.path}`;
     const patterns = (global.TASK_CONFIG.lintSass.patterns.length)
         ? global.TASK_CONFIG.lintSass.patterns.map(pattern => {
             let newPattern = `${projectPath(global.SETTINGS_CONFIG.root.path)}/${pattern}`;
@@ -33,8 +34,8 @@ gulp.task('lintSass', () => {
         : [];
 
     return lintSassTask([
-        `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.sass.path}/**/*.scss`,
-        `!${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.sass.path}/utils/**/*.scss`,
+        `${src}/${global.SETTINGS_CONFIG.src.sass.path}/**/*.scss`,
+        `!${src}/${global.SETTINGS_CONFIG.src.sass.path}/utils/**/*.scss`,
         ...patterns
     ]);
 });

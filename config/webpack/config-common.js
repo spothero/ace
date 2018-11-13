@@ -1,4 +1,3 @@
-const isNil = require('lodash/isNil');
 const isObject = require('lodash/isObject');
 const mapValues = require('lodash/mapValues');
 const path = require('path');
@@ -7,24 +6,23 @@ const settingsConfig = require('../gulp/lib/get-settings-config');
 const projectPath = require('../gulp/lib/project-path');
 const babelOptions = require('../babel');
 
-const entry = (!isNil(settingsConfig.webpack.entry))
-    ? isObject(settingsConfig.webpack.entry)
-        ? mapValues(settingsConfig.webpack.entry, item => {
-            return `${projectPath(settingsConfig.root.path)}/${settingsConfig.js.path}/${item}`;
-        })
-        : `${projectPath(settingsConfig.root.path)}/${settingsConfig.js.path}/${settingsConfig.webpack.entry}`
-    : `${projectPath(settingsConfig.root.path)}/${settingsConfig.js.path}/${settingsConfig.js.input}`;
-const extraModules = settingsConfig.webpack.resolveModules.map(modulePath => {
-    return path.resolve(`${projectPath(settingsConfig.root.path)}/${modulePath}`);
+const src = `${projectPath(settingsConfig.root.path)}/${settingsConfig.src.path}`;
+const entry = isObject(settingsConfig.webpack.client.entry)
+    ? mapValues(settingsConfig.webpack.client.entry, item => {
+        return `${src}/${settingsConfig.src.js.path}/${item}`;
+    })
+    : `${src}/${settingsConfig.src.js.path}/${settingsConfig.webpack.client.entry}`;
+const extraModules = settingsConfig.webpack.client.resolveModules.map(modulePath => {
+    return path.resolve(`${src}/${modulePath}`);
 });
 
 const config = {
     entry,
     resolve: {
-        alias: settingsConfig.webpack.alias,
+        alias: settingsConfig.webpack.client.alias,
         modules: [
             'node_modules',
-            path.resolve(`${projectPath(settingsConfig.root.path)}/${settingsConfig.js.path}`),
+            path.resolve(`${src}/${settingsConfig.src.js.path}`),
             ...extraModules,
         ],
         extensions: ['.js', '.jsx', '.json']
@@ -39,7 +37,7 @@ const config = {
                     options: babelOptions
                 }
             },
-            ...settingsConfig.webpack.moduleRules
+            ...settingsConfig.webpack.client.moduleRules
         ]
     },
     plugins: [
@@ -47,16 +45,16 @@ const config = {
             'process.env': settingsConfig.env.vars.common
         })
     ],
-    externals: settingsConfig.webpack.externals,
+    externals: settingsConfig.webpack.client.externals,
     devServer: {
-        contentBase: projectPath(settingsConfig.root.path),
-        publicPath: path.resolve(`${projectPath(settingsConfig.root.path)}/${settingsConfig.js.path}`),
-        port: settingsConfig.webpack.port,
+        contentBase: path.resolve(`${projectPath(settingsConfig.root.path)}/${settingsConfig.dist.path}`),
+        publicPath: path.resolve(`${projectPath(settingsConfig.root.path)}/${settingsConfig.dist.path}/${settingsConfig.src.js.path}`),
+        port: settingsConfig.webpack.client.port,
         host: settingsConfig.env.hostname,
         hot: true,
-        clientLogLevel: settingsConfig.webpack.clientLogLevel,
-        historyApiFallback: settingsConfig.webpack.development.historyApiFallback,
-        proxy: settingsConfig.webpack.development.proxy,
+        clientLogLevel: settingsConfig.webpack.client.clientLogLevel,
+        historyApiFallback: settingsConfig.webpack.client.development.historyApiFallback,
+        proxy: settingsConfig.webpack.client.development.proxy,
         stats: {
             colors: true,
             hash: false,
