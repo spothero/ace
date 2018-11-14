@@ -23,7 +23,7 @@ const developmentTask = cb => {
             'lintSass',
             ...postBuild,
             'watch',
-            'server'
+            'devServer'
         ];
 
     sequence(...seq, cb);

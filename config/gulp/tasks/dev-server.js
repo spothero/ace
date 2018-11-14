@@ -1,12 +1,12 @@
 const gulp = require('gulp');
 const shell = require('gulp-shell');
 
-const serverTask = () => {
+const devServerTask = () => {
     return shell.task([
         'webpack-dev-server --inline --hot --config webpack/config.js'
     ]);
 };
 
-gulp.task('server', serverTask());
+gulp.task('devServer', devServerTask());
 
-module.exports = serverTask;
+module.exports = devServerTask;
