@@ -24,13 +24,12 @@ const invalidateCloudFront = () => {
     const cloudfront = new AWS.CloudFront();
     const basePath = `/${global.SETTINGS_CONFIG.deploy.path}`;
     const indexFileName = 'index.html';
-    const manifestFileName = 'manifest.json';
     const indexPath = (npmEnvironment === 'sandbox')
         ? `${basePath}/sandbox/${process.env.SANDBOX_NAME}/${indexFileName}`
         : `${basePath}/${indexFileName}`;
     const manifestPath = (npmEnvironment === 'sandbox')
-        ? `${basePath}/sandbox/${process.env.SANDBOX_NAME}/${manifestFileName}`
-        : `${basePath}/${manifestFileName}`;
+        ? `${basePath}/sandbox/${process.env.SANDBOX_NAME}/${global.SETTINGS_CONFIG.dist.manifestFilename}`
+        : `${basePath}/${global.SETTINGS_CONFIG.dist.manifestFilename}`;
     const batchItems = [
         indexPath,
         manifestPath,

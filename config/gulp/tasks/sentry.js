@@ -29,7 +29,7 @@ const sentryTask = () => {
         throw new PluginError('sentry', 'You must fill in all the applicable settings for the "sentry" object in the tasks file.');
     }
 
-    const manifest = JSON.parse(fs.readFileSync(`${projectPath(global.SETTINGS_CONFIG.dist.path)}/manifest.json`, 'utf8'));
+    const manifest = JSON.parse(fs.readFileSync(`${projectPath(global.SETTINGS_CONFIG.dist.path)}/${global.SETTINGS_CONFIG.dist.manifestFilename}`, 'utf8'));
     const sources = [];
 
     forIn(manifest, value => {

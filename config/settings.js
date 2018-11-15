@@ -39,13 +39,17 @@ module.exports = {
         client: {
             port: 9000, // port for webpack to run on
             entry: 'main.js', // string or object, modifies the entry point JS file(s) passed to webpack (path(s) start after `src.js.path`)
-            output: '[name].js', // name of generated output JS file
-            min: '[name].min.js', // name of uglified generated output JS file during production builds
+            chunkFilename: '[name]-[chunkhash].js', // determines the name of non-entry chunk files (see: https://webpack.js.org/configuration/output/#output-chunkfilename)
+            output: '[name]-[hash].js', // name of generated output JS file
             alias: {}, // an object to create aliases to `import` certain modules more easily (see: https://webpack.js.org/configuration/resolve/#resolve-alias)
             resolveModules: [], // additional paths to resolve modules from (path(s) start after the `root.path` setting)
             moduleRules: [], // additional rules to pass to webpack (see: https://webpack.js.org/configuration/module/#module-rules)
             externals: {}, // exclude dependencies from output bundle (see: https://webpack.js.org/configuration/externals/)
             clientLogLevel: 'none', // how to show messages in DevTools when using inline mode in dev server (see https://webpack.js.org/configuration/dev-server/#devserver-clientloglevel)
+            optimization: {
+                runtimeChunk: 'single', // how the runtime is embedded in chunks (see: https://webpack.js.org/configuration/optimization/#optimization-runtimechunk)
+                splitChunks: {}, // configure chunk splitting, direct passthrough (see: https://webpack.js.org/configuration/optimization/#optimization-splitchunks)
+            },
             development: { // options to add during a development build
                 historyApiFallback: true, // adds support falling back to index.html in case the requested resource at a given URL can't be found (see: https://webpack.js.org/configuration/dev-server/#devserver-historyapifallback)
                 proxy: {}, // passes proxy information through to webpack server (see: https://webpack.js.org/configuration/dev-server/#devserver-proxy)
@@ -53,15 +57,16 @@ module.exports = {
                 // {
                 //     '/api/v1': `http://${hostname}:8000`
                 // },
-                sourceMap: 'cheap-module-source-map' // the source map type to use during development
+                sourceMap: 'cheap-module-source-map', // the source map type to use during development
+                writeToDisk: true, // whether to write bundled files to disk
             },
             test: {
                 useBrowserSync: true, // use Browsersync during tests for CSS injection
                 browserSyncOpen: false, // open the browser window when Browsersync starts during tests, same possible settings as `browserSync.open`
-                sourceMap: 'cheap-module-source-map' // the source map type to use during testing
+                sourceMap: 'cheap-module-source-map', // the source map type to use during testing
             },
             production: {
-                sourceMap: 'source-map' // the source map type to use during production
+                sourceMap: 'source-map', // the source map type to use during production
             },
         },
         server: {
@@ -77,7 +82,7 @@ module.exports = {
     },
     src: {
         path: 'src',
-        index: 'index.html', // the index HTML file where CSS and JS replacement will happen for the htmlReplace task as well as Browsersync watching for changes and reloading
+        index: 'index.html', // the index HTML file, where CSS replacement will happen for the htmlReplace task as well as Browsersync watching for changes and reloading
         img: {
             path: 'img' // path to image directory
         },
@@ -101,6 +106,7 @@ module.exports = {
     },
     dist: {
         path: 'dist', // path to the output folder that gets all static asset files during a production build
+        manifestFilename: 'manifest.json', // the output name of the manifest JSON file for static asset paths
         css: {
             path: 'css' // path to generated CSS folder
         },
