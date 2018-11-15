@@ -41,7 +41,6 @@ const testTask = cb => {
         : [
             'clean',
             ...preBuild,
-            'htmlCopy',
             'sass',
             'lintSass',
             ...postBuild,

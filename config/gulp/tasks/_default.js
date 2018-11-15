@@ -18,7 +18,6 @@ const developmentTask = cb => {
         : [
             'clean',
             ...preBuild,
-            'htmlCopy',
             'sass',
             'lintSass',
             ...postBuild,

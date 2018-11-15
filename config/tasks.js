@@ -13,11 +13,6 @@ module.exports = {
             optimizationLevel: 3
         }
     },
-    htmlReplace: {
-        path: null,
-        cssFileName: null,
-        jsFileName: null
-    },
     lintJS: {
         patterns: []
     },

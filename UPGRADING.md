@@ -5,8 +5,17 @@ This document lists noteworthy new features and breaking changes to help ease th
 # <5.0.0 to 5.0.0
 
 ## New Features
+### Code Splitting
+Added ability to set `chunkFilename` for webpack client configuration.
+
 ### Adjust Webpack Client Log Levels
 Added the ability to set the [clientLogLevel](https://webpack.js.org/configuration/dev-server/#devserver-clientloglevel) for a webpack dev server to control messages in DevTools on the client. This setting is in the *settings.js* file under `webpack.client.clientLogLevel` and is set to `'none'` by default.
+
+### Optionally Write Files To Disk
+Previously, ACE would write bundled files to the disk automatically during development builds. There is now a new setting to control this, `webpack.client.development.writeToDisk` (`true` by default).
+
+### Change Name of Manifest
+You can now change the output filename of the manifest (`manifest.json`) using `dist.manifestFilename` in *settings.js*.
 
 ## Breaking Changes
 ### Refactored Settings & Code File Structure
@@ -79,3 +88,12 @@ module.exports = {
 };
 
 ```
+
+### Default JS Bundle Renamed
+The default output name of the JS bundle is now `[main]-[hash].js` instead of `bundle.js`. If your project was using the default settings, you'll want to update your `index.html` file to take the new naming convention (which is now automatically added by Webpack). You can reference the scaffolded `index.html` file for the template code.
+
+### Removed Revision Task
+The `revision` task was no longer necessary. Webpack now takes care of versioning JS files during production builds and the `cssmin` task does the same for CSS files.
+
+### Removed htmlReplace Task Options
+The new `htmlReplace` task is an internal task and because of changes to JS/CSS files being automated and naming being determined based on original names (and through the manifest file), these options are now obsolete. As such, they have been removed from *tasks.js*.

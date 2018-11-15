@@ -1,4 +1,3 @@
-const path = require('path');
 const webpack = require('webpack');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const settingsConfig = require('../gulp/lib/get-settings-config');
@@ -26,7 +25,7 @@ if (settingsConfig.webpack.client.test.useBrowserSync) {
             startPath: settingsConfig.browserSync.startPath,
             files: [
                 `${dist}/${settingsConfig.dist.css.path}/*.css`,
-                `${projectPath(settingsConfig.root.path)}/${settingsConfig.src.index}`
+                `${dist}/${settingsConfig.src.index}`
             ]
         },
         {
@@ -39,11 +38,6 @@ module.exports = {
     mode: 'development',
     devtool: settingsConfig.webpack.client.test.sourceMap,
     cache: true,
-    output: {
-        path: path.resolve(`${dist}/${settingsConfig.src.js.path}`),
-        filename: settingsConfig.webpack.client.output,
-        publicPath: `/${settingsConfig.src.js.path}/`
-    },
     plugins,
     optimization: {
         noEmitOnErrors: true

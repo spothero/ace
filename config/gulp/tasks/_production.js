@@ -21,7 +21,7 @@ const productionTask = cb => {
             'sass',
             'webpack',
             'cssMin',
-            'revision',
+            'htmlReplace',
             ...postBuild
         ];
 
