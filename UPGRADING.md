@@ -90,7 +90,7 @@ module.exports = {
 ```
 
 ### Default JS Bundle Renamed
-The default output name of the JS bundle is now `main.js` instead of `bundle.js`. If your project was using the default settings, you'll want to change the name of the bundle script include in your `index.html` file.
+The default output name of the JS bundle is now `[main]-[hash].js` instead of `bundle.js`. If your project was using the default settings, you'll want to update your `index.html` file to take the new naming convention (which is now automatically added by Webpack). You can reference the scaffolded `index.html` file for the template code.
 
 ### Removed Revision Task
 The `revision` task was no longer necessary. Webpack now takes care of versioning JS files during production builds and the `cssmin` task does the same for CSS files.
