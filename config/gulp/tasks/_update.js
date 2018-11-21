@@ -11,5 +11,3 @@ const updateTask = cb => {
 };
 
 gulp.task('update', updateTask);
-
-module.exports = updateTask;

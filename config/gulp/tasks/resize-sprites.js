@@ -26,5 +26,3 @@ const resizeSpritesTask = () => {
 };
 
 gulp.task('resizeSprites', resizeSpritesTask);
-
-module.exports = resizeSpritesTask;

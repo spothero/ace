@@ -12,5 +12,3 @@ const setupTask = cb => {
 };
 
 gulp.task('setup', setupTask);
-
-module.exports = setupTask;

@@ -16,5 +16,3 @@ const contribDependenciesTask = () => {
 };
 
 gulp.task('installContribDeps', contribDependenciesTask());
-
-module.exports = contribDependenciesTask;

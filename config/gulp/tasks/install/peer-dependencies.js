@@ -61,5 +61,3 @@ const installPeerDependenciesTask = cb => {
 
 gulp.task('confirmInstallPeerDeps', installPeerDepsTask);
 gulp.task('installPeerDeps', installPeerDependenciesTask);
-
-module.exports = installPeerDependenciesTask;

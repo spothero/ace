@@ -1,5 +1,4 @@
 const hostname = 'localhost';
-const browserSyncPort = 3000;
 
 module.exports = {
     env: {
@@ -31,7 +30,7 @@ module.exports = {
     },
     browserSync: {
         prefix: 'Browsersync', // prefix shown in shell when BS events occur
-        port: browserSyncPort, // port to run BS on
+        port: 3000, // port to run BS on
         open: true, // automatically opens a new browser window when BS starts during development builds, set to 'external' if `hostname` isn't `localhost`
         startPath: null // an optional path to open the browser window to when BS starts
     },
@@ -70,8 +69,12 @@ module.exports = {
             },
         },
         server: {
-            port: 5000, // port for webpack to run on
-            entry: null,
+            port: 9001, // port for the server to run on
+            entry: 'server.js', // string that is the entry point JS file passed to webpack for the server (path(s) start after `src.path`)
+            output: 'server.bundle.js', // name of generated output JS file
+            alias: {}, // an object to create aliases to `import` certain modules more easily (see: https://webpack.js.org/configuration/resolve/#resolve-alias)
+            resolveModules: [], // additional paths to resolve modules from (path(s) start after the `root.path` setting)
+            moduleRules: [], // additional rules to pass to webpack (see: https://webpack.js.org/configuration/module/#module-rules)
         },
     },
     root: {

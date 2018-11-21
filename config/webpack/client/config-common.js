@@ -2,10 +2,11 @@ const isObject = require('lodash/isObject');
 const mapValues = require('lodash/mapValues');
 const path = require('path');
 const webpack = require('webpack');
+const ManifestPlugin = require('webpack-manifest-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const settingsConfig = require('../gulp/lib/get-settings-config');
-const projectPath = require('../gulp/lib/project-path');
-const babelOptions = require('../babel');
+const settingsConfig = require('../../gulp/lib/get-settings-config');
+const projectPath = require('../../gulp/lib/project-path');
+const babelOptions = require('../../babel');
 
 const src = `${projectPath(settingsConfig.root.path)}/${settingsConfig.src.path}`;
 const dist = `${projectPath(settingsConfig.root.path)}/${settingsConfig.dist.path}`;
@@ -19,6 +20,7 @@ const extraModules = settingsConfig.webpack.client.resolveModules.map(modulePath
 });
 
 const config = {
+    target: 'web',
     entry,
     output: {
         path: path.resolve(`${dist}/${settingsConfig.src.js.path}`),
@@ -52,10 +54,16 @@ const config = {
         new webpack.DefinePlugin({
             'process.env': settingsConfig.env.vars.common
         }),
+        new ManifestPlugin({
+            fileName: `../${settingsConfig.dist.manifestFilename}`,
+            basePath: `${settingsConfig.src.js.path}/`,
+            filter(file) {
+                return file.path.endsWith('.js');
+            },
+        }),
         new HTMLWebpackPlugin({
             filename: `${dist}/${settingsConfig.src.index}`,
             template: `${src}/${settingsConfig.src.index}`,
-            inject: false,
         }),
     ],
     externals: settingsConfig.webpack.client.externals,

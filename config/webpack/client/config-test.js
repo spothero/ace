@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-const settingsConfig = require('../gulp/lib/get-settings-config');
-const projectPath = require('../gulp/lib/project-path');
+const settingsConfig = require('../../gulp/lib/get-settings-config');
+const projectPath = require('../../gulp/lib/project-path');
 
 const dist = `${projectPath(settingsConfig.root.path)}/${settingsConfig.dist.path}`;
 const plugins = [

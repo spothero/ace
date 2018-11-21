@@ -93,5 +93,3 @@ const updateConfigsTask = cb => {
 
 gulp.task('confirmUpdateConfigs', execUpdateConfigsTask);
 gulp.task('updateConfigs', updateConfigsTask);
-
-module.exports = updateConfigsTask;

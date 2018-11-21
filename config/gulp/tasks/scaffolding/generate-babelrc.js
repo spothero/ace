@@ -16,5 +16,3 @@ const generateBabelrcTask = cb => {
 };
 
 gulp.task('generateBabelrc', generateBabelrcTask);
-
-module.exports = generateBabelrcTask;

@@ -59,5 +59,3 @@ const scaffoldProjectTask = cb => {
 
 gulp.task('confirmScaffoldProject', confirmScaffoldProjectTask);
 gulp.task('scaffoldProject', scaffoldProjectTask);
-
-module.exports = scaffoldProjectTask;

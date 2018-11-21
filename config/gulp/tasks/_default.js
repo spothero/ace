@@ -22,12 +22,10 @@ const developmentTask = cb => {
             'lintSass',
             ...postBuild,
             'watch',
-            'devServer'
+            'devServerClient'
         ];
 
     sequence(...seq, cb);
 };
 
 gulp.task('default', developmentTask);
-
-module.exports = developmentTask;

@@ -21,5 +21,3 @@ const cleanTask = () => {
 };
 
 gulp.task('clean', cleanTask);
-
-module.exports = cleanTask;
