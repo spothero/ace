@@ -8,7 +8,7 @@ This document lists noteworthy new features and breaking changes to help ease th
 ### Basic Server Side Rendering Support
 This should be considered an "in development" feature that is not yet production ready. ACE has added the ability to configure SSR settings for a development environment to hit the ground running with SSR. Scaffolding a project will now also scaffold the `src/server.js` file which can then be used as a starting point for SSR setups. Additional server settings are located in the new `settings.js` file as well.
 
-You'll need to provide your own dynamic loading solution ([react-loadable](https://github.com/jamiebuilds/react-loadable), [react-universal-component](https://github.com/faceyspacey/react-universal-component), etc...) and the Babel plugin that corresponds for allowing dynamic imports. You'll also want to figure out the best way to load all chunks (if applicable) in the HTML template. The solutions listed above each have their own way(s) of doing this.
+You'll need to provide your own dynamic loading solution ([react-loadable](https://github.com/jamiebuilds/react-loadable), [react-universal-component](https://github.com/faceyspacey/react-universal-component), etc...) and the Babel plugin that corresponds for allowing dynamic imports. You'll also want to figure out the best way to load all chunks (if applicable) in the HTML template. The solutions listed above each have their own way(s) of doing this. Lastly, you may need to update the `webpack.server.externals` setting as well.
 
 Production settings for SSR support are on the way in a future release.
 

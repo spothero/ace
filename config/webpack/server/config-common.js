@@ -9,6 +9,7 @@ const dist = `${projectPath(settingsConfig.root.path)}/${settingsConfig.dist.pat
 const extraModules = settingsConfig.webpack.server.resolveModules.map(modulePath => {
     return path.resolve(`${src}/${modulePath}`);
 });
+const externals = settingsConfig.webpack.server.externals;
 
 const config = {
     target: 'node',
@@ -18,9 +19,9 @@ const config = {
         filename: settingsConfig.webpack.server.output,
         publicPath: '/'
     },
-    externals: [
-        nodeExternals()
-    ],
+    externals: (externals)
+        ? externals
+        : [nodeExternals()],
     resolve: {
         alias: settingsConfig.webpack.server.alias,
         modules: [

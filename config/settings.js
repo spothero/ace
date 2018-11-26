@@ -75,6 +75,7 @@ module.exports = {
             alias: {}, // an object to create aliases to `import` certain modules more easily (see: https://webpack.js.org/configuration/resolve/#resolve-alias)
             resolveModules: [], // additional paths to resolve modules from (path(s) start after the `root.path` setting)
             moduleRules: [], // additional rules to pass to webpack (see: https://webpack.js.org/configuration/module/#module-rules)
+            externals: null, // exclude dependencies from output bundle, overrides default of `nodeExternals()` if set (see: https://webpack.js.org/configuration/externals/)
         },
     },
     root: {
