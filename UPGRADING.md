@@ -5,6 +5,13 @@ This document lists noteworthy new features and breaking changes to help ease th
 # <5.0.0 to 5.0.0
 
 ## New Features
+### Basic Server Side Rendering Support
+This should be considered an "in development" feature that is not yet production ready. ACE has added the ability to configure SSR settings for a development environment to hit the ground running with SSR. Scaffolding a project will now also scaffold the `src/server.js` file which can then be used as a starting point for SSR setups. Additional server settings are located in the new `settings.js` file as well.
+
+You'll need to provide your own dynamic loading solution ([react-loadable](https://github.com/jamiebuilds/react-loadable), [react-universal-component](https://github.com/faceyspacey/react-universal-component), etc...) and the Babel plugin that corresponds for allowing dynamic imports. You'll also want to figure out the best way to load all chunks (if applicable) in the HTML template. The solutions listed above each have their own way(s) of doing this.
+
+Production settings for SSR support are on the way in a future release.
+
 ### Code Splitting
 Added ability to set `chunkFilename` for webpack client configuration.
 
@@ -90,7 +97,7 @@ module.exports = {
 ```
 
 ### Default JS Bundle Renamed
-The default output name of the JS bundle is now `[main]-[hash].js` instead of `bundle.js`. If your project was using the default settings, you'll want to update your `index.html` file to take the new naming convention (which is now automatically added by Webpack). You can reference the scaffolded `index.html` file for the template code.
+The default output name of the JS bundle is now `[main]-[hash].js` instead of `bundle.js`. If your project was using the default settings, you'll want to update your `index.html` file to remove the script tag (which is now automatically injected by Webpack to the HTML template).
 
 ### Removed Revision Task
 The `revision` task was no longer necessary. Webpack now takes care of versioning JS files during production builds and the `cssmin` task does the same for CSS files.
