@@ -4,8 +4,8 @@ const gulp = require('gulp');
 const sequence = require('run-sequence');
 const merge = require('webpack-merge');
 const projectPath = require('../lib/project-path');
-const configCommon = require('../../webpack/config-common');
-const configTest = require('../../webpack/config-test');
+const configCommon = require('../../webpack/client/config-common');
+const configTest = require('../../webpack/client/config-test');
 
 RegExp.prototype.toJSON = RegExp.prototype.toString; // eslint-disable-line no-extend-native
 
@@ -45,7 +45,7 @@ const testTask = cb => {
             'lintSass',
             ...postBuild,
             'watch',
-            'devServer'
+            'devServerClient'
         ];
 
     sequence(...seq, cb);
@@ -53,5 +53,3 @@ const testTask = cb => {
 
 gulp.task('generateWebpackSettings', generateWebpackSettingsTask);
 gulp.task('test', testTask);
-
-module.exports = testTask;

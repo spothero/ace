@@ -13,5 +13,3 @@ const contribTask = cb => {
 };
 
 gulp.task('contrib', contribTask);
-
-module.exports = contribTask;

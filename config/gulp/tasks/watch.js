@@ -42,5 +42,3 @@ gulp.task('watch', ['lintJS'], watchTask({
         ...jsPatterns
     ]
 }));
-
-module.exports = watchTask;

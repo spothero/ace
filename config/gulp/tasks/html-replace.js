@@ -12,4 +12,3 @@ const htmlReplaceTask = () => {
 
 gulp.task('htmlReplace', htmlReplaceTask);
 
-module.exports = htmlReplaceTask;

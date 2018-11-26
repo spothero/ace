@@ -51,5 +51,3 @@ const sentryTask = () => {
 };
 
 gulp.task('sentry', sentryTask);
-
-module.exports = sentryTask;

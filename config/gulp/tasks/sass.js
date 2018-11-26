@@ -31,5 +31,3 @@ const sassTask = src => {
 gulp.task('sass', () => {
     return sassTask(`${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.src.path}/${global.SETTINGS_CONFIG.src.sass.path}/**/*.scss`);
 });
-
-module.exports = sassTask;

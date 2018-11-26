@@ -13,10 +13,11 @@ const packageScriptsTask = cb => {
 
         const jsonData = JSON.parse(data);
         const startScript = 'ACE_NPM_EVENT=start ace';
+        const startSSRScript = 'ACE_NPM_EVENT=start ace -- devServerSSR';
         const testScript = 'ACE_NPM_EVENT=test ace -- test & wait-on http://localhost:3000 && npm run cypress:open';
+        const buildScript = 'ACE_NPM_EVENT=build ace -- production';
         const cypressOpenScript = 'ace -- generateWebpackSettings && cypress open';
         const cypressRunScript = 'ace -- generateWebpackSettings && cypress run';
-        const buildScript = 'ACE_NPM_EVENT=build ace -- production';
         const deploySandboxScript = 'ACE_DEPLOY_TYPE=sandbox npm run build && ace -- deploy';
         const deployStagingScript = 'ACE_DEPLOY_TYPE=staging npm run build && ace -- deploy';
         const deployProductionScript = 'ACE_DEPLOY_TYPE=production npm run build && ace -- deploy';
@@ -31,6 +32,14 @@ const packageScriptsTask = cb => {
 
         jsonData.scripts.start = startScript;
 
+        if (!isNil(jsonData.scripts['start:ssr']) && jsonData.scripts['start:ssr'] !== startSSRScript) {
+            msg += `\nCurrent "start:ssr" script will be saved as "start:ssr-backup".`;
+            jsonData.scripts['start:ssr-backup'] = jsonData.scripts['start:ssr'];
+            willOverride = true;
+        }
+
+        jsonData.scripts['start:ssr'] = startSSRScript;
+
         if (!isNil(jsonData.scripts.test) && jsonData.scripts.test !== testScript) {
             msg += `\nCurrent "test" script will be saved as "test-backup".`;
             jsonData.scripts['test-backup'] = jsonData.scripts.test;
@@ -38,6 +47,14 @@ const packageScriptsTask = cb => {
         }
 
         jsonData.scripts.test = testScript;
+
+        if (!isNil(jsonData.scripts.build) && jsonData.scripts.build !== buildScript) {
+            msg += `\nCurrent "build" script will be saved as "build-backup".`;
+            jsonData.scripts['build-backup'] = jsonData.scripts.build;
+            willOverride = true;
+        }
+
+        jsonData.scripts.build = buildScript;
 
         if (!isNil(jsonData.scripts['cypress:open']) && jsonData.scripts['cypress:open'] !== cypressOpenScript) {
             msg += `\nCurrent "cypress:open" script will be saved as "cypress:open-backup".`;
@@ -54,14 +71,6 @@ const packageScriptsTask = cb => {
         }
 
         jsonData.scripts['cypress:run'] = cypressRunScript;
-
-        if (!isNil(jsonData.scripts.build) && jsonData.scripts.build !== buildScript) {
-            msg += `\nCurrent "build" script will be saved as "build-backup".`;
-            jsonData.scripts['build-backup'] = jsonData.scripts.build;
-            willOverride = true;
-        }
-
-        jsonData.scripts.build = buildScript;
 
         if (!isNil(jsonData.scripts['deploy:sandbox']) && jsonData.scripts['deploy:sandbox'] !== deploySandboxScript) {
             msg += `\nCurrent "deploy:sandbox" script will be saved as "deploy:sandbox-backup".`;
@@ -100,5 +109,3 @@ const packageScriptsTask = cb => {
 };
 
 gulp.task('updatePackageScripts', packageScriptsTask);
-
-module.exports = packageScriptsTask;

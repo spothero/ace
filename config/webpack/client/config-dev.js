@@ -1,8 +1,8 @@
 const webpack = require('webpack');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
-const settingsConfig = require('../gulp/lib/get-settings-config');
-const projectPath = require('../gulp/lib/project-path');
+const settingsConfig = require('../../gulp/lib/get-settings-config');
+const projectPath = require('../../gulp/lib/project-path');
 
 const dist = `${projectPath(settingsConfig.root.path)}/${settingsConfig.dist.path}`;
 const plugins = [
@@ -43,7 +43,6 @@ if (settingsConfig.webpack.client.development.writeToDisk) {
 module.exports = {
     mode: 'development',
     devtool: settingsConfig.webpack.client.development.sourceMap,
-    cache: true,
     plugins,
     optimization: {
         noEmitOnErrors: true

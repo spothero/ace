@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
-const settingsConfig = require('../gulp/lib/get-settings-config');
+const settingsConfig = require('../../gulp/lib/get-settings-config');
 
 module.exports = {
     mode: 'production',
@@ -12,13 +11,6 @@ module.exports = {
                 NODE_ENV: JSON.stringify('production'),
                 ...settingsConfig.env.vars.production
             }
-        }),
-        new ManifestPlugin({
-            fileName: `../${settingsConfig.dist.manifestFilename}`,
-            basePath: `${settingsConfig.src.js.path}/`,
-            filter(file) {
-                return file.path.endsWith('.js');
-            },
         }),
     ],
     performance: {

@@ -1,12 +1,23 @@
+const path = require('path');
 const gulp = require('gulp');
 const shell = require('gulp-shell');
 
-const devServerTask = () => {
+const devServerClientTask = () => {
     return shell.task([
-        'webpack-dev-server --inline --hot --config webpack/config.js'
+        'webpack-dev-server --inline --hot --config webpack/client/config.js'
     ]);
 };
 
-gulp.task('devServer', devServerTask());
+const devServerSSRTask = () => {
+    const configPath = path.resolve(__dirname, '../../webpack/server/config.js');
+    const serverPath = `${global.SETTINGS_CONFIG.dist.path}/${global.SETTINGS_CONFIG.webpack.server.output}`;
 
-module.exports = devServerTask;
+    return shell.task([
+        `webpack --watch --hide-modules --config ${configPath} & nodemon ${serverPath}`
+    ], {
+        cwd: process.env.INIT_CWD
+    });
+};
+
+gulp.task('devServerClient', devServerClientTask());
+gulp.task('devServerSSR', devServerSSRTask());

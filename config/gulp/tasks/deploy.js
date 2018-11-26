@@ -123,5 +123,3 @@ const deployTask = cb => {
 gulp.task('upload', uploadToS3);
 gulp.task('invalidate', invalidateCloudFront);
 gulp.task('deploy', deployTask);
-
-module.exports = deployTask;

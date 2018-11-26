@@ -88,5 +88,3 @@ const generateSpritesTask = () => {
 };
 
 gulp.task('generateSprites', generateSpritesTask);
-
-module.exports = generateSpritesTask;

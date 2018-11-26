@@ -39,5 +39,3 @@ gulp.task('lintSass', () => {
         ...patterns
     ]);
 });
-
-module.exports = lintSassTask;

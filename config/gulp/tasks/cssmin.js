@@ -46,5 +46,3 @@ const cssMinTask = () => {
 };
 
 gulp.task('cssMin', cssMinTask);
-
-module.exports = cssMinTask;

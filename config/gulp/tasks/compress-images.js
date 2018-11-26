@@ -12,5 +12,3 @@ const compressImagesTask = () => {
 };
 
 gulp.task('compressImages', compressImagesTask);
-
-module.exports = compressImagesTask;
