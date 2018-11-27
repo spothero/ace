@@ -49,7 +49,6 @@ module.exports = {
                 runtimeChunk: 'single', // how the runtime is embedded in chunks (see: https://webpack.js.org/configuration/optimization/#optimization-runtimechunk)
                 splitChunks: {}, // configure chunk splitting, direct passthrough (see: https://webpack.js.org/configuration/optimization/#optimization-splitchunks)
             },
-            analyze: null, // pass options object to enable bundle analyzation using webpack-bundle-analyzer (see: https://github.com/webpack-contrib/webpack-bundle-analyzer#options-for-plugin)
             development: { // options to add during a development build
                 historyApiFallback: true, // adds support falling back to index.html in case the requested resource at a given URL can't be found (see: https://webpack.js.org/configuration/dev-server/#devserver-historyapifallback)
                 proxy: {}, // passes proxy information through to webpack server (see: https://webpack.js.org/configuration/dev-server/#devserver-proxy)
@@ -59,6 +58,7 @@ module.exports = {
                 // },
                 sourceMap: 'cheap-module-source-map', // the source map type to use during development
                 writeToDisk: true, // whether to write bundled files to disk
+                analyze: null, // pass options object to enable bundle analyzation using webpack-bundle-analyzer (see: https://github.com/webpack-contrib/webpack-bundle-analyzer#options-for-plugin)
             },
             test: {
                 useBrowserSync: true, // use Browsersync during tests for CSS injection
@@ -67,6 +67,7 @@ module.exports = {
             },
             production: {
                 sourceMap: 'source-map', // the source map type to use during production
+                analyze: null, // pass options object to enable bundle analyzation using webpack-bundle-analyzer (see: https://github.com/webpack-contrib/webpack-bundle-analyzer#options-for-plugin)
             },
         },
         server: {

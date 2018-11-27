@@ -1,10 +1,12 @@
 const webpack = require('webpack');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const WriteFilePlugin = require('write-file-webpack-plugin');
 const settingsConfig = require('../../gulp/lib/get-settings-config');
 const projectPath = require('../../gulp/lib/project-path');
 
 const dist = `${projectPath(settingsConfig.root.path)}/${settingsConfig.dist.path}`;
+const analyze = settingsConfig.webpack.client.development.analyze;
 const plugins = [
     new webpack.DefinePlugin({
         'process.env': {
@@ -38,6 +40,10 @@ if (settingsConfig.webpack.client.development.writeToDisk) {
             log: false
         })
     );
+}
+
+if (analyze) {
+    plugins.push(new BundleAnalyzerPlugin(analyze));
 }
 
 module.exports = {

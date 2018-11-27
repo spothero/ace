@@ -16,7 +16,7 @@ Production settings for SSR support are on the way in a future release.
 Added ability to set `chunkFilename` for webpack client configuration.
 
 ### Client Bundle Analyzation
-Added optional bundle analyzation for client JS bundles using [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer). You can set this up in the *settings.js* file using `webpack.client.analyze`. It's enabled by passing an options object (disabled by default).
+Added optional bundle analyzation for client JS bundles using [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer). You can set this up in the *settings.js* file using `webpack.client.[development/production].analyze`. It's enabled by passing an options object (disabled by default).
 
 ### Adjust Webpack Client Log Levels
 Added the ability to set the [clientLogLevel](https://webpack.js.org/configuration/dev-server/#devserver-clientloglevel) for a webpack dev server to control messages in DevTools on the client. This setting is in the *settings.js* file under `webpack.client.clientLogLevel` and is set to `'none'` by default.
