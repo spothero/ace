@@ -1,0 +1,12 @@
+{
+    "spothero": {
+        "github": {
+            "accessToken": "cc49df5dfb8504191bd1f10add2be8b8031b7a34"
+        },
+        "slack": {
+            "channelId": "CBC24T9C6",
+            "botUserToken": "xoxb-2243200003-384643844225-PpJC9OAUj2OrdgjRDb5fCBTM"
+        }
+    },
+    "default": null
+}
