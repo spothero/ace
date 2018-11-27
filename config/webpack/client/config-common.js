@@ -4,6 +4,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const settingsConfig = require('../../gulp/lib/get-settings-config');
 const projectPath = require('../../gulp/lib/project-path');
 const babelOptions = require('../../babel');
@@ -18,6 +19,27 @@ const entry = isObject(settingsConfig.webpack.client.entry)
 const extraModules = settingsConfig.webpack.client.resolveModules.map(modulePath => {
     return path.resolve(`${src}/${modulePath}`);
 });
+const analyze = settingsConfig.webpack.client.analyze;
+const plugins = [
+    new webpack.DefinePlugin({
+        'process.env': settingsConfig.env.vars.common
+    }),
+    new ManifestPlugin({
+        fileName: `../${settingsConfig.dist.manifestFilename}`,
+        basePath: `${settingsConfig.src.js.path}/`,
+        filter(file) {
+            return file.path.endsWith('.js');
+        },
+    }),
+    new HTMLWebpackPlugin({
+        filename: `${dist}/${settingsConfig.src.index}`,
+        template: `${src}/${settingsConfig.src.index}`,
+    }),
+];
+
+if (analyze) {
+    plugins.push(new BundleAnalyzerPlugin(analyze));
+}
 
 const config = {
     target: 'web',
@@ -50,22 +72,7 @@ const config = {
             ...settingsConfig.webpack.client.moduleRules
         ]
     },
-    plugins: [
-        new webpack.DefinePlugin({
-            'process.env': settingsConfig.env.vars.common
-        }),
-        new ManifestPlugin({
-            fileName: `../${settingsConfig.dist.manifestFilename}`,
-            basePath: `${settingsConfig.src.js.path}/`,
-            filter(file) {
-                return file.path.endsWith('.js');
-            },
-        }),
-        new HTMLWebpackPlugin({
-            filename: `${dist}/${settingsConfig.src.index}`,
-            template: `${src}/${settingsConfig.src.index}`,
-        }),
-    ],
+    plugins,
     externals: settingsConfig.webpack.client.externals,
     devServer: {
         contentBase: path.resolve(`${dist}`),
