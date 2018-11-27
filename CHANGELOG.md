@@ -1,3 +1,7 @@
+# 4.4.0 - 11/27/2018
+## Dependency Updates
+* [[a8e193f](https://github.com/spothero/ace/commit/a8e193f)] - Update gulp-s3-upload dependency to remove its flatmap-stream dependency (Zachary Wagner)
+
 # 4.3.4 - 11/06/2018
 
 ## Miscellaneous Updates
