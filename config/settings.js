@@ -67,7 +67,11 @@ module.exports = {
             },
             production: {
                 sourceMap: 'source-map', // the source map type to use during production
-                analyze: null, // pass options object to enable bundle analyzation using webpack-bundle-analyzer (see: https://github.com/webpack-contrib/webpack-bundle-analyzer#options-for-plugin)
+                analyze: { // pass options object to enable bundle analyzation using webpack-bundle-analyzer (see: https://github.com/webpack-contrib/webpack-bundle-analyzer#options-for-plugin)
+                    generateStatsFile: true,
+                    analyzerMode: 'static',
+                    openAnalyzer: false,
+                },
             },
         },
         server: {
