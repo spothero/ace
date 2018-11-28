@@ -107,3 +107,6 @@ The `revision` task was no longer necessary. Webpack now takes care of versionin
 
 ### Removed htmlReplace Task Options
 The new `htmlReplace` task is an internal task and because of changes to JS/CSS files being automated and naming being determined based on original names (and through the manifest file), these options are now obsolete. As such, they have been removed from *tasks.js*.
+
+### Update generateBabelrc Task
+Previously, setting `browserslist` and `babel` settings in *.acerc* files completely overrode these settings internally. The new behavior is to still completely override the `browserslist` but recursively merge the `babel` settings since those are dependent on everything running smoothly. By passing options to `babel`, you can now simply add on other presets or plugins you may need and no longer have to manage ALL of the overridden settings for Babel in your project.
