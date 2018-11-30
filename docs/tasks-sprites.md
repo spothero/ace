@@ -11,7 +11,7 @@ There are lots of variables to consider when creating sprites which makes it ext
 When working with sprites you'll need a 1x and a 2x version of each transparent PNG image that you want to add to the final sprite. ACE has a built in Gulp task, aptly named `resizeSprites`, which can generate the necessary `*-1x` folders for you.
 
 You can organize your sprites in directories using the recommended structure below.
-```
+```bash
 ├── project
 |   └── sprites
 |       └── [name1]-2x
@@ -29,7 +29,7 @@ npm start -- resizeSprites
 This task **should not** be run as part of your build process and will need to be initiated manually using this command whenever necessary.
 
 This will result in the following:
-```
+```bash
 ├── project
 |   └── sprites
 |       └── [name1]-1x
@@ -67,6 +67,6 @@ Inspect the file closely for directions to make sure that your sprites work as i
 Finally, you'll have to manually import each of your generated `_sprites-[name].scss` Sass files (also recommended in `sass/common/_bootstrap.scss`) to make them available to your project.
 
 Once done, you can render an HTML element like so (where `sprite-app-store` is an example class inside of this generated file):
-```html
+```markup
 <div class="sprite-app-store"></div>
 ```
