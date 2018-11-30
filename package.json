@@ -12,7 +12,7 @@
   "scripts": {
     "docs": "cd website && npm install && npm start",
     "docs:generate": "ace -- docs",
-    "release": "npm-release -- public"
+    "release": "npm-release -- public && npm run docs:generate"
   },
   "husky": {
     "hooks": {
