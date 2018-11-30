@@ -1,5 +1,4 @@
-// task `patterns` will start from the root project directory
-// example: ['src/sass/utils/**/*', '!src/sass/vendor/**/*']
+// See https://spothero.com/uniform/ace/docs/tasks-home/ for documentation on these tasks.
 
 module.exports = {
     clean: {
