@@ -14,12 +14,8 @@ const deploySettings = {
 };
 
 const generateACEDocsTask = () => {
-    console.log(pkg.version);
-
-    // TODO: add versioning based on package.json file
     return shell.task([
-        'cd website && npm install && npm run build'
-        // `cd website && npm install && npm run version ${pkg.version}`
+        `cd website && npm install && npm run version ${pkg.version}`
     ], {
         cwd: process.env.INIT_CWD
     });
