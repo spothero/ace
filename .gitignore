@@ -8,3 +8,4 @@
 *.code-workspace
 node_modules
 _internal
+/website/build

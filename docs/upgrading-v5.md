@@ -1,8 +1,9 @@
-As ACE evolves, there is and will be changes to the way that project setup is structured and options are passed. New features are added in a regular cadence and the underlying technologies behind ACE are updated frequently.
+---
+id: upgrading-v5
+title: <5.0.0 to 5.0.0
+---
 
-This document lists noteworthy new features and breaking changes to help ease the transition when upgrading from older versions of ACE.
-
-# <5.0.0 to 5.0.0
+The fifth version of ACE brings the largest update to date.
 
 ## New Features
 ### Basic Server Side Rendering Support
@@ -13,7 +14,7 @@ You'll need to provide your own dynamic loading solution ([react-loadable](https
 Production settings for SSR support are on the way in a future release.
 
 ### Code Splitting
-Added ability to set `chunkFilename` for webpack client configuration.
+Added ability to set `chunkFilename` for webpack client configuration. A full [guide on code splitting](docs-code-splitting) is available.
 
 ### Client Bundle Analyzation
 Added optional bundle analyzation for client JS bundles using [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer). You can set this up in the *settings.js* file using `webpack.client.[development/production].analyze`. It's enabled by passing an options object (disabled by default).
@@ -26,6 +27,9 @@ Previously, ACE would write bundled files to the disk automatically during devel
 
 ### Change Name of Manifest
 You can now change the output filename of the manifest (`manifest.json`) using `dist.manifestFilename` in *settings.js*.
+
+### New Documentation Site
+You're reading it. Ain't it fresh?
 
 ## Breaking Changes
 ### Refactored Settings & Code File Structure
