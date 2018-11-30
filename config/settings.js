@@ -1,23 +1,25 @@
+// See https://spothero.com/uniform/ace/docs/settings-home for documentation on these settings.
+
 const hostname = 'localhost';
 
 module.exports = {
     env: {
-        hostname, // the hostname that the browser initializes with during development
-        vars: { // environment variables as key/value pairs to pass to each webpack config for use in client JS code (example: {API_URL: '/api/v1'})
-            common: {}, // common env vars to pass to every webpack config
-            development: {}, // on by default: `NODE_ENV: JSON.stringify('development')`
-            test: {}, // on by default: `NODE_ENV: JSON.stringify('development')`
-            production: {} // on by default: `NODE_ENV: JSON.stringify('production')`
+        hostname,
+        vars: {
+            common: {},
+            development: {},
+            test: {},
+            production: {}
         }
     },
     deploy: {
-        releaseVersion: null, // production release version/tag/revision to use in tasks (example: add to Sentry for JS file uploads to tag source maps to a specific release)
-        staticUrl: '', // location where static assets are hosted on Cloudfront (typically something like `https://d111111abcdef8.cloudfront.net`)
-        path: '', // directory path structure for the S3 buckets where assets will be deployed (example: static/path/to/assets)
-        invalidatePaths: [], // additional paths to invalidate in Cloudfront during deployments
+        releaseVersion: null,
+        staticUrl: '',
+        path: '',
+        invalidatePaths: [],
         sandbox: {
-            bucket: '', // AWS bucket to put files in
-            cloudFrontDistributionId: '' // cloudfront distribution ID or array of IDs to invalidate
+            bucket: '',
+            cloudFrontDistributionId: ''
         },
         staging: {
             bucket: '',
@@ -29,45 +31,41 @@ module.exports = {
         }
     },
     browserSync: {
-        prefix: 'Browsersync', // prefix shown in shell when BS events occur
-        port: 3000, // port to run BS on
-        open: true, // automatically opens a new browser window when BS starts during development builds, set to 'external' if `hostname` isn't `localhost`
-        startPath: null // an optional path to open the browser window to when BS starts
+        prefix: 'Browsersync',
+        port: 3000,
+        open: true,
+        startPath: null
     },
     webpack: {
         client: {
-            port: 9000, // port for webpack to run on
-            entry: 'main.js', // string or object, modifies the entry point JS file(s) passed to webpack (path(s) start after `src.js.path`)
-            chunkFilename: '[name]-[chunkhash].js', // determines the name of non-entry chunk files (see: https://webpack.js.org/configuration/output/#output-chunkfilename)
-            output: '[name]-[hash].js', // name of generated output JS file
-            alias: {}, // an object to create aliases to `import` certain modules more easily (see: https://webpack.js.org/configuration/resolve/#resolve-alias)
-            resolveModules: [], // additional paths to resolve modules from (path(s) start after the `root.path` setting)
-            moduleRules: [], // additional rules to pass to webpack (see: https://webpack.js.org/configuration/module/#module-rules)
-            externals: {}, // exclude dependencies from output bundle (see: https://webpack.js.org/configuration/externals/)
-            clientLogLevel: 'none', // how to show messages in DevTools when using inline mode in dev server (see https://webpack.js.org/configuration/dev-server/#devserver-clientloglevel)
+            port: 9000,
+            entry: 'main.js',
+            chunkFilename: '[name]-[chunkhash].js',
+            output: '[name]-[hash].js',
+            alias: {},
+            resolveModules: [],
+            moduleRules: [],
+            externals: {},
+            clientLogLevel: 'none',
             optimization: {
-                runtimeChunk: 'single', // how the runtime is embedded in chunks (see: https://webpack.js.org/configuration/optimization/#optimization-runtimechunk)
-                splitChunks: {}, // configure chunk splitting, direct passthrough (see: https://webpack.js.org/configuration/optimization/#optimization-splitchunks)
+                runtimeChunk: 'single',
+                splitChunks: {},
             },
-            development: { // options to add during a development build
-                historyApiFallback: true, // adds support falling back to index.html in case the requested resource at a given URL can't be found (see: https://webpack.js.org/configuration/dev-server/#devserver-historyapifallback)
-                proxy: {}, // passes proxy information through to webpack server (see: https://webpack.js.org/configuration/dev-server/#devserver-proxy)
-                // For example...
-                // {
-                //     '/api/v1': `http://${hostname}:8000`
-                // },
-                sourceMap: 'cheap-module-source-map', // the source map type to use during development
-                writeToDisk: true, // whether to write bundled files to disk
-                analyze: null, // pass options object to enable bundle analyzation using webpack-bundle-analyzer (see: https://github.com/webpack-contrib/webpack-bundle-analyzer#options-for-plugin)
+            development: {
+                historyApiFallback: true,
+                proxy: {},
+                sourceMap: 'cheap-module-source-map',
+                writeToDisk: true,
+                analyze: null,
             },
             test: {
-                useBrowserSync: true, // use Browsersync during tests for CSS injection
-                browserSyncOpen: false, // open the browser window when Browsersync starts during tests, same possible settings as `browserSync.open`
-                sourceMap: 'cheap-module-source-map', // the source map type to use during testing
+                useBrowserSync: true,
+                browserSyncOpen: false,
+                sourceMap: 'cheap-module-source-map',
             },
             production: {
-                sourceMap: 'source-map', // the source map type to use during production
-                analyze: { // pass options object to enable bundle analyzation using webpack-bundle-analyzer (see: https://github.com/webpack-contrib/webpack-bundle-analyzer#options-for-plugin)
+                sourceMap: 'source-map',
+                analyze: {
                     generateStatsFile: true,
                     analyzerMode: 'static',
                     openAnalyzer: false,
@@ -75,50 +73,46 @@ module.exports = {
             },
         },
         server: {
-            port: 9001, // port for the server to run on
-            entry: 'server.js', // string that is the entry point JS file passed to webpack for the server (path(s) start after `src.path`)
-            output: 'server.bundle.js', // name of generated output JS file
-            alias: {}, // an object to create aliases to `import` certain modules more easily (see: https://webpack.js.org/configuration/resolve/#resolve-alias)
-            resolveModules: [], // additional paths to resolve modules from (path(s) start after the `root.path` setting)
-            moduleRules: [], // additional rules to pass to webpack (see: https://webpack.js.org/configuration/module/#module-rules)
-            externals: null, // exclude dependencies from output bundle, overrides default of `nodeExternals()` if set (see: https://webpack.js.org/configuration/externals/)
+            port: 9001,
+            entry: 'server.js',
+            output: 'server.bundle.js',
+            alias: {},
+            resolveModules: [],
+            moduleRules: [],
+            externals: null,
         },
     },
     root: {
-        path: './', // the root project directory (typically don't want to change this)
+        path: './',
     },
     cypress: {
-        path: 'cypress', // path to root Cypress folder
+        path: 'cypress',
     },
     src: {
         path: 'src',
-        index: 'index.html', // the index HTML file, where CSS replacement will happen for the htmlReplace task as well as Browsersync watching for changes and reloading
+        index: 'index.html',
         img: {
-            path: 'img' // path to image directory
+            path: 'img'
         },
         js: {
-            path: 'js', // path to JS directory where JS files will be watched for transpilation during development
+            path: 'js',
         },
         sass: {
-            path: 'sass' // path to Sass directory where Sass files will be watched for compilation during development
+            path: 'sass'
         },
         sprites: {
-            srcPath: 'sprites', // path to source sprites directory (should contain *-1x and *-2x directories)
-            outputPath: 'sprites', // path to output generated combined sprite images, will be appended to `img.path` above (example: /img/sprites)
-            sassMapOutputPath: 'utils/sprites', // path to output generated Sass sprite map files, will be appended to `sass.path` above (example: /sass/utils/sprites)
-            sassSpritesOutputPath: 'common/sprites', // path to output generated Sass sprite files (these hold actual sprite classes and get imported into your final Sass build), will be appended to `sass.path` above (example: /sass/common/sprites)
-            names: [ // the directory names (without the -1x or -2x) where singular sprite images originate, will determine output sprite image name, output sprite Sass file name, and output CSS sprite map names
-                // 'common',
-                // 'desktop',
-                // 'mobile'
-            ]
+            srcPath: 'sprites',
+            outputPath: 'sprites',
+            sassMapOutputPath: 'utils/sprites',
+            sassSpritesOutputPath: 'common/sprites',
+            names: []
         },
     },
     dist: {
-        path: 'dist', // path to the output folder that gets all static asset files during a production build
-        manifestFilename: 'manifest.json', // the output name of the manifest JSON file for static asset paths
+        path: 'dist',
+        manifestFilename: 'manifest.json',
         css: {
-            path: 'css' // path to generated CSS folder
+            path: 'css'
         },
     },
 };

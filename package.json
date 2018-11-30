@@ -10,6 +10,8 @@
     "ace": "./cli.js"
   },
   "scripts": {
+    "docs": "cd website && npm install && npm start",
+    "docs:generate": "ace -- docs",
     "release": "npm-release -- public"
   },
   "husky": {

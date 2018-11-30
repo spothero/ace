@@ -9,7 +9,7 @@ ACE started as an internal application at [SpotHero](https://spothero.com/) and 
 We use React and Sass. We don't do the whole CSS-in-JS thing (at least not at this time) and compile our Sass separately through Gulp rather than importing the Sass files into Webpack. As such, this is the workflow that ACE supports and if you'd like to contribute so that it can support others, we'd love to [hear from you](https://github.com/spothero/ace/blob/master/CONTRIBUTING.md).
 
 ## Documentation
-You can see all the details and view the full documentation on the [Wiki](https://github.com/spothero/ace/wiki).
+You can see all the details and view the full documentation on the [official site](https://spothero.com/uniform/ace).
 
 ## Credits
-ACE is heavily inspired by [Blendid](https://github.com/vigetlabs/blendid).
+ACE is inspired by [Blendid](https://github.com/vigetlabs/blendid).
