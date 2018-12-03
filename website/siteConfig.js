@@ -125,6 +125,11 @@ const siteConfig = {
     backgroundColor: '#1dbd71'
   },
 
+  algolia: {
+    apiKey: '24c3bf3a1d87b6e8edc2d90b4255f75b',
+    indexName: 'spothero_ace'
+  },
+
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
   repoUrl: 'https://github.com/spothero/ace',
