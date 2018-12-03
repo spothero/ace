@@ -1,3 +1,9 @@
+# 5.0.1 - 12/03/2018
+
+## Miscellaneous Updates
+* [[92e63fe](https://github.com/spothero/ace/commit/92e63fe)] - `chore:` Bump to latest dependencies (Matt Przybylski)
+* [[244ebd6](https://github.com/spothero/ace/commit/244ebd6)] - `fix:` Default runtimeChunk setting should be false (Matt Przybylski)
+
 # 5.0.0 - 12/03/2018
 ## Breaking Changes
 * [[04e61ed](https://github.com/spothero/ace/commit/04e61ed)] - Version 5 ([#15](https://github.com/spothero/ace/pull/15)) (Matt Przybylski)
