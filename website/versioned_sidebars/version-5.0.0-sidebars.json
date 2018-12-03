@@ -1,0 +1,56 @@
+{
+  "version-5.0.0-docs": {
+    "Overview": [
+      "version-5.0.0-docs-home",
+      "version-5.0.0-docs-prerequisites"
+    ],
+    "Usage": [
+      "version-5.0.0-docs-installation",
+      "version-5.0.0-docs-configuration"
+    ],
+    "Guides": [
+      "version-5.0.0-docs-code-splitting",
+      "version-5.0.0-docs-ssr"
+    ]
+  },
+  "version-5.0.0-settings": {
+    "Overview": [
+      "version-5.0.0-settings-home"
+    ],
+    "Available Settings": [
+      "version-5.0.0-settings-environment",
+      "version-5.0.0-settings-deploy",
+      "version-5.0.0-settings-browsersync",
+      "version-5.0.0-settings-webpack",
+      "version-5.0.0-settings-root",
+      "version-5.0.0-settings-cypress",
+      "version-5.0.0-settings-src",
+      "version-5.0.0-settings-dist",
+      "version-5.0.0-settings-special"
+    ]
+  },
+  "version-5.0.0-tasks": {
+    "Overview": [
+      "version-5.0.0-tasks-home"
+    ],
+    "Tasks": [
+      "version-5.0.0-tasks-default",
+      "version-5.0.0-tasks-extra",
+      "version-5.0.0-tasks-other",
+      "version-5.0.0-tasks-creating",
+      "version-5.0.0-tasks-adding",
+      "version-5.0.0-tasks-overriding",
+      "version-5.0.0-tasks-sprites",
+      "version-5.0.0-tasks-testing",
+      "version-5.0.0-tasks-deploying"
+    ]
+  },
+  "version-5.0.0-upgrading": {
+    "Overview": [
+      "version-5.0.0-upgrading-home"
+    ],
+    "Notable Upgrades": [
+      "version-5.0.0-upgrading-v5"
+    ]
+  }
+}
