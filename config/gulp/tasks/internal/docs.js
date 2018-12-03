@@ -69,7 +69,7 @@ const uploadToS3 = () => {
 
 const commitDocsTask = () => {
     return shell.task([
-        `git add -A && git commit -m "squash: Adding generated documentation version to source control"`
+        `git add -A && git commit -m "squash: Adding generated documentation version to source control" && git push`
     ], {
         cwd: process.env.INIT_CWD
     });
