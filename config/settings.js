@@ -48,7 +48,7 @@ module.exports = {
             externals: {},
             clientLogLevel: 'none',
             optimization: {
-                runtimeChunk: 'single',
+                runtimeChunk: false,
                 splitChunks: {},
             },
             development: {

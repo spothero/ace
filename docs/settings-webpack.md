@@ -57,7 +57,7 @@ Available optimization overrides.
 Controls how the runtime is embedded in chunks. [Additional documentation](https://webpack.js.org/configuration/optimization/#optimization-runtimechunk).
 
 **default:**
-`'single'`
+`false`
 
 #### `splitChunks`
 Configures chunk splitting. This is a direct passthrough to webpack to allow for the most flexibility. [Additional documentation](https://webpack.js.org/configuration/optimization/#optimization-splitchunks).
