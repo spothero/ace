@@ -172,6 +172,9 @@
       },
       "version-5.0.0-upgrading-v5": {
         "title": "<5.0.0 to 5.0.0"
+      },
+      "version-5.0.1-settings-webpack": {
+        "title": "Webpack"
       }
     },
     "links": {
