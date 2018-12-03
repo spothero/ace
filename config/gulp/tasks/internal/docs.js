@@ -29,7 +29,7 @@ const invalidateCloudFront = () => {
             CallerReference: uuidV4(),
             Paths: {
                 Quantity: 1,
-                Items: [`/uniform*`]
+                Items: [`/uniform/ace*`]
             }
         }
     };
@@ -48,13 +48,18 @@ const invalidateCloudFront = () => {
 const uploadToS3 = () => {
     const s3 = gulpS3Upload();
 
-    return gulp.src([`${projectPath('website/build')}/**`])
+    return gulp.src([
+        `${projectPath('website/build/ace')}/**`,
+        `${projectPath('website/versioned_docs')}/**`,
+        `${projectPath('website/versioned_sidebars')}/**`,
+        `${projectPath('website')}/versions.json`,
+    ])
         .pipe(s3(
             {
                 Bucket: deploySettings.bucket,
                 ACL: 'public-read',
                 keyTransform: relativeFilename => {
-                    return `uniform/${relativeFilename}`;
+                    return `uniform/ace/${relativeFilename}`;
                 }
             }, {
                 maxRetries: 5
