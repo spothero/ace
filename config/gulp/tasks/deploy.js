@@ -19,7 +19,7 @@ const getEnvironment = () => {
     return npmEnvironment;
 };
 
-const invalidateCloudFront = () => {
+const invalidateCloudFront = cb => {
     const npmEnvironment = getEnvironment();
     const cloudfront = new AWS.CloudFront();
     const basePath = `/${global.SETTINGS_CONFIG.deploy.path}`;
@@ -70,6 +70,8 @@ const invalidateCloudFront = () => {
                         throw new PluginError('invalidate', err, {showStack: true});
                     } else {
                         console.log(data); // eslint-disable-line no-console
+
+                        cb();
                     }
                 });
             })
