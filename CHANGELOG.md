@@ -1,3 +1,8 @@
+# 5.0.0 - 12/03/2018
+## Breaking Changes
+* [[04e61ed](https://github.com/spothero/ace/commit/04e61ed)] - Version 5 ([#15](https://github.com/spothero/ace/pull/15)) (Matt Przybylski)
+	* `breaking:` See the upgrade guide (https://spothero.com/uniform/ace/docs/upgrading-v5/) for full details of this release.
+
 # 4.4.0 - 11/27/2018
 ## Dependency Updates
 * [[a8e193f](https://github.com/spothero/ace/commit/a8e193f)] - Update gulp-s3-upload dependency to remove its flatmap-stream dependency (Zachary Wagner)
