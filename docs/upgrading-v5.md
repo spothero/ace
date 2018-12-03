@@ -25,6 +25,9 @@ Added the ability to set the [clientLogLevel](https://webpack.js.org/configurati
 ### Optionally Write Files To Disk
 Previously, ACE would write bundled files to the disk automatically during development builds which may help in debugging. There is now a new setting to control this, `webpack.client.development.writeToDisk` (`true` by default).
 
+### Add Webpack Sizing Info
+Compilation of webpack bundles now includes sizing information to show how the bundle sizes change build over build when gzipped.
+
 ### Change Name of Manifest
 You can now change the output filename of the manifest (`manifest.json`) using `dist.manifestFilename` in *settings.js*.
 
