@@ -1,0 +1,56 @@
+{
+  "docs": {
+    "Overview": [
+      "docs-home",
+      "docs-prerequisites"
+    ],
+    "Usage": [
+      "docs-installation",
+      "docs-configuration"
+    ],
+    "Guides": [
+      "docs-code-splitting",
+      "docs-ssr"
+    ]
+  },
+  "settings": {
+    "Overview": [
+      "settings-home"
+    ],
+    "Available Settings": [
+      "settings-environment",
+      "settings-deploy",
+      "settings-browsersync",
+      "settings-webpack",
+      "settings-root",
+      "settings-cypress",
+      "settings-src",
+      "settings-dist",
+      "settings-special"
+    ]
+  },
+  "tasks": {
+    "Overview": [
+      "tasks-home"
+    ],
+    "Tasks": [
+      "tasks-default",
+      "tasks-extra",
+      "tasks-other",
+      "tasks-creating",
+      "tasks-adding",
+      "tasks-overriding",
+      "tasks-sprites",
+      "tasks-testing",
+      "tasks-deploying"
+    ]
+  },
+  "upgrading": {
+    "Overview": [
+      "upgrading-home"
+    ],
+    "Notable Upgrades": [
+      "upgrading-v5"
+    ]
+  }
+}

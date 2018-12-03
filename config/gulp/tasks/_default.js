@@ -1,6 +1,8 @@
 const gulp = require('gulp');
 const sequence = require('run-sequence');
 
+process.title = 'ace-server';
+
 const developmentTask = cb => {
     const {
         taskSequence: {
@@ -20,12 +22,10 @@ const developmentTask = cb => {
             'lintSass',
             ...postBuild,
             'watch',
-            'server'
+            'devServerClient'
         ];
 
     sequence(...seq, cb);
 };
 
 gulp.task('default', developmentTask);
-
-module.exports = developmentTask;

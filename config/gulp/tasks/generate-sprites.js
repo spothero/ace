@@ -10,16 +10,17 @@ const padding = 5;
 const cssTemplate = './spritesmith.template.mustache';
 
 const generateSpritesTask = () => {
-    const spriteSrc = global.SETTINGS_CONFIG.sprites.srcPath;
-    const spriteDest = `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.img.path}/${global.SETTINGS_CONFIG.sprites.outputPath}`;
-    const sassDest = `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.sass.path}/${global.SETTINGS_CONFIG.sprites.sassMapOutputPath}`;
-    const spriteNames = global.SETTINGS_CONFIG.sprites.names;
+    const src = `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.src.path}`;
+    const spriteSrc = global.SETTINGS_CONFIG.src.sprites.srcPath;
+    const spriteDest = `${src}/${global.SETTINGS_CONFIG.src.img.path}/${global.SETTINGS_CONFIG.src.sprites.outputPath}`;
+    const sassDest = `${src}/${global.SETTINGS_CONFIG.src.sass.path}/${global.SETTINGS_CONFIG.src.sprites.sassMapOutputPath}`;
+    const spriteNames = global.SETTINGS_CONFIG.src.sprites.names;
     const spriteIds = {};
 
     spriteNames.forEach(name => {
         spriteIds[name] = [];
 
-        const retina = gulp.src(`${projectPath(global.SETTINGS_CONFIG.root.path)}/${spriteSrc}/${name}-2x/*.png`)
+        const retina = gulp.src(`${src}/${spriteSrc}/${name}-2x/*.png`)
             .pipe(spritesmith({
                 imgName: `sprite-${name}@2x.png`,
                 cssName: `_sprites-${name}-map-2x.scss`,
@@ -34,7 +35,7 @@ const generateSpritesTask = () => {
             }));
         const retinaImageStream = retina.img.pipe(gulp.dest(spriteDest));
         const retinaCSSStream = retina.css.pipe(gulp.dest(sassDest));
-        const regular = gulp.src(`${projectPath(global.SETTINGS_CONFIG.root.path)}/${spriteSrc}/${name}-1x/*.png`)
+        const regular = gulp.src(`${src}/${spriteSrc}/${name}-1x/*.png`)
             .pipe(spritesmith({
                 imgName: `sprite-${name}.png`,
                 cssName: `_sprites-${name}-map.scss`,
@@ -58,7 +59,7 @@ const generateSpritesTask = () => {
         log(colors.yellow(`Sass map information files have been generated in ${colors.green(sassDest)}.`));
 
         spriteNames.forEach(name => {
-            const sassSpritesOutputPath = `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.sass.path}/${global.SETTINGS_CONFIG.sprites.sassSpritesOutputPath}`;
+            const sassSpritesOutputPath = `${src}/${global.SETTINGS_CONFIG.src.sass.path}/${global.SETTINGS_CONFIG.src.sprites.sassSpritesOutputPath}`;
             const sassFileName = `${sassSpritesOutputPath}/_sprites-${name}.scss`;
 
             if (!fs.existsSync(sassSpritesOutputPath)) {
@@ -87,5 +88,3 @@ const generateSpritesTask = () => {
 };
 
 gulp.task('generateSprites', generateSpritesTask);
-
-module.exports = generateSpritesTask;

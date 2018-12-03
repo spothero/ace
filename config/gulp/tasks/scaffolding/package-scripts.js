@@ -12,12 +12,15 @@ const packageScriptsTask = cb => {
         if (readError) { console.log(readError); } // eslint-disable-line no-console
 
         const jsonData = JSON.parse(data);
-        const startScript = 'ace';
-        const testScript = 'concurrently --kill-others \"ace -- test\" \"npm run cypress:open\"'; // eslint-disable-line no-useless-escape
-        const cypressOpenScript = 'ace -- cypressOpen';
-        const cypressRunScript = 'ace -- cypressRun';
-        const buildScript = 'ace -- production';
-        const deployScript = 'npm run build && ace -- deploy';
+        const startScript = 'ACE_NPM_EVENT=start ace';
+        const startSSRScript = 'ACE_NPM_EVENT=start ace -- devServerSSR';
+        const testScript = 'ACE_NPM_EVENT=test ace -- test & wait-on http://localhost:3000 && npm run cypress:open';
+        const buildScript = 'ACE_NPM_EVENT=build ace -- production';
+        const cypressOpenScript = 'ace -- generateWebpackSettings && cypress open';
+        const cypressRunScript = 'ace -- generateWebpackSettings && cypress run';
+        const deploySandboxScript = 'ACE_DEPLOY_TYPE=sandbox npm run build && ace -- deploy';
+        const deployStagingScript = 'ACE_DEPLOY_TYPE=staging npm run build && ace -- deploy';
+        const deployProductionScript = 'ACE_DEPLOY_TYPE=production npm run build && ace -- deploy';
         let msg = 'You have existing scripts that ACE will overwrite.';
         let willOverride = false;
 
@@ -29,6 +32,14 @@ const packageScriptsTask = cb => {
 
         jsonData.scripts.start = startScript;
 
+        if (!isNil(jsonData.scripts['start:ssr']) && jsonData.scripts['start:ssr'] !== startSSRScript) {
+            msg += `\nCurrent "start:ssr" script will be saved as "start:ssr-backup".`;
+            jsonData.scripts['start:ssr-backup'] = jsonData.scripts['start:ssr'];
+            willOverride = true;
+        }
+
+        jsonData.scripts['start:ssr'] = startSSRScript;
+
         if (!isNil(jsonData.scripts.test) && jsonData.scripts.test !== testScript) {
             msg += `\nCurrent "test" script will be saved as "test-backup".`;
             jsonData.scripts['test-backup'] = jsonData.scripts.test;
@@ -36,22 +47,6 @@ const packageScriptsTask = cb => {
         }
 
         jsonData.scripts.test = testScript;
-
-        if (!isNil(jsonData.scripts['cypress:open']) && jsonData.scripts['cypress:open'] !== cypressOpenScript) {
-            msg += `\nCurrent "cypress:open" script will be saved as "cypress:open-backup".`;
-            jsonData.scripts['cypress:open'] = jsonData.scripts.cypressOpenScript;
-            willOverride = true;
-        }
-
-        jsonData.scripts['cypress:open'] = cypressOpenScript;
-
-        if (!isNil(jsonData.scripts['cypress:run']) && jsonData.scripts['cypress:run'] !== cypressRunScript) {
-            msg += `\nCurrent "cypress:run" script will be saved as "cypress:run-backup".`;
-            jsonData.scripts['cypress:run'] = jsonData.scripts.cypressRunScript;
-            willOverride = true;
-        }
-
-        jsonData.scripts['cypress:run'] = cypressRunScript;
 
         if (!isNil(jsonData.scripts.build) && jsonData.scripts.build !== buildScript) {
             msg += `\nCurrent "build" script will be saved as "build-backup".`;
@@ -61,29 +56,45 @@ const packageScriptsTask = cb => {
 
         jsonData.scripts.build = buildScript;
 
-        if (!isNil(jsonData.scripts['deploy:sandbox']) && jsonData.scripts['deploy:sandbox'] !== deployScript) {
+        if (!isNil(jsonData.scripts['cypress:open']) && jsonData.scripts['cypress:open'] !== cypressOpenScript) {
+            msg += `\nCurrent "cypress:open" script will be saved as "cypress:open-backup".`;
+            jsonData.scripts['cypress:open-backup'] = jsonData.scripts.cypressOpenScript;
+            willOverride = true;
+        }
+
+        jsonData.scripts['cypress:open'] = cypressOpenScript;
+
+        if (!isNil(jsonData.scripts['cypress:run']) && jsonData.scripts['cypress:run'] !== cypressRunScript) {
+            msg += `\nCurrent "cypress:run" script will be saved as "cypress:run-backup".`;
+            jsonData.scripts['cypress:run-backup'] = jsonData.scripts.cypressRunScript;
+            willOverride = true;
+        }
+
+        jsonData.scripts['cypress:run'] = cypressRunScript;
+
+        if (!isNil(jsonData.scripts['deploy:sandbox']) && jsonData.scripts['deploy:sandbox'] !== deploySandboxScript) {
             msg += `\nCurrent "deploy:sandbox" script will be saved as "deploy:sandbox-backup".`;
             jsonData.scripts['deploy:sandbox-backup'] = jsonData.scripts['deploy:sandbox'];
             willOverride = true;
         }
 
-        jsonData.scripts['deploy:sandbox'] = deployScript;
+        jsonData.scripts['deploy:sandbox'] = deploySandboxScript;
 
-        if (!isNil(jsonData.scripts['deploy:staging']) && jsonData.scripts['deploy:staging'] !== deployScript) {
+        if (!isNil(jsonData.scripts['deploy:staging']) && jsonData.scripts['deploy:staging'] !== deployStagingScript) {
             msg += `\nCurrent "deploy:staging" script will be saved as "deploy:staging-backup".`;
             jsonData.scripts['deploy:staging-backup'] = jsonData.scripts['deploy:staging'];
             willOverride = true;
         }
 
-        jsonData.scripts['deploy:staging'] = deployScript;
+        jsonData.scripts['deploy:staging'] = deployStagingScript;
 
-        if (!isNil(jsonData.scripts['deploy:production']) && jsonData.scripts['deploy:production'] !== deployScript) {
+        if (!isNil(jsonData.scripts['deploy:production']) && jsonData.scripts['deploy:production'] !== deployProductionScript) {
             msg += `\nCurrent "deploy:production" script will be saved as "deploy:production-backup".`;
             jsonData.scripts['deploy:production-backup'] = jsonData.scripts['deploy:production'];
             willOverride = true;
         }
 
-        jsonData.scripts['deploy:production'] = deployScript;
+        jsonData.scripts['deploy:production'] = deployProductionScript;
 
         if (willOverride) {
             log(colors.red(msg));
@@ -98,5 +109,3 @@ const packageScriptsTask = cb => {
 };
 
 gulp.task('updatePackageScripts', packageScriptsTask);
-
-module.exports = packageScriptsTask;

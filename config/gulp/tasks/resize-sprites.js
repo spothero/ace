@@ -7,7 +7,7 @@ const colors = require('ansi-colors');
 const projectPath = require('../lib/project-path');
 
 const resizeSpritesTask = () => {
-    const spritesSrc = `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.sprites.srcPath}`;
+    const spritesSrc = `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.src.path}/${global.SETTINGS_CONFIG.src.sprites.srcPath}`;
 
     log(colors.red('Removed prior *-1x folders for re-creation of new ones based on *-2x sprites.'));
 
@@ -26,5 +26,3 @@ const resizeSpritesTask = () => {
 };
 
 gulp.task('resizeSprites', resizeSpritesTask);
-
-module.exports = resizeSpritesTask;

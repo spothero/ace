@@ -10,7 +10,7 @@ const uuidV4 = require('uuid/v4');
 const projectPath = require('../lib/project-path');
 
 const getEnvironment = () => {
-    const npmEnvironment = process.env.npm_lifecycle_event.split(':')[1] || 'development';
+    const npmEnvironment = process.env.ACE_DEPLOY_TYPE || 'development';
 
     if (npmEnvironment === 'sandbox' && isNil(process.env.SANDBOX_NAME)) {
         throw new PluginError('deploy', 'You must specify a sandbox name for sandbox deployments. See README.md for more information.');
@@ -24,13 +24,12 @@ const invalidateCloudFront = () => {
     const cloudfront = new AWS.CloudFront();
     const basePath = `/${global.SETTINGS_CONFIG.deploy.path}`;
     const indexFileName = 'index.html';
-    const manifestFileName = 'manifest.json';
     const indexPath = (npmEnvironment === 'sandbox')
         ? `${basePath}/sandbox/${process.env.SANDBOX_NAME}/${indexFileName}`
         : `${basePath}/${indexFileName}`;
     const manifestPath = (npmEnvironment === 'sandbox')
-        ? `${basePath}/sandbox/${process.env.SANDBOX_NAME}/${manifestFileName}`
-        : `${basePath}/${manifestFileName}`;
+        ? `${basePath}/sandbox/${process.env.SANDBOX_NAME}/${global.SETTINGS_CONFIG.dist.manifestFilename}`
+        : `${basePath}/${global.SETTINGS_CONFIG.dist.manifestFilename}`;
     const batchItems = [
         indexPath,
         manifestPath,
@@ -124,5 +123,3 @@ const deployTask = cb => {
 gulp.task('upload', uploadToS3);
 gulp.task('invalidate', invalidateCloudFront);
 gulp.task('deploy', deployTask);
-
-module.exports = deployTask;

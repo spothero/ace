@@ -6,10 +6,7 @@ const handleErrors = require('../utils/handle-errors');
 const projectPath = require('../lib/project-path');
 
 const lintSassTask = src => {
-    const npmEvent = (process.env.npm_lifecycle_event)
-        ? process.env.npm_lifecycle_event.split(':')[0]
-        : 'start';
-    const reporters = (npmEvent === 'start' || npmEvent === 'test' || npmEvent === 'cypress')
+    const reporters = (process.env.ACE_NPM_EVENT !== 'build')
         ? [{formatter: 'string', console: true}]
         : [{formatter: checkstyleFormatter, save: 'checkstyle-stylelint.xml'}];
 
@@ -23,6 +20,7 @@ const lintSassTask = src => {
 };
 
 gulp.task('lintSass', () => {
+    const src = `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.src.path}`;
     const patterns = (global.TASK_CONFIG.lintSass.patterns.length)
         ? global.TASK_CONFIG.lintSass.patterns.map(pattern => {
             let newPattern = `${projectPath(global.SETTINGS_CONFIG.root.path)}/${pattern}`;
@@ -36,10 +34,8 @@ gulp.task('lintSass', () => {
         : [];
 
     return lintSassTask([
-        `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.sass.path}/**/*.scss`,
-        `!${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.sass.path}/utils/**/*.scss`,
+        `${src}/${global.SETTINGS_CONFIG.src.sass.path}/**/*.scss`,
+        `!${src}/${global.SETTINGS_CONFIG.src.sass.path}/utils/**/*.scss`,
         ...patterns
     ]);
 });
-
-module.exports = lintSassTask;

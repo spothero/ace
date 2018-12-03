@@ -60,5 +60,3 @@ const updatePeerDependenciesTask = cb => {
 
 gulp.task('confirmUpdatePeerDeps', updatePeerDepsTask);
 gulp.task('updatePeerDeps', updatePeerDependenciesTask);
-
-module.exports = updatePeerDependenciesTask;

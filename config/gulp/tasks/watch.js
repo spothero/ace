@@ -30,17 +30,15 @@ const watchTask = ({sass, js}) => {
         gulp.watch(js, ['lintJS']);
     };
 };
+const src = `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.src.path}`;
 
 gulp.task('watch', ['lintJS'], watchTask({
     sass: [
-        `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.sass.path}/**/*.scss`,
+        `${src}/${global.SETTINGS_CONFIG.src.sass.path}/**/*.scss`,
         ...sassPatterns
     ],
     js: [
-        `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.js.path}/**/*.{js,jsx}`,
-        `!${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.js.path}/${global.SETTINGS_CONFIG.js.output}`,
+        `${src}/${global.SETTINGS_CONFIG.src.js.path}/**/*.{js,jsx}`,
         ...jsPatterns
     ]
 }));
-
-module.exports = watchTask;

@@ -19,9 +19,9 @@ const productionTask = cb => {
             'lintSass',
             ...preBuild,
             'sass',
-            'webpack',
+            'webpackClient',
             'cssMin',
-            'revision',
+            'htmlReplace',
             ...postBuild
         ];
 
@@ -29,5 +29,3 @@ const productionTask = cb => {
 };
 
 gulp.task('production', productionTask);
-
-module.exports = productionTask;
