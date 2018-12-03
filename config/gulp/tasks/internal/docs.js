@@ -29,7 +29,7 @@ const invalidateCloudFront = () => {
             CallerReference: uuidV4(),
             Paths: {
                 Quantity: 1,
-                Items: [`/uniform/ace*`]
+                Items: [`/uniform*`]
             }
         }
     };
@@ -67,11 +67,20 @@ const uploadToS3 = () => {
         ));
 };
 
+const commitDocsTask = () => {
+    return shell.task([
+        `git add -A && git commit -m "squash: Adding generated documentation version to source control"`
+    ], {
+        cwd: process.env.INIT_CWD
+    });
+};
+
 const docsTask = cb => {
     sequence(
         'generateACEDocs',
         'uploadACEDocs',
         'invalidateACEDocs',
+        'commitACEDocs',
         cb
     );
 };
@@ -79,4 +88,5 @@ const docsTask = cb => {
 gulp.task('generateACEDocs', generateACEDocsTask());
 gulp.task('uploadACEDocs', uploadToS3);
 gulp.task('invalidateACEDocs', invalidateCloudFront);
+gulp.task('commitACEDocs', commitDocsTask());
 gulp.task('docs', docsTask);
