@@ -2,6 +2,7 @@ const isObject = require('lodash/isObject');
 const mapValues = require('lodash/mapValues');
 const path = require('path');
 const webpack = require('webpack');
+const SizePlugin = require('size-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const settingsConfig = require('../../gulp/lib/get-settings-config');
@@ -54,6 +55,7 @@ const config = {
         new webpack.DefinePlugin({
             'process.env': settingsConfig.env.vars.common
         }),
+        new SizePlugin(),
         new ManifestPlugin({
             fileName: `../${settingsConfig.dist.manifestFilename}`,
             basePath: `${settingsConfig.src.js.path}/`,

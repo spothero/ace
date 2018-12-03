@@ -122,6 +122,7 @@
     "react-hot-loader": "4.3.12",
     "require-dir": "1.2.0",
     "run-sequence": "2.2.1",
+    "size-plugin": "1.0.1",
     "stylelint-checkstyle-formatter": "0.1.2",
     "uglifyjs-webpack-plugin": "2.0.1",
     "uuid": "3.3.2",
