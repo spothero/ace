@@ -107,15 +107,13 @@ module.exports = {
 ```
 
 ### Default JS Bundle Renamed
-The default output name of the JS bundle is now `[main]-[hash].js` instead of `bundle.js`. If your project was using the default settings, you'll want to update your `index.html` file to remove the script tag (which is now automatically injected by Webpack to the HTML template).
+The default output name of the JS bundle is now `[main]-[hash].js` instead of `bundle.js`. If your project was using the default settings, you'll want to update your `index.html` file to remove the script tag (which is now automatically injected by Webpack to the HTML template) and now includes some markup to help generate proper CSS file paths as well.
 
 ### Removed Revision Task
 The `revision` task was no longer necessary. Webpack now takes care of versioning JS files during production builds and the `cssmin` task does the same for CSS files.
 
 ### Removed htmlReplace Task Options
 The new `htmlReplace` task is an internal task and because of changes to JS/CSS files being automated and naming being determined based on original names (and through the manifest file), these options are now obsolete. As such, they have been removed from *tasks.js*.
-
-The *index.html* file that is scaffolded now includes some markup to help generate proper CSS file paths as well.
 
 ### Update generateBabelrc Task
 Previously, setting `browserslist` and `babel` settings in *.acerc* files completely overrode these settings internally. The new behavior is to still completely override the `browserslist` but recursively merge the `babel` settings since those are dependent on everything running smoothly. By passing options to `babel`, you can now simply add on other presets or plugins you may need and no longer have to manage ALL of the overridden settings for Babel in your project.
