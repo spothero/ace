@@ -37,6 +37,9 @@ if (settingsConfig.webpack.client.test.useBrowserSync) {
 module.exports = {
     mode: 'development',
     devtool: settingsConfig.webpack.client.test.sourceMap,
+    output: {
+        publicPath: `/${settingsConfig.src.js.path}/`,
+    },
     cache: true,
     plugins,
     optimization: {

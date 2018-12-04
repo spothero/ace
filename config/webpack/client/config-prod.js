@@ -20,6 +20,9 @@ if (analyze) {
 module.exports = {
     mode: 'production',
     devtool: settingsConfig.webpack.client.production.sourceMap,
+    output: {
+        publicPath: `${settingsConfig.src.js.path}/`,
+    },
     plugins,
     performance: {
         hints: false

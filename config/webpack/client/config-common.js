@@ -27,7 +27,6 @@ const config = {
         path: path.resolve(`${dist}/${settingsConfig.src.js.path}`),
         filename: settingsConfig.webpack.client.output,
         chunkFilename: settingsConfig.webpack.client.chunkFilename,
-        publicPath: `${settingsConfig.src.js.path}/`,
     },
     resolve: {
         alias: settingsConfig.webpack.client.alias,
@@ -66,6 +65,7 @@ const config = {
         new HTMLWebpackPlugin({
             filename: `${dist}/${settingsConfig.src.index}`,
             template: `${src}/${settingsConfig.src.index}`,
+            aceEvent: process.env.ACE_NPM_EVENT,
         }),
     ],
     externals: settingsConfig.webpack.client.externals,

@@ -7,7 +7,7 @@
 
         <title>Project Title Goes Here</title>
 
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="<% if (htmlWebpackPlugin.options.aceEvent !== 'build') { %>/<% } %>css/main.css">
     </head>
     <body>
         <div class="root"></div>
