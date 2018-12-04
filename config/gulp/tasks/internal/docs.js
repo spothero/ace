@@ -15,7 +15,16 @@ const deploySettings = {
 
 const generateACEDocsTask = () => {
     return shell.task([
-        `cd website && npm install && npm run version ${pkg.version}`
+        `cd website && npm install && npm run build`
+        // `cd website && npm install && npm run version ${pkg.version}`
+    ], {
+        cwd: process.env.INIT_CWD
+    });
+};
+
+const commitDocsTask = () => {
+    return shell.task([
+        `git add -A && git commit -m "squash: Adding generated documentation version to source control" && git push`
     ], {
         cwd: process.env.INIT_CWD
     });
@@ -69,26 +78,18 @@ const uploadToS3 = () => {
         ));
 };
 
-const commitDocsTask = () => {
-    return shell.task([
-        `git add -A && git commit -m "squash: Adding generated documentation version to source control" && git push`
-    ], {
-        cwd: process.env.INIT_CWD
-    });
-};
-
 const docsTask = cb => {
     sequence(
         'generateACEDocs',
+        'commitACEDocs',
         'uploadACEDocs',
         'invalidateACEDocs',
-        'commitACEDocs',
         cb
     );
 };
 
 gulp.task('generateACEDocs', generateACEDocsTask());
+gulp.task('commitACEDocs', commitDocsTask());
 gulp.task('uploadACEDocs', uploadToS3);
 gulp.task('invalidateACEDocs', invalidateCloudFront);
-gulp.task('commitACEDocs', commitDocsTask());
 gulp.task('docs', docsTask);
