@@ -1,3 +1,9 @@
+# 5.0.2 - 12/04/2018
+
+## Miscellaneous Updates
+* [[27872b8](https://github.com/spothero/ace/commit/27872b8)] - `fix:` Public path in webpack not being set correctly based on build environment (Matt Przybylski)
+* [[ea3d655](https://github.com/spothero/ace/commit/ea3d655)] - `fix:` Run the Gulp callback function after invalidation in deploy task (Matt Przybylski)
+
 # 5.0.1 - 12/03/2018
 
 ## Miscellaneous Updates
