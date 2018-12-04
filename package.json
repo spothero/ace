@@ -5,7 +5,7 @@
   "main": "config/gulp/index.js",
   "repository": "https://github.com/spothero/ace",
   "author": "SpotHero",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "bin": {
     "ace": "./cli.js"
   },
