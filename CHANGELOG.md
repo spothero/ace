@@ -1,3 +1,8 @@
+# 5.1.2 - 12/06/2018
+
+## Miscellaneous Updates
+* [[9fe173c](https://github.com/spothero/ace/commit/9fe173c)] - `fix:` Embarassing amount of errors in the new injectAssets option internally, forgive us (Matt Przybylski)
+
 # 5.1.1 - 12/06/2018
 
 ## Miscellaneous Updates
