@@ -1,6 +1,6 @@
 ---
 id: upgrading-v5
-title: <5.0.0 to 5.0.0
+title: <5.0.0 to 5.x.x
 ---
 
 The fifth version of ACE brings the largest update to date.

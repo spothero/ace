@@ -1,3 +1,8 @@
+# 5.1.1 - 12/06/2018
+
+## Miscellaneous Updates
+* [[cf1406b](https://github.com/spothero/ace/commit/cf1406b)] - `fix:` Incorrectly accessing the new injectAssets setting in webpack configs (Matt Przybylski)
+
 # 5.1.0 - 12/06/2018
 ## New Features
 * [[37c6dab](https://github.com/spothero/ace/commit/37c6dab)] - Added ability to control asset injection into HTML templates in settings (Matt Przybylski)
