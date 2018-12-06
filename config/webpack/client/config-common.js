@@ -1,4 +1,5 @@
 const isObject = require('lodash/isObject');
+const isUndefined = require('lodash/isUndefined');
 const mapValues = require('lodash/mapValues');
 const path = require('path');
 const webpack = require('webpack');
@@ -65,7 +66,9 @@ const config = {
         new HTMLWebpackPlugin({
             filename: `${dist}/${settingsConfig.src.index}`,
             template: `${src}/${settingsConfig.src.index}`,
-            inject: settingsConfig.webpack.client.injectAssets || true,
+            inject: (!isUndefined(settingsConfig.webpack.client.injectAssets))
+                ? settingsConfig.webpack.client.injectAssets
+                : true,
             aceEvent: process.env.ACE_NPM_EVENT,
         }),
     ],
