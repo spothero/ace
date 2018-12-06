@@ -13,14 +13,14 @@ module.exports = {
     ...,
     clean: {
         patterns: [
-            'sprites/generated/**/*.png'
+            'src/sprites/generated/**/*.png'
         ]
     },
     ...
 };
 ```
 
-This will delete any `.png` files in `[project root]/sprites/generated/*`;
+This will delete any `.png` files in `[project root]/src/sprites/generated/*`;
 
 ***The build environments that the tasks are supported in are listed in parentheses.***
 
