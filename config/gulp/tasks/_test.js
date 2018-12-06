@@ -42,6 +42,7 @@ const testTask = cb => {
             'clean',
             ...preBuild,
             'sass',
+            'cssManifest',
             'lintSass',
             ...postBuild,
             'watch',

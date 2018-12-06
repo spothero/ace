@@ -30,8 +30,14 @@ Removes generated CSS and bundled JS files before a new build. Also cleans up `*
 *Options*<br />
 `patterns` (Array): Glob patterns to add to the default deletion items.
 
+### `cssManifest` *(development)*
+Adds the local CSS file paths to the manifest.
+
+*Options*<br />
+N/A
+
 ### `cssMin` *(production)*
-Compiles Sass files for a production build, including minification and revisioning.
+Compiles Sass files for a production build, including minification and revisioning, and adds the key/value pair to the manifest.
 
 *Options*<br />
 Most of the changes to this task will happen through modifying the settings. See [the process](settings-home#process) for details.

@@ -19,6 +19,7 @@ const developmentTask = cb => {
             'clean',
             ...preBuild,
             'sass',
+            'cssManifest',
             'lintSass',
             ...postBuild,
             'watch',

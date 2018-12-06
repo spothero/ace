@@ -19,8 +19,8 @@ const productionTask = cb => {
             'lintSass',
             ...preBuild,
             'sass',
-            'webpackClient',
             'cssMin',
+            'webpackClient',
             'htmlReplace',
             ...postBuild
         ];

@@ -4,7 +4,7 @@ const mapValues = require('lodash/mapValues');
 const path = require('path');
 const webpack = require('webpack');
 const SizePlugin = require('size-plugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
+const WebpackAssetsManifest = require('webpack-assets-manifest');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const settingsConfig = require('../../gulp/lib/get-settings-config');
 const projectPath = require('../../gulp/lib/project-path');
@@ -56,12 +56,24 @@ const config = {
             'process.env': settingsConfig.env.vars.common
         }),
         new SizePlugin(),
-        new ManifestPlugin({
-            fileName: `../${settingsConfig.dist.manifestFilename}`,
-            basePath: `${settingsConfig.src.js.path}/`,
-            filter(file) {
-                return file.path.endsWith('.js');
-            },
+        new WebpackAssetsManifest({
+            output: `../${settingsConfig.dist.manifestFilename}`,
+            writeToDisk: true,
+            merge: true,
+            customize: (entryItem, original, manifest, asset) => {
+                // don't add .map files to manifest
+                if (entryItem.key.toLowerCase().endsWith('.map')) {
+                    return false;
+                }
+
+                // add JS path before each JS file key/value pair in manifest
+                if (entryItem.key.toLowerCase().endsWith('.js')) {
+                    return {
+                        key: `${settingsConfig.src.js.path}/${entryItem.key}`,
+                        value: `${settingsConfig.src.js.path}/${entryItem.value}`,
+                    };
+                }
+            }
         }),
         new HTMLWebpackPlugin({
             filename: `${dist}/${settingsConfig.src.index}`,
