@@ -11,7 +11,7 @@ const babelOptions = require('../../babel');
 
 const src = `${projectPath(settingsConfig.root.path)}/${settingsConfig.src.path}`;
 const dist = `${projectPath(settingsConfig.root.path)}/${settingsConfig.dist.path}`;
-const entry = isObject(settingsConfig.webpack.client.entry)
+const entry = (isObject(settingsConfig.webpack.client.entry))
     ? mapValues(settingsConfig.webpack.client.entry, item => {
         return `${src}/${settingsConfig.src.js.path}/${item}`;
     })
@@ -65,6 +65,7 @@ const config = {
         new HTMLWebpackPlugin({
             filename: `${dist}/${settingsConfig.src.index}`,
             template: `${src}/${settingsConfig.src.index}`,
+            inject: settingsConfig.webpack.client.inject || true,
             aceEvent: process.env.ACE_NPM_EVENT,
         }),
     ],

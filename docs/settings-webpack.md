@@ -32,6 +32,12 @@ The name of the generated output JS file(s).
 **default:**
 `'[name]-[hash].js'`
 
+### `injectAssets`
+Whether to inject all assets into the given HTML template. If this is set to false, it will be your responsibility to make sure that you load the assets correctly. [Additional documentation](https://github.com/jantimon/html-webpack-plugin#options).
+
+**default:**
+`true`
+
 ### `alias`
 An object to create aliases to `import` certain modules more easily. [Additional documentation](https://webpack.js.org/configuration/resolve/#resolve-alias).
 
