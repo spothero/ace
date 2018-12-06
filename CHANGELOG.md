@@ -1,3 +1,7 @@
+# 5.2.0 - 12/06/2018
+## New Features
+* [[56da708](https://github.com/spothero/ace/commit/56da708)] - Add CSS filename key/value pairs to the manifest during development builds (Matt Przybylski)
+
 # 5.1.2 - 12/06/2018
 
 ## Miscellaneous Updates
