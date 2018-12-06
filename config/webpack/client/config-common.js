@@ -65,7 +65,7 @@ const config = {
         new HTMLWebpackPlugin({
             filename: `${dist}/${settingsConfig.src.index}`,
             template: `${src}/${settingsConfig.src.index}`,
-            inject: settingsConfig.webpack.client.inject || true,
+            inject: settingsConfig.webpack.client.injectAssets || true,
             aceEvent: process.env.ACE_NPM_EVENT,
         }),
     ],
