@@ -1,3 +1,12 @@
+# 5.1.0 - 12/06/2018
+## New Features
+* [[37c6dab](https://github.com/spothero/ace/commit/37c6dab)] - Added ability to control asset injection into HTML templates in settings (Matt Przybylski)
+
+## Miscellaneous Updates
+* [[7cbeed0](https://github.com/spothero/ace/commit/7cbeed0)] - `chore:` License under Apache 2.0 instead of MIT (Matt Przybylski)
+* [[a21a69a](https://github.com/spothero/ace/commit/a21a69a)] - `docs:` Updated upgrading guide to best reflect index.html changes (Matt Przybylski)
+* [[e305aa9](https://github.com/spothero/ace/commit/e305aa9)] - `ci:` Add docs to .npmignore (Matt Przybylski)
+
 # 5.0.2 - 12/04/2018
 
 ## Miscellaneous Updates
