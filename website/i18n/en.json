@@ -190,6 +190,9 @@
       },
       "version-5.2.1-tasks-default": {
         "title": "Defaults"
+      },
+      "version-5.2.2-upgrading-v5": {
+        "title": "<5.0.0 to 5.x.x"
       }
     },
     "links": {
