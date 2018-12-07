@@ -1,5 +1,4 @@
 const forIn = require('lodash/forIn');
-const includes = require('lodash/includes');
 const isEmpty = require('lodash/isEmpty');
 const fs = require('fs');
 const gulp = require('gulp');
@@ -33,9 +32,9 @@ const sentryTask = () => {
     const sources = [];
 
     forIn(manifest, value => {
-        if (includes(value, '.min.js')) {
+        if (value.endsWith('.js')) {
             sources.push(`${projectPath(global.SETTINGS_CONFIG.dist.path)}/${value}`);
-            sources.push(`${projectPath(global.SETTINGS_CONFIG.dist.path)}/${value.replace('.min.js', '.min.js.map')}`);
+            sources.push(`${projectPath(global.SETTINGS_CONFIG.dist.path)}/${value.replace('.js', '.js.map')}`);
         }
     });
 
