@@ -112,7 +112,7 @@ const deployTask = cb => {
     const npmEnvironment = getEnvironment();
 
     if (isEmpty(settings.path) || isEmpty(settings[npmEnvironment].bucket) || isEmpty(settings[npmEnvironment].cloudFrontDistributionId)) {
-        throw new PluginError('deploy', 'You must fill in all the applicable settings for the "deploy" object in the settings file. See https://github.com/spothero/ace/wiki/Deploying for details.');
+        throw new PluginError('deploy', 'You must fill in all the applicable settings for the "deploy" object in the settings file. See https://spothero.com/uniform/ace/docs/tasks-deploying/ for details.');
     }
 
     sequence(

@@ -18,9 +18,9 @@ const packageScriptsTask = cb => {
         const buildScript = 'ACE_NPM_EVENT=build ace -- production';
         const cypressOpenScript = 'ace -- generateWebpackSettings && cypress open';
         const cypressRunScript = 'ace -- generateWebpackSettings && cypress run';
-        const deploySandboxScript = 'ACE_DEPLOY_TYPE=sandbox npm run build && ace -- deploy';
-        const deployStagingScript = 'ACE_DEPLOY_TYPE=staging npm run build && ace -- deploy';
-        const deployProductionScript = 'ACE_DEPLOY_TYPE=production npm run build && ace -- deploy';
+        const deploySandboxScript = 'npm run build && ACE_DEPLOY_TYPE=sandbox ace -- deploy';
+        const deployStagingScript = 'npm run build && ACE_DEPLOY_TYPE=staging ace -- deploy';
+        const deployProductionScript = 'npm run build && ACE_DEPLOY_TYPE=production ace -- deploy';
         let msg = 'You have existing scripts that ACE will overwrite.';
         let willOverride = false;
 

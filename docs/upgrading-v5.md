@@ -59,9 +59,9 @@ ACE previously parsed the `npm_lifecycle_event` to try and figure out what a use
 + "start": "ACE_NPM_EVENT=start ace",
 + "test": "ACE_NPM_EVENT=test ace -- test & wait-on http://localhost:3000 && npm run cypress:open",
 + "build": "ACE_NPM_EVENT=build ace -- production",
-+ "deploy:sandbox": "ACE_DEPLOY_TYPE=sandbox npm run build && ace -- deploy",
-+ "deploy:staging": "ACE_DEPLOY_TYPE=staging npm run build && ace -- deploy",
-+ "deploy:production": "ACE_DEPLOY_TYPE=production npm run build && ace -- deploy",
++ "deploy:sandbox": "npm run build && ACE_DEPLOY_TYPE=sandbox ace -- deploy",
++ "deploy:staging": "npm run build && ACE_DEPLOY_TYPE=staging ace -- deploy",
++ "deploy:production": "npm run build && ACE_DEPLOY_TYPE=production ace -- deploy",
 ```
 
 These changes provide an easier way to identify intentions and give developers additional environment variables to check for in their own processes.

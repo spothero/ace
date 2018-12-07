@@ -81,7 +81,7 @@ const generateSpritesTask = () => {
             sassStream.end();
         });
 
-        log(colors.red('See https://github.com/spothero/ace/wiki/Sprites for more details.'));
+        log(colors.red('See https://spothero.com/uniform/ace/docs/tasks-sprites/ for more details.'));
     });
 
     return stream;
