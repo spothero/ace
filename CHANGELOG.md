@@ -1,3 +1,9 @@
+# 5.2.1 - 12/07/2018
+
+## Miscellaneous Updates
+* [[94e362f](https://github.com/spothero/ace/commit/94e362f)] - `fix:` Sentry task was no longer uploading correct file based on new manifest generation patterns (Matt Przybylski)
+* [[f8580fe](https://github.com/spothero/ace/commit/f8580fe)] - `docs:` Update default tasks example (Matt Przybylski)
+
 # 5.2.0 - 12/06/2018
 ## New Features
 * [[56da708](https://github.com/spothero/ace/commit/56da708)] - Add CSS filename key/value pairs to the manifest during development builds (Matt Przybylski)
