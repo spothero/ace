@@ -1,3 +1,9 @@
+# 5.2.2 - 12/07/2018
+
+## Miscellaneous Updates
+* [[eda957d](https://github.com/spothero/ace/commit/eda957d)] - `fix:` Move ACE_DEPLOY_TYPE env vars to proper spot in package scripts so they get picked up correctly in deploy task (Matt Przybylski)
+* [[123cb3b](https://github.com/spothero/ace/commit/123cb3b)] - `docs:` Upgraded Docusaurus to latest version (Matt Przybylski)
+
 # 5.2.1 - 12/07/2018
 
 ## Miscellaneous Updates
