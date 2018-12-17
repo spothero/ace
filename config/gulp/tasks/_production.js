@@ -1,13 +1,15 @@
 const gulp = require('gulp');
 const sequence = require('run-sequence');
 
-const productionTask = cb => {
+const productionClientTask = cb => {
     const {
         taskSequence: {
-            production: {
-                preBuild,
-                postBuild,
-                custom
+            client: {
+                production: {
+                    preBuild,
+                    postBuild,
+                    custom
+                }
             }
         }
     } = global.TASK_CONFIG;
@@ -28,4 +30,4 @@ const productionTask = cb => {
     sequence(...seq, cb);
 };
 
-gulp.task('production', productionTask);
+gulp.task('production', productionClientTask);

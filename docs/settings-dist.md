@@ -11,8 +11,11 @@ The path to the output folder that gets all static asset files during a producti
 **default:**
 `'dist'`
 
-## `manifestFilename`
-The output name of the manifest JSON file for static asset paths.
+## `manifest`
+Settings to control items having to do with the asset manifest.
+
+### `filename`
+The output name of the manifest JSON file.
 
 **default:**
 `'manifest.json'`

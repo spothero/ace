@@ -25,7 +25,8 @@ const plugins = [
             startPath: settingsConfig.browserSync.startPath,
             files: [
                 `${dist}/${settingsConfig.dist.css.path}/*.css`,
-                `${dist}/${settingsConfig.src.index}`
+                `${dist}/${settingsConfig.src.index}`,
+                `${dist}/${settingsConfig.webpack.server.output}`,
             ]
         },
         {

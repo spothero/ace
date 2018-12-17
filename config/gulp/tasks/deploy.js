@@ -28,8 +28,8 @@ const invalidateCloudFront = cb => {
         ? `${basePath}/sandbox/${process.env.SANDBOX_NAME}/${indexFileName}`
         : `${basePath}/${indexFileName}`;
     const manifestPath = (npmEnvironment === 'sandbox')
-        ? `${basePath}/sandbox/${process.env.SANDBOX_NAME}/${global.SETTINGS_CONFIG.dist.manifestFilename}`
-        : `${basePath}/${global.SETTINGS_CONFIG.dist.manifestFilename}`;
+        ? `${basePath}/sandbox/${process.env.SANDBOX_NAME}/${global.SETTINGS_CONFIG.dist.manifest.filename}`
+        : `${basePath}/${global.SETTINGS_CONFIG.dist.manifest.filename}`;
     const batchItems = [
         indexPath,
         manifestPath,

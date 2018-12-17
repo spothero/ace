@@ -1,20 +1,20 @@
 const webpackMerge = require('webpack-merge');
-const configCommon = require('./config-common');
-const configDev = require('./config-dev');
-const configTest = require('./config-test');
-const configProd = require('./config-prod');
+const configClientCommon = require('./config-common');
+const configClientDev = require('./config-dev');
+const configClientTest = require('./config-test');
+const configClientProd = require('./config-prod');
 
 switch (process.env.ACE_NPM_EVENT) {
     case 'start':
     default:
-        module.exports = webpackMerge(configDev, configCommon);
+        module.exports = webpackMerge(configClientDev, configClientCommon);
         break;
 
     case 'test':
-        module.exports = webpackMerge(configTest, configCommon);
+        module.exports = webpackMerge(configClientTest, configClientCommon);
         break;
 
     case 'build':
-        module.exports = webpackMerge(configProd, configCommon);
+        module.exports = webpackMerge(configClientProd, configClientCommon);
         break;
 }

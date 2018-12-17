@@ -15,6 +15,7 @@ app.use(cors());
 app.use(express.static(settings.dist.path));
 
 app.get('*', (req, res, next) => {
+    const manifestPath = path.resolve(settings.dist.path, settings.dist.manifest.filename);
     const indexPath = path.resolve(settings.src.path, settings.src.index);
     const markup = renderToString(
         <App />
@@ -27,8 +28,13 @@ app.get('*', (req, res, next) => {
             return res.status(404).end();
         }
 
+        const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+
         return res.send(
-            htmlTemplate.replace('<div class="root"></div>', `<div class="root">${markup}</div>`)
+            htmlTemplate
+                .replace('<!-- css -->', `<link rel="stylesheet" href="/${manifest['css/main.css']}">`)
+                .replace('<div class="root"></div>', `<div class="root">${markup}</div>`)
+                .replace('<!-- js -->', `<script src="/${manifest['js/main.js']}"></script>`)
         );
     });
 });

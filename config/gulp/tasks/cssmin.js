@@ -25,7 +25,7 @@ const cssMinTask = () => {
             .on('error', handleErrors)
             .pipe(rev())
             .pipe(gulp.dest(dest))
-            .pipe(rev.manifest(`${dest}/${global.SETTINGS_CONFIG.dist.manifestFilename}`, {
+            .pipe(rev.manifest(`${dest}/${global.SETTINGS_CONFIG.dist.manifest.filename}`, {
                 base: dest
             }))
             .pipe(gulp.dest(dest))

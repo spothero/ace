@@ -20,6 +20,42 @@ const entry = (isObject(settingsConfig.webpack.client.entry))
 const extraModules = settingsConfig.webpack.client.resolveModules.map(modulePath => {
     return path.resolve(`${src}/${modulePath}`);
 });
+const plugins = [
+    new webpack.DefinePlugin({
+        'process.env': settingsConfig.env.vars.common
+    }),
+    new SizePlugin(),
+    new WebpackAssetsManifest({
+        output: `../${settingsConfig.dist.manifest.filename}`,
+        writeToDisk: true,
+        merge: true,
+        customize: (entryItem, original, manifest, asset) => {
+            // don't add .map files to manifest
+            if (entryItem.key.toLowerCase().endsWith('.map')) {
+                return false;
+            }
+
+            // add JS path before each JS file key/value pair in manifest
+            if (entryItem.key.toLowerCase().endsWith('.js')) {
+                return {
+                    key: `${settingsConfig.src.js.path}/${entryItem.key}`,
+                    value: `${settingsConfig.src.js.path}/${entryItem.value}`,
+                };
+            }
+        }
+    }),
+];
+
+if (process.env.ACE_ENVIRONMENT !== 'server') {
+    plugins.push(new HTMLWebpackPlugin({
+        filename: `${dist}/${settingsConfig.src.index}`,
+        template: `${src}/${settingsConfig.src.index}`,
+        inject: (!isUndefined(settingsConfig.webpack.client.injectAssets))
+            ? settingsConfig.webpack.client.injectAssets
+            : true,
+        aceEvent: process.env.ACE_NPM_EVENT,
+    }));
+}
 
 const config = {
     target: 'web',
@@ -51,39 +87,7 @@ const config = {
             ...settingsConfig.webpack.client.moduleRules
         ]
     },
-    plugins: [
-        new webpack.DefinePlugin({
-            'process.env': settingsConfig.env.vars.common
-        }),
-        new SizePlugin(),
-        new WebpackAssetsManifest({
-            output: `../${settingsConfig.dist.manifestFilename}`,
-            writeToDisk: true,
-            merge: true,
-            customize: (entryItem, original, manifest, asset) => {
-                // don't add .map files to manifest
-                if (entryItem.key.toLowerCase().endsWith('.map')) {
-                    return false;
-                }
-
-                // add JS path before each JS file key/value pair in manifest
-                if (entryItem.key.toLowerCase().endsWith('.js')) {
-                    return {
-                        key: `${settingsConfig.src.js.path}/${entryItem.key}`,
-                        value: `${settingsConfig.src.js.path}/${entryItem.value}`,
-                    };
-                }
-            }
-        }),
-        new HTMLWebpackPlugin({
-            filename: `${dist}/${settingsConfig.src.index}`,
-            template: `${src}/${settingsConfig.src.index}`,
-            inject: (!isUndefined(settingsConfig.webpack.client.injectAssets))
-                ? settingsConfig.webpack.client.injectAssets
-                : true,
-            aceEvent: process.env.ACE_NPM_EVENT,
-        }),
-    ],
+    plugins,
     externals: settingsConfig.webpack.client.externals,
     devServer: {
         contentBase: path.resolve(`${dist}`),
