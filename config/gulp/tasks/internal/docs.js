@@ -1,8 +1,11 @@
 const AWS = require('aws-sdk');
-const gulp = require('gulp');
+const {
+    series,
+    src,
+    task,
+} = require('gulp');
 const shell = require('gulp-shell');
 const gulpS3Upload = require('gulp-s3-upload');
-const sequence = require('run-sequence');
 const PluginError = require('plugin-error');
 const uuidV4 = require('uuid/v4');
 const projectPath = require('../../lib/project-path');
@@ -13,7 +16,7 @@ const deploySettings = {
     cloudFrontDistributionId: 'E13YKZ29SIK8RP'
 };
 
-const generateACEDocsTask = () => {
+const generateACEDocs = () => {
     return shell.task([
         `cd website && npm install && npm run version ${pkg.version} && npm run build`
     ], {
@@ -21,7 +24,7 @@ const generateACEDocsTask = () => {
     });
 };
 
-const commitDocsTask = () => {
+const commitDocs = () => {
     return shell.task([
         `git add -A && git commit -m "squash: Adding generated documentation version to source control" && git push`
     ], {
@@ -58,7 +61,7 @@ const invalidateCloudFront = cb => {
 const uploadToS3 = () => {
     const s3 = gulpS3Upload();
 
-    return gulp.src([
+    return src([
         `${projectPath('website/build/ace')}/**`,
         `${projectPath('website/versioned_docs')}/**`,
         `${projectPath('website/versioned_sidebars')}/**`,
@@ -77,18 +80,9 @@ const uploadToS3 = () => {
         ));
 };
 
-const docsTask = cb => {
-    sequence(
-        'generateACEDocs',
-        'commitACEDocs',
-        'uploadACEDocs',
-        'invalidateACEDocs',
-        cb
-    );
-};
-
-gulp.task('generateACEDocs', generateACEDocsTask());
-gulp.task('commitACEDocs', commitDocsTask());
-gulp.task('uploadACEDocs', uploadToS3);
-gulp.task('invalidateACEDocs', invalidateCloudFront);
-gulp.task('docs', docsTask);
+task('docs', series(
+    generateACEDocs(),
+    commitDocs(),
+    uploadToS3,
+    invalidateCloudFront,
+));

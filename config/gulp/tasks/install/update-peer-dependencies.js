@@ -1,7 +1,10 @@
 const includes = require('lodash/includes');
-const gulp = require('gulp');
+const {
+    series,
+    src,
+    task,
+} = require('gulp');
 const inquirer = require('inquirer');
-const sequence = require('run-sequence');
 const shell = require('gulp-shell');
 const keys = require('lodash/keys');
 const mapKeys = require('lodash/mapKeys');
@@ -20,8 +23,8 @@ const peers = keys(mapKeys(packageJSON.peerDependencies, (value, key) => {
 }));
 let peersToInstall;
 
-const updatePeerDepsTask = () => {
-    return gulp.src(`${projectPath(global.SETTINGS_CONFIG.root.path)}/package.json`, {read: false})
+const confirmUpdatePeerDeps = () => {
+    return src(`${projectPath(global.SETTINGS_CONFIG.root.path)}/package.json`, {read: false})
         .pipe(shell([
             `npm install -S ${peersToInstall.join(' ')}`
         ], {
@@ -29,7 +32,7 @@ const updatePeerDepsTask = () => {
         }));
 };
 
-const updatePeerDependenciesTask = cb => {
+const updatePeerDependencies = cb => {
     inquirer
         .prompt([
             {
@@ -46,10 +49,7 @@ const updatePeerDependenciesTask = cb => {
             });
 
             if (peersToInstall.length) {
-                sequence(
-                    'confirmUpdatePeerDeps',
-                    cb
-                );
+                series(confirmUpdatePeerDeps);
             } else {
                 log(colors.red(`You've chosen not to update any peerDependencies. Make sure you have them all installed in your project or ACE may not function correctly.`));
 
@@ -58,5 +58,6 @@ const updatePeerDependenciesTask = cb => {
         });
 };
 
-gulp.task('confirmUpdatePeerDeps', updatePeerDepsTask);
-gulp.task('updatePeerDeps', updatePeerDependenciesTask);
+task('updatePeerDeps', updatePeerDependencies);
+
+module.exports = updatePeerDependencies;

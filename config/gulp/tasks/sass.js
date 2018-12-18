@@ -1,4 +1,8 @@
-const gulp = require('gulp');
+const {
+    dest,
+    src,
+    task,
+} = require('gulp');
 const sass = require('gulp-sass');
 const postcss = require('gulp-postcss');
 const sourcemaps = require('gulp-sourcemaps');
@@ -7,8 +11,8 @@ const handleErrors = require('../utils/handle-errors');
 const projectPath = require('../lib/project-path');
 const browserslist = require('../../browserslist');
 
-const sassTask = src => {
-    return gulp.src(src)
+const sassTask = () => {
+    return src(`${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.src.path}/${global.SETTINGS_CONFIG.src.sass.path}/**/*.scss`)
         .pipe(sourcemaps.init())
         .pipe(sass({
             includePaths: [
@@ -25,9 +29,9 @@ const sassTask = src => {
             })
         ]))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(`${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.dist.path}/${global.SETTINGS_CONFIG.dist.css.path}`));
+        .pipe(dest(`${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.dist.path}/${global.SETTINGS_CONFIG.dist.css.path}`));
 };
 
-gulp.task('sass', () => {
-    return sassTask(`${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.src.path}/${global.SETTINGS_CONFIG.src.sass.path}/**/*.scss`);
-});
+task('sass', sassTask);
+
+module.exports = sassTask;

@@ -1,5 +1,9 @@
 const fs = require('fs');
-const gulp = require('gulp');
+const {
+    dest,
+    src,
+    task,
+} = require('gulp');
 const spritesmith = require('gulp.spritesmith');
 const log = require('fancy-log');
 const colors = require('ansi-colors');
@@ -9,18 +13,18 @@ const projectPath = require('../lib/project-path');
 const padding = 5;
 const cssTemplate = './spritesmith.template.mustache';
 
-const generateSpritesTask = () => {
-    const src = `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.src.path}`;
+const generateSprites = () => {
+    const source = `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.src.path}`;
     const spriteSrc = global.SETTINGS_CONFIG.src.sprites.srcPath;
-    const spriteDest = `${src}/${global.SETTINGS_CONFIG.src.img.path}/${global.SETTINGS_CONFIG.src.sprites.outputPath}`;
-    const sassDest = `${src}/${global.SETTINGS_CONFIG.src.sass.path}/${global.SETTINGS_CONFIG.src.sprites.sassMapOutputPath}`;
+    const spriteDest = `${source}/${global.SETTINGS_CONFIG.src.img.path}/${global.SETTINGS_CONFIG.src.sprites.outputPath}`;
+    const sassDest = `${source}/${global.SETTINGS_CONFIG.src.sass.path}/${global.SETTINGS_CONFIG.src.sprites.sassMapOutputPath}`;
     const spriteNames = global.SETTINGS_CONFIG.src.sprites.names;
     const spriteIds = {};
 
     spriteNames.forEach(name => {
         spriteIds[name] = [];
 
-        const retina = gulp.src(`${src}/${spriteSrc}/${name}-2x/*.png`)
+        const retina = src(`${source}/${spriteSrc}/${name}-2x/*.png`)
             .pipe(spritesmith({
                 imgName: `sprite-${name}@2x.png`,
                 cssName: `_sprites-${name}-map-2x.scss`,
@@ -33,9 +37,9 @@ const generateSpritesTask = () => {
                 },
                 padding
             }));
-        const retinaImageStream = retina.img.pipe(gulp.dest(spriteDest));
-        const retinaCSSStream = retina.css.pipe(gulp.dest(sassDest));
-        const regular = gulp.src(`${src}/${spriteSrc}/${name}-1x/*.png`)
+        const retinaImageStream = retina.img.pipe(dest(spriteDest));
+        const retinaCSSStream = retina.css.pipe(dest(sassDest));
+        const regular = src(`${source}/${spriteSrc}/${name}-1x/*.png`)
             .pipe(spritesmith({
                 imgName: `sprite-${name}.png`,
                 cssName: `_sprites-${name}-map.scss`,
@@ -45,8 +49,8 @@ const generateSpritesTask = () => {
                 },
                 padding
             }));
-        const regularImageStream = regular.img.pipe(gulp.dest(spriteDest));
-        const regularCSSStream = regular.css.pipe(gulp.dest(sassDest));
+        const regularImageStream = regular.img.pipe(dest(spriteDest));
+        const regularCSSStream = regular.css.pipe(dest(sassDest));
 
         stream.add(retinaImageStream);
         stream.add(retinaCSSStream);
@@ -59,7 +63,7 @@ const generateSpritesTask = () => {
         log(colors.yellow(`Sass map information files have been generated in ${colors.green(sassDest)}.`));
 
         spriteNames.forEach(name => {
-            const sassSpritesOutputPath = `${src}/${global.SETTINGS_CONFIG.src.sass.path}/${global.SETTINGS_CONFIG.src.sprites.sassSpritesOutputPath}`;
+            const sassSpritesOutputPath = `${source}/${global.SETTINGS_CONFIG.src.sass.path}/${global.SETTINGS_CONFIG.src.sprites.sassSpritesOutputPath}`;
             const sassFileName = `${sassSpritesOutputPath}/_sprites-${name}.scss`;
 
             if (!fs.existsSync(sassSpritesOutputPath)) {
@@ -87,4 +91,4 @@ const generateSpritesTask = () => {
     return stream;
 };
 
-gulp.task('generateSprites', generateSpritesTask);
+task('generateSprites', generateSprites);

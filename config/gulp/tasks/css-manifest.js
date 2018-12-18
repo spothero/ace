@@ -1,13 +1,17 @@
-const gulp = require('gulp');
+const {
+    dest,
+    src,
+    task,
+} = require('gulp');
 const rev = require('gulp-rev');
 const through = require('through2');
 const modify = require('modify-filename');
 const projectPath = require('../lib/project-path');
 
-const cssManifestTask = () => {
-    const dest = `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.dist.path}`;
+const cssManifest = () => {
+    const destination = `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.dist.path}`;
 
-    return gulp.src(`${dest}/${global.SETTINGS_CONFIG.dist.css.path}/*.css`, {base: dest})
+    return src(`${destination}/${global.SETTINGS_CONFIG.dist.css.path}/*.css`, {base: destination})
         .pipe(rev())
         .pipe(through.obj((file, enc, cb) => {
             // see: https://github.com/sindresorhus/gulp-rev/issues/186#issuecomment-229279896
@@ -18,10 +22,10 @@ const cssManifestTask = () => {
 
             cb(null, file);
         }))
-        .pipe(rev.manifest(`${dest}/${global.SETTINGS_CONFIG.dist.manifest.filename}`, {
-            base: dest
+        .pipe(rev.manifest(`${destination}/${global.SETTINGS_CONFIG.dist.manifest.filename}`, {
+            base: destination
         }))
-        .pipe(gulp.dest(dest));
+        .pipe(dest(destination));
 };
 
-gulp.task('cssManifest', cssManifestTask);
+task('cssManifest', cssManifest);

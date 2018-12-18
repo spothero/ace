@@ -2,9 +2,12 @@ const isArray = require('lodash/isArray');
 const isEmpty = require('lodash/isEmpty');
 const isNil = require('lodash/isNil');
 const AWS = require('aws-sdk');
-const gulp = require('gulp');
+const {
+    series,
+    src,
+    task,
+} = require('gulp');
 const gulpS3Upload = require('gulp-s3-upload');
-const sequence = require('run-sequence');
 const PluginError = require('plugin-error');
 const uuidV4 = require('uuid/v4');
 const projectPath = require('../lib/project-path');
@@ -89,7 +92,7 @@ const uploadToS3 = () => {
         throw new PluginError('uploadToS3', 'Environment must be sandbox, staging, or production.');
     }
 
-    return gulp.src([`${projectPath(global.SETTINGS_CONFIG.dist.path)}/**`])
+    return src([`${projectPath(global.SETTINGS_CONFIG.dist.path)}/**`])
         .pipe(s3(
             {
                 Bucket: `${global.SETTINGS_CONFIG.deploy[npmEnvironment].bucket}`,
@@ -107,7 +110,7 @@ const uploadToS3 = () => {
         ));
 };
 
-const deployTask = cb => {
+const deploy = () => {
     const settings = global.SETTINGS_CONFIG.deploy;
     const npmEnvironment = getEnvironment();
 
@@ -115,13 +118,12 @@ const deployTask = cb => {
         throw new PluginError('deploy', 'You must fill in all the applicable settings for the "deploy" object in the settings file. See https://spothero.com/uniform/ace/docs/tasks-deploying/ for details.');
     }
 
-    sequence(
-        'upload',
-        'invalidate',
-        cb
+    series(
+        uploadToS3,
+        invalidateCloudFront,
     );
 };
 
-gulp.task('upload', uploadToS3);
-gulp.task('invalidate', invalidateCloudFront);
-gulp.task('deploy', deployTask);
+task('upload', uploadToS3);
+task('invalidate', invalidateCloudFront);
+task('deploy', deploy);

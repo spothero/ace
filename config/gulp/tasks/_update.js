@@ -1,13 +1,13 @@
-const gulp = require('gulp');
-const sequence = require('run-sequence');
+const {
+    series,
+    task,
+} = require('gulp');
+const updatePackageScripts = require('./scaffolding/package-scripts');
+const updatePeerDeps = require('./install/update-peer-dependencies');
+const updateConfigs = require('./scaffolding/update-configs');
 
-const updateTask = cb => {
-    sequence(
-        'updatePackageScripts',
-        'updatePeerDeps',
-        'updateConfigs',
-        cb
-    );
-};
-
-gulp.task('update', updateTask);
+task('update', series(
+    updatePackageScripts,
+    updatePeerDeps,
+    updateConfigs,
+));

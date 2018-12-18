@@ -1,11 +1,11 @@
+const {task} = require('gulp');
 const fs = require('fs');
-const gulp = require('gulp');
 const log = require('fancy-log');
 const colors = require('ansi-colors');
 const isNil = require('lodash/isNil');
 const projectPath = require('../../lib/project-path');
 
-const packageScriptsTask = cb => {
+const updatePackageScripts = cb => {
     const pkgFile = `${projectPath(global.SETTINGS_CONFIG.root.path)}/package.json`;
 
     fs.readFile(pkgFile, {encoding: 'utf8'}, (readError, data) => {
@@ -108,4 +108,6 @@ const packageScriptsTask = cb => {
     });
 };
 
-gulp.task('updatePackageScripts', packageScriptsTask);
+task('updatePackageScripts', updatePackageScripts);
+
+module.exports = updatePackageScripts;

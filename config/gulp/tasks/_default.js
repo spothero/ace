@@ -1,9 +1,14 @@
-const gulp = require('gulp');
-const sequence = require('run-sequence');
+const {
+    series,
+    task,
+} = require('gulp');
+const requireDir = require('require-dir');
 
 process.title = 'ace-server';
 
-const developmentClientTask = cb => {
+requireDir('./', {recurse: true});
+
+const developmentClient = () => {
     const {
         taskSequence: {
             client: {
@@ -15,7 +20,7 @@ const developmentClientTask = cb => {
             }
         }
     } = global.TASK_CONFIG;
-    const seq = (custom && custom.length)
+    const seq = (custom.length)
         ? custom
         : [
             'clean',
@@ -28,10 +33,10 @@ const developmentClientTask = cb => {
             'devServerClient'
         ];
 
-    sequence(...seq, cb);
+    return seq;
 };
 
-const developmentSSRTask = cb => {
+const developmentSSR = () => {
     const {
         taskSequence: {
             server: {
@@ -43,7 +48,7 @@ const developmentSSRTask = cb => {
             }
         }
     } = global.TASK_CONFIG;
-    const seq = (custom && custom.length)
+    const seq = (custom.length)
         ? custom
         : [
             'clean',
@@ -56,8 +61,8 @@ const developmentSSRTask = cb => {
             'devServerSSR'
         ];
 
-    sequence(...seq, cb);
+    return seq;
 };
 
-gulp.task('default', developmentClientTask);
-gulp.task('ssrDev', developmentSSRTask);
+task('default', series(...developmentClient()));
+task('ssrDev', series(...developmentSSR()));

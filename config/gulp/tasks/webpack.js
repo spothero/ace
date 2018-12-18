@@ -1,10 +1,10 @@
-const gulp = require('gulp');
+const {task} = require('gulp');
 const shell = require('gulp-shell');
 
-const webpackClientTask = () => {
+const webpackClient = () => {
     return shell.task([
         'webpack --colors --hide-modules --config webpack/client/config.js'
     ]);
 };
 
-gulp.task('webpackClient', webpackClientTask());
+task('webpackClient', webpackClient());

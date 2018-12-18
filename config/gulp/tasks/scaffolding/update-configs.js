@@ -1,7 +1,11 @@
 const isEqual = require('lodash/isEqual');
-const gulp = require('gulp');
+const {
+    dest,
+    series,
+    src,
+    task,
+} = require('gulp');
 const inquirer = require('inquirer');
-const sequence = require('run-sequence');
 const rename = require('gulp-rename');
 const jsDiff = require('diff');
 const log = require('fancy-log');
@@ -20,7 +24,7 @@ const diffLogger = part => {
     process.stderr.write(colors[color](part.value));
 };
 
-const execUpdateConfigsTask = () => {
+const confirmUpdateConfigs = () => {
     const areSettingsChanged = !isEqual(defaultSettings, global.SETTINGS_CONFIG);
     const areTasksChanged = !isEqual(defaultTasks, global.TASK_CONFIG);
     const projectConfigDir = (process.env.ACE_CONFIG_PATH)
@@ -56,20 +60,20 @@ const execUpdateConfigsTask = () => {
         log(colors.yellow.bold(`There are no changes between ACE's configuration and your project's configuration files.`));
     }
 
-    return gulp.src([
+    return src([
         '../config/settings.js',
         '../config/tasks.js'
     ])
         .pipe(rename(path => {
             path.basename = `${path.basename}-ace-updated`;
         }))
-        .pipe(gulp.dest(projectConfigDir))
+        .pipe(dest(projectConfigDir))
         .on('end', () => {
             log(colors.red.bold('ACE copied updated configuration files in to your configuration directory. Please reference the diff(s) above and update your configuration files accordingly, if necessary.'));
         });
 };
 
-const updateConfigsTask = cb => {
+const updateConfigs = cb => {
     inquirer
         .prompt([
             {
@@ -81,15 +85,13 @@ const updateConfigsTask = cb => {
         ])
         .then(answers => {
             if (answers.updateConfigs) {
-                sequence(
-                    'confirmUpdateConfigs',
-                    cb
-                );
+                series(confirmUpdateConfigs);
             } else {
                 cb();
             }
         });
 };
 
-gulp.task('confirmUpdateConfigs', execUpdateConfigsTask);
-gulp.task('updateConfigs', updateConfigsTask);
+task('updateConfigs', updateConfigs);
+
+module.exports = updateConfigs;

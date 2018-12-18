@@ -1,26 +1,30 @@
-const gulp = require('gulp');
+const {
+    dest,
+    series,
+    src,
+    task,
+} = require('gulp');
 const inquirer = require('inquirer');
-const sequence = require('run-sequence');
 const log = require('fancy-log');
 const colors = require('ansi-colors');
 const projectPath = require('../../lib/project-path');
 
-const execScaffoldConfigsTask = () => {
+const confirmScaffoldConfigs = () => {
     const projectConfigDir = (process.env.ACE_CONFIG_PATH)
         ? projectPath(process.env.ACE_CONFIG_PATH)
         : projectPath('config');
 
-    return gulp.src([
+    return src([
         '../config/settings.js',
         '../config/tasks.js'
     ])
-        .pipe(gulp.dest(projectConfigDir))
+        .pipe(dest(projectConfigDir))
         .on('end', () => {
             log(colors.yellow('Update `settings.js` for project settings and `tasks.js` for Gulp tasks.'));
         });
 };
 
-const scaffoldConfigsTask = cb => {
+const scaffoldConfigs = cb => {
     inquirer
         .prompt([
             {
@@ -32,15 +36,13 @@ const scaffoldConfigsTask = cb => {
         ])
         .then(answers => {
             if (answers.scaffoldConfigs) {
-                sequence(
-                    'confirmScaffoldConfigs',
-                    cb
-                );
+                series(confirmScaffoldConfigs);
             } else {
                 cb();
             }
         });
 };
 
-gulp.task('confirmScaffoldConfigs', execScaffoldConfigsTask);
-gulp.task('scaffoldConfigs', scaffoldConfigsTask);
+task('scaffoldConfigs', scaffoldConfigs);
+
+module.exports = scaffoldConfigs;

@@ -1,7 +1,11 @@
 const includes = require('lodash/includes');
-const gulp = require('gulp');
+const {
+    dest,
+    series,
+    src,
+    task,
+} = require('gulp');
 const inquirer = require('inquirer');
-const sequence = require('run-sequence');
 const rename = require('gulp-rename');
 const log = require('fancy-log');
 const colors = require('ansi-colors');
@@ -9,22 +13,22 @@ const projectPath = require('../../lib/project-path');
 
 const sources = ['../src/common/**/*'];
 
-const confirmScaffoldProjectTask = () => {
-    return gulp.src(sources, {dot: true})
+const confirmScaffoldProject = () => {
+    return src(sources, {dot: true})
         .pipe(rename(path => {
             // `.gitignore` gets ignored in the copy so we have to name the file `gitignore` and rename it in the stream
             if (path.basename === 'gitignore') {
                 path.basename = '.gitignore';
             }
         }))
-        .pipe(gulp.dest(projectPath(global.SETTINGS_CONFIG.root.path)))
+        .pipe(dest(projectPath(global.SETTINGS_CONFIG.root.path)))
         .on('end', () => {
             log(colors.red('Make sure to run `npm start -- installPeerDeps` before development if you didn\'t install `peerDependencies` yet.'));
             log(colors.yellow('Run `npm start` to begin development.'));
         });
 };
 
-const scaffoldProjectTask = cb => {
+const scaffoldProject = cb => {
     inquirer
         .prompt([
             {
@@ -47,15 +51,13 @@ const scaffoldProjectTask = cb => {
             if (type === 'Standard' || type === 'SpotHero') {
                 sources.push(`../src/${type.toLowerCase()}/**/*`);
 
-                sequence(
-                    'confirmScaffoldProject',
-                    cb
-                );
+                series(confirmScaffoldProject);
             } else {
                 cb();
             }
         });
 };
 
-gulp.task('confirmScaffoldProject', confirmScaffoldProjectTask);
-gulp.task('scaffoldProject', scaffoldProjectTask);
+task('scaffoldProject', scaffoldProject);
+
+module.exports = scaffoldProject;

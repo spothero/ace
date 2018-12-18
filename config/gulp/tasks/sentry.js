@@ -1,13 +1,16 @@
 const forIn = require('lodash/forIn');
 const isEmpty = require('lodash/isEmpty');
 const fs = require('fs');
-const gulp = require('gulp');
+const {
+    src,
+    task,
+} = require('gulp');
 const sentryRelease = require('gulp-sentry-release');
 const PluginError = require('plugin-error');
 const projectPath = require('../lib/project-path');
 const getRCValues = require('../lib/rc');
 
-const sentryTask = () => {
+const sentry = () => {
     const sentryData = global.TASK_CONFIG.sentry;
     const deploySettings = global.SETTINGS_CONFIG.deploy;
 
@@ -38,7 +41,7 @@ const sentryTask = () => {
         }
     });
 
-    return gulp.src(sources)
+    return src(sources)
         .pipe(sentryRelease(`${projectPath(global.SETTINGS_CONFIG.root.path)}/package.json`, {
             DOMAIN: (!isEmpty(deploySettings.staticUrl) && !isEmpty(deploySettings.path))
                 ? `${deploySettings.staticUrl}/${deploySettings.path}/js`
@@ -49,4 +52,4 @@ const sentryTask = () => {
         }).release(deploySettings.releaseVersion));
 };
 
-gulp.task('sentry', sentryTask);
+task('sentry', sentry);

@@ -1,7 +1,9 @@
 const pick = require('lodash/pick');
 const fs = require('fs');
-const gulp = require('gulp');
-const sequence = require('run-sequence');
+const {
+    series,
+    task,
+} = require('gulp');
 const merge = require('webpack-merge');
 const projectPath = require('../lib/project-path');
 const configCommon = require('../../webpack/client/config-common');
@@ -11,7 +13,7 @@ RegExp.prototype.toJSON = RegExp.prototype.toString; // eslint-disable-line no-e
 
 process.title = 'ace-test';
 
-const generateWebpackSettingsTask = cb => {
+const generateWebpackSettings = cb => {
     const config = pick(merge(configTest, configCommon), ['resolve', 'module']);
     const writePath = `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.cypress.path}`;
 
@@ -26,7 +28,7 @@ const generateWebpackSettingsTask = cb => {
     });
 };
 
-const testClientTask = cb => {
+const testClient = cb => {
     const {
         taskSequence: {
             client: {
@@ -38,7 +40,7 @@ const testClientTask = cb => {
             }
         }
     } = global.TASK_CONFIG;
-    const seq = (custom && custom.length)
+    const seq = (custom.length)
         ? custom
         : [
             'clean',
@@ -51,8 +53,8 @@ const testClientTask = cb => {
             'devServerClient'
         ];
 
-    sequence(...seq, cb);
+    series(...seq);
 };
 
-gulp.task('generateWebpackSettings', generateWebpackSettingsTask);
-gulp.task('test', testClientTask);
+task('generateWebpackSettings', generateWebpackSettings);
+task('test', testClient);

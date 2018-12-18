@@ -1,8 +1,11 @@
 const filter = require('lodash/filter');
 const includes = require('lodash/includes');
-const gulp = require('gulp');
+const {
+    series,
+    src,
+    task,
+} = require('gulp');
 const inquirer = require('inquirer');
-const sequence = require('run-sequence');
 const shell = require('gulp-shell');
 const keys = require('lodash/keys');
 const mapKeys = require('lodash/mapKeys');
@@ -13,8 +16,8 @@ let peers = keys(mapKeys(packageJSON.peerDependencies, (value, key) => {
     return `${key}@${value}`;
 }));
 
-const installPeerDepsTask = () => {
-    return gulp.src(`${projectPath(global.SETTINGS_CONFIG.root.path)}/package.json`, {read: false})
+const confirmInstallPeerDeps = () => {
+    return src(`${projectPath(global.SETTINGS_CONFIG.root.path)}/package.json`, {read: false})
         .pipe(shell([
             `npm install -S ${peers.join(' ')}`
         ], {
@@ -22,7 +25,7 @@ const installPeerDepsTask = () => {
         }));
 };
 
-const installPeerDependenciesTask = cb => {
+const installPeerDependencies = cb => {
     inquirer
         .prompt([
             {
@@ -49,15 +52,13 @@ const installPeerDependenciesTask = cb => {
                     });
                 }
 
-                sequence(
-                    'confirmInstallPeerDeps',
-                    cb
-                );
+                series(confirmInstallPeerDeps);
             } else {
                 cb();
             }
         });
 };
 
-gulp.task('confirmInstallPeerDeps', installPeerDepsTask);
-gulp.task('installPeerDeps', installPeerDependenciesTask);
+task('installPeerDeps', installPeerDependencies);
+
+module.exports = installPeerDependencies;

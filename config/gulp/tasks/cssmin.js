@@ -1,4 +1,8 @@
-const gulp = require('gulp');
+const {
+    dest,
+    src,
+    task,
+} = require('gulp');
 const postcss = require('gulp-postcss');
 const rev = require('gulp-rev');
 const cssnano = require('cssnano');
@@ -7,13 +11,13 @@ const vinylPaths = require('vinyl-paths');
 const handleErrors = require('../utils/handle-errors');
 const projectPath = require('../lib/project-path');
 
-const cssMinTask = () => {
-    const dest = `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.dist.path}`;
+const cssMin = () => {
+    const destination = `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.dist.path}`;
 
     return new Promise((resolve, reject) => {
         const vp = vinylPaths();
 
-        gulp.src(`${dest}/${global.SETTINGS_CONFIG.dist.css.path}/*.css`, {base: dest})
+        src(`${destination}/${global.SETTINGS_CONFIG.dist.css.path}/*.css`, {base: destination})
             .pipe(vp)
             .pipe(postcss([
                 cssnano({
@@ -24,11 +28,11 @@ const cssMinTask = () => {
             ]))
             .on('error', handleErrors)
             .pipe(rev())
-            .pipe(gulp.dest(dest))
-            .pipe(rev.manifest(`${dest}/${global.SETTINGS_CONFIG.dist.manifest.filename}`, {
-                base: dest
+            .pipe(dest(destination))
+            .pipe(rev.manifest(`${destination}/${global.SETTINGS_CONFIG.dist.manifest.filename}`, {
+                base: destination
             }))
-            .pipe(gulp.dest(dest))
+            .pipe(dest(destination))
             .on('end', () => {
                 const deletePaths = [];
 
@@ -44,4 +48,4 @@ const cssMinTask = () => {
     });
 };
 
-gulp.task('cssMin', cssMinTask);
+task('cssMin', cssMin);

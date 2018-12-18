@@ -1,9 +1,9 @@
-const gulp = require('gulp');
+const {task} = require('gulp');
 const shell = require('gulp-shell');
 const get = require('lodash/get');
 const packageJSON = require('../../../../package.json');
 
-const contribDependenciesTask = () => {
+const installContribDeps = () => {
     const deps = packageJSON.contributionDependencies.map(dep => {
         return `${dep}@${get(packageJSON.dependencies, dep)}`;
     }).join(' ');
@@ -15,4 +15,6 @@ const contribDependenciesTask = () => {
     });
 };
 
-gulp.task('installContribDeps', contribDependenciesTask());
+task('installContribDeps', installContribDeps());
+
+module.exports = installContribDeps();
