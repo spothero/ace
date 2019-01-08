@@ -1,3 +1,14 @@
+# 6.0.0 - 01/08/2019
+## Breaking Changes
+* [[5c86d3d](https://github.com/spothero/ace/commit/5c86d3d)] - v6 - SSR Improvements ([#17](https://github.com/spothero/ace/pull/17)) (Matt Przybylski)
+	* `breaking:` Upgrades for v6 SSR, see Changelog
+	* `chore:` Updated to latest dependencies
+	* `feat:` Upgrade to latest react-hot-loader including newest hot syntax
+
+## Miscellaneous Updates
+* [[27c3102](https://github.com/spothero/ace/commit/27c3102)] - `refactor:` Add wait-on to ssr dev task to avoid errors on first run (Matt Przybylski)
+* [[3b24270](https://github.com/spothero/ace/commit/3b24270)] - `docs:` Updated to latest Docusaurus again (Matt Przybylski)
+
 # 5.2.2 - 12/07/2018
 
 ## Miscellaneous Updates
