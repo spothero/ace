@@ -3,13 +3,15 @@ const sequence = require('run-sequence');
 
 process.title = 'ace-server';
 
-const developmentTask = cb => {
+const developmentClientTask = cb => {
     const {
         taskSequence: {
-            development: {
-                preBuild,
-                postBuild,
-                custom
+            client: {
+                development: {
+                    preBuild,
+                    postBuild,
+                    custom
+                }
             }
         }
     } = global.TASK_CONFIG;
@@ -29,4 +31,33 @@ const developmentTask = cb => {
     sequence(...seq, cb);
 };
 
-gulp.task('default', developmentTask);
+const developmentSSRTask = cb => {
+    const {
+        taskSequence: {
+            server: {
+                development: {
+                    preBuild,
+                    postBuild,
+                    custom
+                }
+            }
+        }
+    } = global.TASK_CONFIG;
+    const seq = (custom && custom.length)
+        ? custom
+        : [
+            'clean',
+            ...preBuild,
+            'sass',
+            'cssManifest',
+            'lintSass',
+            ...postBuild,
+            'watch',
+            'devServerSSR'
+        ];
+
+    sequence(...seq, cb);
+};
+
+gulp.task('default', developmentClientTask);
+gulp.task('ssrDev', developmentSSRTask);

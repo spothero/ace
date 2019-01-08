@@ -18,7 +18,7 @@ const cssManifestTask = () => {
 
             cb(null, file);
         }))
-        .pipe(rev.manifest(`${dest}/${global.SETTINGS_CONFIG.dist.manifestFilename}`, {
+        .pipe(rev.manifest(`${dest}/${global.SETTINGS_CONFIG.dist.manifest.filename}`, {
             base: dest
         }))
         .pipe(gulp.dest(dest));

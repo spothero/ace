@@ -31,20 +31,29 @@ module.exports = {
         // taskName: require('./tasks/task-name')
     },
     taskSequence: {
-        development: {
-            preBuild: [],
-            postBuild: [],
-            custom: []
+        client: {
+            development: {
+                preBuild: [],
+                postBuild: [],
+                custom: []
+            },
+            test: {
+                preBuild: [],
+                postBuild: [],
+                custom: []
+            },
+            production: {
+                preBuild: [],
+                postBuild: [],
+                custom: []
+            },
         },
-        test: {
-            preBuild: [],
-            postBuild: [],
-            custom: []
+        server: {
+            development: {
+                preBuild: [],
+                postBuild: [],
+                custom: []
+            },
         },
-        production: {
-            preBuild: [],
-            postBuild: [],
-            custom: []
-        }
     }
 };

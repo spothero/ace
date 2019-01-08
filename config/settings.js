@@ -74,7 +74,7 @@ module.exports = {
             },
         },
         server: {
-            port: 9001,
+            port: 9000,
             entry: 'server.js',
             output: 'server.bundle.js',
             alias: {},
@@ -111,7 +111,9 @@ module.exports = {
     },
     dist: {
         path: 'dist',
-        manifestFilename: 'manifest.json',
+        manifest: {
+            filename: 'manifest.json',
+        },
         css: {
             path: 'css'
         },

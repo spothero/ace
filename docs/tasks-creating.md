@@ -41,12 +41,15 @@ module.exports = {
         copyLoader: require('./tasks/copy-loader')
     },
     taskSequence: {
-        ...,
-        production: {
-            preBuild: [],
-            postBuild: [
-                'copyLoader' // the task is now available for use here
-            ]
+        client: {
+            ...,
+            production: {
+                preBuild: [],
+                postBuild: [
+                    'copyLoader' // the task is now available for use here
+                ],
+                custom: [],
+            }
         }
     }
 };

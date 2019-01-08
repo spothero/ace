@@ -167,7 +167,7 @@ Webpack settings for serverside builds.
 The port for webpack to run on.
 
 **default:**
-`9001`
+`9000`
 
 ### `entry`
 A string which sets the entry point JS file passed to webpack for the server. Path starts after `src.path`.

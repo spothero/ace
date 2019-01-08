@@ -5,7 +5,7 @@ title: Adding To Builds
 
 You can add tasks to your builds, whether you've created a new task or want to use a non-pre-installed task. If adding new tasks that you've created, please make sure that you've followed the directions for [creating tasks](tasks-creating) to define the task correctly or it will fail your build.
 
-The `tasks.js` file contains a `taskSequence` that allows you to add `preBuild`, `postBuild`, or `custom` tasks to `development`, `test`, and `production` builds.
+The `tasks.js` file contains a `taskSequence` that allows you to add `preBuild`, `postBuild`, or `custom` tasks to `development`, `test`, and `production` builds for the client and server.
 
 The `preBuild` tasks run directly after the `clean` task and before compilation of JS and Sass (except in `development` and `test` since JS compilation happens during the `devServerClient` task which is a daemon).
 
@@ -19,22 +19,24 @@ You can add tasks to the `preBuild`, `postBuild`, and `custom` arrays in the ord
 module.exports = {
     ...,
     taskSequence: {
-        development: {
-            preBuild: [],
-            postBuild: [],
-            custom: []
-        },
-        test: {
-            preBuild: [],
-            postBuild: [],
-            custom: []
-        },
-        production: {
-            preBuild: [],
-            postBuild: [
-                'sentry'
-            ],
-            custom: []
+        client: {
+            development: {
+                preBuild: [],
+                postBuild: [],
+                custom: []
+            },
+            test: {
+                preBuild: [],
+                postBuild: [],
+                custom: []
+            },
+            production: {
+                preBuild: [],
+                postBuild: [
+                    'sentry'
+                ],
+                custom: []
+            },
         }
     }
 };
@@ -46,29 +48,31 @@ You can optionally surround a given set of tasks in an array within these arrays
 module.exports = {
     ...,
     taskSequence: {
-        development: {
-            preBuild: [
-                'sequencedTask',
-                [ // these will run at the same time after `sequencedTask`
-                    'sprites',
-                    'images'
+        client: {
+            development: {
+                preBuild: [
+                    'sequencedTask',
+                    [ // these will run at the same time after `sequencedTask`
+                        'sprites',
+                        'images'
+                    ],
+                    'sequencedTaskEnd' // this will run after all of the above have finished
                 ],
-                'sequencedTaskEnd' // this will run after all of the above have finished
-            ],
-            postBuild: [],
-            custom: []
-        },
-        test: {
-            preBuild: [],
-            postBuild: [],
-            custom: []
-        },
-        production: {
-            preBuild: [],
-            postBuild: [
-                'sentry'
-            ],
-            custom: []
+                postBuild: [],
+                custom: []
+            },
+            test: {
+                preBuild: [],
+                postBuild: [],
+                custom: []
+            },
+            production: {
+                preBuild: [],
+                postBuild: [
+                    'sentry'
+                ],
+                custom: []
+            },
         }
     }
 };
@@ -81,31 +85,33 @@ As stated above, if you need a completely custom ordering to your task runs, you
 module.exports = {
     ...,
     taskSequence: {
-        development: {
-            preBuild: [],
-            postBuild: [],
-            custom: [
-                'clean',
-                'sass',
-                'lintSass',
-                'watch',
-                [
-                    'devServerClient',
-                    'serviceProxy'
+        client: {
+            development: {
+                preBuild: [],
+                postBuild: [],
+                custom: [
+                    'clean',
+                    'sass',
+                    'lintSass',
+                    'watch',
+                    [
+                        'devServerClient',
+                        'serviceProxy'
+                    ]
                 ]
-            ]
-        },
-        test: {
-            preBuild: [],
-            postBuild: [],
-            custom: []
-        },
-        production: {
-            preBuild: [],
-            postBuild: [
-                'sentry'
-            ],
-            custom: []
+            },
+            test: {
+                preBuild: [],
+                postBuild: [],
+                custom: []
+            },
+            production: {
+                preBuild: [],
+                postBuild: [
+                    'sentry'
+                ],
+                custom: []
+            }
         }
     }
 };

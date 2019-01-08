@@ -26,13 +26,15 @@ const generateWebpackSettingsTask = cb => {
     });
 };
 
-const testTask = cb => {
+const testClientTask = cb => {
     const {
         taskSequence: {
-            test: {
-                preBuild,
-                postBuild,
-                custom
+            client: {
+                test: {
+                    preBuild,
+                    postBuild,
+                    custom
+                }
             }
         }
     } = global.TASK_CONFIG;
@@ -53,4 +55,4 @@ const testTask = cb => {
 };
 
 gulp.task('generateWebpackSettings', generateWebpackSettingsTask);
-gulp.task('test', testTask);
+gulp.task('test', testClientTask);
