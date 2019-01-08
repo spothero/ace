@@ -13,6 +13,18 @@ Also updated the actual *src/server.js* scaffolded file to automatically read th
 
 Further customization of these files is recommended for your project setup. These are meant to be a starting point to get SSR running.
 
+### New react-hot-loader Implementation
+Thew newest version of [react-hot-loader](https://github.com/gaearon/react-hot-loader/commit/3029428) has a new way of importing and defining modules. The old way will still work but the new setup is encouraged as it is said to be "more resilient to js errors you may make during development".
+
+```diff
+- import {hot} from 'react-hot-loader';
+- ...
+- export default hot(module)(App);
++ import {hot} from 'react-hot-loader/root';
++ ...
++ export default hot(App);
+```
+
 ## Breaking Changes
 ### SSR Package Script Update
 The script that starts the SSR flow has been updated in the *package.json* file.
