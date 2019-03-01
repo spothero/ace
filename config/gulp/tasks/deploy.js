@@ -70,15 +70,13 @@ const invalidateCloudFront = cb => {
                         throw new PluginError('invalidate', err, {showStack: true});
                     } else {
                         console.log(data); // eslint-disable-line no-console
-
-                        cb();
                     }
                 });
             })
         );
     });
 
-    return Promise.all(promises);
+    return Promise.all(promises).then(() => cb());
 };
 
 const uploadToS3 = () => {
