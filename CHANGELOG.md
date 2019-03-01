@@ -1,3 +1,8 @@
+# 6.0.1 - 03/01/2019
+
+## Miscellaneous Updates
+* [[ca1cb53](https://github.com/spothero/ace/commit/ca1cb53)] - `chore:` Update to latest deps (Matt Przybylski)
+
 # 6.0.0 - 01/08/2019
 ## Breaking Changes
 * [[5c86d3d](https://github.com/spothero/ace/commit/5c86d3d)] - v6 - SSR Improvements ([#17](https://github.com/spothero/ace/pull/17)) (Matt Przybylski)
