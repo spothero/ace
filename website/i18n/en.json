@@ -214,6 +214,9 @@
       },
       "version-6.0.0-upgrading-v6": {
         "title": "5.x.x to 6.x.x"
+      },
+      "version-6.0.3-upgrading-home": {
+        "title": "Upgrading"
       }
     },
     "links": {
