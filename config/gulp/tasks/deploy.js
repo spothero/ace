@@ -46,7 +46,7 @@ const invalidateCloudFront = cb => {
         }
     };
     const distroParams = [];
-    const promises = [];
+    const tasks = [];
 
     if (isArray(distroIds)) {
         distroIds.forEach(id => {
@@ -63,22 +63,26 @@ const invalidateCloudFront = cb => {
     }
 
     distroParams.forEach(distro => {
-        promises.push(
-            new Promise(() => {
+        const taskName = `invalidateCloudfront-${distro.DistributionId}`;
+
+        gulp.task(taskName, taskCb => {
+            return new Promise(() => {
                 cloudfront.createInvalidation(distro, (err, data) => {
                     if (err) {
                         throw new PluginError('invalidate', err, {showStack: true});
                     } else {
                         console.log(data); // eslint-disable-line no-console
 
-                        cb();
+                        taskCb();
                     }
                 });
-            })
-        );
+            });
+        });
+
+        tasks.push(taskName);
     });
 
-    return Promise.all(promises);
+    sequence(tasks, cb);
 };
 
 const uploadToS3 = () => {
