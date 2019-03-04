@@ -1,3 +1,8 @@
+# 6.0.2 - 03/04/2019
+
+## Miscellaneous Updates
+* [[4e3dbd7](https://github.com/spothero/ace/commit/4e3dbd7)] - `fix:` Refactor invalidateCloudfront to spawn tasks for each distro invalidation in order to fix the `task completion callback called too many times` error (Zachary Wagner)
+
 # 6.0.1 - 03/01/2019
 
 ## Miscellaneous Updates
