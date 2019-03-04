@@ -1,3 +1,8 @@
+# 6.0.3 - 03/04/2019
+
+## Miscellaneous Updates
+* [[e7d6b28](https://github.com/spothero/ace/commit/e7d6b28)] - `docs:` Upgrade to latest Docusaurus version (Matt Przybylski)
+
 # 6.0.2 - 03/04/2019
 
 ## Miscellaneous Updates
