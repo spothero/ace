@@ -64,6 +64,7 @@ const invalidateCloudFront = cb => {
 
     distroParams.forEach(distro => {
         const taskName = `invalidateCloudfront-${distro.DistributionId}`;
+
         gulp.task(taskName, taskCb => {
             return new Promise(() => {
                 cloudfront.createInvalidation(distro, (err, data) => {
@@ -77,10 +78,11 @@ const invalidateCloudFront = cb => {
                 });
             });
         });
+
         tasks.push(taskName);
     });
 
-    return sequence(tasks, cb);
+    sequence(tasks, cb);
 };
 
 const uploadToS3 = () => {
