@@ -87,7 +87,10 @@ const config = {
             ...settingsConfig.webpack.client.moduleRules
         ]
     },
-    plugins,
+    plugins: [
+        ...plugins,
+        ...settingsConfig.webpack.client.plugins,
+    ],
     externals: settingsConfig.webpack.client.externals,
     devServer: {
         contentBase: path.resolve(`${dist}`),

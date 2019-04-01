@@ -46,6 +46,7 @@ module.exports = {
             alias: {},
             resolveModules: [],
             moduleRules: [],
+            plugins: [],
             externals: {},
             clientLogLevel: 'none',
             optimization: {
@@ -58,11 +59,13 @@ module.exports = {
                 sourceMap: 'cheap-module-source-map',
                 writeToDisk: true,
                 analyze: null,
+                plugins: [],
             },
             test: {
                 useBrowserSync: true,
                 browserSyncOpen: false,
                 sourceMap: 'cheap-module-source-map',
+                plugins: [],
             },
             production: {
                 sourceMap: 'source-map',
@@ -71,6 +74,7 @@ module.exports = {
                     analyzerMode: 'static',
                     openAnalyzer: false,
                 },
+                plugins: [],
             },
         },
         server: {

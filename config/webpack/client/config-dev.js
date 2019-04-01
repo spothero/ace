@@ -37,7 +37,7 @@ const plugins = [
         {
             reload: false
         }
-    )
+    ),
 ];
 
 if (settingsConfig.webpack.client.development.writeToDisk) {
@@ -58,7 +58,10 @@ module.exports = {
     output: {
         publicPath: `/${settingsConfig.src.js.path}/`,
     },
-    plugins,
+    plugins: [
+        ...plugins,
+        ...settingsConfig.webpack.client.development.plugins,
+    ],
     optimization: {
         noEmitOnErrors: true
     }
