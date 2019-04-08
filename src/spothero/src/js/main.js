@@ -1,4 +1,5 @@
-import '@babel/polyfill';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 import 'scrollingelement';
 import 'transitionEnd';
 import React from 'react';
