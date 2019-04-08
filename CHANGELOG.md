@@ -1,3 +1,12 @@
+# 7.0.0 - 04/08/2019
+## Breaking Changes
+* [[8a3cde7](https://github.com/spothero/ace/commit/8a3cde7)] - v7: core-js Upgrades ([#22](https://github.com/spothero/ace/pull/22)) (Matt Przybylski)
+	* `breaking:` Upgrade dependencies and corejs@3, see migration in docs for details.
+	* `docs:` Add upgrade guide for v7
+
+## Miscellaneous Updates
+* [[563ae1b](https://github.com/spothero/ace/commit/563ae1b)] - `docs:` Create CODEOWNERS ([#21](https://github.com/spothero/ace/pull/21)) (Rose Bui)
+
 # 6.0.3 - 03/04/2019
 
 ## Miscellaneous Updates
