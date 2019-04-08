@@ -71,12 +71,13 @@ ACE can be given custom Babel settings (make sure that you've installed anything
                     "browsers": "[the browserslist config set above]",
                     "node": "current"
                 },
-                "useBuiltIns": "entry"
+                "useBuiltIns": "entry",
+                "corejs": 3,
             }],
             "@babel/preset-react"
         ],
         "plugins": [
-            "@babel/plugin-transform-runtime",
+            ["@babel/plugin-transform-runtime", {"corejs": 3}],
 
             // Stage 1
             "@babel/plugin-proposal-export-default-from",
@@ -100,7 +101,7 @@ ACE can be given custom Babel settings (make sure that you've installed anything
             "@babel/plugin-proposal-json-strings",
 
             // React
-            "react-hot-loader/babel"
+            "react-hot-loader/babel",
         ]
     }
 }

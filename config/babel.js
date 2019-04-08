@@ -9,12 +9,13 @@ const defaults = getRCValues({
                     browsers: browserslist,
                     node: 'current'
                 },
-                useBuiltIns: 'entry'
+                useBuiltIns: 'entry',
+                corejs: 3,
             }],
             '@babel/preset-react'
         ],
         plugins: [
-            '@babel/plugin-transform-runtime',
+            ['@babel/plugin-transform-runtime', {corejs: 3}],
 
             // Stage 1
             '@babel/plugin-proposal-export-default-from',
@@ -38,9 +39,9 @@ const defaults = getRCValues({
             '@babel/plugin-proposal-json-strings',
 
             // React
-            'react-hot-loader/babel'
-        ]
-    }
+            'react-hot-loader/babel',
+        ],
+    },
 });
 
 module.exports = defaults.babel;
