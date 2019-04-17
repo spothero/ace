@@ -59,7 +59,10 @@ module.exports = {
     output: {
         publicPath: `/${settingsConfig.src.js.path}/`,
     },
-    plugins,
+    plugins: [
+        ...plugins,
+        ...settingsConfig.webpack.client.development.plugins,
+    ],
     optimization: {
         noEmitOnErrors: true
     }

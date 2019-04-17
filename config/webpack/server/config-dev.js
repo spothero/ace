@@ -10,5 +10,6 @@ module.exports = {
                 ...settingsConfig.env.vars.development
             }
         }),
+        ...settingsConfig.webpack.server.development.plugins,
     ],
 };

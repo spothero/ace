@@ -23,7 +23,10 @@ module.exports = {
     output: {
         publicPath: `${settingsConfig.src.js.path}/`,
     },
-    plugins,
+    plugins: [
+        ...plugins,
+        ...settingsConfig.webpack.client.production.plugins,
+    ],
     performance: {
         hints: false,
     },

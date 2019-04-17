@@ -11,6 +11,7 @@ module.exports = {
                 ...settingsConfig.env.vars.production
             }
         }),
+        ...settingsConfig.webpack.server.production.plugins,
     ],
     performance: {
         hints: false,

@@ -58,11 +58,13 @@ module.exports = {
                 sourceMap: 'cheap-module-source-map',
                 writeToDisk: true,
                 analyze: null,
+                plugins: [],
             },
             test: {
                 useBrowserSync: true,
                 browserSyncOpen: false,
                 sourceMap: 'cheap-module-source-map',
+                plugins: [],
             },
             production: {
                 sourceMap: 'source-map',
@@ -71,6 +73,7 @@ module.exports = {
                     analyzerMode: 'static',
                     openAnalyzer: false,
                 },
+                plugins: [],
             },
         },
         server: {
@@ -83,6 +86,13 @@ module.exports = {
             externals: null,
             development: {
                 writeToDisk: true,
+                plugins: [],
+            },
+            test: {
+                plugins: [],
+            },
+            production: {
+                plugins: [],
             },
         },
     },
