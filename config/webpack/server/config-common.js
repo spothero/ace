@@ -13,12 +13,13 @@ const extraModules = settingsConfig.webpack.server.resolveModules.map(modulePath
 const externals = settingsConfig.webpack.server.externals;
 
 const config = {
+    name: 'server',
     target: 'node',
     entry: `${src}/${settingsConfig.webpack.server.entry}`,
     output: {
         path: dist,
         filename: settingsConfig.webpack.server.output,
-        publicPath: '/'
+        libraryTarget: 'commonjs2',
     },
     externals: (externals)
         ? externals

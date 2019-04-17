@@ -10,10 +10,16 @@ const devServerClientTask = () => {
 
 const devServerSSRTask = () => {
     const configPath = path.resolve(__dirname, '../../webpack/server/config.js');
-    const serverPath = `${global.SETTINGS_CONFIG.dist.path}/${global.SETTINGS_CONFIG.webpack.server.output}`;
+    // const serverPath = `${global.SETTINGS_CONFIG.dist.path}/${global.SETTINGS_CONFIG.webpack.server.output}`;
+    const serverPath = path.resolve(__dirname, '../server.js');
+    const generatedServerPath = `${global.SETTINGS_CONFIG.dist.path}/${global.SETTINGS_CONFIG.webpack.server.output}`;
 
     return shell.task([
-        `webpack --watch --hide-modules --config ${configPath} & wait-on ${serverPath} && nodemon ${serverPath}`
+        `node ${serverPath}`
+        // `webpack --watch --hide-modules --config ${configPath} & wait-on ${generatedServerPath} && nodemon --delay 2 ${serverPath}`
+
+        // `webpack --watch --hide-modules --config ${configPath} & wait-on ${serverPath} && nodemon --delay 2 ${serverPath}`
+        // `webpack --watch --hide-modules --config ${configPath} & wait-on ${serverPath} && node ${serverPath}`
     ], {
         cwd: process.env.INIT_CWD
     });

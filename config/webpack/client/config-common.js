@@ -10,13 +10,19 @@ const settingsConfig = require('../../gulp/lib/get-settings-config');
 const projectPath = require('../../gulp/lib/project-path');
 const babelOptions = require('../../babel');
 
+const isServer = (process.env.ACE_ENVIRONMENT === 'server');
 const src = `${projectPath(settingsConfig.root.path)}/${settingsConfig.src.path}`;
 const dist = `${projectPath(settingsConfig.root.path)}/${settingsConfig.dist.path}`;
+const hotMiddleware = `webpack-hot-middleware/client?quiet=true`;
 const entry = (isObject(settingsConfig.webpack.client.entry))
     ? mapValues(settingsConfig.webpack.client.entry, item => {
-        return `${src}/${settingsConfig.src.js.path}/${item}`;
+        return (isServer)
+            ? [hotMiddleware, `${src}/${settingsConfig.src.js.path}/${item}`]
+            : `${src}/${settingsConfig.src.js.path}/${item}`;
     })
-    : `${src}/${settingsConfig.src.js.path}/${settingsConfig.webpack.client.entry}`;
+    : (isServer)
+        ? [hotMiddleware, `${src}/${settingsConfig.src.js.path}/${settingsConfig.webpack.client.entry}`]
+        : `${src}/${settingsConfig.src.js.path}/${settingsConfig.webpack.client.entry}`;
 const extraModules = settingsConfig.webpack.client.resolveModules.map(modulePath => {
     return path.resolve(`${src}/${modulePath}`);
 });
@@ -46,7 +52,7 @@ const plugins = [
     }),
 ];
 
-if (process.env.ACE_ENVIRONMENT !== 'server') {
+if (!isServer) {
     plugins.push(new HTMLWebpackPlugin({
         filename: `${dist}/${settingsConfig.src.index}`,
         template: `${src}/${settingsConfig.src.index}`,
@@ -58,6 +64,7 @@ if (process.env.ACE_ENVIRONMENT !== 'server') {
 }
 
 const config = {
+    name: 'client',
     target: 'web',
     entry,
     output: {
@@ -84,12 +91,24 @@ const config = {
                     options: babelOptions
                 }
             },
+            {
+                test: /\.jsx?$/,
+                include: /node_modules/,
+                use: 'react-hot-loader/webpack'
+            },
             ...settingsConfig.webpack.client.moduleRules
         ]
     },
     plugins,
     externals: settingsConfig.webpack.client.externals,
-    devServer: {
+    optimization: {
+        runtimeChunk: settingsConfig.webpack.client.optimization.runtimeChunk,
+        splitChunks: settingsConfig.webpack.client.optimization.splitChunks,
+    }
+};
+
+if (!isServer) {
+    config.devServer = {
         contentBase: path.resolve(`${dist}`),
         publicPath: path.resolve(`${dist}/${settingsConfig.src.js.path}`),
         port: settingsConfig.webpack.client.port,
@@ -106,11 +125,7 @@ const config = {
             chunkModules: false,
             modules: false
         }
-    },
-    optimization: {
-        runtimeChunk: settingsConfig.webpack.client.optimization.runtimeChunk,
-        splitChunks: settingsConfig.webpack.client.optimization.splitChunks,
-    }
-};
+    };
+}
 
 module.exports = config;

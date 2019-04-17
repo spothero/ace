@@ -1,12 +1,12 @@
 const notify = require('gulp-notify');
 
-const handleErrors = function() {
-    const args = Array.prototype.slice.call(arguments);
+const handleErrors = function handleErrors(...args) {
+    const items = Array.prototype.slice.call(args);
 
     notify.onError({
         title: 'Compile Error',
         message: '<%= error.message %>'
-    }).apply(this, args);
+    }).apply(this, items);
 
     this.emit('end');
 };
