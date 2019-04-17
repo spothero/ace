@@ -57,9 +57,7 @@ if (!isServer) {
     plugins.push(new HTMLWebpackPlugin({
         filename: `${dist}/${settingsConfig.src.index}`,
         template: `${src}/${settingsConfig.src.index}`,
-        inject: (!isUndefined(settingsConfig.webpack.client.injectAssets))
-            ? settingsConfig.webpack.client.injectAssets
-            : true,
+        inject: settingsConfig.webpack.client.injectAssets,
         aceEvent: process.env.ACE_NPM_EVENT,
     }));
 }

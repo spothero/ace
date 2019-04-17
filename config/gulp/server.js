@@ -10,7 +10,6 @@ const settingsConfig = require('./lib/get-settings-config');
 
 const isDev = (process.env.ACE_NPM_EVENT === 'start');
 const port = settingsConfig.webpack.server.port;
-const host = settingsConfig.env.hostname;
 const app = express();
 
 app.use(cors());
@@ -42,7 +41,7 @@ if (isDev) {
             chunkModules: false,
             modules: false
         },
-        writeToDisk: true,
+        writeToDisk: settingsConfig.webpack.server.development.writeToDisk,
     }));
     app.use(webpackHotMiddleware(compiler.compilers.find(compilerItem => compilerItem.name === 'client')));
     app.use(webpackHotServerMiddleware(compiler, {
@@ -56,11 +55,11 @@ if (isDev) {
     app.use(serverRenderer({settings: settingsConfig}));
 }
 
-app.listen(port, host, error => {
+app.listen(port, error => {
     if (error) {
         return log(colors.red(`Server error: ${error}`));
     }
 
-    log(colors.green(`Server started at ${host}:${port}...`));
+    log(colors.green(`Server started on port ${port}...`));
     log(colors.green('Press Ctrl+C to quit.'));
 });

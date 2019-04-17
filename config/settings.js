@@ -81,6 +81,9 @@ module.exports = {
             resolveModules: [],
             moduleRules: [],
             externals: null,
+            development: {
+                writeToDisk: true,
+            },
         },
     },
     root: {
