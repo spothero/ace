@@ -57,13 +57,13 @@ N/A
 **NOTE:** This task is designed to be used when only one CSS file is generated during the build. If using multiple CSS files that are compiled during builds, a custom HTML path rewrite task will need to be created.
 
 
-### `lintJs` *(development, production)*
+### `lintJs` *(development)*
 Lints JS files based on the ESLint configuration specified.
 
 *Options*<br />
 `patterns` (Array): Glob patterns to add to the default linted items.
 
-### `lintSass` *(development, production)*
+### `lintSass` *(development)*
 Lints Sass files based on the Stylelint configuration specified.
 
 *Options*<br />

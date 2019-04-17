@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const SizePlugin = require('size-plugin');
 const settingsConfig = require('../../gulp/lib/get-settings-config');
@@ -27,6 +28,7 @@ const config = {
     resolve: {
         alias: settingsConfig.webpack.server.alias,
         modules: [
+            'node_modules',
             `${src}/${settingsConfig.src.js.path}`,
             ...extraModules,
         ],
@@ -46,6 +48,9 @@ const config = {
         ]
     },
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env': settingsConfig.env.vars.common
+        }),
         new SizePlugin(),
     ],
 };

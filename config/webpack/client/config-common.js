@@ -11,16 +11,17 @@ const projectPath = require('../../gulp/lib/project-path');
 const babelOptions = require('../../babel');
 
 const isServer = (process.env.ACE_ENVIRONMENT === 'server');
+const isDev = (process.env.ACE_NPM_EVENT !== 'build');
 const src = `${projectPath(settingsConfig.root.path)}/${settingsConfig.src.path}`;
 const dist = `${projectPath(settingsConfig.root.path)}/${settingsConfig.dist.path}`;
 const hotMiddleware = `webpack-hot-middleware/client?quiet=true`;
 const entry = (isObject(settingsConfig.webpack.client.entry))
     ? mapValues(settingsConfig.webpack.client.entry, item => {
-        return (isServer)
+        return (isServer && isDev)
             ? [hotMiddleware, `${src}/${settingsConfig.src.js.path}/${item}`]
             : `${src}/${settingsConfig.src.js.path}/${item}`;
     })
-    : (isServer)
+    : (isServer && isDev)
         ? [hotMiddleware, `${src}/${settingsConfig.src.js.path}/${settingsConfig.webpack.client.entry}`]
         : `${src}/${settingsConfig.src.js.path}/${settingsConfig.webpack.client.entry}`;
 const extraModules = settingsConfig.webpack.client.resolveModules.map(modulePath => {
@@ -107,7 +108,7 @@ const config = {
     }
 };
 
-if (!isServer) {
+if (!isServer && isDev) {
     config.devServer = {
         contentBase: path.resolve(`${dist}`),
         publicPath: path.resolve(`${dist}/${settingsConfig.src.js.path}`),

@@ -17,8 +17,6 @@ const productionClientTask = cb => {
         ? custom
         : [
             'clean',
-            'lintJS',
-            'lintSass',
             ...preBuild,
             'sass',
             'cssMin',
@@ -30,4 +28,32 @@ const productionClientTask = cb => {
     sequence(...seq, cb);
 };
 
+const productionSSRTask = cb => {
+    const {
+        taskSequence: {
+            server: {
+                production: {
+                    preBuild,
+                    postBuild,
+                    custom
+                }
+            }
+        }
+    } = global.TASK_CONFIG;
+    const seq = (custom && custom.length)
+        ? custom
+        : [
+            'clean',
+            ...preBuild,
+            'sass',
+            'cssMin',
+            'webpackSSR',
+            'htmlReplace',
+            ...postBuild
+        ];
+
+    sequence(...seq, cb);
+};
+
 gulp.task('production', productionClientTask);
+gulp.task('ssrProduction', productionSSRTask);

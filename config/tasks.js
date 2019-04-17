@@ -54,6 +54,16 @@ module.exports = {
                 postBuild: [],
                 custom: []
             },
+            test: {
+                preBuild: [],
+                postBuild: [],
+                custom: []
+            },
+            production: {
+                preBuild: [],
+                postBuild: [],
+                custom: []
+            },
         },
     }
 };
