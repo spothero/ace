@@ -82,8 +82,14 @@ Watches Sass and JS files. Modified Sass and JS files are automatically compiled
 `jsPatterns` (Array): Glob patterns to add to the default JS files being watched.<br />
 `sassPatterns` (Array): Glob patterns to add to the default Sass files being watched.
 
-### `webpack` *(production)*
-Compiles JS files for a production build, including minification/uglifying. Produces source maps for use in tools that use them (like Sentry).
+### `webpackClient` *(production)*
+Compiles client-side JS files for a production build, including minification/uglifying. Produces source maps for use in tools that use them (like Sentry).
+
+*Options*<br />
+Most of the changes to this task will happen through modifying the settings. See [the process](settings-home#process) for details.
+
+### `webpackSSR` *(production)*
+Compiles server-side JS files for a production build, including minification/uglifying. Produces source maps for use in tools that use them (like Sentry).
 
 *Options*<br />
 Most of the changes to this task will happen through modifying the settings. See [the process](settings-home#process) for details.

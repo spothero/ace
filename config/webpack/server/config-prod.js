@@ -4,6 +4,7 @@ const settingsConfig = require('../../gulp/lib/get-settings-config');
 
 module.exports = {
     mode: 'production',
+    devtool: settingsConfig.webpack.server.production.sourceMap,
     plugins: [
         new webpack.DefinePlugin({
             'process.env': {

@@ -1,5 +1,4 @@
 const isObject = require('lodash/isObject');
-const isUndefined = require('lodash/isUndefined');
 const mapValues = require('lodash/mapValues');
 const path = require('path');
 const webpack = require('webpack');
