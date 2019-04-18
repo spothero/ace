@@ -7,11 +7,11 @@ const webpackClientTask = () => {
     ]);
 };
 
-const webpackSSSRTask = () => {
+const webpackSSRTask = () => {
     return shell.task([
         'webpack --colors --hide-modules --config webpack/server/config.js'
     ]);
 };
 
 gulp.task('webpackClient', webpackClientTask());
-gulp.task('webpackSSR', webpackSSSRTask());
+gulp.task('webpackSSR', webpackSSRTask());
