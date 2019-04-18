@@ -57,13 +57,13 @@ N/A
 **NOTE:** This task is designed to be used when only one CSS file is generated during the build. If using multiple CSS files that are compiled during builds, a custom HTML path rewrite task will need to be created.
 
 
-### `lintJs` *(development, production)*
+### `lintJs` *(development)*
 Lints JS files based on the ESLint configuration specified.
 
 *Options*<br />
 `patterns` (Array): Glob patterns to add to the default linted items.
 
-### `lintSass` *(development, production)*
+### `lintSass` *(development)*
 Lints Sass files based on the Stylelint configuration specified.
 
 *Options*<br />
@@ -75,6 +75,12 @@ Compiles Sass files to CSS.
 *Options*<br />
 N/A
 
+### `serverSSR` *(production)*
+Spins up a node server and renders the application on the server for SSR.
+
+*Options*<br />
+Most of the changes to this task will happen through modifying the settings. See [the process](settings-home#process) for details.
+
 ### `watch` *(development)*
 Watches Sass and JS files. Modified Sass and JS files are automatically compiled and linted on save. This task is a daemon.
 
@@ -82,8 +88,14 @@ Watches Sass and JS files. Modified Sass and JS files are automatically compiled
 `jsPatterns` (Array): Glob patterns to add to the default JS files being watched.<br />
 `sassPatterns` (Array): Glob patterns to add to the default Sass files being watched.
 
-### `webpack` *(production)*
-Compiles JS files for a production build, including minification/uglifying. Produces source maps for use in tools that use them (like Sentry).
+### `webpackClient` *(production)*
+Compiles client-side JS files for a production build, including minification/uglifying. Produces source maps for use in tools that use them (like Sentry).
+
+*Options*<br />
+Most of the changes to this task will happen through modifying the settings. See [the process](settings-home#process) for details.
+
+### `webpackSSR` *(production)*
+Compiles server-side JS files for a production build, including minification/uglifying. Produces source maps for use in tools that use them (like Sentry).
 
 *Options*<br />
 Most of the changes to this task will happen through modifying the settings. See [the process](settings-home#process) for details.

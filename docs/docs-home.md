@@ -20,7 +20,7 @@ Under the hood, ACE uses the following technology:
 * [Autoprefixer](https://github.com/postcss/autoprefixer) to vendor prefix CSS.
 * [browserl.ist](http://browserl.ist/) to properly verify which vendor prefixes and transpilation features should be added.
 * [cssnano](http://cssnano.co/) to minify CSS.
-* [UglifyJS](https://github.com/webpack-contrib/uglifyjs-webpack-plugin) to compress JS.
+* [Terser](https://github.com/webpack-contrib/terser-webpack-plugin) to compress JS.
 * [Cypress](https://www.cypress.io/) for unit/integration/e2e testing.
 
 You will also get the added benefit of automatically being set up and running with useful SpotHero front end linting modules included in your project (you can choose to remove/change this after project scaffolding is complete).

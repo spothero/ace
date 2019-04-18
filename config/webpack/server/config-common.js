@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const SizePlugin = require('size-plugin');
 const settingsConfig = require('../../gulp/lib/get-settings-config');
@@ -13,12 +14,13 @@ const extraModules = settingsConfig.webpack.server.resolveModules.map(modulePath
 const externals = settingsConfig.webpack.server.externals;
 
 const config = {
+    name: 'server',
     target: 'node',
     entry: `${src}/${settingsConfig.webpack.server.entry}`,
     output: {
         path: dist,
         filename: settingsConfig.webpack.server.output,
-        publicPath: '/'
+        libraryTarget: 'commonjs2',
     },
     externals: (externals)
         ? externals
@@ -26,6 +28,7 @@ const config = {
     resolve: {
         alias: settingsConfig.webpack.server.alias,
         modules: [
+            'node_modules',
             `${src}/${settingsConfig.src.js.path}`,
             ...extraModules,
         ],
@@ -45,6 +48,9 @@ const config = {
         ]
     },
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env': settingsConfig.env.vars.common
+        }),
         new SizePlugin(),
     ],
 };

@@ -118,6 +118,9 @@ Whether to write the bundled files to disk. This can be very useful for debuggin
 #### `analyze`
 Pass an options object to enable bundle analyzation using [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer#options-for-plugin).
 
+#### `plugins`
+An array of [extra plugins](https://webpack.js.org/configuration/plugins) to add to the development build.
+
 ### `test`
 Options that are added during a test build.
 
@@ -139,6 +142,9 @@ The source map type to use during testing.
 **default:**
 `'cheap-module-source-map'`
 
+#### `plugins`
+An array of [extra plugins](https://webpack.js.org/configuration/plugins) to add to the test build.
+
 ### `production`
 Options that are added during a production build.
 
@@ -159,6 +165,9 @@ analyze: {
     openAnalyzer: false,
 }
 ```
+
+#### `plugins`
+An array of [extra plugins](https://webpack.js.org/configuration/plugins) to add to the production build.
 
 ## `server`
 Webpack settings for serverside builds.
@@ -194,3 +203,45 @@ Additional rules to pass to webpack. [Additional documentation](https://webpack.
 Exclude dependencies from the output bundle. [Additional documentation](https://webpack.js.org/configuration/externals).
 
 **IMPORTANT: Setting this will override default of `nodeExternals()`.**
+
+### `development`
+Options that are added during a development build.
+
+#### `sourceMap`
+The source map type to use during development.
+
+**default:**
+`'cheap-module-source-map'`
+
+#### `writeToDisk`
+Whether to write the bundled files to disk. This can be very useful for debugging.
+
+**default:**
+`true`
+
+#### `plugins`
+An array of [extra plugins](https://webpack.js.org/configuration/plugins) to add to the development build.
+
+### `test`
+Options that are added during a test build.
+
+#### `sourceMap`
+The source map type to use during testing.
+
+**default:**
+`'cheap-module-source-map'`
+
+#### `plugins`
+An array of [extra plugins](https://webpack.js.org/configuration/plugins) to add to the test build.
+
+### `production`
+Options that are added during a production build.
+
+#### `sourceMap`
+The source map type to use during production.
+
+**default:**
+`'source-map'`
+
+#### `plugins`
+An array of [extra plugins](https://webpack.js.org/configuration/plugins) to add to the production build.

@@ -9,11 +9,10 @@ const devServerClientTask = () => {
 };
 
 const devServerSSRTask = () => {
-    const configPath = path.resolve(__dirname, '../../webpack/server/config.js');
-    const serverPath = `${global.SETTINGS_CONFIG.dist.path}/${global.SETTINGS_CONFIG.webpack.server.output}`;
+    const serverPath = path.resolve(__dirname, '../server.js');
 
     return shell.task([
-        `webpack --watch --hide-modules --config ${configPath} & wait-on ${serverPath} && nodemon ${serverPath}`
+        `node ${serverPath}`
     ], {
         cwd: process.env.INIT_CWD
     });

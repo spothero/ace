@@ -12,10 +12,6 @@ const files = [
     `${dist}/${settingsConfig.src.index}`,
 ];
 
-if (process.env.ACE_ENVIRONMENT === 'server') {
-    files.push(`${dist}/${settingsConfig.webpack.server.output}`);
-}
-
 const plugins = [
     new webpack.DefinePlugin({
         'process.env': {
@@ -37,8 +33,13 @@ const plugins = [
         {
             reload: false
         }
-    )
+    ),
 ];
+
+if (process.env.ACE_ENVIRONMENT === 'server') {
+    files.push(`${dist}/${settingsConfig.webpack.server.output}`);
+    plugins.push(new webpack.HotModuleReplacementPlugin());
+}
 
 if (settingsConfig.webpack.client.development.writeToDisk) {
     plugins.push(
@@ -58,7 +59,10 @@ module.exports = {
     output: {
         publicPath: `/${settingsConfig.src.js.path}/`,
     },
-    plugins,
+    plugins: [
+        ...plugins,
+        ...settingsConfig.webpack.client.development.plugins,
+    ],
     optimization: {
         noEmitOnErrors: true
     }
