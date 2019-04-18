@@ -1,3 +1,14 @@
+# 8.0.0 - 04/18/2019
+## Breaking Changes
+* [[7e8cbb2](https://github.com/spothero/ace/commit/7e8cbb2)] - ACE v8 ([#23](https://github.com/spothero/ace/pull/23)) (Matt Przybylski)
+	* `breaking:` Add new SSR dev server setup
+	* `feat:` Support SSR in production server environments
+	* `feat:` Add support for specifying custom webpack plugins in settings
+	* `docs:` Update docs for v8 upgrade guide
+
+## Miscellaneous Updates
+* [[50513ac](https://github.com/spothero/ace/commit/50513ac)] - `chore:` Update package-lock to latest (Matt Przybylski)
+
 # 7.0.0 - 04/08/2019
 ## Breaking Changes
 * [[8a3cde7](https://github.com/spothero/ace/commit/8a3cde7)] - v7: core-js Upgrades ([#22](https://github.com/spothero/ace/pull/22)) (Matt Przybylski)
