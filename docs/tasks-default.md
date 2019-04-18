@@ -75,6 +75,12 @@ Compiles Sass files to CSS.
 *Options*<br />
 N/A
 
+### `serverSSR` *(production)*
+Spins up a node server and renders the application on the server for SSR.
+
+*Options*<br />
+Most of the changes to this task will happen through modifying the settings. See [the process](settings-home#process) for details.
+
 ### `watch` *(development)*
 Watches Sass and JS files. Modified Sass and JS files are automatically compiled and linted on save. This task is a daemon.
 

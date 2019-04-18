@@ -13,16 +13,24 @@ const isServer = (process.env.ACE_ENVIRONMENT === 'server');
 const isDev = (process.env.ACE_NPM_EVENT !== 'build');
 const src = `${projectPath(settingsConfig.root.path)}/${settingsConfig.src.path}`;
 const dist = `${projectPath(settingsConfig.root.path)}/${settingsConfig.dist.path}`;
-const hotMiddleware = `webpack-hot-middleware/client?quiet=true`;
+const hotPatch = 'react-hot-loader/patch';
+const hotMiddleware = 'webpack-hot-middleware/client?quiet=true';
+const singleEntryFile = `${src}/${settingsConfig.src.js.path}/${settingsConfig.webpack.client.entry}`;
 const entry = (isObject(settingsConfig.webpack.client.entry))
     ? mapValues(settingsConfig.webpack.client.entry, item => {
+        const entryFile = `${src}/${settingsConfig.src.js.path}/${item}`;
+
         return (isServer && isDev)
-            ? [hotMiddleware, `${src}/${settingsConfig.src.js.path}/${item}`]
-            : `${src}/${settingsConfig.src.js.path}/${item}`;
+            ? [hotPatch, hotMiddleware, entryFile]
+            : (isDev)
+                ? [hotPatch, entryFile]
+                : entryFile;
     })
     : (isServer && isDev)
-        ? [hotMiddleware, `${src}/${settingsConfig.src.js.path}/${settingsConfig.webpack.client.entry}`]
-        : `${src}/${settingsConfig.src.js.path}/${settingsConfig.webpack.client.entry}`;
+        ? [hotPatch, hotMiddleware, singleEntryFile]
+        : (isDev)
+            ? [hotPatch, singleEntryFile]
+            : singleEntryFile;
 const extraModules = settingsConfig.webpack.client.resolveModules.map(modulePath => {
     return path.resolve(`${src}/${modulePath}`);
 });

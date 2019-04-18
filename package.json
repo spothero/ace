@@ -121,11 +121,7 @@
     "minimist": "1.2.0",
     "modify-filename": "1.1.0",
     "plugin-error": "1.0.1",
-    "prop-types": "15.7.2",
     "rc": "1.2.8",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "react-hot-loader": "4.8.4",
     "require-dir": "1.2.0",
     "run-sequence": "2.2.1",
     "size-plugin": "1.2.0",
@@ -154,6 +150,7 @@
     "prop-types": "15.7.2",
     "react": "16.8.6",
     "react-dom": "16.8.6",
+    "react-hot-loader": "4.8.4",
     "regenerator-runtime": "0.13.2"
   }
 }
