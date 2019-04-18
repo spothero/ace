@@ -95,6 +95,9 @@
       "upgrading-v7": {
         "title": "6.x.x to 7.x.x"
       },
+      "upgrading-v8": {
+        "title": "7.x.x to 8.x.x"
+      },
       "version-5.0.0-docs-code-splitting": {
         "title": "Code Splitting"
       },
@@ -226,6 +229,21 @@
       },
       "version-7.0.0-upgrading-v7": {
         "title": "6.x.x to 7.x.x"
+      },
+      "version-8.0.0-docs-home": {
+        "title": "What is ACE?"
+      },
+      "version-8.0.0-docs-ssr": {
+        "title": "Server Side Rendering"
+      },
+      "version-8.0.0-settings-webpack": {
+        "title": "Webpack"
+      },
+      "version-8.0.0-tasks-default": {
+        "title": "Defaults"
+      },
+      "version-8.0.0-upgrading-v8": {
+        "title": "7.x.x to 8.x.x"
       }
     },
     "links": {

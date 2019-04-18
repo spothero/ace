@@ -1,0 +1,59 @@
+{
+  "version-8.0.0-docs": {
+    "Overview": [
+      "version-8.0.0-docs-home",
+      "version-8.0.0-docs-prerequisites"
+    ],
+    "Usage": [
+      "version-8.0.0-docs-installation",
+      "version-8.0.0-docs-configuration"
+    ],
+    "Guides": [
+      "version-8.0.0-docs-code-splitting",
+      "version-8.0.0-docs-ssr"
+    ]
+  },
+  "version-8.0.0-settings": {
+    "Overview": [
+      "version-8.0.0-settings-home"
+    ],
+    "Available Settings": [
+      "version-8.0.0-settings-environment",
+      "version-8.0.0-settings-deploy",
+      "version-8.0.0-settings-browsersync",
+      "version-8.0.0-settings-webpack",
+      "version-8.0.0-settings-root",
+      "version-8.0.0-settings-cypress",
+      "version-8.0.0-settings-src",
+      "version-8.0.0-settings-dist",
+      "version-8.0.0-settings-special"
+    ]
+  },
+  "version-8.0.0-tasks": {
+    "Overview": [
+      "version-8.0.0-tasks-home"
+    ],
+    "Tasks": [
+      "version-8.0.0-tasks-default",
+      "version-8.0.0-tasks-extra",
+      "version-8.0.0-tasks-other",
+      "version-8.0.0-tasks-creating",
+      "version-8.0.0-tasks-adding",
+      "version-8.0.0-tasks-overriding",
+      "version-8.0.0-tasks-sprites",
+      "version-8.0.0-tasks-testing",
+      "version-8.0.0-tasks-deploying"
+    ]
+  },
+  "version-8.0.0-upgrading": {
+    "Overview": [
+      "version-8.0.0-upgrading-home"
+    ],
+    "Notable Upgrades": [
+      "version-8.0.0-upgrading-v5",
+      "version-8.0.0-upgrading-v6",
+      "version-8.0.0-upgrading-v7",
+      "version-8.0.0-upgrading-v8"
+    ]
+  }
+}
