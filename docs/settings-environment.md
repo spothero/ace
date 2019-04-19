@@ -12,10 +12,10 @@ The hostname that the browser initializes with during development.
 `localhost`
 
 ## `vars`
-Environment variables as key/value pairs to pass to each webpack config for use in clientside Javascript code.
+Environment variables as key/value pairs to pass to each webpack config for use in client and server Javascript code. These use [DefinePlugin](https://webpack.js.org/plugins/define-plugin/) under the hood and all rules of it apply.
 
 **example:**
-`{API_URL: '/api/v1'}`
+`{API_URL: JSON.stringify('/api/v1')}`
 
 ### `common`
 Common variables that will be passed to every webpack config.

@@ -1,7 +1,6 @@
 const isObject = require('lodash/isObject');
 const mapValues = require('lodash/mapValues');
 const path = require('path');
-const webpack = require('webpack');
 const SizePlugin = require('size-plugin');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
@@ -35,9 +34,6 @@ const extraModules = settingsConfig.webpack.client.resolveModules.map(modulePath
     return path.resolve(`${src}/${modulePath}`);
 });
 const plugins = [
-    new webpack.DefinePlugin({
-        'process.env': settingsConfig.env.vars.common
-    }),
     new SizePlugin(),
     new WebpackAssetsManifest({
         output: `../${settingsConfig.dist.manifest.filename}`,

@@ -4,6 +4,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const WriteFilePlugin = require('write-file-webpack-plugin');
 const settingsConfig = require('../../gulp/lib/get-settings-config');
 const projectPath = require('../../gulp/lib/project-path');
+const {getEnvVars} = require('../utils');
 
 const dist = `${projectPath(settingsConfig.root.path)}/${settingsConfig.dist.path}`;
 const analyze = settingsConfig.webpack.client.development.analyze;
@@ -16,7 +17,7 @@ const plugins = [
     new webpack.DefinePlugin({
         'process.env': {
             NODE_ENV: JSON.stringify('development'),
-            ...settingsConfig.env.vars.development
+            ...getEnvVars('development'),
         }
     }),
     new BrowserSyncPlugin(
