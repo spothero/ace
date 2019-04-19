@@ -1,3 +1,8 @@
+# 8.0.1 - 04/19/2019
+
+## Miscellaneous Updates
+* [[275968c](https://github.com/spothero/ace/commit/275968c)] - `fix:` Environment variables not being set in client and server builds correctly (Matt Przybylski)
+
 # 8.0.0 - 04/18/2019
 ## Breaking Changes
 * [[7e8cbb2](https://github.com/spothero/ace/commit/7e8cbb2)] - ACE v8 ([#23](https://github.com/spothero/ace/pull/23)) (Matt Przybylski)
