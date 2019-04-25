@@ -17,6 +17,7 @@ app.use(cookieParser());
 app.use(express.static(projectPath(settingsConfig.dist.path)));
 
 if (isDev) {
+    const errorhandler = require('errorhandler');
     const webpack = require('webpack');
     const webpackDevMiddleware = require('webpack-dev-middleware');
     const webpackHotMiddleware = require('webpack-hot-middleware');
@@ -30,6 +31,7 @@ if (isDev) {
         app.use(key, proxy({target: value}));
     });
 
+    app.use(errorhandler());
     app.use(webpackDevMiddleware(compiler, {
         publicPath: `${projectPath(settingsConfig.root.path)}/${settingsConfig.dist.path}/${settingsConfig.src.js.path}`,
         serverSideRender: true,
