@@ -1,3 +1,8 @@
+# 8.0.2 - 04/26/2019
+## Miscellaneous Updates
+* [[affdcf8](https://github.com/spothero/ace/commit/affdcf8)] - `fix:` Add errorhandler middleware to SSR dev server (Matt Przybylski)
+* [[f2e5abd](https://github.com/spothero/ace/commit/f2e5abd)] - Move codeowners to .github ([#24](https://github.com/spothero/ace/pull/24)) (boiarqin)
+
 # 8.0.1 - 04/19/2019
 
 ## Miscellaneous Updates
