@@ -1,3 +1,8 @@
+# 8.0.3 - 05/10/2019
+
+## Miscellaneous Updates
+* [[fbf6cc5](https://github.com/spothero/ace/commit/fbf6cc5)] - `fix:` IE11 broken in production mode by errant react-hot-loader config entry (Matt Przybylski)
+
 # 8.0.2 - 04/26/2019
 ## Miscellaneous Updates
 * [[affdcf8](https://github.com/spothero/ace/commit/affdcf8)] - `fix:` Add errorhandler middleware to SSR dev server (Matt Przybylski)
