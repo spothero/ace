@@ -93,11 +93,6 @@ const config = {
                     options: babelOptions
                 }
             },
-            {
-                test: /\.jsx?$/,
-                include: /node_modules/,
-                use: 'react-hot-loader/webpack'
-            },
             ...settingsConfig.webpack.client.moduleRules
         ]
     },
@@ -108,6 +103,14 @@ const config = {
         splitChunks: settingsConfig.webpack.client.optimization.splitChunks,
     }
 };
+
+if (isDev) {
+    config.module.rules.push({
+        test: /\.jsx?$/,
+        include: /node_modules/,
+        use: 'react-hot-loader/webpack'
+    });
+}
 
 if (!isServer && isDev) {
     config.devServer = {
