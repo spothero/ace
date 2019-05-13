@@ -1,3 +1,8 @@
+# 8.0.4 - 05/13/2019
+
+## Miscellaneous Updates
+* [[9293124](https://github.com/spothero/ace/commit/9293124)] - `chore:` Update to latest dependencies, most notably for ESLint and Stylelint config updates (Matt Przybylski)
+
 # 8.0.3 - 05/10/2019
 
 ## Miscellaneous Updates
