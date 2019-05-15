@@ -1,3 +1,8 @@
+# 8.1.2 - 05/15/2019
+
+## Miscellaneous Updates
+* [[34addf0](https://github.com/spothero/ace/commit/34addf0)] - `fix:` Flags in dev-server always coming back defined (Matt Przybylski)
+
 # 8.1.1 - 05/15/2019
 
 ## Miscellaneous Updates
