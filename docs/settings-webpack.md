@@ -222,6 +222,9 @@ Whether to write the bundled files to disk. This can be very useful for debuggin
 #### `plugins`
 An array of [extra plugins](https://webpack.js.org/configuration/plugins) to add to the development build.
 
+#### `flags`
+A string signifying the [flags](https://nodejs.org/de/docs/guides/debugging-getting-started/#command-line-options) to pass to the node development server exactly as they should be passed through.
+
 ### `test`
 Options that are added during a test build.
 
@@ -234,6 +237,9 @@ The source map type to use during testing.
 #### `plugins`
 An array of [extra plugins](https://webpack.js.org/configuration/plugins) to add to the test build.
 
+#### `flags`
+A string signifying the [flags](https://nodejs.org/de/docs/guides/debugging-getting-started/#command-line-options) to pass to the node test server exactly as they should be passed through.
+
 ### `production`
 Options that are added during a production build.
 
@@ -245,3 +251,6 @@ The source map type to use during production.
 
 #### `plugins`
 An array of [extra plugins](https://webpack.js.org/configuration/plugins) to add to the production build.
+
+#### `flags`
+A string signifying the [flags](https://nodejs.org/de/docs/guides/debugging-getting-started/#command-line-options) to pass to the node production server exactly as they should be passed through.

@@ -4,9 +4,10 @@ const shell = require('gulp-shell');
 
 const serverSSRTask = () => {
     const serverPath = path.resolve(__dirname, '../server.js');
+    const flags = `${global.SETTINGS_CONFIG.webpack.server.production.flags} ` || '';
 
     return shell.task([
-        `node ${serverPath}`
+        `node ${flags}${serverPath}`
     ], {
         cwd: process.env.INIT_CWD
     });

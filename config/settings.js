@@ -88,14 +88,17 @@ module.exports = {
                 sourceMap: 'cheap-module-source-map',
                 writeToDisk: true,
                 plugins: [],
+                flags: null,
             },
             test: {
                 sourceMap: 'cheap-module-source-map',
                 plugins: [],
+                flags: null,
             },
             production: {
                 sourceMap: 'source-map',
                 plugins: [],
+                flags: null,
             },
         },
     },
