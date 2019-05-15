@@ -12,9 +12,10 @@ const devServerSSRTask = () => {
     const serverPath = path.resolve(__dirname, '../server.js');
     const env = (process.env.ACE_NPM_EVENT === 'test') ? 'test' : 'development';
     const flags = `${global.SETTINGS_CONFIG.webpack.server[env].flags} ` || '';
+    const flagsDefinition = (flags) ? `${flags} ` : '';
 
     return shell.task([
-        `node ${flags}${serverPath}`
+        `node ${flagsDefinition}${serverPath}`
     ], {
         cwd: process.env.INIT_CWD
     });
