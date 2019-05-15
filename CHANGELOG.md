@@ -1,3 +1,7 @@
+# 8.1.0 - 05/15/2019
+## New Features
+* [[b2e6b77](https://github.com/spothero/ace/commit/b2e6b77)] - Add the ability to pass flags to node servers in SSR mode (Matt Przybylski)
+
 # 8.0.4 - 05/13/2019
 
 ## Miscellaneous Updates
