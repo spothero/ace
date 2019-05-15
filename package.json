@@ -1,6 +1,6 @@
 {
   "name": "@spothero/ace",
-  "version": "8.0.4",
+  "version": "8.1.0",
   "description": "Application Configuration Extractor (ACE) helps remove boilerplate build code from your application and manages it externally.",
   "main": "config/gulp/index.js",
   "repository": "https://github.com/spothero/ace",
