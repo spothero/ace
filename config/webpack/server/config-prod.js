@@ -1,9 +1,12 @@
 const webpack = require('webpack');
+const isUndefined = require('lodash').isUndefined;
 const TerserPlugin = require('terser-webpack-plugin');
 const settingsConfig = require('../../gulp/lib/get-settings-config');
 const {getEnvVars} = require('../utils');
 
-module.exports = {
+const minify = settingsConfig.webpack.server.production.minify;
+
+const config = {
     mode: 'production',
     devtool: settingsConfig.webpack.server.production.sourceMap,
     plugins: [
@@ -18,7 +21,10 @@ module.exports = {
     performance: {
         hints: false,
     },
-    optimization: {
+};
+
+if (isUndefined(minify) || settingsConfig.webpack.server.production.minify) {
+    config.optimization = {
         minimizer: [
             new TerserPlugin({
                 parallel: true,
@@ -33,5 +39,11 @@ module.exports = {
                 },
             }),
         ],
-    }
-};
+    };
+} else {
+    config.optimization = {
+        minimize: false,
+    };
+}
+
+module.exports = config;

@@ -211,7 +211,7 @@ Options that are added during a development build.
 The source map type to use during development.
 
 **default:**
-`'cheap-module-source-map'`
+`false`
 
 #### `writeToDisk`
 Whether to write the bundled files to disk. This can be very useful for debugging.
@@ -232,7 +232,7 @@ Options that are added during a test build.
 The source map type to use during testing.
 
 **default:**
-`'cheap-module-source-map'`
+`false`
 
 #### `plugins`
 An array of [extra plugins](https://webpack.js.org/configuration/plugins) to add to the test build.
@@ -247,10 +247,16 @@ Options that are added during a production build.
 The source map type to use during production.
 
 **default:**
-`'source-map'`
+`false`
 
 #### `plugins`
 An array of [extra plugins](https://webpack.js.org/configuration/plugins) to add to the production build.
 
 #### `flags`
 A string signifying the [flags](https://nodejs.org/de/docs/guides/debugging-getting-started/#command-line-options) to pass to the node production server exactly as they should be passed through.
+
+#### `minify`
+Whether to minify the production server bundle or not. The server bundle is usually not visible to the end user so it does not need to be minified. This may also help in debugging through tools like Sentry.
+
+**default:**
+`false`
