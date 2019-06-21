@@ -1,3 +1,12 @@
+# 8.2.0 - 06/21/2019
+## New Features
+* [[ec96c4d](https://github.com/spothero/ace/commit/ec96c4d)] - SSR JS Bundling Updates ([#27](https://github.com/spothero/ace/pull/27)) (Matt Przybylski)
+	* `feat:` Add minify option for SSR production bundles and set it to false by default
+	* `refactor:` Default to not creating sourcemaps for all SSR environments
+
+## Miscellaneous Updates
+* [[263531e](https://github.com/spothero/ace/commit/263531e)] - `docs:` Update Docusaurus to get rid of security vulnerability (Matt Przybylski)
+
 # 8.1.2 - 05/15/2019
 
 ## Miscellaneous Updates
