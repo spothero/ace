@@ -1,7 +1,10 @@
 const webpack = require('webpack');
+const isUndefined = require('lodash').isUndefined;
 const TerserPlugin = require('terser-webpack-plugin');
 const settingsConfig = require('../../gulp/lib/get-settings-config');
 const {getEnvVars} = require('../utils');
+
+const minify = settingsConfig.webpack.server.production.minify;
 
 const config = {
     mode: 'production',
@@ -20,7 +23,7 @@ const config = {
     },
 };
 
-if (settingsConfig.webpack.server.production.minify) {
+if (isUndefined(minify) || settingsConfig.webpack.server.production.minify) {
     config.optimization = {
         minimizer: [
             new TerserPlugin({
