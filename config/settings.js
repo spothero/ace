@@ -99,6 +99,7 @@ module.exports = {
                 sourceMap: 'source-map',
                 plugins: [],
                 flags: null,
+                minify: false,
             },
         },
     },

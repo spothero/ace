@@ -254,3 +254,9 @@ An array of [extra plugins](https://webpack.js.org/configuration/plugins) to add
 
 #### `flags`
 A string signifying the [flags](https://nodejs.org/de/docs/guides/debugging-getting-started/#command-line-options) to pass to the node production server exactly as they should be passed through.
+
+#### `minify`
+Whether to minify the production server bundle or not. The server bundle is usually not visible to the end user so it does not need to be minified. This may also help in debugging through tools like Sentry.
+
+**default:**
+`false`
