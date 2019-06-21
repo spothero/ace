@@ -85,18 +85,18 @@ module.exports = {
             moduleRules: [],
             externals: null,
             development: {
-                sourceMap: 'cheap-module-source-map',
+                sourceMap: false,
                 writeToDisk: true,
                 plugins: [],
                 flags: null,
             },
             test: {
-                sourceMap: 'cheap-module-source-map',
+                sourceMap: false,
                 plugins: [],
                 flags: null,
             },
             production: {
-                sourceMap: 'source-map',
+                sourceMap: false,
                 plugins: [],
                 flags: null,
                 minify: false,

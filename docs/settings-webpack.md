@@ -211,7 +211,7 @@ Options that are added during a development build.
 The source map type to use during development.
 
 **default:**
-`'cheap-module-source-map'`
+`false`
 
 #### `writeToDisk`
 Whether to write the bundled files to disk. This can be very useful for debugging.
@@ -232,7 +232,7 @@ Options that are added during a test build.
 The source map type to use during testing.
 
 **default:**
-`'cheap-module-source-map'`
+`false`
 
 #### `plugins`
 An array of [extra plugins](https://webpack.js.org/configuration/plugins) to add to the test build.
@@ -247,7 +247,7 @@ Options that are added during a production build.
 The source map type to use during production.
 
 **default:**
-`'source-map'`
+`false`
 
 #### `plugins`
 An array of [extra plugins](https://webpack.js.org/configuration/plugins) to add to the production build.
