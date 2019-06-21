@@ -98,157 +98,160 @@
       "upgrading-v8": {
         "title": "7.x.x to 8.x.x"
       },
-      "version-5.0.0-docs-code-splitting": {
+      "version-5.0.0/version-5.0.0-docs-code-splitting": {
         "title": "Code Splitting"
       },
-      "version-5.0.0-docs-configuration": {
+      "version-5.0.0/version-5.0.0-docs-configuration": {
         "title": "Configuration"
       },
-      "version-5.0.0-docs-home": {
+      "version-5.0.0/version-5.0.0-docs-home": {
         "title": "What is ACE?"
       },
-      "version-5.0.0-docs-installation": {
+      "version-5.0.0/version-5.0.0-docs-installation": {
         "title": "Installation"
       },
-      "version-5.0.0-docs-prerequisites": {
+      "version-5.0.0/version-5.0.0-docs-prerequisites": {
         "title": "Prerequisites"
       },
-      "version-5.0.0-docs-ssr": {
+      "version-5.0.0/version-5.0.0-docs-ssr": {
         "title": "Server Side Rendering"
       },
-      "version-5.0.0-settings-browsersync": {
+      "version-5.0.0/version-5.0.0-settings-browsersync": {
         "title": "Browsersync"
       },
-      "version-5.0.0-settings-cypress": {
+      "version-5.0.0/version-5.0.0-settings-cypress": {
         "title": "Cypress"
       },
-      "version-5.0.0-settings-deploy": {
+      "version-5.0.0/version-5.0.0-settings-deploy": {
         "title": "Deploy"
       },
-      "version-5.0.0-settings-dist": {
+      "version-5.0.0/version-5.0.0-settings-dist": {
         "title": "Distribution"
       },
-      "version-5.0.0-settings-environment": {
+      "version-5.0.0/version-5.0.0-settings-environment": {
         "title": "Environment"
       },
-      "version-5.0.0-settings-home": {
+      "version-5.0.0/version-5.0.0-settings-home": {
         "title": "Modifying"
       },
-      "version-5.0.0-settings-root": {
+      "version-5.0.0/version-5.0.0-settings-root": {
         "title": "Root"
       },
-      "version-5.0.0-settings-special": {
+      "version-5.0.0/version-5.0.0-settings-special": {
         "title": "Specials"
       },
-      "version-5.0.0-settings-src": {
+      "version-5.0.0/version-5.0.0-settings-src": {
         "title": "Source"
       },
-      "version-5.0.0-settings-webpack": {
+      "version-5.0.0/version-5.0.0-settings-webpack": {
         "title": "Webpack"
       },
-      "version-5.0.0-tasks-adding": {
+      "version-5.0.0/version-5.0.0-tasks-adding": {
         "title": "Adding To Builds"
       },
-      "version-5.0.0-tasks-creating": {
+      "version-5.0.0/version-5.0.0-tasks-creating": {
         "title": "Creating"
       },
-      "version-5.0.0-tasks-default": {
+      "version-5.0.0/version-5.0.0-tasks-default": {
         "title": "Defaults"
       },
-      "version-5.0.0-tasks-deploying": {
+      "version-5.0.0/version-5.0.0-tasks-deploying": {
         "title": "Deploying"
       },
-      "version-5.0.0-tasks-extra": {
+      "version-5.0.0/version-5.0.0-tasks-extra": {
         "title": "Extras"
       },
-      "version-5.0.0-tasks-home": {
+      "version-5.0.0/version-5.0.0-tasks-home": {
         "title": "Modifying"
       },
-      "version-5.0.0-tasks-other": {
+      "version-5.0.0/version-5.0.0-tasks-other": {
         "title": "Others"
       },
-      "version-5.0.0-tasks-overriding": {
+      "version-5.0.0/version-5.0.0-tasks-overriding": {
         "title": "Overriding Defaults"
       },
-      "version-5.0.0-tasks-sprites": {
+      "version-5.0.0/version-5.0.0-tasks-sprites": {
         "title": "Sprites"
       },
-      "version-5.0.0-tasks-testing": {
+      "version-5.0.0/version-5.0.0-tasks-testing": {
         "title": "Testing"
       },
-      "version-5.0.0-upgrading-home": {
+      "version-5.0.0/version-5.0.0-upgrading-home": {
         "title": "Upgrading"
       },
-      "version-5.0.0-upgrading-v5": {
+      "version-5.0.0/version-5.0.0-upgrading-v5": {
         "title": "<5.0.0 to 5.0.0"
       },
-      "version-5.0.1-settings-webpack": {
+      "version-5.0.1/version-5.0.1-settings-webpack": {
         "title": "Webpack"
       },
-      "version-5.0.2-upgrading-v5": {
+      "version-5.0.2/version-5.0.2-upgrading-v5": {
         "title": "<5.0.0 to 5.0.0"
       },
-      "version-5.1.0-settings-webpack": {
+      "version-5.1.0/version-5.1.0-settings-webpack": {
         "title": "Webpack"
       },
-      "version-5.1.0-upgrading-v5": {
+      "version-5.1.0/version-5.1.0-upgrading-v5": {
         "title": "<5.0.0 to 5.0.0"
       },
-      "version-5.2.0-tasks-default": {
+      "version-5.2.0/version-5.2.0-tasks-default": {
         "title": "Defaults"
       },
-      "version-5.2.1-tasks-default": {
+      "version-5.2.1/version-5.2.1-tasks-default": {
         "title": "Defaults"
       },
-      "version-5.2.2-upgrading-v5": {
+      "version-5.2.2/version-5.2.2-upgrading-v5": {
         "title": "<5.0.0 to 5.x.x"
       },
-      "version-6.0.0-docs-ssr": {
+      "version-6.0.0/version-6.0.0-docs-ssr": {
         "title": "Server Side Rendering"
       },
-      "version-6.0.0-settings-dist": {
+      "version-6.0.0/version-6.0.0-settings-dist": {
         "title": "Distribution"
       },
-      "version-6.0.0-settings-webpack": {
+      "version-6.0.0/version-6.0.0-settings-webpack": {
         "title": "Webpack"
       },
-      "version-6.0.0-tasks-adding": {
+      "version-6.0.0/version-6.0.0-tasks-adding": {
         "title": "Adding To Builds"
       },
-      "version-6.0.0-tasks-creating": {
+      "version-6.0.0/version-6.0.0-tasks-creating": {
         "title": "Creating"
       },
-      "version-6.0.0-upgrading-v6": {
+      "version-6.0.0/version-6.0.0-upgrading-v6": {
         "title": "5.x.x to 6.x.x"
       },
-      "version-6.0.3-upgrading-home": {
+      "version-6.0.3/version-6.0.3-upgrading-home": {
         "title": "Upgrading"
       },
-      "version-7.0.0-settings-special": {
+      "version-7.0.0/version-7.0.0-settings-special": {
         "title": "Specials"
       },
-      "version-7.0.0-upgrading-v7": {
+      "version-7.0.0/version-7.0.0-upgrading-v7": {
         "title": "6.x.x to 7.x.x"
       },
-      "version-8.0.0-docs-home": {
+      "version-8.0.0/version-8.0.0-docs-home": {
         "title": "What is ACE?"
       },
-      "version-8.0.0-docs-ssr": {
+      "version-8.0.0/version-8.0.0-docs-ssr": {
         "title": "Server Side Rendering"
       },
-      "version-8.0.0-settings-webpack": {
+      "version-8.0.0/version-8.0.0-settings-webpack": {
         "title": "Webpack"
       },
-      "version-8.0.0-tasks-default": {
+      "version-8.0.0/version-8.0.0-tasks-default": {
         "title": "Defaults"
       },
-      "version-8.0.0-upgrading-v8": {
+      "version-8.0.0/version-8.0.0-upgrading-v8": {
         "title": "7.x.x to 8.x.x"
       },
-      "version-8.0.1-settings-environment": {
+      "version-8.0.1/version-8.0.1-settings-environment": {
         "title": "Environment"
       },
-      "version-8.1.0-settings-webpack": {
+      "version-8.1.0/version-8.1.0-settings-webpack": {
+        "title": "Webpack"
+      },
+      "version-8.2.0/version-8.2.0-settings-webpack": {
         "title": "Webpack"
       }
     },
