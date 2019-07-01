@@ -62,6 +62,7 @@ if (!isServer) {
         template: `${src}/${settingsConfig.src.index}`,
         inject: settingsConfig.webpack.client.injectAssets,
         aceEvent: process.env.ACE_NPM_EVENT,
+        ...settingsConfig.webpack.client.injectOptions
     }));
 }
 
