@@ -43,6 +43,7 @@ module.exports = {
             chunkFilename: '[name]-[chunkhash].js',
             output: '[name]-[hash].js',
             injectAssets: true,
+            injectOptions: {},
             alias: {},
             resolveModules: [],
             moduleRules: [],
