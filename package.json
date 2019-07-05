@@ -80,7 +80,7 @@
     "@babel/preset-react": "7.0.0",
     "@babel/runtime-corejs3": "7.5.0",
     "@cypress/webpack-preprocessor": "4.1.0",
-    "@spothero/eslint-config": "1.8.3",
+    "@spothero/eslint-config": "1.8.4",
     "@spothero/stylelint-config": "1.2.1",
     "ansi-colors": "4.1.1",
     "autoprefixer": "9.6.0",
