@@ -21,7 +21,7 @@ const sassTask = src => {
         .pipe(sourcemaps.init({loadMaps: true}))
         .pipe(postcss([
             autoprefixer({
-                browsers: browserslist
+                overrideBrowserslist: browserslist
             })
         ]))
         .pipe(sourcemaps.write('.'))
