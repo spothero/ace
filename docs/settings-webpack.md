@@ -38,6 +38,9 @@ Whether to inject all assets into the given HTML template. If this is set to fal
 **default:**
 `true`
 
+### `injectOptions`
+Hook to pass in any other options supported by html-webpack-plugin. [Additional documentation](https://github.com/jantimon/html-webpack-plugin#options).
+
 ### `alias`
 An object to create aliases to `import` certain modules more easily. [Additional documentation](https://webpack.js.org/configuration/resolve/#resolve-alias).
 
