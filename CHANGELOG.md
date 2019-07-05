@@ -1,3 +1,8 @@
+# 8.3.2 - 07/05/2019
+
+## Miscellaneous Updates
+* [[47d5bfe](https://github.com/spothero/ace/commit/47d5bfe)] - `fix:` Update @spothero/eslint-config to fix false positives (Matt Przybylski)
+
 # 8.3.1 - 07/05/2019
 
 ## Miscellaneous Updates
