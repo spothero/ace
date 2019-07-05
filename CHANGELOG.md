@@ -1,3 +1,14 @@
+# 8.3.0 - 07/05/2019
+## New Features
+* [[607eaeb](https://github.com/spothero/ace/commit/607eaeb)] - Enable passing options to htmlWebpackPlugin for use in template ([#28](https://github.com/spothero/ace/pull/28)) (Rose Bui)
+	* `feat:` Enable passing options to htmlWebpackPlugin for use in template
+	* `docs:` Document injectOptions
+	* `feat:` Display new option in base settings template
+
+## Miscellaneous Updates
+* [[9f4e846](https://github.com/spothero/ace/commit/9f4e846)] - `chore:` Update to latest Babel dependencies (Matt Przybylski)
+* [[1c8b664](https://github.com/spothero/ace/commit/1c8b664)] - `chore:` Update all non-Babel dependencies to latest (Matt Przybylski)
+
 # 8.2.0 - 06/21/2019
 ## New Features
 * [[ec96c4d](https://github.com/spothero/ace/commit/ec96c4d)] - SSR JS Bundling Updates ([#27](https://github.com/spothero/ace/pull/27)) (Matt Przybylski)
