@@ -1,3 +1,9 @@
+# 8.3.1 - 07/05/2019
+
+## Miscellaneous Updates
+* [[065cebe](https://github.com/spothero/ace/commit/065cebe)] - `fix:` Update eslint config to fix underlying issues in those deps (Matt Przybylski)
+* [[d67cb9d](https://github.com/spothero/ace/commit/d67cb9d)] - `fix:` Autoprefixer upgrade changed browsers entry in sass task (Matt Przybylski)
+
 # 8.3.0 - 07/05/2019
 ## New Features
 * [[607eaeb](https://github.com/spothero/ace/commit/607eaeb)] - Enable passing options to htmlWebpackPlugin for use in template ([#28](https://github.com/spothero/ace/pull/28)) (Rose Bui)
