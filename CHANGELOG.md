@@ -1,3 +1,7 @@
+# 8.4.0 - 07/17/2019
+## New Features
+* [[3664862](https://github.com/spothero/ace/commit/3664862)] - Add testing support for SSR (Matt Przybylski)
+
 # 8.3.2 - 07/05/2019
 
 ## Miscellaneous Updates
