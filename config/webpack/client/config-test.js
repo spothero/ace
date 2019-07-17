@@ -5,6 +5,10 @@ const projectPath = require('../../gulp/lib/project-path');
 const {getEnvVars} = require('../utils');
 
 const dist = `${projectPath(settingsConfig.root.path)}/${settingsConfig.dist.path}`;
+const files = [
+    `${dist}/${settingsConfig.dist.css.path}/*.css`,
+    `${dist}/${settingsConfig.src.index}`,
+];
 const plugins = [
     new webpack.DefinePlugin({
         'process.env': {
@@ -24,15 +28,17 @@ if (settingsConfig.webpack.client.test.useBrowserSync) {
             host: settingsConfig.env.hostname,
             port: settingsConfig.browserSync.port,
             startPath: settingsConfig.browserSync.startPath,
-            files: [
-                `${dist}/${settingsConfig.dist.css.path}/*.css`,
-                `${dist}/${settingsConfig.src.index}`
-            ]
+            files,
         },
         {
             reload: false
         }
     ));
+}
+
+if (process.env.ACE_ENVIRONMENT === 'server') {
+    files.push(`${dist}/${settingsConfig.webpack.server.output}`);
+    plugins.push(new webpack.HotModuleReplacementPlugin());
 }
 
 module.exports = {

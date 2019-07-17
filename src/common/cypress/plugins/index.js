@@ -25,4 +25,6 @@ module.exports = (on, config) => {
     on('file:preprocessor', webpack({
         webpackOptions: webpackConfig
     }));
+
+    return config;
 };
