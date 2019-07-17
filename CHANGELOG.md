@@ -1,3 +1,8 @@
+# 8.4.2 - 07/17/2019
+
+## Miscellaneous Updates
+* [[0b551a4](https://github.com/spothero/ace/commit/0b551a4)] - `fix:` Run the correct configuration merging for SSR test task (Matt Przybylski)
+
 # 8.4.1 - 07/17/2019
 
 ## Miscellaneous Updates
