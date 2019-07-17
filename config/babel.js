@@ -20,6 +20,7 @@ const defaults = getRCValues({
             // Stage 1
             '@babel/plugin-proposal-export-default-from',
             '@babel/plugin-proposal-logical-assignment-operators',
+            '@babel/plugin-proposal-object-rest-spread',
             '@babel/plugin-proposal-optional-chaining',
             ['@babel/plugin-proposal-pipeline-operator', {proposal: 'minimal'}],
             '@babel/plugin-proposal-nullish-coalescing-operator',
