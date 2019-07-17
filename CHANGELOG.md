@@ -1,3 +1,8 @@
+# 8.4.1 - 07/17/2019
+
+## Miscellaneous Updates
+* [[606fd85](https://github.com/spothero/ace/commit/606fd85)] - `fix:` Actually add the test command for SSR, doh (Matt Przybylski)
+
 # 8.4.0 - 07/17/2019
 ## New Features
 * [[3664862](https://github.com/spothero/ace/commit/3664862)] - Add testing support for SSR (Matt Przybylski)
