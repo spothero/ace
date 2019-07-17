@@ -1,3 +1,9 @@
+# 8.4.3 - 07/17/2019
+
+## Miscellaneous Updates
+* [[624a7fc](https://github.com/spothero/ace/commit/624a7fc)] - `chore:` Update to latest deps (Matt Przybylski)
+* [[7e58321](https://github.com/spothero/ace/commit/7e58321)] - `fix:` Correctly add server bundle to test files (Matt Przybylski)
+
 # 8.4.2 - 07/17/2019
 
 ## Miscellaneous Updates
