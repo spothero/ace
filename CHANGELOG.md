@@ -1,3 +1,8 @@
+# 8.4.4 - 07/17/2019
+
+## Miscellaneous Updates
+* [[c06c42c](https://github.com/spothero/ace/commit/c06c42c)] - `fix:` Add @babel/plugin-proposal-object-rest-spread to dependencies and babel (Matt Przybylski)
+
 # 8.4.3 - 07/17/2019
 
 ## Miscellaneous Updates
