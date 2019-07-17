@@ -256,6 +256,9 @@
       },
       "version-8.3.0/version-8.3.0-settings-webpack": {
         "title": "Webpack"
+      },
+      "version-8.4.4/version-8.4.4-settings-special": {
+        "title": "Specials"
       }
     },
     "links": {
