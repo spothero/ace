@@ -54,5 +54,34 @@ const testClientTask = cb => {
     sequence(...seq, cb);
 };
 
+const testServerTask = cb => {
+    const {
+        taskSequence: {
+            server: {
+                test: {
+                    preBuild,
+                    postBuild,
+                    custom
+                }
+            }
+        }
+    } = global.TASK_CONFIG;
+    const seq = (custom && custom.length)
+        ? custom
+        : [
+            'clean',
+            ...preBuild,
+            'sass',
+            'cssManifest',
+            'lintSass',
+            ...postBuild,
+            'watch',
+            'devServerSSR'
+        ];
+
+    sequence(...seq, cb);
+};
+
 gulp.task('generateWebpackSettings', generateWebpackSettingsTask);
 gulp.task('test', testClientTask);
+gulp.task('ssrTest', testServerTask);

@@ -15,6 +15,7 @@ const packageScriptsTask = cb => {
         const startScript = 'ACE_NPM_EVENT=start ace';
         const startSSRScript = 'ACE_NPM_EVENT=start ACE_ENVIRONMENT=server ace -- ssrDev';
         const testScript = 'ACE_NPM_EVENT=test ace -- test & wait-on http://localhost:3000 && npm run cypress:open';
+        const testSSRScript = 'ACE_NPM_EVENT=test ACE_ENVIRONMENT=server ace -- ssrTest & wait-on http://localhost:3000 && npm run cypress:open';
         const buildScript = 'ACE_NPM_EVENT=build ace -- production';
         const buildSSRScript = 'ACE_NPM_EVENT=build ACE_ENVIRONMENT=server ace -- ssrProduction';
         const serverScript = 'ACE_NPM_EVENT=server ace -- serverSSR';
@@ -49,6 +50,14 @@ const packageScriptsTask = cb => {
         }
 
         jsonData.scripts.test = testScript;
+
+        if (!isNil(jsonData.scripts['test:ssr']) && jsonData.scripts['test:ssr'] !== testSSRScript) {
+            msg += `\nCurrent "test:ssr" script will be saved as "test:ssr-backup".`;
+            jsonData.scripts['test:ssr-backup'] = jsonData.scripts['test:ssr'];
+            willOverride = true;
+        }
+
+        jsonData.scripts['test:ssr'] = testSSRScript;
 
         if (!isNil(jsonData.scripts.build) && jsonData.scripts.build !== buildScript) {
             msg += `\nCurrent "build" script will be saved as "build-backup".`;

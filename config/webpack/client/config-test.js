@@ -8,7 +8,7 @@ const dist = `${projectPath(settingsConfig.root.path)}/${settingsConfig.dist.pat
 const plugins = [
     new webpack.DefinePlugin({
         'process.env': {
-            NODE_ENV: JSON.stringify('development'),
+            NODE_ENV: JSON.stringify('test'),
             ...getEnvVars('test'),
         }
     })
