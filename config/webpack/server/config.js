@@ -15,7 +15,10 @@ switch (process.env.ACE_NPM_EVENT) {
         break;
 
     case 'test':
-        module.exports = webpackMerge(configClientTest, configClientCommon);
+        module.exports = [
+            configClient,
+            webpackMerge(configServerTest, configServerCommon)
+        ];
         break;
 
     case 'build':
