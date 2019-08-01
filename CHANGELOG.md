@@ -1,3 +1,8 @@
+# 8.4.5 - 08/01/2019
+
+## Miscellaneous Updates
+* [[1f920a2](https://github.com/spothero/ace/commit/1f920a2)] - `fix:` Issue where production server config was running in development mode causing memory leaks ([#29](https://github.com/spothero/ace/pull/29)) (Matt Przybylski)
+
 # 8.4.4 - 07/17/2019
 
 ## Miscellaneous Updates
