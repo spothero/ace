@@ -86,14 +86,14 @@
     "@spothero/stylelint-config": "1.2.1",
     "ansi-colors": "4.1.1",
     "autoprefixer": "9.6.1",
-    "aws-sdk": "2.494.0",
+    "aws-sdk": "2.503.0",
     "babel-loader": "8.0.6",
     "browser-sync": "2.26.7",
     "browser-sync-webpack-plugin": "2.2.2",
     "cookie-parser": "1.4.4",
     "cors": "2.8.5",
     "cssnano": "4.1.10",
-    "cypress": "3.4.0",
+    "cypress": "3.4.1",
     "del": "5.0.0",
     "diff": "4.0.1",
     "errorhandler": "1.5.1",
@@ -119,7 +119,7 @@
     "html-webpack-plugin": "3.2.0",
     "http-proxy-middleware": "0.19.1",
     "inquirer": "6.5.0",
-    "lodash": "4.17.14",
+    "lodash": "4.17.15",
     "merge-stream": "2.0.0",
     "minimist": "1.2.0",
     "modify-filename": "1.1.0",
@@ -129,14 +129,14 @@
     "run-sequence": "2.2.1",
     "size-plugin": "1.2.0",
     "stylelint-checkstyle-formatter": "0.1.2",
-    "terser-webpack-plugin": "1.3.0",
+    "terser-webpack-plugin": "1.4.1",
     "through2": "3.0.1",
     "uuid": "3.3.2",
     "vinyl-paths": "3.0.0",
     "wait-on": "3.3.0",
-    "webpack": "4.36.1",
+    "webpack": "4.39.0",
     "webpack-assets-manifest": "3.1.1",
-    "webpack-bundle-analyzer": "3.3.2",
+    "webpack-bundle-analyzer": "3.4.1",
     "webpack-cli": "3.3.6",
     "webpack-dev-middleware": "3.7.0",
     "webpack-dev-server": "3.7.2",
@@ -144,7 +144,7 @@
     "webpack-hot-server-middleware": "0.6.0",
     "webpack-merge": "4.2.1",
     "webpack-node-externals": "1.7.2",
-    "write-file-webpack-plugin": "4.5.0"
+    "write-file-webpack-plugin": "4.5.1"
   },
   "peerDependencies": {
     "@spothero/core": "1.6.0",
@@ -153,7 +153,7 @@
     "prop-types": "15.7.2",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "react-hot-loader": "4.12.7",
-    "regenerator-runtime": "0.13.2"
+    "react-hot-loader": "4.12.10",
+    "regenerator-runtime": "0.13.3"
   }
 }

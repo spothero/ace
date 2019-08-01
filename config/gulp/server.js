@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 const projectPath = require('./lib/project-path');
 const settingsConfig = require('./lib/get-settings-config');
 
-const isDev = (process.env.ACE_NPM_EVENT !== 'build');
+const isDev = (process.env.ACE_NPM_EVENT !== 'build' && process.env.ACE_NPM_EVENT !== 'server');
 const port = settingsConfig.webpack.server.port;
 const app = express();
 
