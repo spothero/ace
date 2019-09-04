@@ -4,6 +4,8 @@ node_modules
 /.eslintignore
 /.eslintrc
 /.nvmrc
+/.prettierignore
+/.prettierrc
 commitlint.config.js
 /docs
 /website

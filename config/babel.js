@@ -4,15 +4,18 @@ const browserslist = require('./browserslist');
 const defaults = getRCValues({
     babel: {
         presets: [
-            ['@babel/preset-env', {
-                targets: {
-                    browsers: browserslist,
-                    node: 'current'
+            [
+                '@babel/preset-env',
+                {
+                    targets: {
+                        browsers: browserslist,
+                        node: 'current',
+                    },
+                    useBuiltIns: 'entry',
+                    corejs: 3,
                 },
-                useBuiltIns: 'entry',
-                corejs: 3,
-            }],
-            '@babel/preset-react'
+            ],
+            '@babel/preset-react',
         ],
         plugins: [
             ['@babel/plugin-transform-runtime', {corejs: 3}],
@@ -38,10 +41,12 @@ const defaults = getRCValues({
             '@babel/plugin-syntax-import-meta',
             '@babel/plugin-proposal-class-properties',
             '@babel/plugin-proposal-json-strings',
-
-            // React
-            'react-hot-loader/babel',
         ],
+        env: {
+            dev: {
+                plugins: ['react-hot-loader/babel'],
+            },
+        },
     },
 });
 
