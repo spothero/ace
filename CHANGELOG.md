@@ -1,3 +1,8 @@
+# 8.5.1 - 09/04/2019
+
+## Miscellaneous Updates
+* [[f5a93d8](https://github.com/spothero/ace/commit/f5a93d8)] - `fix:` Only include react-hot-loader in dev environment (Matt Przybylski)
+
 # 8.5.0 - 09/04/2019
 ## New Features
 * [[8b67c7e](https://github.com/spothero/ace/commit/8b67c7e)] - Prettier integration and dependency updates ([#30](https://github.com/spothero/ace/pull/30)) (Matt Przybylski)
