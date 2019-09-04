@@ -1,7 +1,9 @@
+/.github
 _internal
 node_modules
-./.eslintrc
-./.nvmrc
+/.eslintignore
+/.eslintrc
+/.nvmrc
 commitlint.config.js
 /docs
 /website
