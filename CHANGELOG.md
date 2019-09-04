@@ -1,3 +1,10 @@
+# 8.5.0 - 09/04/2019
+## New Features
+* [[8b67c7e](https://github.com/spothero/ace/commit/8b67c7e)] - Prettier integration and dependency updates ([#30](https://github.com/spothero/ace/pull/30)) (Matt Przybylski)
+	* `feat:` Add support for Prettier and update dependencies to latest
+	* `fix:` Change peerDependencies to be a range rather than pinned version
+	* `fix:` Reorganize spothero related source files and update npmignore
+
 # 8.4.5 - 08/01/2019
 
 ## Miscellaneous Updates
