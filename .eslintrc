@@ -1,5 +1,10 @@
 {
-    "extends": "@spothero",
+    "extends": [
+        "@spothero",
+        "plugin:prettier/recommended",
+        "prettier/babel",
+        "prettier/react"
+    ],
     "globals": {
         "SETTINGS_CONFIG": true,
         "TASK_CONFIG": true
