@@ -148,13 +148,13 @@
     "write-file-webpack-plugin": "4.5.1"
   },
   "peerDependencies": {
-    "@spothero/core": "1.6.0",
-    "@spothero/ui": "8.7.0",
-    "core-js": "3.2.1",
-    "prop-types": "15.7.2",
-    "react": "16.9.0",
-    "react-dom": "16.9.0",
-    "react-hot-loader": "4.12.12",
-    "regenerator-runtime": "0.13.3"
+    "@spothero/core": "^1.6.0",
+    "@spothero/ui": "^8.7.0",
+    "core-js": "^3.2.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-hot-loader": "^4.12.12",
+    "regenerator-runtime": "^0.13.3"
   }
 }
