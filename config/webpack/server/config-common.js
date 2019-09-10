@@ -1,6 +1,5 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
-const SizePlugin = require('size-plugin');
 const settingsConfig = require('../../gulp/lib/get-settings-config');
 const projectPath = require('../../gulp/lib/project-path');
 const babelOptions = require('../../babel');
@@ -46,9 +45,6 @@ const config = {
             ...settingsConfig.webpack.server.moduleRules
         ]
     },
-    plugins: [
-        new SizePlugin(),
-    ],
 };
 
 module.exports = config;

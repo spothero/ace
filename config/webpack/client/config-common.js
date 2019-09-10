@@ -1,7 +1,6 @@
 const isObject = require('lodash/isObject');
 const mapValues = require('lodash/mapValues');
 const path = require('path');
-const SizePlugin = require('size-plugin');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const settingsConfig = require('../../gulp/lib/get-settings-config');
@@ -34,7 +33,6 @@ const extraModules = settingsConfig.webpack.client.resolveModules.map(modulePath
     return path.resolve(`${src}/${modulePath}`);
 });
 const plugins = [
-    new SizePlugin(),
     new WebpackAssetsManifest({
         output: `../${settingsConfig.dist.manifest.filename}`,
         writeToDisk: true,
