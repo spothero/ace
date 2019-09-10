@@ -1,3 +1,8 @@
+# 8.5.2 - 09/10/2019
+
+## Miscellaneous Updates
+* [[29cb9df](https://github.com/spothero/ace/commit/29cb9df)] - `fix:` Remove size-plugin because its not really useful and we have bundle analyzer in place (Matt Przybylski)
+
 # 8.5.1 - 09/04/2019
 
 ## Miscellaneous Updates
