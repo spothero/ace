@@ -17,7 +17,7 @@ Follow the steps below to install and initialize ACE in a new project.
     ```
 1. Run ACE's setup.
     ```bash
-    ./node_modules/.bin/ace -- setup
+    npx ace -- setup
     ```
     * Adds necessary `scripts` for working with ACE to `package.json`.
         * Any scripts with name collisions will be backed up (`*-backup`) and replaced.
