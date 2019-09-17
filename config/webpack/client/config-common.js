@@ -33,7 +33,7 @@ const extraModules = settingsConfig.webpack.client.resolveModules.map(modulePath
     return path.resolve(`${src}/${modulePath}`);
 });
 const plugins = [
-    new WebpackAssetsManifest({
+    !settingsConfig.webpack.client.injectAssets && new WebpackAssetsManifest({
         output: `../${settingsConfig.dist.manifest.filename}`,
         writeToDisk: true,
         merge: true,
@@ -52,7 +52,7 @@ const plugins = [
             }
         }
     }),
-];
+].filter(Boolean);
 
 if (!isServer) {
     plugins.push(new HTMLWebpackPlugin({
