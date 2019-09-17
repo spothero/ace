@@ -6,7 +6,7 @@ title: Browsersync
 **key:** `browserSync`
 Optional.
 
-When included, browserSync can watch for changes in files not assocated with webpack (such as stylesheets compiled by a gulp task) and hot-reload the browser.
+When included, BrowserSync can watch for changes in files not associated with webpack (such as stylesheets compiled by a Gulp task) and inject them into browser.
 
 ## `prefix`
 The prefix shown in shell when Browsersync events occur.
