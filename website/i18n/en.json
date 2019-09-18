@@ -259,6 +259,12 @@
       },
       "version-8.4.4/version-8.4.4-settings-special": {
         "title": "Specials"
+      },
+      "version-9.0.0/version-9.0.0-docs-installation": {
+        "title": "Installation"
+      },
+      "version-9.0.0/version-9.0.0-settings-browsersync": {
+        "title": "Browsersync"
       }
     },
     "links": {
