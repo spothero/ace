@@ -20,7 +20,7 @@ const plugins = [
             ...getEnvVars('development'),
         }
     }),
-    new BrowserSyncPlugin(
+    settingsConfig.browserSync && new BrowserSyncPlugin(
         {
             logPrefix: settingsConfig.browserSync.prefix,
             proxy: `http://${settingsConfig.env.hostname}:${settingsConfig.webpack.client.port}`,
@@ -35,7 +35,7 @@ const plugins = [
             reload: false
         }
     ),
-];
+].filter(Boolean);
 
 if (process.env.ACE_ENVIRONMENT === 'server') {
     files.push(`${dist}/${settingsConfig.webpack.server.output}`);
