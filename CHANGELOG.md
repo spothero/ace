@@ -1,3 +1,13 @@
+# 9.0.0 - 09/18/2019
+## Breaking Changes
+* [[869f266](https://github.com/spothero/ace/commit/869f266)] - Change publicPath for client production deployments to include leading slash (Rose Bui)
+
+## New Features
+* [[e378c31](https://github.com/spothero/ace/commit/e378c31)] - Enable opt-out of browserSync ([#31](https://github.com/spothero/ace/pull/31)) (Rose Bui)
+
+## Miscellaneous Updates
+* [[7b48b0e](https://github.com/spothero/ace/commit/7b48b0e)] - `docs:` Update setup command to use npx (Matt Przybylski)
+
 # 8.5.2 - 09/10/2019
 
 ## Miscellaneous Updates
