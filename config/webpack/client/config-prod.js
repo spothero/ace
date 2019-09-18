@@ -22,7 +22,7 @@ module.exports = {
     mode: 'production',
     devtool: settingsConfig.webpack.client.production.sourceMap,
     output: {
-        publicPath: `${settingsConfig.src.js.path}/`,
+        publicPath: `/${settingsConfig.src.js.path}/`,
     },
     plugins: [
         ...plugins,
