@@ -27,7 +27,6 @@ if (isUndefined(minify) || settingsConfig.webpack.server.production.minify) {
     config.optimization = {
         minimizer: [
             new TerserPlugin({
-                parallel: true,
                 sourceMap: true,
                 terserOptions: {
                     compress: {
