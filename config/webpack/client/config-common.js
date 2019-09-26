@@ -7,61 +7,70 @@ const settingsConfig = require('../../gulp/lib/get-settings-config');
 const projectPath = require('../../gulp/lib/project-path');
 const babelOptions = require('../../babel');
 
-const isServer = (process.env.ACE_ENVIRONMENT === 'server');
-const isDev = (process.env.ACE_NPM_EVENT !== 'build');
-const src = `${projectPath(settingsConfig.root.path)}/${settingsConfig.src.path}`;
-const dist = `${projectPath(settingsConfig.root.path)}/${settingsConfig.dist.path}`;
+const isServer = process.env.ACE_ENVIRONMENT === 'server';
+const isDev = process.env.ACE_NPM_EVENT !== 'build';
+const src = `${projectPath(settingsConfig.root.path)}/${
+    settingsConfig.src.path
+}`;
+const dist = `${projectPath(settingsConfig.root.path)}/${
+    settingsConfig.dist.path
+}`;
 const hotPatch = 'react-hot-loader/patch';
 const hotMiddleware = 'webpack-hot-middleware/client?quiet=true';
 const singleEntryFile = `${src}/${settingsConfig.src.js.path}/${settingsConfig.webpack.client.entry}`;
-const entry = (isObject(settingsConfig.webpack.client.entry))
+const entry = isObject(settingsConfig.webpack.client.entry)
     ? mapValues(settingsConfig.webpack.client.entry, item => {
-        const entryFile = `${src}/${settingsConfig.src.js.path}/${item}`;
+          const entryFile = `${src}/${settingsConfig.src.js.path}/${item}`;
 
-        return (isServer && isDev)
-            ? [hotPatch, hotMiddleware, entryFile]
-            : (isDev)
-                ? [hotPatch, entryFile]
-                : entryFile;
-    })
-    : (isServer && isDev)
-        ? [hotPatch, hotMiddleware, singleEntryFile]
-        : (isDev)
-            ? [hotPatch, singleEntryFile]
-            : singleEntryFile;
-const extraModules = settingsConfig.webpack.client.resolveModules.map(modulePath => {
-    return path.resolve(`${src}/${modulePath}`);
-});
+          return isServer && isDev
+              ? [hotPatch, hotMiddleware, entryFile]
+              : isDev
+              ? [hotPatch, entryFile]
+              : entryFile;
+      })
+    : isServer && isDev
+    ? [hotPatch, hotMiddleware, singleEntryFile]
+    : isDev
+    ? [hotPatch, singleEntryFile]
+    : singleEntryFile;
+const extraModules = settingsConfig.webpack.client.resolveModules.map(
+    modulePath => {
+        return path.resolve(`${src}/${modulePath}`);
+    }
+);
 const plugins = [
-    !settingsConfig.webpack.client.injectAssets && new WebpackAssetsManifest({
-        output: `../${settingsConfig.dist.manifest.filename}`,
-        writeToDisk: true,
-        merge: true,
-        customize: (entryItem, original, manifest, asset) => {
-            // don't add .map files to manifest
-            if (entryItem.key.toLowerCase().endsWith('.map')) {
-                return false;
-            }
+    !settingsConfig.webpack.client.injectAssets &&
+        new WebpackAssetsManifest({
+            output: `../${settingsConfig.dist.manifest.filename}`,
+            writeToDisk: true,
+            merge: true,
+            customize: (entryItem, original, manifest, asset) => {
+                // don't add .map files to manifest
+                if (entryItem.key.toLowerCase().endsWith('.map')) {
+                    return false;
+                }
 
-            // add JS path before each JS file key/value pair in manifest
-            if (entryItem.key.toLowerCase().endsWith('.js')) {
-                return {
-                    key: `${settingsConfig.src.js.path}/${entryItem.key}`,
-                    value: `${settingsConfig.src.js.path}/${entryItem.value}`,
-                };
-            }
-        }
-    }),
+                // add JS path before each JS file key/value pair in manifest
+                if (entryItem.key.toLowerCase().endsWith('.js')) {
+                    return {
+                        key: `${settingsConfig.src.js.path}/${entryItem.key}`,
+                        value: `${settingsConfig.src.js.path}/${entryItem.value}`,
+                    };
+                }
+            },
+        }),
 ].filter(Boolean);
 
 if (!isServer) {
-    plugins.push(new HTMLWebpackPlugin({
-        filename: `${dist}/${settingsConfig.src.index}`,
-        template: `${src}/${settingsConfig.src.index}`,
-        inject: settingsConfig.webpack.client.injectAssets,
-        aceEvent: process.env.ACE_NPM_EVENT,
-        ...settingsConfig.webpack.client.injectOptions
-    }));
+    plugins.push(
+        new HTMLWebpackPlugin({
+            filename: `${dist}/${settingsConfig.src.index}`,
+            template: `${src}/${settingsConfig.src.index}`,
+            inject: settingsConfig.webpack.client.injectAssets,
+            aceEvent: process.env.ACE_NPM_EVENT,
+            ...settingsConfig.webpack.client.injectOptions,
+        })
+    );
 }
 
 const config = {
@@ -80,7 +89,7 @@ const config = {
             path.resolve(`${src}/${settingsConfig.src.js.path}`),
             ...extraModules,
         ],
-        extensions: ['.js', '.jsx', '.json']
+        extensions: ['.js', '.jsx', '.json'],
     },
     module: {
         rules: [
@@ -89,25 +98,25 @@ const config = {
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
-                    options: babelOptions
-                }
+                    options: babelOptions,
+                },
             },
-            ...settingsConfig.webpack.client.moduleRules
-        ]
+            ...settingsConfig.webpack.client.moduleRules,
+        ],
     },
     plugins,
     externals: settingsConfig.webpack.client.externals,
     optimization: {
         runtimeChunk: settingsConfig.webpack.client.optimization.runtimeChunk,
         splitChunks: settingsConfig.webpack.client.optimization.splitChunks,
-    }
+    },
 };
 
 if (isDev) {
     config.module.rules.push({
         test: /\.jsx?$/,
         include: /node_modules/,
-        use: 'react-hot-loader/webpack'
+        use: 'react-hot-loader/webpack',
     });
 }
 
@@ -119,7 +128,8 @@ if (!isServer && isDev) {
         host: settingsConfig.env.hostname,
         hot: true,
         clientLogLevel: settingsConfig.webpack.client.clientLogLevel,
-        historyApiFallback: settingsConfig.webpack.client.development.historyApiFallback,
+        historyApiFallback:
+            settingsConfig.webpack.client.development.historyApiFallback,
         proxy: settingsConfig.webpack.client.development.proxy,
         stats: {
             colors: true,
@@ -127,8 +137,8 @@ if (!isServer && isDev) {
             timings: true,
             chunks: false,
             chunkModules: false,
-            modules: false
-        }
+            modules: false,
+        },
     };
 }
 
