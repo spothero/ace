@@ -106,6 +106,16 @@ ACE can be given custom Babel settings (make sure that you've installed anything
                 "plugins": [
                     "react-hot-loader/babel"
                 ]
+            },
+            "production": {
+                "plugins": [
+                    [
+                        "transform-react-remove-prop-types", {
+                            "removeImport": true,
+                            "ignoreFilenames": ["node_modules"]
+                        }
+                    ]
+                ]
             }
         }
     }

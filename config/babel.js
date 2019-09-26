@@ -46,6 +46,17 @@ const defaults = getRCValues({
             development: {
                 plugins: ['react-hot-loader/babel'],
             },
+            production: {
+                plugins: [
+                    [
+                        'transform-react-remove-prop-types',
+                        {
+                            removeImport: true,
+                            ignoreFilenames: ['node_modules'],
+                        },
+                    ],
+                ],
+            },
         },
     },
 });
