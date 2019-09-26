@@ -98,6 +98,9 @@
       "upgrading-v8": {
         "title": "7.x.x to 8.x.x"
       },
+      "version-10.0.0/version-10.0.0-settings-special": {
+        "title": "Specials"
+      },
       "version-5.0.0/version-5.0.0-docs-code-splitting": {
         "title": "Code Splitting"
       },
