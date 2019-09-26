@@ -43,7 +43,7 @@ const defaults = getRCValues({
             '@babel/plugin-proposal-json-strings',
         ],
         env: {
-            dev: {
+            development: {
                 plugins: ['react-hot-loader/babel'],
             },
         },

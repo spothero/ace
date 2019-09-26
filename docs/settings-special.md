@@ -99,11 +99,15 @@ ACE can be given custom Babel settings (make sure that you've installed anything
             "@babel/plugin-syntax-dynamic-import",
             "@babel/plugin-syntax-import-meta",
             "@babel/plugin-proposal-class-properties",
-            "@babel/plugin-proposal-json-strings",
-
-            // React
-            "react-hot-loader/babel",
-        ]
+            "@babel/plugin-proposal-json-strings"
+        ],
+        "env": {
+            "development": {
+                "plugins": [
+                    "react-hot-loader/babel"
+                ]
+            }
+        }
     }
 }
 ```
