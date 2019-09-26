@@ -1,3 +1,11 @@
+# 10.0.0 - 09/26/2019
+## Breaking Changes
+* [[cc3366d](https://github.com/spothero/ace/commit/cc3366d)] - Add Babel plugin to remove prop types during production builds ([#32](https://github.com/spothero/ace/pull/32)) (Matt Przybylski)
+
+## Miscellaneous Updates
+* [[2b2d043](https://github.com/spothero/ace/commit/2b2d043)] - `chore:` Update to latest dependencies (Matt Przybylski)
+* [[35721f4](https://github.com/spothero/ace/commit/35721f4)] - `fix:` Babel config dev mode name to development and update specials docs (Matt Przybylski)
+
 # 9.0.0 - 09/18/2019
 ## Breaking Changes
 * [[869f266](https://github.com/spothero/ace/commit/869f266)] - Change publicPath for client production deployments to include leading slash (Rose Bui)
