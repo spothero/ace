@@ -1,3 +1,8 @@
+# 10.0.1 - 10/31/2019
+
+## Miscellaneous Updates
+* [[76dd0f8](https://github.com/spothero/ace/commit/76dd0f8)] - `fix:` Change generateSprites padding to be 4 instead of 5 for more rounded generated numbers (Matt Przybylski)
+
 # 10.0.0 - 09/26/2019
 ## Breaking Changes
 * [[cc3366d](https://github.com/spothero/ace/commit/cc3366d)] - Add Babel plugin to remove prop types during production builds ([#32](https://github.com/spothero/ace/pull/32)) (Matt Przybylski)
