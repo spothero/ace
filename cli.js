@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const path = require('path');
+const process = require('process');
 
 const additionalArgs = require('minimist')(process.argv.slice(2))._;
 const aceEntryDir = path.resolve(__dirname, './config/gulp');
@@ -12,4 +13,6 @@ if (additionalArgs.length) {
     args = args.concat(additionalArgs);
 }
 
-require('child_process').fork(gulpBinaryFile, args);
+require('child_process')
+    .fork(gulpBinaryFile, args)
+    .on('exit', code => process.exit(code));
