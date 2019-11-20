@@ -1,3 +1,8 @@
+# 10.0.2 - 11/20/2019
+
+## Miscellaneous Updates
+* [[3fe883d](https://github.com/spothero/ace/commit/3fe883d)] - `fix:` Return exit code from forked Gulp process in order to handle errors externally (Tom Schroeder)
+
 # 10.0.1 - 10/31/2019
 
 ## Miscellaneous Updates
