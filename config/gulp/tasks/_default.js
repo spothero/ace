@@ -7,26 +7,23 @@ const developmentClientTask = cb => {
     const {
         taskSequence: {
             client: {
-                development: {
-                    preBuild,
-                    postBuild,
-                    custom
-                }
-            }
-        }
+                development: {preBuild, postBuild, custom},
+            },
+        },
     } = global.TASK_CONFIG;
-    const seq = (custom && custom.length)
-        ? custom
-        : [
-            'clean',
-            ...preBuild,
-            'sass',
-            'cssManifest',
-            'lintSass',
-            ...postBuild,
-            'watch',
-            'devServerClient'
-        ];
+    const seq =
+        custom && custom.length
+            ? custom
+            : [
+                  'clean',
+                  ...preBuild,
+                  'sass',
+                  'cssManifest',
+                  'lintSass',
+                  ...postBuild,
+                  'watch',
+                  'devServerClient',
+              ];
 
     sequence(...seq, cb);
 };
@@ -35,26 +32,23 @@ const developmentSSRTask = cb => {
     const {
         taskSequence: {
             server: {
-                development: {
-                    preBuild,
-                    postBuild,
-                    custom
-                }
-            }
-        }
+                development: {preBuild, postBuild, custom},
+            },
+        },
     } = global.TASK_CONFIG;
-    const seq = (custom && custom.length)
-        ? custom
-        : [
-            'clean',
-            ...preBuild,
-            'sass',
-            'cssManifest',
-            'lintSass',
-            ...postBuild,
-            'watch',
-            'devServerSSR'
-        ];
+    const seq =
+        custom && custom.length
+            ? custom
+            : [
+                  'clean',
+                  ...preBuild,
+                  'sass',
+                  'cssManifest',
+                  'lintSass',
+                  ...postBuild,
+                  'watch',
+                  'devServerSSR',
+              ];
 
     sequence(...seq, cb);
 };

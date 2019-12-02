@@ -9,17 +9,22 @@ const mapKeys = require('lodash/mapKeys');
 const projectPath = require('../../lib/project-path');
 const packageJSON = require('../../../../package.json');
 
-let peers = keys(mapKeys(packageJSON.peerDependencies, (value, key) => {
-    return `${key}@${value}`;
-}));
+let peers = keys(
+    mapKeys(packageJSON.peerDependencies, (value, key) => {
+        return `${key}@${value}`;
+    })
+);
 
 const installPeerDepsTask = () => {
-    return gulp.src(`${projectPath(global.SETTINGS_CONFIG.root.path)}/package.json`, {read: false})
-        .pipe(shell([
-            `npm install -S ${peers.join(' ')}`
-        ], {
-            cwd: process.env.INIT_CWD
-        }));
+    return gulp
+        .src(`${projectPath(global.SETTINGS_CONFIG.root.path)}/package.json`, {
+            read: false,
+        })
+        .pipe(
+            shell([`npm install -S ${peers.join(' ')}`], {
+                cwd: process.env.INIT_CWD,
+            })
+        );
 };
 
 const installPeerDependenciesTask = cb => {
@@ -28,17 +33,18 @@ const installPeerDependenciesTask = cb => {
             {
                 name: 'peerDeps',
                 type: 'list',
-                message: 'Also install peerDependencies? (Required when starting a new project with ACE)',
+                message:
+                    'Also install peerDependencies? (Required when starting a new project with ACE)',
                 choices: [
                     'Yes',
                     'Yes + SpotHero (only useful for SpotHero employees, will fail install if used by non-employees)',
-                    'No'
+                    'No',
                 ],
-                default: 0
-            }
+                default: 0,
+            },
         ])
         .then(answers => {
-            const type = (includes(answers.peerDeps, 'SpotHero'))
+            const type = includes(answers.peerDeps, 'SpotHero')
                 ? 'SpotHero'
                 : answers.peerDeps;
 
@@ -49,10 +55,7 @@ const installPeerDependenciesTask = cb => {
                     });
                 }
 
-                sequence(
-                    'confirmInstallPeerDeps',
-                    cb
-                );
+                sequence('confirmInstallPeerDeps', cb);
             } else {
                 cb();
             }

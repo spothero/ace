@@ -9,8 +9,8 @@ module.exports = {
             common: {},
             development: {},
             test: {},
-            production: {}
-        }
+            production: {},
+        },
     },
     deploy: {
         releaseVersion: null,
@@ -19,22 +19,22 @@ module.exports = {
         invalidatePaths: [],
         sandbox: {
             bucket: '',
-            cloudFrontDistributionId: ''
+            cloudFrontDistributionId: '',
         },
         staging: {
             bucket: '',
-            cloudFrontDistributionId: ''
+            cloudFrontDistributionId: '',
         },
         production: {
             bucket: '',
-            cloudFrontDistributionId: ''
-        }
+            cloudFrontDistributionId: '',
+        },
     },
     browserSync: {
         prefix: 'Browsersync',
         port: 3000,
         open: true,
-        startPath: null
+        startPath: null,
     },
     webpack: {
         client: {
@@ -114,20 +114,20 @@ module.exports = {
         path: 'src',
         index: 'index.html',
         img: {
-            path: 'img'
+            path: 'img',
         },
         js: {
             path: 'js',
         },
         sass: {
-            path: 'sass'
+            path: 'sass',
         },
         sprites: {
             srcPath: 'sprites',
             outputPath: 'sprites',
             sassMapOutputPath: 'utils/sprites',
             sassSpritesOutputPath: 'common/sprites',
-            names: []
+            names: [],
         },
     },
     dist: {
@@ -136,7 +136,7 @@ module.exports = {
             filename: 'manifest.json',
         },
         css: {
-            path: 'css'
+            path: 'css',
         },
     },
 };

@@ -13,8 +13,8 @@ const defaults = getRCValues({
         'not Opera > 0',
         'not OperaMini all',
         'not OperaMobile > 0',
-        'not Android > 0'
-    ]
+        'not Android > 0',
+    ],
 });
 
 module.exports = defaults.browserslist;

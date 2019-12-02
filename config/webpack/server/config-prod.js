@@ -14,7 +14,7 @@ const config = {
             'process.env': {
                 NODE_ENV: JSON.stringify('production'),
                 ...getEnvVars('production'),
-            }
+            },
         }),
         ...settingsConfig.webpack.server.production.plugins,
     ],

@@ -6,13 +6,20 @@ const projectPath = require('../../lib/project-path');
 const babelSettings = require('../../../babel');
 
 const generateBabelrcTask = cb => {
-    fs.writeFile(`${projectPath(global.SETTINGS_CONFIG.root.path)}/.babelrc`, JSON.stringify(babelSettings, null, 4), writeError => {
-        if (writeError) { return console.log(writeError); } // eslint-disable-line no-console
+    fs.writeFile(
+        `${projectPath(global.SETTINGS_CONFIG.root.path)}/.babelrc`,
+        JSON.stringify(babelSettings, null, 4),
+        writeError => {
+            if (writeError) {
+                // eslint-disable-next-line no-console
+                return console.log(writeError);
+            }
 
-        log(colors.green('Generated a `.babelrc` file.'));
+            log(colors.green('Generated a `.babelrc` file.'));
 
-        cb();
-    });
+            cb();
+        }
+    );
 };
 
 gulp.task('generateBabelrc', generateBabelrcTask);

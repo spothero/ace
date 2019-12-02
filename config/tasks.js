@@ -2,30 +2,30 @@
 
 module.exports = {
     clean: {
-        patterns: []
+        patterns: [],
     },
     compressImages: {
         jpg: {
-            progressive: false
+            progressive: false,
         },
         png: {
-            optimizationLevel: 3
-        }
+            optimizationLevel: 3,
+        },
     },
     lintJS: {
-        patterns: []
+        patterns: [],
     },
     lintSass: {
-        patterns: []
+        patterns: [],
     },
     sentry: {
         organizationSlug: '',
         authToken: '',
-        projectSlug: ''
+        projectSlug: '',
     },
     watch: {
         jsPatterns: [],
-        sassPatterns: []
+        sassPatterns: [],
     },
     additionalTasks: {
         // taskName: require('./tasks/task-name')
@@ -35,35 +35,35 @@ module.exports = {
             development: {
                 preBuild: [],
                 postBuild: [],
-                custom: []
+                custom: [],
             },
             test: {
                 preBuild: [],
                 postBuild: [],
-                custom: []
+                custom: [],
             },
             production: {
                 preBuild: [],
                 postBuild: [],
-                custom: []
+                custom: [],
             },
         },
         server: {
             development: {
                 preBuild: [],
                 postBuild: [],
-                custom: []
+                custom: [],
             },
             test: {
                 preBuild: [],
                 postBuild: [],
-                custom: []
+                custom: [],
             },
             production: {
                 preBuild: [],
                 postBuild: [],
-                custom: []
+                custom: [],
             },
         },
-    }
+    },
 };

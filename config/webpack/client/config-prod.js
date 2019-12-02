@@ -1,5 +1,6 @@
 const webpack = require('webpack');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+    .BundleAnalyzerPlugin;
 const TerserPlugin = require('terser-webpack-plugin');
 const settingsConfig = require('../../gulp/lib/get-settings-config');
 const {getEnvVars} = require('../utils');
@@ -10,7 +11,7 @@ const plugins = [
         'process.env': {
             NODE_ENV: JSON.stringify('production'),
             ...getEnvVars('production'),
-        }
+        },
     }),
 ];
 
@@ -24,10 +25,7 @@ module.exports = {
     output: {
         publicPath: `/${settingsConfig.src.js.path}/`,
     },
-    plugins: [
-        ...plugins,
-        ...settingsConfig.webpack.client.production.plugins,
-    ],
+    plugins: [...plugins, ...settingsConfig.webpack.client.production.plugins],
     performance: {
         hints: false,
     },
@@ -45,5 +43,5 @@ module.exports = {
                 },
             }),
         ],
-    }
+    },
 };

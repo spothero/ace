@@ -13,6 +13,12 @@ const customTasks = toPairs(global.TASK_CONFIG.additionalTasks);
 
 forEach(customTasks, task => {
     gulp.task(task[0], cb => {
-        return task[1](gulp, projectPath, global.SETTINGS_CONFIG, global.TASK_CONFIG, cb);
+        return task[1](
+            gulp,
+            projectPath,
+            global.SETTINGS_CONFIG,
+            global.TASK_CONFIG,
+            cb
+        );
     });
 });

@@ -3,13 +3,13 @@ const shell = require('gulp-shell');
 
 const webpackClientTask = () => {
     return shell.task([
-        'webpack --colors --hide-modules --config webpack/client/config.js'
+        'webpack --colors --hide-modules --config webpack/client/config.js',
     ]);
 };
 
 const webpackSSRTask = () => {
     return shell.task([
-        'webpack --colors --hide-modules --config webpack/server/config.js'
+        'webpack --colors --hide-modules --config webpack/server/config.js',
     ]);
 };
 

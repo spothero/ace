@@ -14,5 +14,5 @@ module.exports = {
             ...settingsConfig.env.vars.common,
             ...settingsConfig.env.vars[environment],
         };
-    }
+    },
 };

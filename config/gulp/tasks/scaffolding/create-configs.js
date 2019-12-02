@@ -6,17 +6,19 @@ const colors = require('ansi-colors');
 const projectPath = require('../../lib/project-path');
 
 const execScaffoldConfigsTask = () => {
-    const projectConfigDir = (process.env.ACE_CONFIG_PATH)
+    const projectConfigDir = process.env.ACE_CONFIG_PATH
         ? projectPath(process.env.ACE_CONFIG_PATH)
         : projectPath('config');
 
-    return gulp.src([
-        '../config/settings.js',
-        '../config/tasks.js'
-    ])
+    return gulp
+        .src(['../config/settings.js', '../config/tasks.js'])
         .pipe(gulp.dest(projectConfigDir))
         .on('end', () => {
-            log(colors.yellow('Update `settings.js` for project settings and `tasks.js` for Gulp tasks.'));
+            log(
+                colors.yellow(
+                    'Update `settings.js` for project settings and `tasks.js` for Gulp tasks.'
+                )
+            );
         });
 };
 
@@ -26,16 +28,14 @@ const scaffoldConfigsTask = cb => {
             {
                 name: 'scaffoldConfigs',
                 type: 'confirm',
-                message: 'Scaffold ACE config files in /config directory? (you can do this later by calling `npm start -- scaffoldConfigs`)',
-                default: true
-            }
+                message:
+                    'Scaffold ACE config files in /config directory? (you can do this later by calling `npm start -- scaffoldConfigs`)',
+                default: true,
+            },
         ])
         .then(answers => {
             if (answers.scaffoldConfigs) {
-                sequence(
-                    'confirmScaffoldConfigs',
-                    cb
-                );
+                sequence('confirmScaffoldConfigs', cb);
             } else {
                 cb();
             }

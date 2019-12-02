@@ -10,23 +10,29 @@ const pkg = require('../../../../package.json');
 
 const deploySettings = {
     bucket: 'spothero.com-static-production.styleguide',
-    cloudFrontDistributionId: 'E13YKZ29SIK8RP'
+    cloudFrontDistributionId: 'E13YKZ29SIK8RP',
 };
 
 const generateACEDocsTask = () => {
-    return shell.task([
-        `cd website && npm install && npm run version ${pkg.version} && npm run build`
-    ], {
-        cwd: process.env.INIT_CWD
-    });
+    return shell.task(
+        [
+            `cd website && npm install && npm run version ${pkg.version} && npm run build`,
+        ],
+        {
+            cwd: process.env.INIT_CWD,
+        }
+    );
 };
 
 const commitDocsTask = () => {
-    return shell.task([
-        `git add -A && git commit -m "squash: Adding generated documentation version to source control" && git push`
-    ], {
-        cwd: process.env.INIT_CWD
-    });
+    return shell.task(
+        [
+            `git add -A && git commit -m "squash: Adding generated documentation version to source control" && git push`,
+        ],
+        {
+            cwd: process.env.INIT_CWD,
+        }
+    );
 };
 
 const invalidateCloudFront = cb => {
@@ -37,15 +43,17 @@ const invalidateCloudFront = cb => {
             CallerReference: uuidV4(),
             Paths: {
                 Quantity: 1,
-                Items: [`/uniform*`]
-            }
-        }
+                Items: [`/uniform*`],
+            },
+        },
     };
 
     return new Promise(() => {
         cloudfront.createInvalidation(params, (err, data) => {
             if (err) {
-                throw new PluginError('invalidateACEDocs', err, {showStack: true});
+                throw new PluginError('invalidateACEDocs', err, {
+                    showStack: true,
+                });
             } else {
                 console.log(data); // eslint-disable-line no-console
 
@@ -58,23 +66,27 @@ const invalidateCloudFront = cb => {
 const uploadToS3 = () => {
     const s3 = gulpS3Upload();
 
-    return gulp.src([
-        `${projectPath('website/build/ace')}/**`,
-        `${projectPath('website/versioned_docs')}/**`,
-        `${projectPath('website/versioned_sidebars')}/**`,
-        `${projectPath('website')}/versions.json`,
-    ])
-        .pipe(s3(
-            {
-                Bucket: deploySettings.bucket,
-                ACL: 'public-read',
-                keyTransform: relativeFilename => {
-                    return `uniform/ace/${relativeFilename}`;
+    return gulp
+        .src([
+            `${projectPath('website/build/ace')}/**`,
+            `${projectPath('website/versioned_docs')}/**`,
+            `${projectPath('website/versioned_sidebars')}/**`,
+            `${projectPath('website')}/versions.json`,
+        ])
+        .pipe(
+            s3(
+                {
+                    Bucket: deploySettings.bucket,
+                    ACL: 'public-read',
+                    keyTransform: relativeFilename => {
+                        return `uniform/ace/${relativeFilename}`;
+                    },
+                },
+                {
+                    maxRetries: 5,
                 }
-            }, {
-                maxRetries: 5
-            }
-        ));
+            )
+        );
 };
 
 const docsTask = cb => {

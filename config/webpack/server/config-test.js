@@ -10,7 +10,7 @@ module.exports = {
             'process.env': {
                 NODE_ENV: JSON.stringify('test'),
                 ...getEnvVars('test'),
-            }
+            },
         }),
         ...settingsConfig.webpack.server.test.plugins,
     ],

@@ -13,43 +13,49 @@ process.title = 'ace-test';
 
 const generateWebpackSettingsTask = cb => {
     const config = pick(merge(configTest, configCommon), ['resolve', 'module']);
-    const writePath = `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.cypress.path}`;
+    const writePath = `${projectPath(global.SETTINGS_CONFIG.root.path)}/${
+        global.SETTINGS_CONFIG.cypress.path
+    }`;
 
     if (!fs.existsSync(writePath)) {
         fs.mkdirSync(writePath);
     }
 
-    fs.writeFile(`${writePath}/generated-webpack-settings.json`, JSON.stringify(config, null, 4), writeError => {
-        if (writeError) { return console.log(writeError); } // eslint-disable-line no-console
+    fs.writeFile(
+        `${writePath}/generated-webpack-settings.json`,
+        JSON.stringify(config, null, 4),
+        writeError => {
+            if (writeError) {
+                // eslint-disable-next-line no-console
+                return console.log(writeError);
+            }
 
-        cb();
-    });
+            cb();
+        }
+    );
 };
 
 const testClientTask = cb => {
     const {
         taskSequence: {
             client: {
-                test: {
-                    preBuild,
-                    postBuild,
-                    custom
-                }
-            }
-        }
+                test: {preBuild, postBuild, custom},
+            },
+        },
     } = global.TASK_CONFIG;
-    const seq = (custom && custom.length)
-        ? custom
-        : [
-            'clean',
-            ...preBuild,
-            'sass',
-            'cssManifest',
-            'lintSass',
-            ...postBuild,
-            'watch',
-            'devServerClient'
-        ];
+    const seq =
+        custom && custom.length
+            ? custom
+            : [
+                  'clean',
+                  ...preBuild,
+                  'sass',
+                  'cssManifest',
+                  'lintSass',
+                  ...postBuild,
+                  'watch',
+                  'devServerClient',
+              ];
 
     sequence(...seq, cb);
 };
@@ -58,26 +64,23 @@ const testServerTask = cb => {
     const {
         taskSequence: {
             server: {
-                test: {
-                    preBuild,
-                    postBuild,
-                    custom
-                }
-            }
-        }
+                test: {preBuild, postBuild, custom},
+            },
+        },
     } = global.TASK_CONFIG;
-    const seq = (custom && custom.length)
-        ? custom
-        : [
-            'clean',
-            ...preBuild,
-            'sass',
-            'cssManifest',
-            'lintSass',
-            ...postBuild,
-            'watch',
-            'devServerSSR'
-        ];
+    const seq =
+        custom && custom.length
+            ? custom
+            : [
+                  'clean',
+                  ...preBuild,
+                  'sass',
+                  'cssManifest',
+                  'lintSass',
+                  ...postBuild,
+                  'watch',
+                  'devServerSSR',
+              ];
 
     sequence(...seq, cb);
 };

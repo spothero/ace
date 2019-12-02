@@ -4,11 +4,17 @@ const settingsConfig = require('../../gulp/lib/get-settings-config');
 const projectPath = require('../../gulp/lib/project-path');
 const babelOptions = require('../../babel');
 
-const src = `${projectPath(settingsConfig.root.path)}/${settingsConfig.src.path}`;
-const dist = `${projectPath(settingsConfig.root.path)}/${settingsConfig.dist.path}`;
-const extraModules = settingsConfig.webpack.server.resolveModules.map(modulePath => {
-    return path.resolve(`${src}/${modulePath}`);
-});
+const src = `${projectPath(settingsConfig.root.path)}/${
+    settingsConfig.src.path
+}`;
+const dist = `${projectPath(settingsConfig.root.path)}/${
+    settingsConfig.dist.path
+}`;
+const extraModules = settingsConfig.webpack.server.resolveModules.map(
+    modulePath => {
+        return path.resolve(`${src}/${modulePath}`);
+    }
+);
 const externals = settingsConfig.webpack.server.externals;
 
 const config = {
@@ -20,9 +26,7 @@ const config = {
         filename: settingsConfig.webpack.server.output,
         libraryTarget: 'commonjs2',
     },
-    externals: (externals)
-        ? externals
-        : [nodeExternals()],
+    externals: externals ? externals : [nodeExternals()],
     resolve: {
         alias: settingsConfig.webpack.server.alias,
         modules: [
@@ -30,7 +34,7 @@ const config = {
             `${src}/${settingsConfig.src.js.path}`,
             ...extraModules,
         ],
-        extensions: ['.js', '.jsx', '.json']
+        extensions: ['.js', '.jsx', '.json'],
     },
     module: {
         rules: [
@@ -39,11 +43,11 @@ const config = {
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
-                    options: babelOptions
-                }
+                    options: babelOptions,
+                },
             },
-            ...settingsConfig.webpack.server.moduleRules
-        ]
+            ...settingsConfig.webpack.server.moduleRules,
+        ],
     },
 };
 

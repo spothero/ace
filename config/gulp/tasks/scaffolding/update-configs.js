@@ -11,30 +11,35 @@ const defaultSettings = require('../../../settings');
 const defaultTasks = require('../../../tasks');
 
 const diffLogger = part => {
-    const color = (part.added)
-        ? 'red'
-        : (part.removed)
-            ? 'green'
-            : 'grey';
+    const color = part.added ? 'red' : part.removed ? 'green' : 'grey';
 
     process.stderr.write(colors[color](part.value));
 };
 
 const execUpdateConfigsTask = () => {
-    const areSettingsChanged = !isEqual(defaultSettings, global.SETTINGS_CONFIG);
+    const areSettingsChanged = !isEqual(
+        defaultSettings,
+        global.SETTINGS_CONFIG
+    );
     const areTasksChanged = !isEqual(defaultTasks, global.TASK_CONFIG);
-    const projectConfigDir = (process.env.ACE_CONFIG_PATH)
+    const projectConfigDir = process.env.ACE_CONFIG_PATH
         ? projectPath(process.env.ACE_CONFIG_PATH)
         : projectPath('config');
 
     if (areSettingsChanged || areTasksChanged) {
-        log(colors.red(`Here is a diff of changes between your project's configuration and updates made in the latest version of ACE.`));
+        log(
+            colors.red(
+                `Here is a diff of changes between your project's configuration and updates made in the latest version of ACE.`
+            )
+        );
     }
 
     if (areSettingsChanged) {
         log(colors.yellow.bold('\n\n***** SETTINGS (settings.js) *****'));
 
-        jsDiff.diffJson(defaultSettings, global.SETTINGS_CONFIG).forEach(diffLogger);
+        jsDiff
+            .diffJson(defaultSettings, global.SETTINGS_CONFIG)
+            .forEach(diffLogger);
 
         process.stderr.write('\n\n');
     }
@@ -48,24 +53,52 @@ const execUpdateConfigsTask = () => {
     }
 
     if (areSettingsChanged || areTasksChanged) {
-        log(colors.yellow.bold(`${colors.green('GREEN')} denotes new configuration options that have been added to ACE since your last update or ones you've changed in your configuration.`));
-        log(colors.yellow.bold(`${colors.red('RED')} denotes changes you've made to to the configuration in your project.`));
-        log(colors.yellow.bold(`You'll want to add the new configuration options that are available in your project's configuration files before continuing development.`));
-        log(colors.yellow.bold(`Copies of the file(s) can be saved to your configuration folder so that you can copy/paste the new objects along with their commented documentation.`));
+        log(
+            colors.yellow.bold(
+                `${colors.green(
+                    'GREEN'
+                )} denotes new configuration options that have been added to ACE since your last update or ones you've changed in your configuration.`
+            )
+        );
+        log(
+            colors.yellow.bold(
+                `${colors.red(
+                    'RED'
+                )} denotes changes you've made to to the configuration in your project.`
+            )
+        );
+        log(
+            colors.yellow.bold(
+                `You'll want to add the new configuration options that are available in your project's configuration files before continuing development.`
+            )
+        );
+        log(
+            colors.yellow.bold(
+                `Copies of the file(s) can be saved to your configuration folder so that you can copy/paste the new objects along with their commented documentation.`
+            )
+        );
     } else {
-        log(colors.yellow.bold(`There are no changes between ACE's configuration and your project's configuration files.`));
+        log(
+            colors.yellow.bold(
+                `There are no changes between ACE's configuration and your project's configuration files.`
+            )
+        );
     }
 
-    return gulp.src([
-        '../config/settings.js',
-        '../config/tasks.js'
-    ])
-        .pipe(rename(path => {
-            path.basename = `${path.basename}-ace-updated`;
-        }))
+    return gulp
+        .src(['../config/settings.js', '../config/tasks.js'])
+        .pipe(
+            rename(path => {
+                path.basename = `${path.basename}-ace-updated`;
+            })
+        )
         .pipe(gulp.dest(projectConfigDir))
         .on('end', () => {
-            log(colors.red.bold('ACE copied updated configuration files in to your configuration directory. Please reference the diff(s) above and update your configuration files accordingly, if necessary.'));
+            log(
+                colors.red.bold(
+                    'ACE copied updated configuration files in to your configuration directory. Please reference the diff(s) above and update your configuration files accordingly, if necessary.'
+                )
+            );
         });
 };
 
@@ -75,16 +108,14 @@ const updateConfigsTask = cb => {
             {
                 name: 'updateConfigs',
                 type: 'confirm',
-                message: 'Would you like to copy the config files to your project (files will be named `*-ace-updated.js`)? (you can run `npm start -- updateConfigs` at any time to see this message as well)',
-                default: true
-            }
+                message:
+                    'Would you like to copy the config files to your project (files will be named `*-ace-updated.js`)? (you can run `npm start -- updateConfigs` at any time to see this message as well)',
+                default: true,
+            },
         ])
         .then(answers => {
             if (answers.updateConfigs) {
-                sequence(
-                    'confirmUpdateConfigs',
-                    cb
-                );
+                sequence('confirmUpdateConfigs', cb);
             } else {
                 cb();
             }

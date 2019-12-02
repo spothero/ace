@@ -8,7 +8,9 @@ const cookieParser = require('cookie-parser');
 const projectPath = require('./lib/project-path');
 const settingsConfig = require('./lib/get-settings-config');
 
-const isDev = (process.env.ACE_NPM_EVENT !== 'build' && process.env.ACE_NPM_EVENT !== 'server');
+const isDev =
+    process.env.ACE_NPM_EVENT !== 'build' &&
+    process.env.ACE_NPM_EVENT !== 'server';
 const port = settingsConfig.webpack.server.port;
 const app = express();
 
@@ -32,27 +34,41 @@ if (isDev) {
     });
 
     app.use(errorhandler());
-    app.use(webpackDevMiddleware(compiler, {
-        publicPath: `${projectPath(settingsConfig.root.path)}/${settingsConfig.dist.path}/${settingsConfig.src.js.path}`,
-        serverSideRender: true,
-        stats: {
-            colors: true,
-            hash: false,
-            timings: true,
-            chunks: false,
-            chunkModules: false,
-            modules: false
-        },
-        writeToDisk: settingsConfig.webpack.server.development.writeToDisk,
-    }));
-    app.use(webpackHotMiddleware(compiler.compilers.find(compilerItem => compilerItem.name === 'client')));
-    app.use(webpackHotServerMiddleware(compiler, {
-        serverRendererOptions: {
-            settings: settingsConfig,
-        },
-    }));
+    app.use(
+        webpackDevMiddleware(compiler, {
+            publicPath: `${projectPath(settingsConfig.root.path)}/${
+                settingsConfig.dist.path
+            }/${settingsConfig.src.js.path}`,
+            serverSideRender: true,
+            stats: {
+                colors: true,
+                hash: false,
+                timings: true,
+                chunks: false,
+                chunkModules: false,
+                modules: false,
+            },
+            writeToDisk: settingsConfig.webpack.server.development.writeToDisk,
+        })
+    );
+    app.use(
+        webpackHotMiddleware(
+            compiler.compilers.find(
+                compilerItem => compilerItem.name === 'client'
+            )
+        )
+    );
+    app.use(
+        webpackHotServerMiddleware(compiler, {
+            serverRendererOptions: {
+                settings: settingsConfig,
+            },
+        })
+    );
 } else {
-    const serverRenderer = require(`${projectPath(settingsConfig.root.path)}/${settingsConfig.dist.path}/${settingsConfig.webpack.server.output}`).default;
+    const serverRenderer = require(`${projectPath(settingsConfig.root.path)}/${
+        settingsConfig.dist.path
+    }/${settingsConfig.webpack.server.output}`).default;
 
     app.use(serverRenderer({settings: settingsConfig}));
 }
