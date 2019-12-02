@@ -1,3 +1,8 @@
+# 10.0.4 - 12/02/2019
+## Miscellaneous Updates
+* [[588be7e](https://github.com/spothero/ace/commit/588be7e)] - `chore:` Update to latest dependencies (Matt Przybylski)
+* [[6044ea2](https://github.com/spothero/ace/commit/6044ea2)] - 10.0.3 (Matt Przybylski)
+
 # 10.0.3 - 12/02/2019
 
 ## Miscellaneous Updates
