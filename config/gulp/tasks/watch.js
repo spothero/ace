@@ -27,8 +27,8 @@ const jsPatterns = (global.TASK_CONFIG.watch.jsPatterns.length)
     : [];
 const watchTask = ({sass, js}) => {
     return () => {
-        watch(sass, ['sass', 'lintSass']);
-        watch(js, ['lintJS']);
+        watch(sass, () => gulp.start(['sass', 'lintSass']));
+        watch(js, () => gulp.start('lintJS'));
     };
 };
 const src = `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.src.path}`;
