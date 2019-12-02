@@ -1,6 +1,11 @@
 # 10.0.3 - 12/02/2019
 
 ## Miscellaneous Updates
+* [[588be7e](https://github.com/spothero/ace/commit/588be7e)] - `chore:` Update to latest dependencies (Matt Przybylski)
+
+# 10.0.3 - 12/02/2019
+
+## Miscellaneous Updates
 * [[230d9f5](https://github.com/spothero/ace/commit/230d9f5)] - `style:` Run prettier on JS files (Matt Przybylski)
 * [[572496d](https://github.com/spothero/ace/commit/572496d)] - `fix:` Use gulp-watch to avoid polling for changes ([#37](https://github.com/spothero/ace/pull/37)) (Tom Schroeder)
 
