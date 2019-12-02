@@ -1,4 +1,5 @@
 const gulp = require('gulp');
+const watch = require('gulp-watch');
 const includes = require('lodash/includes');
 const projectPath = require('../lib/project-path');
 
@@ -26,8 +27,8 @@ const jsPatterns = (global.TASK_CONFIG.watch.jsPatterns.length)
     : [];
 const watchTask = ({sass, js}) => {
     return () => {
-        gulp.watch(sass, ['sass', 'lintSass']);
-        gulp.watch(js, ['lintJS']);
+        watch(sass, ['sass', 'lintSass']);
+        watch(js, ['lintJS']);
     };
 };
 const src = `${projectPath(global.SETTINGS_CONFIG.root.path)}/${global.SETTINGS_CONFIG.src.path}`;
