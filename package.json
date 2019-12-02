@@ -152,7 +152,7 @@
   "peerDependencies": {
     "@spothero/core": "^1.6.0",
     "@spothero/ui": "^10.1.7",
-    "core-js": "^3.4.6",
+    "core-js": "^3.4.7",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
