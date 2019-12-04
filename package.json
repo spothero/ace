@@ -132,7 +132,7 @@
     "require-dir": "1.2.0",
     "run-sequence": "2.2.1",
     "stylelint-checkstyle-formatter": "0.1.2",
-    "terser-webpack-plugin": "2.2.1",
+    "terser-webpack-plugin": "2.1.0",
     "through2": "3.0.1",
     "uuid": "3.3.3",
     "vinyl-paths": "3.0.1",
