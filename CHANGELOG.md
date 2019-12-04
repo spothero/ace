@@ -1,3 +1,10 @@
+# 10.0.5 - 12/04/2019
+
+## Miscellaneous Updates
+* [[f8ea8e2](https://github.com/spothero/ace/commit/f8ea8e2)] - `fix:` Roll back Babel updates to see if it fixes IE11 (Matt Przybylski)
+* [[60d4b8d](https://github.com/spothero/ace/commit/60d4b8d)] - `fix:` Bump core-js package to latest to fix issues with Babel (Matt Przybylski)
+* [[a349f70](https://github.com/spothero/ace/commit/a349f70)] - `docs:` Cleanup changelog (Matt Przybylski)
+
 # 10.0.4 - 12/02/2019
 ## Miscellaneous Updates
 * [[588be7e](https://github.com/spothero/ace/commit/588be7e)] - `chore:` Update to latest dependencies (Matt Przybylski)
