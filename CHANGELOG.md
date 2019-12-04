@@ -1,3 +1,8 @@
+# 10.0.6 - 12/04/2019
+
+## Miscellaneous Updates
+* [[94c7809](https://github.com/spothero/ace/commit/94c7809)] - `fix:` Downgrade terser to try and fix IE11 (Matt Przybylski)
+
 # 10.0.5 - 12/04/2019
 
 ## Miscellaneous Updates
