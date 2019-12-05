@@ -1,3 +1,8 @@
+# 10.0.8 - 12/05/2019
+
+## Miscellaneous Updates
+* [[864da21](https://github.com/spothero/ace/commit/864da21)] - `fix:` Pin core-js-pure to fix IE11 issues and update all babel dependencies (Matt Przybylski)
+
 # 10.0.7 - 12/05/2019
 
 ## Miscellaneous Updates
