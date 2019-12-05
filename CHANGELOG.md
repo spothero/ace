@@ -1,3 +1,8 @@
+# 10.0.7 - 12/05/2019
+
+## Miscellaneous Updates
+* [[e7f4708](https://github.com/spothero/ace/commit/e7f4708)] - `fix:` Roll back all dependencies to try and fix IE11 (Matt Przybylski)
+
 # 10.0.6 - 12/04/2019
 
 ## Miscellaneous Updates
