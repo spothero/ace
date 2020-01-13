@@ -1,3 +1,8 @@
+# 10.0.9 - 01/13/2020
+
+## Miscellaneous Updates
+* [[ab906f9](https://github.com/spothero/ace/commit/ab906f9)] - `chore:` Remove pinned core-js-pure dependency and recommend latest version of core-js ([#38](https://github.com/spothero/ace/pull/38)) (Tom Schroeder)
+
 # 10.0.8 - 12/05/2019
 
 ## Miscellaneous Updates
