@@ -93,7 +93,6 @@
     "browser-sync": "2.26.7",
     "browser-sync-webpack-plugin": "2.2.2",
     "cookie-parser": "1.4.4",
-    "core-js-pure": "3.4.1",
     "cors": "2.8.5",
     "cssnano": "4.1.10",
     "cypress": "3.7.0",
@@ -153,7 +152,7 @@
   "peerDependencies": {
     "@spothero/core": "^1.6.0",
     "@spothero/ui": "^10.1.7",
-    "core-js": "^3.4.7",
+    "core-js": "^3.6.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
