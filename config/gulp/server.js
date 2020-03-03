@@ -30,7 +30,7 @@ if (isDev) {
 
     // add local proxies for API requests
     forEach(settingsConfig.webpack.client.development.proxy, (value, key) => {
-        app.use(key, proxy({target: value}));
+        app.use(key, proxy(value));
     });
 
     app.use(errorhandler());
