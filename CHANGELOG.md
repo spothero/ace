@@ -1,3 +1,8 @@
+# 10.0.10 - 03/04/2020
+
+## Miscellaneous Updates
+* [[8dbe908](https://github.com/spothero/ace/commit/8dbe908)] - `chore:` http-proxy-middleware support for all options ([#39](https://github.com/spothero/ace/pull/39)) (Seth Thomas)
+
 # 10.0.9 - 01/13/2020
 
 ## Miscellaneous Updates
