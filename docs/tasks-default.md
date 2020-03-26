@@ -56,13 +56,6 @@ N/A
 
 **NOTE:** This task is designed to be used when only one CSS file is generated during the build. If using multiple CSS files that are compiled during builds, a custom HTML path rewrite task will need to be created.
 
-
-### `lintJs` *(development)*
-Lints JS files based on the ESLint configuration specified.
-
-*Options*<br />
-`patterns` (Array): Glob patterns to add to the default linted items.
-
 ### `lintSass` *(development)*
 Lints Sass files based on the Stylelint configuration specified.
 
@@ -85,7 +78,6 @@ Most of the changes to this task will happen through modifying the settings. See
 Watches Sass and JS files. Modified Sass and JS files are automatically compiled and linted on save. This task is a daemon.
 
 *Options*<br />
-`jsPatterns` (Array): Glob patterns to add to the default JS files being watched.<br />
 `sassPatterns` (Array): Glob patterns to add to the default Sass files being watched.
 
 ### `webpackClient` *(production)*

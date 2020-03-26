@@ -6,7 +6,7 @@ const packageJSON = require('../../../../package.json');
 const contribDependenciesTask = () => {
     const deps = packageJSON.contributionDependencies
         .map(dep => {
-            return `${dep}@${get(packageJSON.dependencies, dep)}`;
+            return `${dep}@${get(packageJSON.dependencies, dep) || get(packageJSON.peerDependencies, dep)}`;
         })
         .join(' ');
 
