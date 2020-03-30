@@ -17,7 +17,7 @@ As it pertains to task settings in the *config/tasks.js* file, any task that tak
 
 For instance, given the pattern `'src/sass/utils/**/*'` provided to a task and the default [root path setting](settings-root/#path) of `'./'`, the final path ACE will keep internally will be `'./src/sass/utils/**/*'`. ACE does this to ensure that the path is being pulled from your project properly and not so that it is pulling the path from its own internal configuration inside of the `node_modules` directory that ACE itself is contained in.
 
-As stated above, this applies to all task settings that have the word `pattern` in it (`clean.patterns`, `lintJS.patterns`, etc...). An example for adding new Sass watch patterns would be as follows:
+As stated above, this applies to all task settings that have the word `pattern` in it (`clean.patterns`, etc...). An example for adding new Sass watch patterns would be as follows:
 ```js
 module.exports = {
     ...,

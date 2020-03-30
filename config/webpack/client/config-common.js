@@ -5,7 +5,7 @@ const WebpackAssetsManifest = require('webpack-assets-manifest');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const settingsConfig = require('../../gulp/lib/get-settings-config');
 const projectPath = require('../../gulp/lib/project-path');
-const babelOptions = require('../../babel');
+const rules = require('../config-common-rules');
 
 const isServer = process.env.ACE_ENVIRONMENT === 'server';
 const isDev = process.env.ACE_NPM_EVENT !== 'build';
@@ -93,14 +93,7 @@ const config = {
     },
     module: {
         rules: [
-            {
-                test: /\.jsx?$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: babelOptions,
-                },
-            },
+            ...rules,
             ...settingsConfig.webpack.client.moduleRules,
         ],
     },

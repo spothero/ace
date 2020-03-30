@@ -12,9 +12,6 @@ module.exports = {
             optimizationLevel: 3,
         },
     },
-    lintJS: {
-        patterns: [],
-    },
     lintSass: {
         patterns: [],
     },
@@ -24,7 +21,6 @@ module.exports = {
         projectSlug: '',
     },
     watch: {
-        jsPatterns: [],
         sassPatterns: [],
     },
     additionalTasks: {
