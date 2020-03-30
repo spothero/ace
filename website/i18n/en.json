@@ -101,6 +101,12 @@
       "version-10.0.0/version-10.0.0-settings-special": {
         "title": "Specials"
       },
+      "version-10.0.11/version-10.0.11-tasks-default": {
+        "title": "Defaults"
+      },
+      "version-10.0.11/version-10.0.11-tasks-home": {
+        "title": "Modifying"
+      },
       "version-5.0.0/version-5.0.0-docs-code-splitting": {
         "title": "Code Splitting"
       },
