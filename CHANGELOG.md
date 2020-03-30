@@ -1,3 +1,9 @@
+# 10.0.11 - 03/30/2020
+
+## Miscellaneous Updates
+* [[808584d](https://github.com/spothero/ace/commit/808584d)] - `build:` FED-103 Replace gulp-eslint with eslint-loader ([#41](https://github.com/spothero/ace/pull/41)) (Seth Thomas)
+	* - eslint-loader - config/gulp/tasks/lint-js.js removed (well, left in place with a log) - removed lintJS from gulp watch task - extracted webpack.module.rules into webpack/config-common-rules.js to be consumed by server and client - added pre check with eslint-loader via webpack - minor safety check in install contrib deps that checks peerDeps too
+
 # 10.0.10 - 03/04/2020
 
 ## Miscellaneous Updates
