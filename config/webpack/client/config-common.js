@@ -3,9 +3,10 @@ const mapValues = require('lodash/mapValues');
 const path = require('path');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const settingsConfig = require('../../gulp/lib/get-settings-config');
 const projectPath = require('../../gulp/lib/project-path');
-const rules = require('../config-common-rules');
+const commonRules = require('../config-common-rules');
 
 const isServer = process.env.ACE_ENVIRONMENT === 'server';
 const isDev = process.env.ACE_NPM_EVENT !== 'build';
@@ -75,6 +76,9 @@ if (!isServer) {
             inject: settingsConfig.webpack.client.injectAssets,
             aceEvent: process.env.ACE_NPM_EVENT,
             ...settingsConfig.webpack.client.injectOptions,
+        }),
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
         })
     );
 }
@@ -99,7 +103,53 @@ const config = {
     },
     module: {
         rules: [
-            ...rules,
+            ...commonRules,
+            {
+                test: /\.scss$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                    },
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: loader => [
+                                require('autoprefixer')(),
+                                require('postcss-flexbugs-fixes')(),
+                                require('cssnano')({
+                                    discardComments: {
+                                        removeAll: true,
+                                    },
+                                }),
+                            ],
+                        },
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            implementation: require('node-sass'),
+                            sassOptions: {
+                                includePaths: [
+                                    'node_modules',
+                                    path.resolve(
+                                        `${src}/${settingsConfig.src.sass.path}`
+                                    ),
+                                ],
+                            },
+                        },
+                    },
+                ],
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                loader: 'file-loader',
+                options: {
+                    outputPath: 'img',
+                    name: '[name].[ext]',
+                },
+            },
+
             ...settingsConfig.webpack.client.moduleRules,
         ],
     },

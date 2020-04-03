@@ -37,10 +37,7 @@ const config = {
         extensions: ['.js', '.jsx', '.json'],
     },
     module: {
-        rules: [
-            ...rules,
-            ...settingsConfig.webpack.server.moduleRules,
-        ],
+        rules: [...rules, ...settingsConfig.webpack.server.moduleRules],
     },
 };
 
