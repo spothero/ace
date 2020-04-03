@@ -2,7 +2,7 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const settingsConfig = require('../../gulp/lib/get-settings-config');
 const projectPath = require('../../gulp/lib/project-path');
-const babelOptions = require('../../babel');
+const rules = require('../config-common-rules');
 
 const src = `${projectPath(settingsConfig.root.path)}/${
     settingsConfig.src.path
@@ -38,14 +38,7 @@ const config = {
     },
     module: {
         rules: [
-            {
-                test: /\.jsx?$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: babelOptions,
-                },
-            },
+            ...rules,
             ...settingsConfig.webpack.server.moduleRules,
         ],
     },

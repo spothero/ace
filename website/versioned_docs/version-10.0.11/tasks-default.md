@@ -1,6 +1,7 @@
 ---
-id: tasks-default
+id: version-10.0.11-tasks-default
 title: Defaults
+original_id: tasks-default
 ---
 
 ACE automatically runs a set of default Gulp tasks to help with project builds. You can modify certain tasks in the generated `tasks.js` file to add and/or change some behaviors.
