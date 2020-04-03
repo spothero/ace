@@ -41,20 +41,26 @@ const extraModules = settingsConfig.webpack.client.resolveModules.map(
 const plugins = [
     !settingsConfig.webpack.client.injectAssets &&
         new WebpackAssetsManifest({
-            output: `../${settingsConfig.dist.manifest.filename}`,
             writeToDisk: true,
             merge: true,
             customize: (entryItem, original, manifest, asset) => {
+                const entryItemKey = entryItem.key.toLowerCase();
+
                 // don't add .map files to manifest
-                if (entryItem.key.toLowerCase().endsWith('.map')) {
+                if (entryItemKey.endsWith('.map')) {
                     return false;
                 }
 
                 // add JS path before each JS file key/value pair in manifest
-                if (entryItem.key.toLowerCase().endsWith('.js')) {
+                // if it isn't already in a folder
+                if (
+                    entryItemKey.endsWith('.js') &&
+                    !entryItemKey.startsWith('css/') &&
+                    !entryItemKey.startsWith('js/')
+                ) {
                     return {
                         key: `${settingsConfig.src.js.path}/${entryItem.key}`,
-                        value: `${settingsConfig.src.js.path}/${entryItem.value}`,
+                        value: `${entryItem.value}`,
                     };
                 }
             },
@@ -78,7 +84,7 @@ const config = {
     target: 'web',
     entry,
     output: {
-        path: path.resolve(`${dist}/${settingsConfig.src.js.path}`),
+        path: path.resolve(`${dist}`), // /${settingsConfig.src.js.path}`),
         filename: settingsConfig.webpack.client.output,
         chunkFilename: settingsConfig.webpack.client.chunkFilename,
     },
