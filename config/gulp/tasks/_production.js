@@ -15,8 +15,6 @@ const productionClientTask = cb => {
             : [
                   'clean',
                   ...preBuild,
-                  'sass',
-                  'cssMin',
                   'webpackClient',
                   'htmlReplace',
                   ...postBuild,
@@ -36,15 +34,7 @@ const productionSSRTask = cb => {
     const seq =
         custom && custom.length
             ? custom
-            : [
-                  'clean',
-                  ...preBuild,
-                  'sass',
-                  'cssMin',
-                  'webpackSSR',
-                  'htmlReplace',
-                  ...postBuild,
-              ];
+            : ['clean', ...preBuild, 'webpackSSR', 'htmlReplace', ...postBuild];
 
     sequence(...seq, cb);
 };
