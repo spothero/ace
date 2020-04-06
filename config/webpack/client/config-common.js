@@ -88,7 +88,7 @@ const config = {
     target: 'web',
     entry,
     output: {
-        path: path.resolve(`${dist}`), // /${settingsConfig.src.js.path}`),
+        path: path.resolve(`${dist}`),
         filename: settingsConfig.webpack.client.output,
         chunkFilename: settingsConfig.webpack.client.chunkFilename,
     },
