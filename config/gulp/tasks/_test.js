@@ -46,7 +46,7 @@ const testClientTask = cb => {
     const seq =
         custom && custom.length
             ? custom
-            : ['clean', ...preBuild, ...postBuild, 'watch', 'devServerClient'];
+            : ['clean', ...preBuild, ...postBuild, 'devServerClient'];
 
     sequence(...seq, cb);
 };
@@ -62,7 +62,7 @@ const testServerTask = cb => {
     const seq =
         custom && custom.length
             ? custom
-            : ['clean', ...preBuild, ...postBuild, 'watch', 'devServerSSR'];
+            : ['clean', ...preBuild, ...postBuild, 'devServerSSR'];
 
     sequence(...seq, cb);
 };
