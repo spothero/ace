@@ -117,15 +117,18 @@ const config = {
                     {
                         loader: 'postcss-loader',
                         options: {
-                            plugins: loader => [
-                                require('autoprefixer')(),
-                                require('postcss-flexbugs-fixes')(),
-                                require('cssnano')({
-                                    discardComments: {
-                                        removeAll: true,
-                                    },
-                                }),
-                            ],
+                            plugins: loader => {
+                                return [
+                                    require('autoprefixer')(),
+                                    require('postcss-flexbugs-fixes')(),
+                                    !isDev &&
+                                        require('cssnano')({
+                                            discardComments: {
+                                                removeAll: true,
+                                            },
+                                        }),
+                                ].filter(Boolean);
+                            },
                         },
                     },
                     {
