@@ -4,6 +4,7 @@ const path = require('path');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 const settingsConfig = require('../../gulp/lib/get-settings-config');
 const projectPath = require('../../gulp/lib/project-path');
 const configCommonRules = require('../config-common-rules');
@@ -79,7 +80,8 @@ if (!isServer) {
         }),
         new MiniCssExtractPlugin({
             filename: isDev ? '[name].css' : '[name]-[hash].css',
-        })
+        }),
+        new StylelintPlugin()
     );
 }
 
