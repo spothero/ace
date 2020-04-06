@@ -30,18 +30,6 @@ Removes generated CSS and bundled JS files before a new build. Also cleans up `*
 *Options*<br />
 `patterns` (Array): Glob patterns to add to the default deletion items.
 
-### `cssManifest` *(development)*
-Adds the local CSS file paths to the manifest.
-
-*Options*<br />
-N/A
-
-### `cssMin` *(production)*
-Compiles Sass files for a production build, including minification and revisioning, and adds the key/value pair to the manifest.
-
-*Options*<br />
-Most of the changes to this task will happen through modifying the settings. See [the process](settings-home#process) for details.
-
 ### `devServerClient` *(development)*
 Runs a Node server for local development purposes for the client. `webpack-dev-server` is used under the hood to serve up and transpile JS, add hot reloading, CSS live injection, and more. This task is a daemon.
 
@@ -56,29 +44,11 @@ N/A
 
 **NOTE:** This task is designed to be used when only one CSS file is generated during the build. If using multiple CSS files that are compiled during builds, a custom HTML path rewrite task will need to be created.
 
-### `lintSass` *(development)*
-Lints Sass files based on the Stylelint configuration specified.
-
-*Options*<br />
-`patterns` (Array): Glob patterns to add to the default linted items.
-
-### `sass` *(development, production)*
-Compiles Sass files to CSS.
-
-*Options*<br />
-N/A
-
 ### `serverSSR` *(production)*
 Spins up a node server and renders the application on the server for SSR.
 
 *Options*<br />
 Most of the changes to this task will happen through modifying the settings. See [the process](settings-home#process) for details.
-
-### `watch` *(development)*
-Watches Sass and JS files. Modified Sass and JS files are automatically compiled and linted on save. This task is a daemon.
-
-*Options*<br />
-`sassPatterns` (Array): Glob patterns to add to the default Sass files being watched.
 
 ### `webpackClient` *(production)*
 Compiles client-side JS files for a production build, including minification/uglifying. Produces source maps for use in tools that use them (like Sentry).
