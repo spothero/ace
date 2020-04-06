@@ -108,6 +108,7 @@ const config = {
             ...configCommonRules,
             {
                 test: /\.scss$/,
+                exclude: /\.module\.scss$/,
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
