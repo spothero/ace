@@ -78,7 +78,7 @@ if (!isServer) {
             ...settingsConfig.webpack.client.injectOptions,
         }),
         new MiniCssExtractPlugin({
-            filename: '[name].css',
+            filename: isDev ? '[name].css' : '[name]-[hash].css',
         })
     );
 }
