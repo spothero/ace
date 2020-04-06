@@ -6,7 +6,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const settingsConfig = require('../../gulp/lib/get-settings-config');
 const projectPath = require('../../gulp/lib/project-path');
-const commonRules = require('../config-common-rules');
+const configCommonRules = require('../config-common-rules');
 
 const isServer = process.env.ACE_ENVIRONMENT === 'server';
 const isDev = process.env.ACE_NPM_EVENT !== 'build';
@@ -103,7 +103,7 @@ const config = {
     },
     module: {
         rules: [
-            ...commonRules,
+            ...configCommonRules,
             {
                 test: /\.scss$/,
                 use: [

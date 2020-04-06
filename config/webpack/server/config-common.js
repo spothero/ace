@@ -2,7 +2,7 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const settingsConfig = require('../../gulp/lib/get-settings-config');
 const projectPath = require('../../gulp/lib/project-path');
-const rules = require('../config-common-rules');
+const configCommonRules = require('../config-common-rules');
 
 const src = `${projectPath(settingsConfig.root.path)}/${
     settingsConfig.src.path
@@ -37,7 +37,10 @@ const config = {
         extensions: ['.js', '.jsx', '.json'],
     },
     module: {
-        rules: [...rules, ...settingsConfig.webpack.server.moduleRules],
+        rules: [
+            ...configCommonRules,
+            ...settingsConfig.webpack.server.moduleRules,
+        ],
     },
 };
 
