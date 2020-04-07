@@ -113,7 +113,12 @@ const config = {
                     {
                         loader: MiniCssExtractPlugin.loader,
                     },
-                    'css-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            sourceMap: true,
+                        },
+                    },
                     {
                         loader: 'postcss-loader',
                         options: {
@@ -129,6 +134,9 @@ const config = {
                                         }),
                                 ].filter(Boolean);
                             },
+                            options: {
+                                sourceMap: true,
+                            },
                         },
                     },
                     {
@@ -142,6 +150,9 @@ const config = {
                                         `${src}/${settingsConfig.src.sass.path}`
                                     ),
                                 ],
+                            },
+                            options: {
+                                sourceMap: true,
                             },
                         },
                     },
