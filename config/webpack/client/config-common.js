@@ -116,7 +116,7 @@ const config = {
                     {
                         loader: 'css-loader',
                         options: {
-                            sourceMap: true,
+                            sourceMap: isDev,
                         },
                     },
                     {
@@ -135,7 +135,7 @@ const config = {
                                 ].filter(Boolean);
                             },
                             options: {
-                                sourceMap: true,
+                                sourceMap: isDev,
                             },
                         },
                     },
@@ -152,7 +152,7 @@ const config = {
                                 ],
                             },
                             options: {
-                                sourceMap: true,
+                                sourceMap: isDev,
                             },
                         },
                     },
