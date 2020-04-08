@@ -14,16 +14,7 @@ const developmentClientTask = cb => {
     const seq =
         custom && custom.length
             ? custom
-            : [
-                  'clean',
-                  ...preBuild,
-                  'sass',
-                  'cssManifest',
-                  'lintSass',
-                  ...postBuild,
-                  'watch',
-                  'devServerClient',
-              ];
+            : ['clean', ...preBuild, ...postBuild, 'devServerClient'];
 
     sequence(...seq, cb);
 };
@@ -39,16 +30,7 @@ const developmentSSRTask = cb => {
     const seq =
         custom && custom.length
             ? custom
-            : [
-                  'clean',
-                  ...preBuild,
-                  'sass',
-                  'cssManifest',
-                  'lintSass',
-                  ...postBuild,
-                  'watch',
-                  'devServerSSR',
-              ];
+            : ['clean', ...preBuild, ...postBuild, 'devServerSSR'];
 
     sequence(...seq, cb);
 };
