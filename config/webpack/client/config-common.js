@@ -134,9 +134,7 @@ const config = {
                                         }),
                                 ].filter(Boolean);
                             },
-                            options: {
-                                sourceMap: isDev,
-                            },
+                            sourceMap: isDev,
                         },
                     },
                     {
@@ -151,9 +149,7 @@ const config = {
                                     ),
                                 ],
                             },
-                            options: {
-                                sourceMap: isDev,
-                            },
+                            sourceMap: isDev,
                         },
                     },
                 ],
