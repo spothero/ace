@@ -67,6 +67,10 @@ const plugins = [
                 }
             },
         }),
+    new MiniCssExtractPlugin({
+        filename: isDev ? '[name].css' : '[name]-[hash].css',
+    }),
+    new StylelintPlugin(),
 ].filter(Boolean);
 
 if (!isServer) {
@@ -77,11 +81,7 @@ if (!isServer) {
             inject: settingsConfig.webpack.client.injectAssets,
             aceEvent: process.env.ACE_NPM_EVENT,
             ...settingsConfig.webpack.client.injectOptions,
-        }),
-        new MiniCssExtractPlugin({
-            filename: isDev ? '[name].css' : '[name]-[hash].css',
-        }),
-        new StylelintPlugin()
+        })
     );
 }
 
@@ -134,9 +134,7 @@ const config = {
                                         }),
                                 ].filter(Boolean);
                             },
-                            options: {
-                                sourceMap: isDev,
-                            },
+                            sourceMap: isDev,
                         },
                     },
                     {
@@ -151,9 +149,7 @@ const config = {
                                     ),
                                 ],
                             },
-                            options: {
-                                sourceMap: isDev,
-                            },
+                            sourceMap: isDev,
                         },
                     },
                 ],
