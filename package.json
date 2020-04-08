@@ -101,6 +101,7 @@
     "del": "5.1.0",
     "diff": "4.0.1",
     "errorhandler": "1.5.1",
+    "eslint": "6.8.0",
     "eslint-friendly-formatter": "4.0.1",
     "eslint-loader": "3.0.3",
     "express": "4.17.1",
