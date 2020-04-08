@@ -86,6 +86,9 @@
       "upgrading-home": {
         "title": "Upgrading"
       },
+      "upgrading-v11": {
+        "title": "10.x.x to 11.x.x"
+      },
       "upgrading-v5": {
         "title": "<5.0.0 to 5.x.x"
       },
@@ -106,6 +109,12 @@
       },
       "version-10.0.11/version-10.0.11-tasks-home": {
         "title": "Modifying"
+      },
+      "version-11.0.0-beta.0/version-11.0.0-beta.0-tasks-default": {
+        "title": "Defaults"
+      },
+      "version-11.0.0-beta.0/version-11.0.0-beta.0-upgrading-v11": {
+        "title": "10.x.x to 11.x.x"
       },
       "version-5.0.0/version-5.0.0-docs-code-splitting": {
         "title": "Code Splitting"

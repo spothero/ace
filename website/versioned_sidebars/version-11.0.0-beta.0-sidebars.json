@@ -1,0 +1,60 @@
+{
+  "version-11.0.0-beta.0-docs": {
+    "Overview": [
+      "version-11.0.0-beta.0-docs-home",
+      "version-11.0.0-beta.0-docs-prerequisites"
+    ],
+    "Usage": [
+      "version-11.0.0-beta.0-docs-installation",
+      "version-11.0.0-beta.0-docs-configuration"
+    ],
+    "Guides": [
+      "version-11.0.0-beta.0-docs-code-splitting",
+      "version-11.0.0-beta.0-docs-ssr"
+    ]
+  },
+  "version-11.0.0-beta.0-settings": {
+    "Overview": [
+      "version-11.0.0-beta.0-settings-home"
+    ],
+    "Available Settings": [
+      "version-11.0.0-beta.0-settings-environment",
+      "version-11.0.0-beta.0-settings-deploy",
+      "version-11.0.0-beta.0-settings-browsersync",
+      "version-11.0.0-beta.0-settings-webpack",
+      "version-11.0.0-beta.0-settings-root",
+      "version-11.0.0-beta.0-settings-cypress",
+      "version-11.0.0-beta.0-settings-src",
+      "version-11.0.0-beta.0-settings-dist",
+      "version-11.0.0-beta.0-settings-special"
+    ]
+  },
+  "version-11.0.0-beta.0-tasks": {
+    "Overview": [
+      "version-11.0.0-beta.0-tasks-home"
+    ],
+    "Tasks": [
+      "version-11.0.0-beta.0-tasks-default",
+      "version-11.0.0-beta.0-tasks-extra",
+      "version-11.0.0-beta.0-tasks-other",
+      "version-11.0.0-beta.0-tasks-creating",
+      "version-11.0.0-beta.0-tasks-adding",
+      "version-11.0.0-beta.0-tasks-overriding",
+      "version-11.0.0-beta.0-tasks-sprites",
+      "version-11.0.0-beta.0-tasks-testing",
+      "version-11.0.0-beta.0-tasks-deploying"
+    ]
+  },
+  "version-11.0.0-beta.0-upgrading": {
+    "Overview": [
+      "version-11.0.0-beta.0-upgrading-home"
+    ],
+    "Notable Upgrades": [
+      "version-11.0.0-beta.0-upgrading-v5",
+      "version-11.0.0-beta.0-upgrading-v6",
+      "version-11.0.0-beta.0-upgrading-v7",
+      "version-11.0.0-beta.0-upgrading-v8",
+      "version-11.0.0-beta.0-upgrading-v11"
+    ]
+  }
+}
