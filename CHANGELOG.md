@@ -1,3 +1,8 @@
+# 11.0.0-beta.1 - 04/08/2020
+
+## Miscellaneous Updates
+* [[26166d0](https://github.com/spothero/ace/commit/26166d0)] - `fix:` Fix improperly configured plugins and sourceMap options (boiarqin)
+
 # 11.0.0-beta.0 - 04/08/2020
 ## Breaking Changes
 * [[28df399](https://github.com/spothero/ace/commit/28df399)] - Move CSS-related Gulp tasks to Webpack (boiarqin)
