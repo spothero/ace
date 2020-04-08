@@ -1,3 +1,7 @@
+# 11.0.0-beta.0 - 04/08/2020
+## Breaking Changes
+* [[28df399](https://github.com/spothero/ace/commit/28df399)] - Move CSS-related Gulp tasks to Webpack (boiarqin)
+
 # 10.0.11 - 03/30/2020
 
 ## Miscellaneous Updates
