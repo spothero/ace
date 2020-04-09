@@ -71,7 +71,7 @@ const plugins = [
         filename: isDev ? '[name].css' : '[name]-[hash].css',
     }),
     new StylelintPlugin({
-        context: path.resolve(`${src}`),
+        context: src,
     }),
 ].filter(Boolean);
 
