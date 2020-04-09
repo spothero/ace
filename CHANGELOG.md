@@ -1,3 +1,8 @@
+# 11.0.0-beta.2 - 04/09/2020
+
+## Miscellaneous Updates
+* [[c650e94](https://github.com/spothero/ace/commit/c650e94)] - `fix:` Set context for Stylelint plugin to fix development and build errors (boiarqin)
+
 # 11.0.0-beta.1 - 04/08/2020
 
 ## Miscellaneous Updates
