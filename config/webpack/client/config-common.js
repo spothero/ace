@@ -70,7 +70,9 @@ const plugins = [
     new MiniCssExtractPlugin({
         filename: isDev ? '[name].css' : '[name]-[hash].css',
     }),
-    new StylelintPlugin(),
+    new StylelintPlugin({
+        context: src,
+    }),
 ].filter(Boolean);
 
 if (!isServer) {
