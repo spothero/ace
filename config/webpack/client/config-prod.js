@@ -22,9 +22,6 @@ if (analyze) {
 module.exports = {
     mode: 'production',
     devtool: settingsConfig.webpack.client.production.sourceMap,
-    output: {
-        publicPath: '/',
-    },
     plugins: [...plugins, ...settingsConfig.webpack.client.production.plugins],
     performance: {
         hints: false,

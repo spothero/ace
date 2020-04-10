@@ -93,6 +93,7 @@ const config = {
     entry,
     output: {
         path: path.resolve(`${dist}`),
+        publicPath: '/',
         filename: settingsConfig.webpack.client.output,
         chunkFilename: settingsConfig.webpack.client.chunkFilename,
     },
