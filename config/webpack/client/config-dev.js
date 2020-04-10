@@ -62,7 +62,7 @@ module.exports = {
     mode: 'development',
     devtool: settingsConfig.webpack.client.development.sourceMap,
     output: {
-        publicPath: `/${settingsConfig.src.js.path}/`,
+        publicPath: '/',
     },
     plugins: [...plugins, ...settingsConfig.webpack.client.development.plugins],
     optimization: {

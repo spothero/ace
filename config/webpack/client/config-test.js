@@ -49,7 +49,7 @@ module.exports = {
     mode: 'development',
     devtool: settingsConfig.webpack.client.test.sourceMap,
     output: {
-        publicPath: `/${settingsConfig.src.js.path}/`,
+        publicPath: '/',
     },
     cache: true,
     plugins: [...plugins, ...settingsConfig.webpack.client.test.plugins],
