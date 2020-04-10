@@ -22,7 +22,7 @@ const config = {
     target: 'node',
     entry: `${src}/${settingsConfig.webpack.server.entry}`,
     output: {
-        path: `${dist}/${settingsConfig.src.js.path}`,
+        path: dist,
         filename: settingsConfig.webpack.server.output,
         libraryTarget: 'commonjs2',
     },
