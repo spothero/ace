@@ -48,9 +48,6 @@ if (process.env.ACE_ENVIRONMENT === 'server') {
 module.exports = {
     mode: 'development',
     devtool: settingsConfig.webpack.client.test.sourceMap,
-    output: {
-        publicPath: `/${settingsConfig.src.js.path}/`,
-    },
     cache: true,
     plugins: [...plugins, ...settingsConfig.webpack.client.test.plugins],
     optimization: {
