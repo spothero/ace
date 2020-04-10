@@ -1,3 +1,10 @@
+# 11.0.0-beta.3 - 04/10/2020
+
+## Miscellaneous Updates
+* [[3bfd857](https://github.com/spothero/ace/commit/3bfd857)] - `fix:` Revert server output (Boiar Qin)
+* [[7694d72](https://github.com/spothero/ace/commit/7694d72)] - `fix:` Move publicPath into common client config (Boiar Qin)
+* [[8113f87](https://github.com/spothero/ace/commit/8113f87)] - `fix:` Remove /js from publicPaths. Output server files into /js (Boiar Qin)
+
 # 11.0.0-beta.2 - 04/09/2020
 
 ## Miscellaneous Updates
