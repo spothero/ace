@@ -1,3 +1,9 @@
+# 11.0.0 - 04/14/2020
+
+## Miscellaneous Updates
+* [[096f580](https://github.com/spothero/ace/commit/096f580)] - `fix:` Prevent stylelint errors from failing compilation in dev (boiarqin)
+* [[03c2bb9](https://github.com/spothero/ace/commit/03c2bb9)] - `fix:` Re-organize server file output and fix publicPath settings (boiarqin)
+
 # 11.0.0-beta.2 - 04/09/2020
 
 ## Miscellaneous Updates
