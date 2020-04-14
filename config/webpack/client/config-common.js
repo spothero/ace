@@ -72,6 +72,7 @@ const plugins = [
     }),
     new StylelintPlugin({
         context: src,
+        emitWarning: isDev
     }),
 ].filter(Boolean);
 
