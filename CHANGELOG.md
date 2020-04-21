@@ -1,3 +1,8 @@
+# 11.0.1 - 04/21/2020
+
+## Miscellaneous Updates
+* [[128d67f](https://github.com/spothero/ace/commit/128d67f)] - `fix:` Scaffold files no longer needing HTML plugin and import Sass to main JS file ([#51](https://github.com/spothero/ace/pull/51)) (Matt Przybylski)
+
 # 11.0.0 - 04/14/2020
 
 ## Miscellaneous Updates
