@@ -114,7 +114,12 @@ const config = {
                 test: /\.scss$/,
                 exclude: /\.module\.scss$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: isDev
+                        }
+                    },
                     {
                         loader: 'css-loader',
                         options: {
