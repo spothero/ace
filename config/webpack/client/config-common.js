@@ -72,7 +72,7 @@ const plugins = [
     }),
     new StylelintPlugin({
         context: src,
-        emitWarning: isDev
+        emitWarning: isDev,
     }),
 ].filter(Boolean);
 
@@ -114,13 +114,12 @@ const config = {
                 test: /\.scss$/,
                 exclude: /\.module\.scss$/,
                 use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                    },
+                    MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader',
                         options: {
                             sourceMap: isDev,
+                            ...settingsConfig.webpack.client.cssLoaderOptions,
                         },
                     },
                     {
@@ -159,7 +158,7 @@ const config = {
                 ],
             },
             {
-                test: /\.(png|svg|jpg|gif)$/,
+                test: /\.(png|svg|jpe?g|gif)$/,
                 loader: 'file-loader',
                 options: {
                     outputPath: 'img',
