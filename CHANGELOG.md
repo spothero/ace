@@ -1,3 +1,8 @@
+# 11.1.0 - 04/23/2020
+## New Features
+* [[2c921a9](https://github.com/spothero/ace/commit/2c921a9)] - Adding cssLoaderOptions to extend css-loader ([#52](https://github.com/spothero/ace/pull/52)) (Seth Thomas)
+	* `feat:` Adding cssLoaderOptions to extend css-loader
+
 # 11.0.1 - 04/21/2020
 
 ## Miscellaneous Updates
