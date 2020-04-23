@@ -173,7 +173,7 @@ analyze: {
 An array of [extra plugins](https://webpack.js.org/configuration/plugins) to add to the production build.
 
 ## `cssLoaderOptions`
-An object to pass to `css-loader` options, all supported options can be found [here](https://github.com/webpack-contrib/css-loader#options)
+An object of options to pass to [css-loader](https://github.com/webpack-contrib/css-loader#options).
 
 ## `server`
 Webpack settings for serverside builds.
