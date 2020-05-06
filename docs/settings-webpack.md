@@ -266,3 +266,6 @@ Whether to minify the production server bundle or not. The server bundle is usua
 
 **default:**
 `false`
+
+## `eslintOptions`
+Additional [options](https://eslint.org/docs/developer-guide/nodejs-api#cliengine) to pass through to `eslint-loader`.

@@ -1,9 +1,8 @@
-const fs = require('fs');
 const babelOptions = require('../babel');
-const projectPath = require('../gulp/lib/project-path');
-const SETTINGS_CONFIG = require('../gulp/lib/get-settings-config');
+const settingsConfig = require('../gulp/lib/get-settings-config');
 
 const isDev = process.env.ACE_NPM_EVENT === 'start';
+const eslintOptions = settingsConfig.webpack.eslintOptions || {};
 
 module.exports = [
     {
@@ -12,15 +11,16 @@ module.exports = [
         use: [
             {
                 loader: 'babel-loader',
-                options: babelOptions
+                options: babelOptions,
             },
             {
                 loader: 'eslint-loader',
                 options: {
                     formatter: require('eslint-friendly-formatter'),
-                    emitWarning: isDev
-                }
-            }
-        ]
-    }
-]
+                    emitWarning: isDev,
+                    ...eslintOptions,
+                },
+            },
+        ],
+    },
+];
