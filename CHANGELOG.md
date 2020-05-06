@@ -1,3 +1,7 @@
+# 11.2.0 - 05/06/2020
+## New Features
+* [[75d2181](https://github.com/spothero/ace/commit/75d2181)] - Add ability to pass eslintOptions in settings through to eslint-loader ([#53](https://github.com/spothero/ace/pull/53)) (Matt Przybylski)
+
 # 11.1.0 - 04/23/2020
 ## New Features
 * [[2c921a9](https://github.com/spothero/ace/commit/2c921a9)] - Adding cssLoaderOptions to extend css-loader ([#52](https://github.com/spothero/ace/pull/52)) (Seth Thomas)
