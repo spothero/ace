@@ -1,3 +1,7 @@
+# 11.3.0 - 05/20/2020
+## New Features
+* [[5f83e5e](https://github.com/spothero/ace/commit/5f83e5e)] - Add ability to pass ACE_ASSET_PATH as output publicPath ([#54](https://github.com/spothero/ace/pull/54)) (Matt Przybylski)
+
 # 11.2.0 - 05/06/2020
 ## New Features
 * [[75d2181](https://github.com/spothero/ace/commit/75d2181)] - Add ability to pass eslintOptions in settings through to eslint-loader ([#53](https://github.com/spothero/ace/pull/53)) (Matt Przybylski)
