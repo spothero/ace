@@ -94,7 +94,7 @@ const config = {
     entry,
     output: {
         path: path.resolve(`${dist}`),
-        publicPath: '/',
+        publicPath: process.env.ACE_ASSET_PATH || '/',
         filename: settingsConfig.webpack.client.output,
         chunkFilename: settingsConfig.webpack.client.chunkFilename,
     },
@@ -117,8 +117,8 @@ const config = {
                     {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
-                            hmr: isDev
-                        }
+                            hmr: isDev,
+                        },
                     },
                     {
                         loader: 'css-loader',
