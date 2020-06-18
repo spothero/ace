@@ -27,7 +27,7 @@ if (settingsConfig.deploy.uploadToSentry) {
             release: settingsConfig.deploy.releaseVersion,
             include: `${dist}/js`,
             ignoreFile: '.sentrycliignore',
-            configFile: `.sentryclirc`,
+            configFile: '.sentryclirc',
         })
     );
 }
