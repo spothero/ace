@@ -21,7 +21,7 @@ const plugins = [
     }),
 ];
 
-if (settingsConfig.env.production.SENTRY_ENABLED) {
+if (settingsConfig.deploy.uploadToSentry) {
     plugins.push(
         new SentryCLIPlugin({
             release: settingsConfig.deploy.releaseVersion,
