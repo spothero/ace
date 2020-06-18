@@ -19,13 +19,18 @@ const plugins = [
             ...getEnvVars('production'),
         },
     }),
-    new SentryCLIPlugin({
-        release: settingsConfig.deploy.releaseVersion,
-        include: `${dist}/js`,
-        ignoreFile: '.sentrycliignore',
-        configFile: `.sentryclirc`,
-    }),
 ];
+
+if (settingsConfig.env.production.SENTRY_ENABLED) {
+    plugins.push(
+        new SentryCLIPlugin({
+            release: settingsConfig.deploy.releaseVersion,
+            include: `${dist}/js`,
+            ignoreFile: '.sentrycliignore',
+            configFile: `.sentryclirc`,
+        })
+    );
+}
 
 if (analyze) {
     plugins.push(new BundleAnalyzerPlugin(analyze));
