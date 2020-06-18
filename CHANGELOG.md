@@ -1,3 +1,16 @@
+# 12.0.0-beta.0 - 06/18/2020
+## Breaking Changes
+* [[5ebebd2](https://github.com/spothero/ace/commit/5ebebd2)] - Remove gulp Sentry task (Boiar Qin)
+
+## New Features
+* [[587485b](https://github.com/spothero/ace/commit/587485b)] - Add Sentry webpack plugin (Boiar Qin)
+
+## Miscellaneous Updates
+* [[1aa11cd](https://github.com/spothero/ace/commit/1aa11cd)] - `docs:` Change plain text to hyperlink (Boiar Qin)
+* [[875d734](https://github.com/spothero/ace/commit/875d734)] - `docs:` Update docs to reflect webpack changes (Boiar Qin)
+* [[5666417](https://github.com/spothero/ace/commit/5666417)] - `fix:` Use deploy.uploadToSentry as the conditional (Boiar Qin)
+* [[5610e3b](https://github.com/spothero/ace/commit/5610e3b)] - `fix:` Conditional enabling of sentry plugin (Boiar Qin)
+
 # 11.3.0 - 05/20/2020
 ## New Features
 * [[5f83e5e](https://github.com/spothero/ace/commit/5f83e5e)] - Add ability to pass ACE_ASSET_PATH as output publicPath ([#54](https://github.com/spothero/ace/pull/54)) (Matt Przybylski)
