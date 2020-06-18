@@ -15,11 +15,6 @@ module.exports = {
     lintSass: {
         patterns: [],
     },
-    sentry: {
-        organizationSlug: '',
-        authToken: '',
-        projectSlug: '',
-    },
     watch: {
         sassPatterns: [],
     },

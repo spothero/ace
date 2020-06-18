@@ -115,7 +115,6 @@
     "gulp-rev": "9.0.0",
     "gulp-rev-rewrite": "2.0.0",
     "gulp-s3-upload": "1.7.3",
-    "gulp-sentry-release": "1.0.4",
     "gulp-shell": "0.7.1",
     "gulp.spritesmith": "6.11.0",
     "html-webpack-plugin": "3.2.0",
