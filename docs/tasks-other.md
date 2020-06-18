@@ -19,13 +19,3 @@ Generates the necessary PNG and Sass assets for using sprites. See [Generating S
 Resizes `*-2x` directories with sprite PNGs in them to create `*-1x` versions.
 
 **NOTE:** This task should not be run during a build pipeline. See [Resizing Sprite PNGs](tasks-sprites#resizing-sprite-pngs) for details.
-
-### `sentry` *(production)*
-Uploads minified JS files and source maps to Sentry for easy attribution in error logging. The source maps also allow Sentry to display non-uglified JS code in the UI for easier debugging.
-
-*Options*<br />
-`projectSlug` (String): The project in Sentry to send error logs to (**required**).<br />
-`organizationSlug` (String): The organization to attribute the errors to (**required**).<br />
-`authToken` (String): The Sentry authorization token (**required**).
-
-This task also requires that all deploy settings be set to function properly.

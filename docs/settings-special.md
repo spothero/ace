@@ -22,19 +22,6 @@ You can define a `deploy` object that contains the `staticUrl` key. This maps to
 }
 ```
 
-### `sentry.organizationSlug` & `sentry.authToken`
-These can be defined inside of the `sentry` object and map to `tasks.js`, respectively. For more details, see the [sentry](tasks-other#sentry-production) task.
-
-*Example*
-```json
-{
-    "sentry": {
-        "organizationSlug": "your-slug-here",
-        "authToken": "your-token-here"
-    }
-}
-```
-
 ### `browserslist`
 ACE uses [browserl.ist](http://browserl.ist/) to properly verify which vendor prefixes and transpilation features should be added. You can define a custom list of browsers to support by using this object. The defaults will be overwritten if you choose to do so.
 
