@@ -1,3 +1,9 @@
+# 12.0.0-beta.1 - 06/19/2020
+
+## Miscellaneous Updates
+* [[6ee0299](https://github.com/spothero/ace/commit/6ee0299)] - `docs:` Add Upgrading v12 docs (Boiar Qin)
+* [[28f0b4a](https://github.com/spothero/ace/commit/28f0b4a)] - `fix:` Account for JSON.stringified and regular strings (Boiar Qin)
+
 # 12.0.0-beta.0 - 06/18/2020
 ## Breaking Changes
 * [[5ebebd2](https://github.com/spothero/ace/commit/5ebebd2)] - Remove gulp Sentry task (Boiar Qin)
