@@ -22,9 +22,17 @@ const plugins = [
 ];
 
 if (settingsConfig.deploy.uploadToSentry) {
+    let releaseVersion;
+
+    try {
+        releaseVersion = JSON.parse(settingsConfig.deploy.releaseVersion);
+    } catch (err) {
+        releaseVersion = settingsConfig.deploy.releaseVersion;
+    }
+
     plugins.push(
         new SentryCLIPlugin({
-            release: settingsConfig.deploy.releaseVersion,
+            release: releaseVersion,
             include: `${dist}/js`,
             ignoreFile: '.sentrycliignore',
             configFile: '.sentryclirc',
