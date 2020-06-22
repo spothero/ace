@@ -1,3 +1,7 @@
+# 12.0.0 - 06/22/2020
+## Breaking Changes
+* [[41d5661](https://github.com/spothero/ace/commit/41d5661)] - Move Sentry from Gulp to Webpack ([#57](https://github.com/spothero/ace/pull/57)) (boiarqin)
+
 # 12.0.0-beta.1 - 06/19/2020
 
 ## Miscellaneous Updates
