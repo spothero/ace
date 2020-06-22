@@ -31,3 +31,9 @@ AWS bucket to put files in for the given environment.
 
 ### `cloudFrontDistributionId`
 Cloudfront distribution ID or array of IDs to invalidate.
+
+### `uploadToSentry`
+A Boolean indicating whether minified JS files and source maps should be uploaded to Sentry. The source maps also allow Sentry to display non-uglified JS code in the UI for easier debugging.
+
+Sentry project settings can be configured in a .sentryclirc file.
+See the [official Sentry documentation](https://docs.sentry.io/cli/configuration/#configuration-file) for more information.
