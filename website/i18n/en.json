@@ -89,6 +89,9 @@
       "upgrading-v11": {
         "title": "10.x.x to 11.x.x"
       },
+      "upgrading-v12": {
+        "title": "11.x.x to 12.x.x"
+      },
       "upgrading-v5": {
         "title": "<5.0.0 to 5.x.x"
       },
@@ -118,6 +121,21 @@
       },
       "version-11.1.0/version-11.1.0-settings-webpack": {
         "title": "Webpack"
+      },
+      "version-12.0.0/version-12.0.0-settings-deploy": {
+        "title": "Deploy"
+      },
+      "version-12.0.0/version-12.0.0-settings-special": {
+        "title": "Specials"
+      },
+      "version-12.0.0/version-12.0.0-settings-webpack": {
+        "title": "Webpack"
+      },
+      "version-12.0.0/version-12.0.0-tasks-other": {
+        "title": "Others"
+      },
+      "version-12.0.0/version-12.0.0-upgrading-v12": {
+        "title": "11.x.x to 12.x.x"
       },
       "version-5.0.0/version-5.0.0-docs-code-splitting": {
         "title": "Code Splitting"
