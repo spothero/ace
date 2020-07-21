@@ -42,7 +42,6 @@ if (settingsConfig.deploy.uploadToSentry) {
             urlPrefix: '~/dist/',
             ignoreFile: `${root}/.sentrycliserverignore`,
             configFile: `${root}/.sentrycliserverrc`,
-            debug: true,
         })
     );
 }
