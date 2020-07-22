@@ -1,3 +1,10 @@
+# 12.1.0-beta.0 - 07/22/2020
+## New Features
+* [[ba91545](https://github.com/spothero/ace/commit/ba91545)] - Add Sentry configuration in Webpack server config (Boiar Qin)
+
+## Miscellaneous Updates
+* [[71e12e6](https://github.com/spothero/ace/commit/71e12e6)] - `refactor:` Remove debug setting (Boiar Qin)
+
 # 12.0.0 - 06/22/2020
 ## Breaking Changes
 * [[41d5661](https://github.com/spothero/ace/commit/41d5661)] - Move Sentry from Gulp to Webpack ([#57](https://github.com/spothero/ace/pull/57)) (boiarqin)
