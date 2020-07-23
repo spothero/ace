@@ -32,7 +32,6 @@ if (settingsConfig.deploy.uploadToSentry) {
         new SentryCLIPlugin({
             release: releaseVersion,
             include: `${dist}/js`,
-            urlPrefix: '~/js/',
             ignoreFile: `${root}/.sentrycliignore`,
             configFile: `${root}/.sentryclirc`,
         })

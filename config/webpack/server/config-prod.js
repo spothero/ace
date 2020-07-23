@@ -48,7 +48,6 @@ if (settingsConfig.deploy.uploadToSentry) {
 
 if (isUndefined(minify) || settingsConfig.webpack.server.production.minify) {
     config.optimization = {
-        minimize: true,
         minimizer: [
             new TerserPlugin({
                 sourceMap: true,
