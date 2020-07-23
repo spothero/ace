@@ -7,10 +7,8 @@ const settingsConfig = require('../../gulp/lib/get-settings-config');
 const {getEnvVars} = require('../utils');
 const projectPath = require('../../gulp/lib/project-path');
 
-const dist = `${projectPath(settingsConfig.root.path)}/${
-    settingsConfig.dist.path
-}`;
-
+const root = projectPath(settingsConfig.root.path);
+const dist = `${root}/${settingsConfig.dist.path}`;
 const analyze = settingsConfig.webpack.client.production.analyze;
 const plugins = [
     new webpack.DefinePlugin({
@@ -34,8 +32,8 @@ if (settingsConfig.deploy.uploadToSentry) {
         new SentryCLIPlugin({
             release: releaseVersion,
             include: `${dist}/js`,
-            ignoreFile: '.sentrycliignore',
-            configFile: '.sentryclirc',
+            ignoreFile: `${root}/.sentrycliignore`,
+            configFile: `${root}/.sentryclirc`,
         })
     );
 }

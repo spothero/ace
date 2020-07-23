@@ -1,9 +1,13 @@
 const webpack = require('webpack');
 const isUndefined = require('lodash').isUndefined;
 const TerserPlugin = require('terser-webpack-plugin');
+const SentryCLIPlugin = require('@sentry/webpack-plugin');
 const settingsConfig = require('../../gulp/lib/get-settings-config');
 const {getEnvVars} = require('../utils');
+const projectPath = require('../../gulp/lib/project-path');
 
+const root = projectPath(settingsConfig.root.path);
+const dist = `${root}/${settingsConfig.dist.path}`;
 const minify = settingsConfig.webpack.server.production.minify;
 
 const config = {
@@ -22,6 +26,25 @@ const config = {
         hints: false,
     },
 };
+
+if (settingsConfig.deploy.uploadToSentry) {
+    let releaseVersion;
+
+    try {
+        releaseVersion = JSON.parse(settingsConfig.deploy.releaseVersion);
+    } catch (err) {
+        releaseVersion = settingsConfig.deploy.releaseVersion;
+    }
+    config.plugins.push(
+        new SentryCLIPlugin({
+            release: releaseVersion,
+            include: `${dist}`,
+            urlPrefix: '~/dist/',
+            ignoreFile: `${root}/.sentrycliserverignore`,
+            configFile: `${root}/.sentrycliserverrc`,
+        })
+    );
+}
 
 if (isUndefined(minify) || settingsConfig.webpack.server.production.minify) {
     config.optimization = {
