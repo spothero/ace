@@ -1,3 +1,7 @@
+# 12.1.0 - 07/23/2020
+## New Features
+* [[5d297f8](https://github.com/spothero/ace/commit/5d297f8)] - Add Sentry configuration in Webpack server config ([#60](https://github.com/spothero/ace/pull/60)) (boiarqin)
+
 # 12.1.0-beta.0 - 07/22/2020
 ## New Features
 * [[ba91545](https://github.com/spothero/ace/commit/ba91545)] - Add Sentry configuration in Webpack server config (Boiar Qin)
