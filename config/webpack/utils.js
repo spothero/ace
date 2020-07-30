@@ -17,19 +17,13 @@ module.exports = {
     getEnvVars: environment => {
         const envVars = {};
 
-        // forEach(process.env, (value, key) => {
-        //     if (knownEnvVars.indexOf(key) >= 0) {
-        //         envVars[key] = JSON.stringify(value);
-        //     }
-        // });
-
-        forEach(knownEnvVars, (key) => {
+        forEach(knownEnvVars, key => {
             const value = process.env[key];
-            
+
             if (value) {
                 envVars[key] = JSON.stringify(value);
             }
-        })
+        });
 
         return {
             ...envVars,
