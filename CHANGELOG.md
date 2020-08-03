@@ -1,3 +1,8 @@
+# 12.1.1 - 08/03/2020
+
+## Miscellaneous Updates
+* [[a3e0088](https://github.com/spothero/ace/commit/a3e0088)] - `fix:` Only pull in known variables from process.env ([#61](https://github.com/spothero/ace/pull/61)) (boiarqin)
+
 # 12.1.0 - 07/23/2020
 ## New Features
 * [[5d297f8](https://github.com/spothero/ace/commit/5d297f8)] - Add Sentry configuration in Webpack server config ([#60](https://github.com/spothero/ace/pull/60)) (boiarqin)
