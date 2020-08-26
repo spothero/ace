@@ -11,6 +11,7 @@ const knownEnvVars = [
     'INIT_CWD',
     'NODE_ENV',
     'SANDBOX_NAME',
+    'CHUNK_PUBLIC_PATH',
 ];
 
 module.exports = {
