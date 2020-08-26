@@ -1,3 +1,7 @@
+# 12.2.0 - 08/26/2020
+## New Features
+* [[d0ce79c](https://github.com/spothero/ace/commit/d0ce79c)] - Allow environment variable for CHUNK_PUBLIC_PATH ([#64](https://github.com/spothero/ace/pull/64)) (boiarqin)
+
 # 12.1.1 - 08/03/2020
 
 ## Miscellaneous Updates
