@@ -1,3 +1,5 @@
+**This repository is no longer maintained. Viable alternatives include [Create React App](https://create-react-app.dev/), [Next.js](https://nextjs.org/), and [After.js](https://github.com/jaredpalmer/after.js), amongst others.**
+
 # Application Configuration Extractor (ACE)
 The Application Configuration Extractor (ACE for short) is a tool that extracts the front end build process out of your project so you don't have to worry about managing dependencies and build configuration.
 
